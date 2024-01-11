@@ -1,8 +1,6 @@
 # [Pintora For Typst](https://github.com/taylorh140/typst-pintora)
 
 [Pintora](https://pintorajs.vercel.app/)
-[Source Repo](https://github.com/Enter-tainer/wavy)
-
 
 Typst package for drawing the following from markup:
 - Sequence Diagram
