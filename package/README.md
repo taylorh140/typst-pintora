@@ -29,18 +29,29 @@ Typst package for drawing the following from markup:
 Typst just got a load of diagrams. 
 
 ```pintora
-
+mindmap
+@param layoutDirection TB
++ UML Diagrams
+++ Behavior Diagrams
++++ Sequence Diagram
++++ State Diagram
++++ Activity Diagram
+++ Structural Diagrams
++++ Class Diagram
++++ Component Diagram
 ```
 
-```js
-{
-  signal:
-  [
-    {name:'clk',wave:'p......'},
-    {name:'bus',wave:'x.34.5x',data:'head body tail'},
-    {name:'wire',wave:'0.1..0.'}
-  ]
-}
+```
+mindmap
+@param layoutDirection TB
++ UML Diagrams
+++ Behavior Diagrams
++++ Sequence Diagram
++++ State Diagram
++++ Activity Diagram
+++ Structural Diagrams
++++ Class Diagram
++++ Component Diagram
 ```
 
 ````
