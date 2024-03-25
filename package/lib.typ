@@ -1,1 +1,1 @@
-#import "./pintora.typ": render
+#import "./pintorita.typ": render

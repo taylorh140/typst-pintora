@@ -48,9 +48,9 @@ var __toBinary = /* @__PURE__ */ (() => {
   };
 })();
 
-// ../../node_modules/.pnpm/deepmerge@4.2.2/node_modules/deepmerge/dist/cjs.js
+// ../../node_modules/.pnpm/deepmerge@4.3.1/node_modules/deepmerge/dist/cjs.js
 var require_cjs = __commonJS({
-  "../../node_modules/.pnpm/deepmerge@4.2.2/node_modules/deepmerge/dist/cjs.js"(exports2, module2) {
+  "../../node_modules/.pnpm/deepmerge@4.3.1/node_modules/deepmerge/dist/cjs.js"(exports2, module2) {
     "use strict";
     var isMergeableObject = function isMergeableObject2(value) {
       return isNonNullObject(value) && !isSpecial(value);
@@ -87,7 +87,7 @@ var require_cjs = __commonJS({
     }
     function getEnumerableOwnPropertySymbols(target) {
       return Object.getOwnPropertySymbols ? Object.getOwnPropertySymbols(target).filter(function(symbol) {
-        return target.propertyIsEnumerable(symbol);
+        return Object.propertyIsEnumerable.call(target, symbol);
       }) : [];
     }
     function getKeys(target) {
@@ -1870,9 +1870,9 @@ var require_moo = __commonJS({
   }
 });
 
-// ../../node_modules/.pnpm/@hikerpig+nearley@2.21.0-beta.1/node_modules/@hikerpig/nearley/lib/nearley.js
+// ../../node_modules/.pnpm/@hikerpig+nearley@2.21.0-beta.2/node_modules/@hikerpig/nearley/lib/nearley.js
 var require_nearley = __commonJS({
-  "../../node_modules/.pnpm/@hikerpig+nearley@2.21.0-beta.1/node_modules/@hikerpig/nearley/lib/nearley.js"(exports2, module2) {
+  "../../node_modules/.pnpm/@hikerpig+nearley@2.21.0-beta.2/node_modules/@hikerpig/nearley/lib/nearley.js"(exports2, module2) {
     (function(root3, factory) {
       if (typeof module2 === "object" && module2.exports) {
         module2.exports = factory();
@@ -3376,9 +3376,9 @@ var require_function_bind = __commonJS({
   }
 });
 
-// ../../node_modules/.pnpm/hasown@2.0.0/node_modules/hasown/index.js
+// ../../node_modules/.pnpm/hasown@2.0.1/node_modules/hasown/index.js
 var require_hasown = __commonJS({
-  "../../node_modules/.pnpm/hasown@2.0.0/node_modules/hasown/index.js"(exports2, module2) {
+  "../../node_modules/.pnpm/hasown@2.0.1/node_modules/hasown/index.js"(exports2, module2) {
     "use strict";
     var call = Function.prototype.call;
     var $hasOwn = Object.prototype.hasOwnProperty;
@@ -3694,374 +3694,11 @@ var require_get_intrinsic = __commonJS({
   }
 });
 
-// ../../node_modules/.pnpm/function-bind@1.1.1/node_modules/function-bind/implementation.js
-var require_implementation2 = __commonJS({
-  "../../node_modules/.pnpm/function-bind@1.1.1/node_modules/function-bind/implementation.js"(exports2, module2) {
-    "use strict";
-    var ERROR_MESSAGE = "Function.prototype.bind called on incompatible ";
-    var slice2 = Array.prototype.slice;
-    var toStr = Object.prototype.toString;
-    var funcType = "[object Function]";
-    module2.exports = function bind(that) {
-      var target = this;
-      if (typeof target !== "function" || toStr.call(target) !== funcType) {
-        throw new TypeError(ERROR_MESSAGE + target);
-      }
-      var args = slice2.call(arguments, 1);
-      var bound;
-      var binder = function() {
-        if (this instanceof bound) {
-          var result = target.apply(
-            this,
-            args.concat(slice2.call(arguments))
-          );
-          if (Object(result) === result) {
-            return result;
-          }
-          return this;
-        } else {
-          return target.apply(
-            that,
-            args.concat(slice2.call(arguments))
-          );
-        }
-      };
-      var boundLength = Math.max(0, target.length - args.length);
-      var boundArgs = [];
-      for (var i2 = 0; i2 < boundLength; i2++) {
-        boundArgs.push("$" + i2);
-      }
-      bound = Function("binder", "return function (" + boundArgs.join(",") + "){ return binder.apply(this,arguments); }")(binder);
-      if (target.prototype) {
-        var Empty = function Empty2() {
-        };
-        Empty.prototype = target.prototype;
-        bound.prototype = new Empty();
-        Empty.prototype = null;
-      }
-      return bound;
-    };
-  }
-});
-
-// ../../node_modules/.pnpm/function-bind@1.1.1/node_modules/function-bind/index.js
-var require_function_bind2 = __commonJS({
-  "../../node_modules/.pnpm/function-bind@1.1.1/node_modules/function-bind/index.js"(exports2, module2) {
-    "use strict";
-    var implementation = require_implementation2();
-    module2.exports = Function.prototype.bind || implementation;
-  }
-});
-
-// ../../node_modules/.pnpm/has@1.0.3/node_modules/has/src/index.js
-var require_src = __commonJS({
-  "../../node_modules/.pnpm/has@1.0.3/node_modules/has/src/index.js"(exports2, module2) {
-    "use strict";
-    var bind = require_function_bind2();
-    module2.exports = bind.call(Function.call, Object.prototype.hasOwnProperty);
-  }
-});
-
-// ../../node_modules/.pnpm/get-intrinsic@1.1.2/node_modules/get-intrinsic/index.js
-var require_get_intrinsic2 = __commonJS({
-  "../../node_modules/.pnpm/get-intrinsic@1.1.2/node_modules/get-intrinsic/index.js"(exports2, module2) {
-    "use strict";
-    var undefined2;
-    var $SyntaxError = SyntaxError;
-    var $Function = Function;
-    var $TypeError = TypeError;
-    var getEvalledConstructor = function(expressionSyntax) {
-      try {
-        return $Function('"use strict"; return (' + expressionSyntax + ").constructor;")();
-      } catch (e) {
-      }
-    };
-    var $gOPD = Object.getOwnPropertyDescriptor;
-    if ($gOPD) {
-      try {
-        $gOPD({}, "");
-      } catch (e) {
-        $gOPD = null;
-      }
-    }
-    var throwTypeError = function() {
-      throw new $TypeError();
-    };
-    var ThrowTypeError = $gOPD ? function() {
-      try {
-        arguments.callee;
-        return throwTypeError;
-      } catch (calleeThrows) {
-        try {
-          return $gOPD(arguments, "callee").get;
-        } catch (gOPDthrows) {
-          return throwTypeError;
-        }
-      }
-    }() : throwTypeError;
-    var hasSymbols = require_has_symbols()();
-    var getProto = Object.getPrototypeOf || function(x2) {
-      return x2.__proto__;
-    };
-    var needsEval = {};
-    var TypedArray = typeof Uint8Array === "undefined" ? undefined2 : getProto(Uint8Array);
-    var INTRINSICS = {
-      "%AggregateError%": typeof AggregateError === "undefined" ? undefined2 : AggregateError,
-      "%Array%": Array,
-      "%ArrayBuffer%": typeof ArrayBuffer === "undefined" ? undefined2 : ArrayBuffer,
-      "%ArrayIteratorPrototype%": hasSymbols ? getProto([][Symbol.iterator]()) : undefined2,
-      "%AsyncFromSyncIteratorPrototype%": undefined2,
-      "%AsyncFunction%": needsEval,
-      "%AsyncGenerator%": needsEval,
-      "%AsyncGeneratorFunction%": needsEval,
-      "%AsyncIteratorPrototype%": needsEval,
-      "%Atomics%": typeof Atomics === "undefined" ? undefined2 : Atomics,
-      "%BigInt%": typeof BigInt === "undefined" ? undefined2 : BigInt,
-      "%Boolean%": Boolean,
-      "%DataView%": typeof DataView === "undefined" ? undefined2 : DataView,
-      "%Date%": Date,
-      "%decodeURI%": decodeURI,
-      "%decodeURIComponent%": decodeURIComponent,
-      "%encodeURI%": encodeURI,
-      "%encodeURIComponent%": encodeURIComponent,
-      "%Error%": Error,
-      "%eval%": eval,
-      // eslint-disable-line no-eval
-      "%EvalError%": EvalError,
-      "%Float32Array%": typeof Float32Array === "undefined" ? undefined2 : Float32Array,
-      "%Float64Array%": typeof Float64Array === "undefined" ? undefined2 : Float64Array,
-      "%FinalizationRegistry%": typeof FinalizationRegistry === "undefined" ? undefined2 : FinalizationRegistry,
-      "%Function%": $Function,
-      "%GeneratorFunction%": needsEval,
-      "%Int8Array%": typeof Int8Array === "undefined" ? undefined2 : Int8Array,
-      "%Int16Array%": typeof Int16Array === "undefined" ? undefined2 : Int16Array,
-      "%Int32Array%": typeof Int32Array === "undefined" ? undefined2 : Int32Array,
-      "%isFinite%": isFinite,
-      "%isNaN%": isNaN,
-      "%IteratorPrototype%": hasSymbols ? getProto(getProto([][Symbol.iterator]())) : undefined2,
-      "%JSON%": typeof JSON === "object" ? JSON : undefined2,
-      "%Map%": typeof Map === "undefined" ? undefined2 : Map,
-      "%MapIteratorPrototype%": typeof Map === "undefined" || !hasSymbols ? undefined2 : getProto((/* @__PURE__ */ new Map())[Symbol.iterator]()),
-      "%Math%": Math,
-      "%Number%": Number,
-      "%Object%": Object,
-      "%parseFloat%": parseFloat,
-      "%parseInt%": parseInt,
-      "%Promise%": typeof Promise === "undefined" ? undefined2 : Promise,
-      "%Proxy%": typeof Proxy === "undefined" ? undefined2 : Proxy,
-      "%RangeError%": RangeError,
-      "%ReferenceError%": ReferenceError,
-      "%Reflect%": typeof Reflect === "undefined" ? undefined2 : Reflect,
-      "%RegExp%": RegExp,
-      "%Set%": typeof Set === "undefined" ? undefined2 : Set,
-      "%SetIteratorPrototype%": typeof Set === "undefined" || !hasSymbols ? undefined2 : getProto((/* @__PURE__ */ new Set())[Symbol.iterator]()),
-      "%SharedArrayBuffer%": typeof SharedArrayBuffer === "undefined" ? undefined2 : SharedArrayBuffer,
-      "%String%": String,
-      "%StringIteratorPrototype%": hasSymbols ? getProto(""[Symbol.iterator]()) : undefined2,
-      "%Symbol%": hasSymbols ? Symbol : undefined2,
-      "%SyntaxError%": $SyntaxError,
-      "%ThrowTypeError%": ThrowTypeError,
-      "%TypedArray%": TypedArray,
-      "%TypeError%": $TypeError,
-      "%Uint8Array%": typeof Uint8Array === "undefined" ? undefined2 : Uint8Array,
-      "%Uint8ClampedArray%": typeof Uint8ClampedArray === "undefined" ? undefined2 : Uint8ClampedArray,
-      "%Uint16Array%": typeof Uint16Array === "undefined" ? undefined2 : Uint16Array,
-      "%Uint32Array%": typeof Uint32Array === "undefined" ? undefined2 : Uint32Array,
-      "%URIError%": URIError,
-      "%WeakMap%": typeof WeakMap === "undefined" ? undefined2 : WeakMap,
-      "%WeakRef%": typeof WeakRef === "undefined" ? undefined2 : WeakRef,
-      "%WeakSet%": typeof WeakSet === "undefined" ? undefined2 : WeakSet
-    };
-    var doEval = function doEval2(name) {
-      var value;
-      if (name === "%AsyncFunction%") {
-        value = getEvalledConstructor("async function () {}");
-      } else if (name === "%GeneratorFunction%") {
-        value = getEvalledConstructor("function* () {}");
-      } else if (name === "%AsyncGeneratorFunction%") {
-        value = getEvalledConstructor("async function* () {}");
-      } else if (name === "%AsyncGenerator%") {
-        var fn = doEval2("%AsyncGeneratorFunction%");
-        if (fn) {
-          value = fn.prototype;
-        }
-      } else if (name === "%AsyncIteratorPrototype%") {
-        var gen = doEval2("%AsyncGenerator%");
-        if (gen) {
-          value = getProto(gen.prototype);
-        }
-      }
-      INTRINSICS[name] = value;
-      return value;
-    };
-    var LEGACY_ALIASES = {
-      "%ArrayBufferPrototype%": ["ArrayBuffer", "prototype"],
-      "%ArrayPrototype%": ["Array", "prototype"],
-      "%ArrayProto_entries%": ["Array", "prototype", "entries"],
-      "%ArrayProto_forEach%": ["Array", "prototype", "forEach"],
-      "%ArrayProto_keys%": ["Array", "prototype", "keys"],
-      "%ArrayProto_values%": ["Array", "prototype", "values"],
-      "%AsyncFunctionPrototype%": ["AsyncFunction", "prototype"],
-      "%AsyncGenerator%": ["AsyncGeneratorFunction", "prototype"],
-      "%AsyncGeneratorPrototype%": ["AsyncGeneratorFunction", "prototype", "prototype"],
-      "%BooleanPrototype%": ["Boolean", "prototype"],
-      "%DataViewPrototype%": ["DataView", "prototype"],
-      "%DatePrototype%": ["Date", "prototype"],
-      "%ErrorPrototype%": ["Error", "prototype"],
-      "%EvalErrorPrototype%": ["EvalError", "prototype"],
-      "%Float32ArrayPrototype%": ["Float32Array", "prototype"],
-      "%Float64ArrayPrototype%": ["Float64Array", "prototype"],
-      "%FunctionPrototype%": ["Function", "prototype"],
-      "%Generator%": ["GeneratorFunction", "prototype"],
-      "%GeneratorPrototype%": ["GeneratorFunction", "prototype", "prototype"],
-      "%Int8ArrayPrototype%": ["Int8Array", "prototype"],
-      "%Int16ArrayPrototype%": ["Int16Array", "prototype"],
-      "%Int32ArrayPrototype%": ["Int32Array", "prototype"],
-      "%JSONParse%": ["JSON", "parse"],
-      "%JSONStringify%": ["JSON", "stringify"],
-      "%MapPrototype%": ["Map", "prototype"],
-      "%NumberPrototype%": ["Number", "prototype"],
-      "%ObjectPrototype%": ["Object", "prototype"],
-      "%ObjProto_toString%": ["Object", "prototype", "toString"],
-      "%ObjProto_valueOf%": ["Object", "prototype", "valueOf"],
-      "%PromisePrototype%": ["Promise", "prototype"],
-      "%PromiseProto_then%": ["Promise", "prototype", "then"],
-      "%Promise_all%": ["Promise", "all"],
-      "%Promise_reject%": ["Promise", "reject"],
-      "%Promise_resolve%": ["Promise", "resolve"],
-      "%RangeErrorPrototype%": ["RangeError", "prototype"],
-      "%ReferenceErrorPrototype%": ["ReferenceError", "prototype"],
-      "%RegExpPrototype%": ["RegExp", "prototype"],
-      "%SetPrototype%": ["Set", "prototype"],
-      "%SharedArrayBufferPrototype%": ["SharedArrayBuffer", "prototype"],
-      "%StringPrototype%": ["String", "prototype"],
-      "%SymbolPrototype%": ["Symbol", "prototype"],
-      "%SyntaxErrorPrototype%": ["SyntaxError", "prototype"],
-      "%TypedArrayPrototype%": ["TypedArray", "prototype"],
-      "%TypeErrorPrototype%": ["TypeError", "prototype"],
-      "%Uint8ArrayPrototype%": ["Uint8Array", "prototype"],
-      "%Uint8ClampedArrayPrototype%": ["Uint8ClampedArray", "prototype"],
-      "%Uint16ArrayPrototype%": ["Uint16Array", "prototype"],
-      "%Uint32ArrayPrototype%": ["Uint32Array", "prototype"],
-      "%URIErrorPrototype%": ["URIError", "prototype"],
-      "%WeakMapPrototype%": ["WeakMap", "prototype"],
-      "%WeakSetPrototype%": ["WeakSet", "prototype"]
-    };
-    var bind = require_function_bind2();
-    var hasOwn = require_src();
-    var $concat = bind.call(Function.call, Array.prototype.concat);
-    var $spliceApply = bind.call(Function.apply, Array.prototype.splice);
-    var $replace = bind.call(Function.call, String.prototype.replace);
-    var $strSlice = bind.call(Function.call, String.prototype.slice);
-    var $exec = bind.call(Function.call, RegExp.prototype.exec);
-    var rePropName3 = /[^%.[\]]+|\[(?:(-?\d+(?:\.\d+)?)|(["'])((?:(?!\2)[^\\]|\\.)*?)\2)\]|(?=(?:\.|\[\])(?:\.|\[\]|%$))/g;
-    var reEscapeChar3 = /\\(\\)?/g;
-    var stringToPath3 = function stringToPath4(string) {
-      var first = $strSlice(string, 0, 1);
-      var last4 = $strSlice(string, -1);
-      if (first === "%" && last4 !== "%") {
-        throw new $SyntaxError("invalid intrinsic syntax, expected closing `%`");
-      } else if (last4 === "%" && first !== "%") {
-        throw new $SyntaxError("invalid intrinsic syntax, expected opening `%`");
-      }
-      var result = [];
-      $replace(string, rePropName3, function(match, number4, quote, subString) {
-        result[result.length] = quote ? $replace(subString, reEscapeChar3, "$1") : number4 || match;
-      });
-      return result;
-    };
-    var getBaseIntrinsic = function getBaseIntrinsic2(name, allowMissing) {
-      var intrinsicName = name;
-      var alias;
-      if (hasOwn(LEGACY_ALIASES, intrinsicName)) {
-        alias = LEGACY_ALIASES[intrinsicName];
-        intrinsicName = "%" + alias[0] + "%";
-      }
-      if (hasOwn(INTRINSICS, intrinsicName)) {
-        var value = INTRINSICS[intrinsicName];
-        if (value === needsEval) {
-          value = doEval(intrinsicName);
-        }
-        if (typeof value === "undefined" && !allowMissing) {
-          throw new $TypeError("intrinsic " + name + " exists, but is not available. Please file an issue!");
-        }
-        return {
-          alias,
-          name: intrinsicName,
-          value
-        };
-      }
-      throw new $SyntaxError("intrinsic " + name + " does not exist!");
-    };
-    module2.exports = function GetIntrinsic(name, allowMissing) {
-      if (typeof name !== "string" || name.length === 0) {
-        throw new $TypeError("intrinsic name must be a non-empty string");
-      }
-      if (arguments.length > 1 && typeof allowMissing !== "boolean") {
-        throw new $TypeError('"allowMissing" argument must be a boolean');
-      }
-      if ($exec(/^%?[^%]*%?$/g, name) === null) {
-        throw new $SyntaxError("`%` may not be present anywhere but at the beginning and end of the intrinsic name");
-      }
-      var parts = stringToPath3(name);
-      var intrinsicBaseName = parts.length > 0 ? parts[0] : "";
-      var intrinsic = getBaseIntrinsic("%" + intrinsicBaseName + "%", allowMissing);
-      var intrinsicRealName = intrinsic.name;
-      var value = intrinsic.value;
-      var skipFurtherCaching = false;
-      var alias = intrinsic.alias;
-      if (alias) {
-        intrinsicBaseName = alias[0];
-        $spliceApply(parts, $concat([0, 1], alias));
-      }
-      for (var i2 = 1, isOwn = true; i2 < parts.length; i2 += 1) {
-        var part = parts[i2];
-        var first = $strSlice(part, 0, 1);
-        var last4 = $strSlice(part, -1);
-        if ((first === '"' || first === "'" || first === "`" || (last4 === '"' || last4 === "'" || last4 === "`")) && first !== last4) {
-          throw new $SyntaxError("property names with quotes must have matching quotes");
-        }
-        if (part === "constructor" || !isOwn) {
-          skipFurtherCaching = true;
-        }
-        intrinsicBaseName += "." + part;
-        intrinsicRealName = "%" + intrinsicBaseName + "%";
-        if (hasOwn(INTRINSICS, intrinsicRealName)) {
-          value = INTRINSICS[intrinsicRealName];
-        } else if (value != null) {
-          if (!(part in value)) {
-            if (!allowMissing) {
-              throw new $TypeError("base intrinsic for " + name + " exists, but the property is not available.");
-            }
-            return void 0;
-          }
-          if ($gOPD && i2 + 1 >= parts.length) {
-            var desc = $gOPD(value, part);
-            isOwn = !!desc;
-            if (isOwn && "get" in desc && !("originalValue" in desc.get)) {
-              value = desc.get;
-            } else {
-              value = value[part];
-            }
-          } else {
-            isOwn = hasOwn(value, part);
-            value = value[part];
-          }
-          if (isOwn && !skipFurtherCaching) {
-            INTRINSICS[intrinsicRealName] = value;
-          }
-        }
-      }
-      return value;
-    };
-  }
-});
-
 // ../../node_modules/.pnpm/has-property-descriptors@1.0.0/node_modules/has-property-descriptors/index.js
 var require_has_property_descriptors = __commonJS({
   "../../node_modules/.pnpm/has-property-descriptors@1.0.0/node_modules/has-property-descriptors/index.js"(exports2, module2) {
     "use strict";
-    var GetIntrinsic = require_get_intrinsic2();
+    var GetIntrinsic = require_get_intrinsic();
     var $defineProperty = GetIntrinsic("%Object.defineProperty%", true);
     var hasPropertyDescriptors = function hasPropertyDescriptors2() {
       if ($defineProperty) {
@@ -10003,22 +9640,22 @@ var require_events = __commonJS({
     var NumberIsNaN = Number.isNaN || function NumberIsNaN2(value) {
       return value !== value;
     };
-    function EventEmitter3() {
-      EventEmitter3.init.call(this);
+    function EventEmitter2() {
+      EventEmitter2.init.call(this);
     }
-    module2.exports = EventEmitter3;
+    module2.exports = EventEmitter2;
     module2.exports.once = once;
-    EventEmitter3.EventEmitter = EventEmitter3;
-    EventEmitter3.prototype._events = void 0;
-    EventEmitter3.prototype._eventsCount = 0;
-    EventEmitter3.prototype._maxListeners = void 0;
+    EventEmitter2.EventEmitter = EventEmitter2;
+    EventEmitter2.prototype._events = void 0;
+    EventEmitter2.prototype._eventsCount = 0;
+    EventEmitter2.prototype._maxListeners = void 0;
     var defaultMaxListeners = 10;
     function checkListener(listener) {
       if (typeof listener !== "function") {
         throw new TypeError('The "listener" argument must be of type Function. Received type ' + typeof listener);
       }
     }
-    Object.defineProperty(EventEmitter3, "defaultMaxListeners", {
+    Object.defineProperty(EventEmitter2, "defaultMaxListeners", {
       enumerable: true,
       get: function() {
         return defaultMaxListeners;
@@ -10030,14 +9667,14 @@ var require_events = __commonJS({
         defaultMaxListeners = arg;
       }
     });
-    EventEmitter3.init = function() {
+    EventEmitter2.init = function() {
       if (this._events === void 0 || this._events === Object.getPrototypeOf(this)._events) {
         this._events = /* @__PURE__ */ Object.create(null);
         this._eventsCount = 0;
       }
       this._maxListeners = this._maxListeners || void 0;
     };
-    EventEmitter3.prototype.setMaxListeners = function setMaxListeners(n2) {
+    EventEmitter2.prototype.setMaxListeners = function setMaxListeners(n2) {
       if (typeof n2 !== "number" || n2 < 0 || NumberIsNaN(n2)) {
         throw new RangeError('The value of "n" is out of range. It must be a non-negative number. Received ' + n2 + ".");
       }
@@ -10046,13 +9683,13 @@ var require_events = __commonJS({
     };
     function _getMaxListeners(that) {
       if (that._maxListeners === void 0)
-        return EventEmitter3.defaultMaxListeners;
+        return EventEmitter2.defaultMaxListeners;
       return that._maxListeners;
     }
-    EventEmitter3.prototype.getMaxListeners = function getMaxListeners() {
+    EventEmitter2.prototype.getMaxListeners = function getMaxListeners() {
       return _getMaxListeners(this);
     };
-    EventEmitter3.prototype.emit = function emit(type) {
+    EventEmitter2.prototype.emit = function emit(type) {
       var args = [];
       for (var i2 = 1; i2 < arguments.length; i2++)
         args.push(arguments[i2]);
@@ -10130,11 +9767,11 @@ var require_events = __commonJS({
       }
       return target;
     }
-    EventEmitter3.prototype.addListener = function addListener(type, listener) {
+    EventEmitter2.prototype.addListener = function addListener(type, listener) {
       return _addListener(this, type, listener, false);
     };
-    EventEmitter3.prototype.on = EventEmitter3.prototype.addListener;
-    EventEmitter3.prototype.prependListener = function prependListener(type, listener) {
+    EventEmitter2.prototype.on = EventEmitter2.prototype.addListener;
+    EventEmitter2.prototype.prependListener = function prependListener(type, listener) {
       return _addListener(this, type, listener, true);
     };
     function onceWrapper() {
@@ -10153,17 +9790,17 @@ var require_events = __commonJS({
       state.wrapFn = wrapped;
       return wrapped;
     }
-    EventEmitter3.prototype.once = function once2(type, listener) {
+    EventEmitter2.prototype.once = function once2(type, listener) {
       checkListener(listener);
       this.on(type, _onceWrap(this, type, listener));
       return this;
     };
-    EventEmitter3.prototype.prependOnceListener = function prependOnceListener(type, listener) {
+    EventEmitter2.prototype.prependOnceListener = function prependOnceListener(type, listener) {
       checkListener(listener);
       this.prependListener(type, _onceWrap(this, type, listener));
       return this;
     };
-    EventEmitter3.prototype.removeListener = function removeListener(type, listener) {
+    EventEmitter2.prototype.removeListener = function removeListener(type, listener) {
       var list, events, position2, i2, originalListener;
       checkListener(listener);
       events = this._events;
@@ -10203,8 +9840,8 @@ var require_events = __commonJS({
       }
       return this;
     };
-    EventEmitter3.prototype.off = EventEmitter3.prototype.removeListener;
-    EventEmitter3.prototype.removeAllListeners = function removeAllListeners(type) {
+    EventEmitter2.prototype.off = EventEmitter2.prototype.removeListener;
+    EventEmitter2.prototype.removeAllListeners = function removeAllListeners(type) {
       var listeners, events, i2;
       events = this._events;
       if (events === void 0)
@@ -10256,20 +9893,20 @@ var require_events = __commonJS({
         return unwrap ? [evlistener.listener || evlistener] : [evlistener];
       return unwrap ? unwrapListeners(evlistener) : arrayClone(evlistener, evlistener.length);
     }
-    EventEmitter3.prototype.listeners = function listeners(type) {
+    EventEmitter2.prototype.listeners = function listeners(type) {
       return _listeners(this, type, true);
     };
-    EventEmitter3.prototype.rawListeners = function rawListeners(type) {
+    EventEmitter2.prototype.rawListeners = function rawListeners(type) {
       return _listeners(this, type, false);
     };
-    EventEmitter3.listenerCount = function(emitter, type) {
+    EventEmitter2.listenerCount = function(emitter, type) {
       if (typeof emitter.listenerCount === "function") {
         return emitter.listenerCount(type);
       } else {
         return listenerCount.call(emitter, type);
       }
     };
-    EventEmitter3.prototype.listenerCount = listenerCount;
+    EventEmitter2.prototype.listenerCount = listenerCount;
     function listenerCount(type) {
       var events = this._events;
       if (events !== void 0) {
@@ -10282,7 +9919,7 @@ var require_events = __commonJS({
       }
       return 0;
     }
-    EventEmitter3.prototype.eventNames = function eventNames() {
+    EventEmitter2.prototype.eventNames = function eventNames() {
       return this._eventsCount > 0 ? ReflectOwnKeys(this._events) : [];
     };
     function arrayClone(arr2, n2) {
@@ -10352,14 +9989,14 @@ var require_events = __commonJS({
 var require_queue = __commonJS({
   "../../node_modules/.pnpm/queue@6.0.2/node_modules/queue/index.js"(exports2, module2) {
     var inherits = require_inherits_browser();
-    var EventEmitter3 = require_events().EventEmitter;
+    var EventEmitter2 = require_events().EventEmitter;
     module2.exports = Queue;
     module2.exports.default = Queue;
     function Queue(options) {
       if (!(this instanceof Queue)) {
         return new Queue(options);
       }
-      EventEmitter3.call(this);
+      EventEmitter2.call(this);
       options = options || {};
       this.concurrency = options.concurrency || Infinity;
       this.timeout = options.timeout || 0;
@@ -10371,7 +10008,7 @@ var require_queue = __commonJS({
       this.jobs = [];
       this.timers = {};
     }
-    inherits(Queue, EventEmitter3);
+    inherits(Queue, EventEmitter2);
     var arrayMethods = [
       "pop",
       "shift",
@@ -15572,10 +15209,10 @@ var WILDCARD = "*";
 var EventEmitter = (
   /** @class */
   function() {
-    function EventEmitter3() {
+    function EventEmitter2() {
       this._events = {};
     }
-    EventEmitter3.prototype.on = function(evt, callback, once) {
+    EventEmitter2.prototype.on = function(evt, callback, once) {
       if (!this._events[evt]) {
         this._events[evt] = [];
       }
@@ -15585,10 +15222,10 @@ var EventEmitter = (
       });
       return this;
     };
-    EventEmitter3.prototype.once = function(evt, callback) {
+    EventEmitter2.prototype.once = function(evt, callback) {
       return this.on(evt, callback, true);
     };
-    EventEmitter3.prototype.emit = function(evt) {
+    EventEmitter2.prototype.emit = function(evt) {
       var _this = this;
       var args = [];
       for (var _i = 1; _i < arguments.length; _i++) {
@@ -15617,7 +15254,7 @@ var EventEmitter = (
       doEmit(events);
       doEmit(wildcardEvents);
     };
-    EventEmitter3.prototype.off = function(evt, callback) {
+    EventEmitter2.prototype.off = function(evt, callback) {
       if (!evt) {
         this._events = {};
       } else {
@@ -15640,10 +15277,10 @@ var EventEmitter = (
       }
       return this;
     };
-    EventEmitter3.prototype.getEvents = function() {
+    EventEmitter2.prototype.getEvents = function() {
       return this._events;
     };
-    return EventEmitter3;
+    return EventEmitter2;
   }()
 );
 var esm_default = EventEmitter;
@@ -17231,6 +16868,108 @@ var BaseDb = class {
   }
 };
 
+// ../../node_modules/.pnpm/dedent@1.5.1/node_modules/dedent/dist/dedent.mjs
+function ownKeys(object, enumerableOnly) {
+  var keys3 = Object.keys(object);
+  if (Object.getOwnPropertySymbols) {
+    var symbols = Object.getOwnPropertySymbols(object);
+    enumerableOnly && (symbols = symbols.filter(function(sym) {
+      return Object.getOwnPropertyDescriptor(object, sym).enumerable;
+    })), keys3.push.apply(keys3, symbols);
+  }
+  return keys3;
+}
+function _objectSpread(target) {
+  for (var i2 = 1; i2 < arguments.length; i2++) {
+    var source = null != arguments[i2] ? arguments[i2] : {};
+    i2 % 2 ? ownKeys(Object(source), true).forEach(function(key) {
+      _defineProperty(target, key, source[key]);
+    }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function(key) {
+      Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));
+    });
+  }
+  return target;
+}
+function _defineProperty(obj, key, value) {
+  key = _toPropertyKey(key);
+  if (key in obj) {
+    Object.defineProperty(obj, key, { value, enumerable: true, configurable: true, writable: true });
+  } else {
+    obj[key] = value;
+  }
+  return obj;
+}
+function _toPropertyKey(arg) {
+  var key = _toPrimitive(arg, "string");
+  return typeof key === "symbol" ? key : String(key);
+}
+function _toPrimitive(input, hint) {
+  if (typeof input !== "object" || input === null)
+    return input;
+  var prim2 = input[Symbol.toPrimitive];
+  if (prim2 !== void 0) {
+    var res = prim2.call(input, hint || "default");
+    if (typeof res !== "object")
+      return res;
+    throw new TypeError("@@toPrimitive must return a primitive value.");
+  }
+  return (hint === "string" ? String : Number)(input);
+}
+var dedent_default = createDedent({});
+function createDedent(options) {
+  dedent.withOptions = (newOptions) => createDedent(_objectSpread(_objectSpread({}, options), newOptions));
+  return dedent;
+  function dedent(strings, ...values4) {
+    const raw = typeof strings === "string" ? [strings] : strings.raw;
+    const {
+      escapeSpecialCharacters = Array.isArray(strings)
+    } = options;
+    let result = "";
+    for (let i2 = 0; i2 < raw.length; i2++) {
+      let next = raw[i2];
+      if (escapeSpecialCharacters) {
+        next = next.replace(/\\\n[ \t]*/g, "").replace(/\\`/g, "`").replace(/\\\$/g, "$").replace(/\\{/g, "{");
+      }
+      result += next;
+      if (i2 < values4.length) {
+        result += values4[i2];
+      }
+    }
+    const lines = result.split("\n");
+    let mindent = null;
+    for (const l of lines) {
+      const m = l.match(/^(\s+)\S+/);
+      if (m) {
+        const indent = m[1].length;
+        if (!mindent) {
+          mindent = indent;
+        } else {
+          mindent = Math.min(mindent, indent);
+        }
+      }
+    }
+    if (mindent !== null) {
+      const m = mindent;
+      result = lines.map((l) => l[0] === " " || l[0] === "	" ? l.slice(m) : l).join("\n");
+    }
+    return result.trim().replace(/\\n/g, "\n");
+  }
+}
+
+// ../pintora-diagrams/lib/util/number.js
+function toFixed(num, digits = 2) {
+  return parseFloat(num.toFixed(digits));
+}
+
+// ../pintora-diagrams/lib/util/text.js
+function getTextDimensionsInPresicion(text, fontConfig, precision = 2) {
+  const { width: width2, height } = calculateTextDimensions(text, fontConfig);
+  return {
+    width: toFixed(width2, precision),
+    height: toFixed(height, precision)
+  };
+}
+
 // ../pintora-diagrams/lib/sequence/db.js
 var LINETYPE;
 (function(LINETYPE2) {
@@ -17376,10 +17115,11 @@ var SequenceDB = class extends BaseDb {
     this.addSignalWithoutActor(void 0, groupConfig.endSignalType);
   }
   addNote(actor, placement, message) {
+    const noteText = dedent_default(message.text);
     const note = {
       actor,
       placement,
-      text: message.text,
+      text: noteText,
       wrap: message.wrap === void 0 && this.wrapEnabled || !!message.wrap
     };
     const fromActor = Array.isArray(actor) ? actor[0] : actor;
@@ -17389,7 +17129,7 @@ var SequenceDB = class extends BaseDb {
     this.messages.push({
       from: fromActor,
       to: toActor,
-      text: message.text,
+      text: noteText,
       wrap: message.wrap === void 0 && this.wrapEnabled || !!message.wrap,
       type: LINETYPE.NOTE,
       placement,
@@ -17623,6 +17363,7 @@ var defaultConfig = {
   messageFontFamily: DEFAULT_FONT_FAMILY,
   messageFontWeight: 400,
   messageTextColor: PALETTE.normalDark,
+  boxFontWeight: 700,
   wrapPadding: 10,
   labelBoxWidth: 50,
   labelBoxHeight: 20,
@@ -17699,11 +17440,6 @@ var configurator = makeConfigurator({
   }
 });
 var getConf = configurator.getConfig;
-
-// ../pintora-diagrams/lib/util/number.js
-function toFixed(num, digits = 2) {
-  return parseFloat(num.toFixed(digits));
-}
 
 // ../pintora-diagrams/lib/util/arrow/index.js
 function drawArrowTo(dest, baseLength, rad, opts) {
@@ -18298,110 +18034,13 @@ function drawLoopTo(context, loopModel, labelText) {
           fontWeight,
           fill: conf6.messageTextColor
         }, { class: "loop__title" });
-        const { height: sectionHeight } = calculateTextDimensions(sectionTitle, messageFont(conf6));
+        const { height: sectionHeight } = calculateTextDimensions(sectionTitle, boxFont(conf6));
         loopModel.sections[idx].height += sectionHeight - (boxMargin + boxTextMargin);
         group.children.push(sectionTitleMark);
       }
     });
   }
   mark.children.push(group);
-}
-
-// ../../node_modules/.pnpm/dedent@1.5.1/node_modules/dedent/dist/dedent.mjs
-function ownKeys(object, enumerableOnly) {
-  var keys3 = Object.keys(object);
-  if (Object.getOwnPropertySymbols) {
-    var symbols = Object.getOwnPropertySymbols(object);
-    enumerableOnly && (symbols = symbols.filter(function(sym) {
-      return Object.getOwnPropertyDescriptor(object, sym).enumerable;
-    })), keys3.push.apply(keys3, symbols);
-  }
-  return keys3;
-}
-function _objectSpread(target) {
-  for (var i2 = 1; i2 < arguments.length; i2++) {
-    var source = null != arguments[i2] ? arguments[i2] : {};
-    i2 % 2 ? ownKeys(Object(source), true).forEach(function(key) {
-      _defineProperty(target, key, source[key]);
-    }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function(key) {
-      Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));
-    });
-  }
-  return target;
-}
-function _defineProperty(obj, key, value) {
-  key = _toPropertyKey(key);
-  if (key in obj) {
-    Object.defineProperty(obj, key, { value, enumerable: true, configurable: true, writable: true });
-  } else {
-    obj[key] = value;
-  }
-  return obj;
-}
-function _toPropertyKey(arg) {
-  var key = _toPrimitive(arg, "string");
-  return typeof key === "symbol" ? key : String(key);
-}
-function _toPrimitive(input, hint) {
-  if (typeof input !== "object" || input === null)
-    return input;
-  var prim2 = input[Symbol.toPrimitive];
-  if (prim2 !== void 0) {
-    var res = prim2.call(input, hint || "default");
-    if (typeof res !== "object")
-      return res;
-    throw new TypeError("@@toPrimitive must return a primitive value.");
-  }
-  return (hint === "string" ? String : Number)(input);
-}
-var dedent_default = createDedent({});
-function createDedent(options) {
-  dedent.withOptions = (newOptions) => createDedent(_objectSpread(_objectSpread({}, options), newOptions));
-  return dedent;
-  function dedent(strings, ...values4) {
-    const raw = typeof strings === "string" ? [strings] : strings.raw;
-    const {
-      escapeSpecialCharacters = Array.isArray(strings)
-    } = options;
-    let result = "";
-    for (let i2 = 0; i2 < raw.length; i2++) {
-      let next = raw[i2];
-      if (escapeSpecialCharacters) {
-        next = next.replace(/\\\n[ \t]*/g, "").replace(/\\`/g, "`").replace(/\\\$/g, "$").replace(/\\{/g, "{");
-      }
-      result += next;
-      if (i2 < values4.length) {
-        result += values4[i2];
-      }
-    }
-    const lines = result.split("\n");
-    let mindent = null;
-    for (const l of lines) {
-      const m = l.match(/^(\s+)\S+/);
-      if (m) {
-        const indent = m[1].length;
-        if (!mindent) {
-          mindent = indent;
-        } else {
-          mindent = Math.min(mindent, indent);
-        }
-      }
-    }
-    if (mindent !== null) {
-      const m = mindent;
-      result = lines.map((l) => l[0] === " " || l[0] === "	" ? l.slice(m) : l).join("\n");
-    }
-    return result.trim().replace(/\\n/g, "\n");
-  }
-}
-
-// ../pintora-diagrams/lib/util/text.js
-function getTextDimensionsInPresicion(text, fontConfig, precision = 2) {
-  const { width: width2, height } = calculateTextDimensions(text, fontConfig);
-  return {
-    width: toFixed(width2, precision),
-    height: toFixed(height, precision)
-  };
 }
 
 // ../pintora-diagrams/lib/sequence/artist.js
@@ -18543,7 +18182,8 @@ var sequenceArtist = {
     if (model.hasParticipantBox()) {
       model.bumpVerticalPos(conf.participantBoxPadding);
     }
-    rootMark.children = [...model.groupBgs, ...rootMark.children];
+    const reversedGroupBgs = model.groupBgs.slice().reverse();
+    rootMark.children = [...reversedGroupBgs, ...rootMark.children];
     drawParticipantBoxes(context);
     const box = model.getBounds();
     if (title) {
@@ -18755,7 +18395,7 @@ var Model = class {
       let boxInfo = this.boxInfos.get(id9);
       if (id9) {
         if (!boxInfo) {
-          const fontConfig = messageFont(conf);
+          const fontConfig = boxFont(conf);
           boxInfo = {
             width: 0,
             actorMarks: [],
@@ -18812,7 +18452,7 @@ function adjustLoopSizeForWrap(loopWidths, msg, preMargin, postMargin, addLoopFn
   if (msg.id && msg.text && loopWidths[msg.id]) {
     const loopMinWidth = model.loopMinWidths[msg.id] || 0;
     loopWidth = Math.max(loopWidths[msg.id].width, loopMinWidth);
-    const textConf = messageFont(conf);
+    const textConf = boxFont(conf);
     msg.text = `[${msg.text}]`;
     msg.wrap = true;
     const textDims = calculateTextDimensions(msg.text, textConf);
@@ -18832,6 +18472,13 @@ var messageFont = (cnf) => {
 };
 var actorFont = messageFont;
 var noteFont = messageFont;
+var boxFont = (cnf) => {
+  return {
+    fontFamily: cnf.messageFontFamily,
+    fontSize: cnf.messageFontSize,
+    fontWeight: cnf.boxFontWeight || cnf.messageFontWeight
+  };
+};
 function splitBreaks(text) {
   return text.split("\n");
 }
@@ -18846,8 +18493,7 @@ var drawMessage = function(msgModel) {
     text: "",
     textAlign: "center",
     textBaseline: "top",
-    fill: conf.messageTextColor,
-    stroke: conf.messageTextColor
+    fill: conf.messageTextColor
   };
   tAttrs.x = fromBound + msgModel.width / 2;
   tAttrs.y = starty + conf.boxMargin;
@@ -19179,7 +18825,7 @@ function drawParticipantBoxes(context) {
     });
     boxesGroup.children.push(rect);
     if (participantBox.text) {
-      const fontConfig = messageFont(conf6);
+      const fontConfig = boxFont(conf6);
       const textMark = makeMark("text", {
         text: participantBox.text,
         x: startx + width2 / 2,
@@ -19571,14 +19217,22 @@ function handleConfigOpenCloseStatement(d) {
   }
 }
 var COMMENT_LINE = /%%.*/;
+var _PLACEMENT = [
+  { match: /left\sof/, type: () => "LEFT_OF" },
+  { match: /right\sof/, type: () => "RIGHT_OF" },
+  { match: /over/, type: () => "OVER" }
+];
 var lexer = moo.states({
   main: {
     NL: MOO_NEWLINE,
     WS: { match: / +/, lineBreaks: false },
     ...configLexerMainState,
     QUOTED_WORD: QUOTED_WORD_REGEXP,
-    START_NOTE: textToCaseInsensitiveRegex("@note"),
-    END_NOTE: textToCaseInsensitiveRegex("@end_note"),
+    NOTE: textToCaseInsensitiveRegex("@note"),
+    START_NOTE: {
+      match: /@start_note\s/,
+      push: "noteState"
+    },
     BACKQUOTED_TEXT: /`[^`]*`/,
     SOLID_ARROW: /->>/,
     DOTTED_ARROW: /-->>/,
@@ -19598,10 +19252,7 @@ var lexer = moo.states({
     R_AN_BRACKET: { match: /\>/ },
     L_PAREN: L_PAREN_REGEXP,
     R_PAREN: R_PAREN_REGEXP,
-    _PLACEMENT: [
-      { match: /left\sof/, type: () => "LEFT_OF" },
-      { match: /right\sof/, type: () => "RIGHT_OF" }
-    ],
+    _PLACEMENT,
     COLOR: /#[a-zA-Z0-9]+/,
     COMMENT_LINE: COMMENT_LINE_REGEXP,
     WORD: { match: VALID_TEXT_REGEXP, fallback: true }
@@ -19611,6 +19262,16 @@ var lexer = moo.states({
   },
   configStatement: {
     ...configLexerconfigStatementState,
+    WORD: { match: VALID_TEXT_REGEXP, fallback: true }
+  },
+  noteState: {
+    _PLACEMENT,
+    END_NOTE: {
+      match: textToCaseInsensitiveRegex("@end_note"),
+      pop: 1
+    },
+    NL: MOO_NEWLINE,
+    COMMA: /,/,
     WORD: { match: VALID_TEXT_REGEXP, fallback: true }
   }
 });
@@ -19744,7 +19405,7 @@ var grammar = {
         };
       }
     },
-    { "name": "statement", "symbols": ["note_statement"], "postprocess": (d) => {
+    { "name": "statement", "symbols": ["noteStatement"], "postprocess": (d) => {
       return d[0];
     } },
     { "name": "statement", "symbols": [{ "literal": "title" }, "textWithColon", lexer.has("NL") ? { type: "NL" } : NL], "postprocess": (d) => ({ type: "setTitle", text: d[1] }) },
@@ -19925,7 +19586,7 @@ var grammar = {
     },
     { "name": "multilineNoteText$ebnf$1", "symbols": [] },
     { "name": "multilineNoteText$ebnf$1$subexpression$1", "symbols": [lexer.has("WORD") ? { type: "WORD" } : WORD] },
-    { "name": "multilineNoteText$ebnf$1$subexpression$1", "symbols": [lexer.has("WS") ? { type: "WS" } : WS] },
+    { "name": "multilineNoteText$ebnf$1$subexpression$1", "symbols": [lexer.has("COMMA") ? { type: "COMMA" } : COMMA] },
     { "name": "multilineNoteText$ebnf$1$subexpression$1", "symbols": [lexer.has("NL") ? { type: "NL" } : NL] },
     { "name": "multilineNoteText$ebnf$1", "symbols": ["multilineNoteText$ebnf$1", "multilineNoteText$ebnf$1$subexpression$1"], "postprocess": (d) => d[0].concat([d[1]]) },
     {
@@ -19940,37 +19601,49 @@ var grammar = {
     },
     { "name": "placement", "symbols": [lexer.has("LEFT_OF") ? { type: "LEFT_OF" } : LEFT_OF], "postprocess": (d) => yy.PLACEMENT.LEFTOF },
     { "name": "placement", "symbols": [lexer.has("RIGHT_OF") ? { type: "RIGHT_OF" } : RIGHT_OF], "postprocess": (d) => yy.PLACEMENT.RIGHTOF },
-    { "name": "note_statement$subexpression$1", "symbols": [{ "literal": "note" }] },
-    { "name": "note_statement$subexpression$1", "symbols": [lexer.has("START_NOTE") ? { type: "START_NOTE" } : START_NOTE] },
+    { "name": "noteStatement$subexpression$1", "symbols": [{ "literal": "note" }] },
+    { "name": "noteStatement$subexpression$1", "symbols": [lexer.has("NOTE") ? { type: "NOTE" } : NOTE] },
     {
-      "name": "note_statement",
-      "symbols": ["note_statement$subexpression$1", "placement", "actor", "textWithColon", lexer.has("NL") ? { type: "NL" } : NL],
+      "name": "noteStatement",
+      "symbols": ["noteStatement$subexpression$1", "placement", "actor", "textWithColon", lexer.has("NL") ? { type: "NL" } : NL],
       "postprocess": function(d) {
-        return [d[2], { type: "addNote", placement: d[1], actor: d[2].actor, text: d[3] }];
+        const actor = d[2].actor.trim();
+        return [actor, { type: "addNote", placement: d[1], actor, text: d[3] }];
       }
     },
-    { "name": "note_statement$subexpression$2", "symbols": [{ "literal": "note" }] },
-    { "name": "note_statement$subexpression$2", "symbols": [lexer.has("START_NOTE") ? { type: "START_NOTE" } : START_NOTE] },
+    { "name": "noteStatement$subexpression$2", "symbols": [{ "literal": "note" }] },
+    { "name": "noteStatement$subexpression$2", "symbols": [lexer.has("START_NOTE") ? { type: "START_NOTE" } : START_NOTE] },
     {
-      "name": "note_statement",
-      "symbols": ["note_statement$subexpression$2", "placement", "actor", "multilineNoteText", lexer.has("NL") ? { type: "NL" } : NL],
+      "name": "noteStatement",
+      "symbols": ["noteStatement$subexpression$2", "placement", "actor", lexer.has("NL") ? { type: "NL" } : NL, "multilineNoteText", lexer.has("NL") ? { type: "NL" } : NL],
       "postprocess": function(d) {
-        const text = d[3];
-        const message = yy.parseMessage(text);
-        return [d[2], { type: "addNote", placement: d[1], actor: d[2].actor, text: message }];
+        const message = yy.parseMessage(d[4]);
+        const actor = d[2].actor.trim();
+        return [actor, { type: "addNote", placement: d[1], actor, text: message }];
       }
     },
-    { "name": "note_statement$subexpression$3", "symbols": [{ "literal": "note" }] },
-    { "name": "note_statement$subexpression$3", "symbols": [lexer.has("START_NOTE") ? { type: "START_NOTE" } : START_NOTE] },
+    { "name": "noteStatement$subexpression$3", "symbols": [{ "literal": "note" }] },
+    { "name": "noteStatement$subexpression$3", "symbols": [lexer.has("NOTE") ? { type: "NOTE" } : NOTE] },
     {
-      "name": "note_statement",
-      "symbols": ["note_statement$subexpression$3", { "literal": "over" }, "actor_pair", "textWithColon", lexer.has("NL") ? { type: "NL" } : NL],
+      "name": "noteStatement",
+      "symbols": ["noteStatement$subexpression$3", lexer.has("OVER") ? { type: "OVER" } : OVER, "actor_pair", "textWithColon", lexer.has("NL") ? { type: "NL" } : NL],
       "postprocess": function(d) {
-        const actors = [d[2][0].actor, d[2][1].actor];
+        const actors = [d[2][0].actor.trim(), d[2][1].actor];
         return [
           d[2],
           { type: "addNote", placement: yy.PLACEMENT.OVER, actor: actors, text: d[3] }
         ];
+      }
+    },
+    { "name": "noteStatement$subexpression$4", "symbols": [{ "literal": "note" }] },
+    { "name": "noteStatement$subexpression$4", "symbols": [lexer.has("START_NOTE") ? { type: "START_NOTE" } : START_NOTE] },
+    {
+      "name": "noteStatement",
+      "symbols": ["noteStatement$subexpression$4", lexer.has("OVER") ? { type: "OVER" } : OVER, "actor_pair", lexer.has("NL") ? { type: "NL" } : NL, "multilineNoteText", lexer.has("NL") ? { type: "NL" } : NL],
+      "postprocess": function(d) {
+        const actors = [d[2][0].actor.trim(), d[2][1].actor];
+        const message = yy.parseMessage(d[4]);
+        return [d[2], { type: "addNote", placement: yy.PLACEMENT.OVER, actor: actors, text: message }];
       }
     },
     { "name": "actor_pair", "symbols": ["actor", lexer.has("COMMA") ? { type: "COMMA" } : COMMA, "actor"], "postprocess": (d) => [d[0], d[2]] },
@@ -31455,23 +31128,38 @@ var ActivityDraw = class {
     group.children.push(decisionBg, textMark);
     const drawChildren2 = (children, label) => {
       let hasEnded = false;
-      const lastChildResult = last(children.map((child, i2) => {
-        if (hasEnded)
-          return;
-        const childResult = this.drawStep(parentMark, child);
-        if (child.type === "keyword") {
-          hasEnded = true;
+      if (children.length) {
+        const lastChildResult = last(children.map((child, i2) => {
+          if (hasEnded)
+            return;
+          const childResult = this.drawStep(parentMark, child);
+          if (child.type === "keyword") {
+            hasEnded = true;
+          }
+          if (i2 === 0) {
+            this.linkResult(id9, childResult, label);
+          }
+          return childResult;
+        }));
+        if (lastChildResult) {
+          this.g.setEdge(lastChildResult.endId || lastChildResult.id, endId, {
+            label: "",
+            isDummyEdge: hasEnded
+          });
         }
-        if (i2 === 0) {
-          this.linkResult(id9, childResult, label);
-        }
-        return childResult;
-      }));
-      if (lastChildResult) {
-        this.g.setEdge(lastChildResult.endId || lastChildResult.id, endId, {
-          label: "",
-          isDummyEdge: hasEnded
+      } else {
+        const dummyNode = {
+          id: `${id9}-condition-dummy`
+        };
+        this.g.setNode(dummyNode.id, {
+          width: 1,
+          height: 1
         });
+        this.g.setEdge(id9, dummyNode.id, { label });
+        this.g.setEdge(dummyNode.id, endId);
+        if (stepModel.parentId) {
+          this.g.setParent(dummyNode.id, stepModel.parentId);
+        }
       }
     };
     drawChildren2(condition.then.children, condition.then.label || "yes");
@@ -32211,8 +31899,11 @@ var lexer4 = moo4.states({
     R_PAREN: R_PAREN_REGEXP,
     L_BRACKET: { match: /\{/ },
     R_BRACKET: { match: /\}/ },
-    START_NOTE: textToCaseInsensitiveRegex("@note"),
-    END_NOTE: textToCaseInsensitiveRegex("@end_note"),
+    NOTE: textToCaseInsensitiveRegex("@note"),
+    START_NOTE: {
+      match: /@start_note\s/,
+      push: "noteState"
+    },
     COMMENT_LINE: COMMENT_LINE_REGEXP,
     ...configLexerMainState,
     VALID_TEXT: { match: VALID_TEXT_REGEXP, fallback: true }
@@ -32220,6 +31911,15 @@ var lexer4 = moo4.states({
   configStatement: {
     ...configLexerconfigStatementState,
     ...COMMON_TOKEN_RULES
+  },
+  noteState: {
+    END_NOTE: {
+      match: textToCaseInsensitiveRegex("@end_note"),
+      pop: 1
+    },
+    NL: MOO_NEWLINE,
+    COMMA: /,/,
+    WORD: { match: VALID_TEXT_REGEXP, fallback: true }
   }
 });
 var yy4;
@@ -32597,8 +32297,8 @@ var grammar4 = {
     { "name": "placement", "symbols": [{ "literal": "left" }], "postprocess": (d) => "left" },
     { "name": "placement", "symbols": [{ "literal": "right" }], "postprocess": (d) => "right" },
     { "name": "multilineNoteText$ebnf$1", "symbols": [] },
-    { "name": "multilineNoteText$ebnf$1$subexpression$1", "symbols": [lexer4.has("VALID_TEXT") ? { type: "VALID_TEXT" } : VALID_TEXT] },
-    { "name": "multilineNoteText$ebnf$1$subexpression$1", "symbols": [lexer4.has("WS") ? { type: "WS" } : WS] },
+    { "name": "multilineNoteText$ebnf$1$subexpression$1", "symbols": [lexer4.has("COMMA") ? { type: "COMMA" } : COMMA] },
+    { "name": "multilineNoteText$ebnf$1$subexpression$1", "symbols": [lexer4.has("WORD") ? { type: "WORD" } : WORD] },
     { "name": "multilineNoteText$ebnf$1$subexpression$1", "symbols": [lexer4.has("NL") ? { type: "NL" } : NL] },
     { "name": "multilineNoteText$ebnf$1", "symbols": ["multilineNoteText$ebnf$1", "multilineNoteText$ebnf$1$subexpression$1"], "postprocess": (d) => d[0].concat([d[1]]) },
     {
@@ -32616,26 +32316,28 @@ var grammar4 = {
       }
     },
     { "name": "noteStatement$subexpression$1", "symbols": [{ "literal": "note" }] },
-    { "name": "noteStatement$subexpression$1", "symbols": [lexer4.has("START_NOTE") ? { type: "START_NOTE" } : START_NOTE] },
+    { "name": "noteStatement$subexpression$1", "symbols": [lexer4.has("NOTE") ? { type: "NOTE" } : NOTE] },
     { "name": "noteStatement$ebnf$1", "symbols": [] },
     { "name": "noteStatement$ebnf$1", "symbols": ["noteStatement$ebnf$1", lexer4.has("WS") ? { type: "WS" } : WS], "postprocess": (d) => d[0].concat([d[1]]) },
+    { "name": "noteStatement$ebnf$2", "symbols": [] },
+    { "name": "noteStatement$ebnf$2", "symbols": ["noteStatement$ebnf$2", lexer4.has("WS") ? { type: "WS" } : WS], "postprocess": (d) => d[0].concat([d[1]]) },
     {
       "name": "noteStatement",
-      "symbols": ["noteStatement$subexpression$1", "noteStatement$ebnf$1", "placement", lexer4.has("COLON") ? { type: "COLON" } : COLON, "words", lexer4.has("NL") ? { type: "NL" } : NL],
+      "symbols": ["noteStatement$subexpression$1", "noteStatement$ebnf$1", "placement", "noteStatement$ebnf$2", lexer4.has("COLON") ? { type: "COLON" } : COLON, "words", lexer4.has("NL") ? { type: "NL" } : NL],
       "postprocess": function(d) {
-        const text = d[4].trim();
+        const text = d[5].trim();
         return { type: "note", placement: d[2], text };
       }
     },
     { "name": "noteStatement$subexpression$2", "symbols": [{ "literal": "note" }] },
     { "name": "noteStatement$subexpression$2", "symbols": [lexer4.has("START_NOTE") ? { type: "START_NOTE" } : START_NOTE] },
-    { "name": "noteStatement$ebnf$2", "symbols": [] },
-    { "name": "noteStatement$ebnf$2", "symbols": ["noteStatement$ebnf$2", lexer4.has("WS") ? { type: "WS" } : WS], "postprocess": (d) => d[0].concat([d[1]]) },
     { "name": "noteStatement$ebnf$3", "symbols": [] },
     { "name": "noteStatement$ebnf$3", "symbols": ["noteStatement$ebnf$3", lexer4.has("WS") ? { type: "WS" } : WS], "postprocess": (d) => d[0].concat([d[1]]) },
+    { "name": "noteStatement$ebnf$4", "symbols": [] },
+    { "name": "noteStatement$ebnf$4", "symbols": ["noteStatement$ebnf$4", lexer4.has("WS") ? { type: "WS" } : WS], "postprocess": (d) => d[0].concat([d[1]]) },
     {
       "name": "noteStatement",
-      "symbols": ["noteStatement$subexpression$2", "noteStatement$ebnf$2", "placement", "noteStatement$ebnf$3", lexer4.has("NL") ? { type: "NL" } : NL, "multilineNoteText", lexer4.has("NL") ? { type: "NL" } : NL],
+      "symbols": ["noteStatement$subexpression$2", "noteStatement$ebnf$3", "placement", "noteStatement$ebnf$4", lexer4.has("NL") ? { type: "NL" } : NL, "multilineNoteText", lexer4.has("NL") ? { type: "NL" } : NL],
       "postprocess": function(d) {
         const text = d[5];
         return { type: "note", placement: d[2], text };
@@ -33405,8 +33107,6 @@ var lexer5 = moo5.states({
     R_SQ_BRACKET: { match: /\]/ },
     EQ: { match: /=/ },
     SUBGRAPH: { match: /subgraph/ },
-    START_NOTE: textToCaseInsensitiveRegex("@note"),
-    END_NOTE: textToCaseInsensitiveRegex("@end_note"),
     COMMENT_LINE: COMMENT_LINE_REGEXP,
     DOT_SLASH_COMMENT: /\/\/.*/,
     DOT_BLOCK_COMMENT_START: { match: /\/\*/, push: "blockComment" },
@@ -37225,12 +36925,12 @@ var Relation;
   Relation2["LINK"] = "LINK";
 })(Relation || (Relation = {}));
 var NAMESPACE_SEP = ".";
-var FIELD_SEP = ":";
 var ClassDb = class extends BaseDb {
   constructor() {
     super(...arguments);
     this.classes = {};
     this.relations = [];
+    this.notes = [];
     this.ACTION_HANDLERS = {
       addClass(action) {
         let classObj = this.classes[action.name];
@@ -37278,6 +36978,11 @@ var ClassDb = class extends BaseDb {
         }
         classObj.annotation = action.annotation;
       },
+      note(action) {
+        const id9 = `note-${action.target}-${action.placement}`;
+        const value = { ...action, id: id9, text: dedent_default(action.text) };
+        this.notes.push(value);
+      },
       overrideConfig(action) {
         this.addOverrideConfig(action);
       },
@@ -37320,8 +37025,6 @@ var ClassDb = class extends BaseDb {
     };
   }
   parseMemberLabel(raw) {
-    let name;
-    let typeName = "";
     let temp = raw;
     const firstChar = temp[0];
     let access = "public";
@@ -37334,23 +37037,8 @@ var ClassDb = class extends BaseDb {
       access = "protected";
     if (isPrivate || isProtected || isPublic)
       temp = temp.slice(1);
-    if (temp.includes(FIELD_SEP)) {
-      const pos = temp.indexOf(FIELD_SEP);
-      name = temp.slice(0, pos);
-      typeName = temp.slice(pos + 1, temp.length).trim();
-    } else {
-      const spacePos = temp.indexOf(" ");
-      if (spacePos === -1) {
-        name = temp.trim();
-      } else {
-        typeName = temp.slice(0, spacePos);
-        name = temp.slice(spacePos + 1, temp.length).trim();
-      }
-    }
-    const isMethod = /\(.*\)/.test(name);
+    const isMethod = /\(.*\)/.test(temp);
     const member = {
-      name,
-      typeName,
       access,
       raw,
       isMethod
@@ -37361,7 +37049,8 @@ var ClassDb = class extends BaseDb {
     return {
       ...super.getBaseDiagramIR(),
       classes: this.classes,
-      relations: this.relations
+      relations: this.relations,
+      notes: this.notes
     };
   }
   apply(action) {
@@ -37379,6 +37068,7 @@ var ClassDb = class extends BaseDb {
     super.clear();
     this.classes = {};
     this.relations = [];
+    this.notes = [];
   }
 };
 var db8 = new ClassDb();
@@ -37400,6 +37090,8 @@ var defaultConfig8 = {
   relationLineColor: PALETTE.normalDark,
   relationTextColor: PALETTE.normalDark,
   entityRadius: 2,
+  noteMargin: 10,
+  noteTextColor: PALETTE.normalDark,
   fontSize: 14,
   fontWeight: "normal",
   fontFamily: DEFAULT_FONT_FAMILY
@@ -37476,6 +37168,7 @@ var ClassDiagramDraw = class {
       avoid_label_on_border: true
     });
     this.dagreWrapper = new DagreWrapper(g);
+    this.theme = config_default.getConfig().themeConfig.themeVariables;
   }
   drawTo(rootMark) {
     this.rootMark = rootMark;
@@ -37485,6 +37178,9 @@ var ClassDiagramDraw = class {
     rootMark.children.push(this.relationGroupMark);
     for (const relation of this.ir.relations) {
       this.drawRelation(relation);
+    }
+    for (const note of this.ir.notes) {
+      this.drawNote(note);
     }
     this.dagreWrapper.doLayout();
     this.dagreWrapper.callNodeOnLayout();
@@ -37508,16 +37204,23 @@ var ClassDiagramDraw = class {
       const nextSectionIndex = index2 + 1;
       if (memberList.length) {
         for (const member of memberList) {
-          markBuilder.addRow(nextSectionIndex, member.raw);
+          markBuilder.addRow(nextSectionIndex, [
+            {
+              label: member.raw,
+              italic: member.modifier === "abstract",
+              underline: member.modifier === "static"
+            }
+          ]);
         }
       } else {
-        markBuilder.addRow(nextSectionIndex, "");
+        markBuilder.addRow(nextSectionIndex, [""]);
       }
     }
     this.rootMark.children.push(markBuilder.group);
     const g = this.dagreWrapper.g;
     const entitySize = markBuilder.getSize();
     g.setNode(classObj.fullName, {
+      id: classObj.fullName,
       ...entitySize,
       onLayout(data) {
         markBuilder.onLayout(data);
@@ -37532,11 +37235,13 @@ var ClassDiagramDraw = class {
       fontSize: conf6.fontSize,
       fontFamily: conf6.fontFamily
     };
+    const startNodeId = r.reversed ? r.right : r.left;
+    const ednNodeId = r.reversed ? r.left : r.right;
     let minlen = 1;
     if (r.label) {
       labelDims = calculateTextDimensions(r.label, fontConfig);
       minlen = Math.ceil(labelDims.height / conf6.ranksep) + 1;
-      const startNode = g.node(r.left);
+      const startNode = g.node(startNodeId);
       const extraPad = (labelDims.width - startNode.width) / 2;
       if (extraPad > 0) {
         startNode.marginr = extraPad;
@@ -37567,7 +37272,9 @@ var ClassDiagramDraw = class {
       });
       relationGroupMark.children.push(rightLabelMark);
     }
-    g.setEdge(r.left, r.right, {
+    const startLabelMark = r.reversed ? rightLabelMark : leftLabelMark;
+    const endLabelMark = r.reversed ? leftLabelMark : rightLabelMark;
+    g.setEdge(startNodeId, ednNodeId, {
       label: r.relation,
       minlen,
       onLayout: (data) => {
@@ -37608,15 +37315,107 @@ var ClassDiagramDraw = class {
           relationGroupMark.children.push(arrowMark);
         }
         const LABEL_X_OFFSET = 5;
-        if (leftLabelMark) {
+        if (startLabelMark) {
           const startIntersectionPoint = data.points[2];
-          safeAssign(leftLabelMark.attrs, movePointPosition(startIntersectionPoint, { x: LABEL_X_OFFSET, y: 0 }));
+          safeAssign(startLabelMark.attrs, movePointPosition(startIntersectionPoint, { x: LABEL_X_OFFSET, y: 0 }));
         }
-        if (rightLabelMark) {
-          safeAssign(rightLabelMark.attrs, movePointPosition(lastPoint, { x: LABEL_X_OFFSET, y: 0 }));
+        if (endLabelMark) {
+          safeAssign(endLabelMark.attrs, movePointPosition(lastPoint, { x: LABEL_X_OFFSET, y: 0 }));
         }
       }
     });
+  }
+  drawNote(note) {
+    const { id: id9, text } = note;
+    const g = this.dagreWrapper.g;
+    const targetNodeOption = g.node(note.target);
+    if (!targetNodeOption) {
+      return;
+    }
+    const group = makeMark("group", {
+      x: 0,
+      y: 0
+    }, { children: [], class: "activity__note" });
+    const { rootMark, conf: conf6, theme: theme3 } = this;
+    rootMark.children.push(group);
+    const fontConfig = { fontSize: conf6.fontSize, fontFamily: conf6.fontFamily };
+    const textDims = calculateTextDimensions(text, fontConfig);
+    const rectAttrs = getBaseNote(theme3);
+    const noteModel = {
+      width: textDims.width + 2 * conf6.noteMargin,
+      height: textDims.height + 2 * conf6.noteMargin
+    };
+    const noteRect = {
+      type: "rect",
+      class: "note__bg",
+      attrs: rectAttrs
+    };
+    const textMark = {
+      type: "text",
+      attrs: { fill: conf6.noteTextColor, text, textBaseline: "middle", ...fontConfig }
+    };
+    let isHorizontal = false;
+    if (note.placement === "LEFT_OF") {
+      isHorizontal = true;
+      targetNodeOption.marginl = noteModel.width;
+    } else if (note.placement === "RIGHT_OF") {
+      isHorizontal = true;
+      targetNodeOption.marginr = noteModel.width;
+    }
+    if (note.placement === "TOP_OF") {
+      targetNodeOption.margint = noteModel.height;
+    } else if (note.placement === "BOTTOM_OF") {
+      targetNodeOption.marginb = noteModel.height;
+    }
+    if (isHorizontal) {
+      if (targetNodeOption.height < noteModel.height) {
+        targetNodeOption.height = noteModel.height;
+      }
+    } else {
+      if (targetNodeOption.width < noteModel.width) {
+        targetNodeOption.width = noteModel.width;
+      }
+    }
+    g.setNode(id9, {
+      mark: group,
+      width: noteModel.width,
+      height: noteModel.height,
+      onLayout: () => {
+        const targetNodeData = targetNodeOption;
+        const targetNodeStartX = targetNodeData.x - targetNodeData.width / 2;
+        const targetNodeStartY = targetNodeData.y - targetNodeData.height / 2;
+        let x2 = targetNodeStartX;
+        let y2 = targetNodeStartY;
+        if (note.placement === "LEFT_OF") {
+          x2 = targetNodeStartX - noteModel.width - conf6.noteMargin;
+        } else if (note.placement === "RIGHT_OF") {
+          x2 = targetNodeData.x + targetNodeData.width / 2 + conf6.noteMargin;
+        }
+        if (note.placement === "TOP_OF") {
+          y2 = targetNodeStartY - noteModel.height - conf6.noteMargin;
+        } else if (note.placement === "BOTTOM_OF") {
+          y2 = targetNodeStartY + targetNodeData.height + noteModel.height + conf6.noteMargin;
+        }
+        safeAssign(textMark.attrs, {
+          x: x2 + conf6.noteMargin,
+          y: y2 + textDims.height / 2 + conf6.noteMargin,
+          width: noteModel.width
+        });
+        safeAssign(rectAttrs, {
+          x: x2,
+          y: y2,
+          width: noteModel.width,
+          height: noteModel.height
+        });
+        const node2 = g.node(id9);
+        if (isHorizontal) {
+        } else {
+          node2.outerTop = y2;
+          node2.outerBottom = y2 + noteModel.height;
+        }
+      }
+    });
+    group.children.push(noteRect, textMark);
   }
 };
 var RELATION_TO_ARROW_TYPE = {
@@ -37630,9 +37429,9 @@ var EntityMarkBuilder = class {
     this.g = g;
     this.conf = conf6;
     this.group = makeEmptyGroup();
-    this.rowPadding = 5;
+    this.rowPadding = 8;
     this.curY = 0;
-    this.curHeight = 0;
+    this.curContentHeight = 0;
     this.sections = [];
   }
   addHeader(label, annotation) {
@@ -37640,10 +37439,10 @@ var EntityMarkBuilder = class {
     if (annotation) {
       row = this.addRow(0, [`<<${annotation}>>`, label]);
     } else {
-      row = this.addRow(0, label);
+      row = this.addRow(0, [label]);
     }
     row.isHeader = true;
-    last(row.labelMarks).attrs.fontWeight = "bold";
+    last(row.marks).labelMark.attrs.fontWeight = "bold";
     return row;
   }
   addRow(sectionIndex, labels) {
@@ -37653,39 +37452,64 @@ var EntityMarkBuilder = class {
       };
     }
     const section = this.sections[sectionIndex];
-    if (typeof labels === "string") {
-      labels = [labels];
-    }
     const { rowPadding } = this;
-    const labelMarks = [];
+    const marks = [];
     const labelDims = { width: 0, height: 0 };
     let labelYOffset = 0;
-    for (const label of labels) {
+    for (const _l of labels) {
+      const labelConfig = typeof _l === "string" ? { label: _l } : _l;
+      const label = labelConfig.label;
       const fontConfig = this.getFontConfig();
       const dims = calculateTextDimensions(label, fontConfig);
-      const labelMark = makeMark("text", {
+      const textY = this.curY + labelYOffset + rowPadding;
+      const textAttrs = {
         text: label,
         fill: this.conf.entityTextColor,
         x: 0,
-        y: this.curY + labelYOffset + rowPadding,
+        y: textY,
         textAlign: "center",
         textBaseline: "hanging",
         ...dims,
         ...this.getFontConfig()
-      });
-      const labelYDiff = dims.height + Math.floor(fontConfig.fontSize / 4);
+      };
+      if (labelConfig.italic) {
+        Object.assign(textAttrs, {
+          fontStyle: "italic"
+        });
+      }
+      const labelMark = makeMark("text", textAttrs);
+      const mark = {
+        labelMark
+      };
+      if (labelConfig.underline) {
+        const lineMark = makeMark("line", {
+          x1: 0,
+          x2: dims.width,
+          y1: textY,
+          y2: textY,
+          stroke: this.conf.entityTextColor,
+          class: "class-entity__underline"
+        });
+        mark.decorationLine = lineMark;
+      }
+      const labelYDiff = dims.height + Math.floor(rowPadding / 2);
       labelYOffset += labelYDiff;
-      labelMarks.push(labelMark);
+      marks.push(mark);
       labelDims.width = Math.max(labelDims.width, dims.width);
       labelDims.height += labelYDiff;
     }
     const yOffsetStart = this.curY;
-    const yDiff = labelDims.height + rowPadding * 2;
+    const yDiff = labelDims.height + rowPadding;
     this.curY += yDiff;
-    this.curHeight += yDiff;
-    const row = { labels, labelMarks, labelDims, yOffsetStart, yOffsetEnd: this.curY };
+    this.curContentHeight += yDiff;
+    const row = { labels, marks, labelDims, yOffsetStart, yOffsetEnd: this.curY };
     section.rows.push(row);
-    this.group.children.push(...labelMarks);
+    for (const pair of marks) {
+      this.group.children.push(pair.labelMark);
+      if (pair.decorationLine) {
+        this.group.children.push(pair.decorationLine);
+      }
+    }
     return row;
   }
   getCurrentSection() {
@@ -37705,7 +37529,7 @@ var EntityMarkBuilder = class {
     }
     return {
       width: maxWidth + this.rowPadding * 2,
-      height: this.curHeight
+      height: this.curContentHeight + this.rowPadding
     };
   }
   onLayout(data) {
@@ -37729,11 +37553,19 @@ var EntityMarkBuilder = class {
         return;
       }
       for (const row of section.rows) {
-        for (const labelMark of row.labelMarks) {
+        for (const { labelMark, decorationLine } of row.marks) {
           if (!row.isHeader) {
             labelMark.attrs.x += (labelMark.attrs.width - rectSize.width) / 2 + rowPadding;
           }
-          labelMark.attrs.y += -halfClassHeight + rowPadding;
+          labelMark.attrs.y += -halfClassHeight + rowPadding / 2;
+          if (decorationLine) {
+            const offsetY = labelMark.attrs.height;
+            decorationLine.attrs.y1 = labelMark.attrs.y + offsetY;
+            decorationLine.attrs.y2 = labelMark.attrs.y + offsetY;
+            const offsetX = -rectSize.width / 2 + rowPadding / 2;
+            decorationLine.attrs.x1 += offsetX;
+            decorationLine.attrs.x2 += offsetX;
+          }
         }
       }
       const firstRow = section.rows[0];
@@ -37753,7 +37585,7 @@ var EntityMarkBuilder = class {
         this.group.children.push(sepLine);
       }
       if (section === lastSection) {
-        bodySectionYEnd = lastRow.yOffsetEnd - halfClassHeight;
+        bodySectionYEnd = lastRow.yOffsetEnd + rowPadding - halfClassHeight;
       }
     });
     if (typeof bodySectionYStart !== "undefined" && typeof bodySectionYEnd !== "undefined") {
@@ -37814,6 +37646,12 @@ var COMMENT_LINE8 = /%%.*/;
 var COMMON_TOKEN_RULES4 = {
   VALID_TEXT: { match: VALID_TEXT_REGEXP, fallback: true }
 };
+var _PLACEMENT2 = [
+  { match: /left\sof/, type: () => "LEFT_OF" },
+  { match: /right\sof/, type: () => "RIGHT_OF" },
+  { match: /top\sof/, type: () => "TOP_OF" },
+  { match: /bottom\sof/, type: () => "BOTTOM_OF" }
+];
 var lexer8 = moo8.states({
   main: {
     NL: MOO_NEWLINE,
@@ -37822,20 +37660,20 @@ var lexer8 = moo8.states({
     COLOR: COLOR_REGEXP,
     SEMICOLON: /;/,
     COLON: /:/,
-    COMMA: /,/,
     CLASS_DIAGRAM: /classDiagram/,
     L_PAREN: L_PAREN_REGEXP,
     R_PAREN: R_PAREN_REGEXP,
     L_BRACKET: { match: /\{/ },
     R_BRACKET: { match: /\}/ },
-    L_SQ_BRACKET: { match: /\[/ },
-    R_SQ_BRACKET: { match: /\]/ },
     TEXT_WITH_ANGLE_BRACKETS: { match: /\<\<(?:.*)\>\>/ },
     EQ: { match: /=/ },
-    // RELATION_INHERITANCE: { match: /\<\|\-\-/ },
     SUBGRAPH: { match: /subgraph/ },
-    START_NOTE: textToCaseInsensitiveRegex("@note"),
-    END_NOTE: textToCaseInsensitiveRegex("@end_note"),
+    NOTE: textToCaseInsensitiveRegex("@note"),
+    START_NOTE: {
+      match: /@start_note\s/,
+      push: "noteState"
+    },
+    _PLACEMENT: _PLACEMENT2,
     COMMENT_LINE: COMMENT_LINE_REGEXP,
     ...configLexerMainState,
     VALID_TEXT: { match: VALID_TEXT_REGEXP, fallback: true }
@@ -37843,6 +37681,15 @@ var lexer8 = moo8.states({
   configStatement: {
     ...configLexerconfigStatementState,
     ...COMMON_TOKEN_RULES4
+  },
+  noteState: {
+    END_NOTE: {
+      match: textToCaseInsensitiveRegex("@end_note"),
+      pop: 1
+    },
+    _PLACEMENT: _PLACEMENT2,
+    NL: MOO_NEWLINE,
+    VALID_TEXT: { match: VALID_TEXT_REGEXP, fallback: true }
   }
 });
 var nth0 = makeNth(0);
@@ -37933,6 +37780,7 @@ var grammar8 = {
     { "name": "statement", "symbols": ["memberLabelStatement"] },
     { "name": "statement", "symbols": ["relationStatement"] },
     { "name": "statement", "symbols": ["classAnnotationStatement"] },
+    { "name": "statement", "symbols": ["noteStatement"] },
     { "name": "statement", "symbols": ["paramStatement", lexer8.has("NL") ? { type: "NL" } : NL] },
     { "name": "statement", "symbols": ["configOpenCloseStatement", lexer8.has("NL") ? { type: "NL" } : NL] },
     { "name": "statement", "symbols": ["comment", lexer8.has("NL") ? { type: "NL" } : NL] },
@@ -38062,7 +37910,7 @@ var grammar8 = {
       "name": "relationStatement",
       "symbols": ["classInRelation", "relationStatement$ebnf$1", "relation", "relationStatement$ebnf$2", "classInRelation", "relationStatement$ebnf$3"],
       "postprocess": function(d) {
-        let relationRaw = { type: d[2], dashed: false };
+        let relationRaw = { type: d[2], dashed: false, reversed: false };
         let labelLeft = d[1];
         let labelRight = d[3];
         if (d[2].type) {
@@ -38080,27 +37928,46 @@ var grammar8 = {
           labelLeft,
           labelRight,
           label,
-          dashed: Boolean(relationRaw.dashed)
+          dashed: Boolean(relationRaw.dashed),
+          reversed: Boolean(relationRaw.reversed)
         };
       }
     },
     { "name": "classInRelation", "symbols": [lexer8.has("VALID_TEXT") ? { type: "VALID_TEXT" } : VALID_TEXT], "postprocess": (d) => ({ name: tv(d[0]) }) },
     { "name": "relation", "symbols": [{ "literal": "<|--" }], "postprocess": (d) => {
-      return { type: Relation.INHERITANCE };
+      return { type: Relation.INHERITANCE, reversed: true };
     } },
     { "name": "relation", "symbols": [{ "literal": "<|.." }], "postprocess": (d) => {
+      return { type: Relation.INHERITANCE, reversed: true, dashed: true };
+    } },
+    { "name": "relation", "symbols": [{ "literal": "--|>" }], "postprocess": (d) => {
+      return { type: Relation.INHERITANCE };
+    } },
+    { "name": "relation", "symbols": [{ "literal": "..|>" }], "postprocess": (d) => {
       return { type: Relation.INHERITANCE, dashed: true };
     } },
     { "name": "relation", "symbols": [{ "literal": "*--" }], "postprocess": (d) => {
-      return { type: Relation.COMPOSITION };
+      return { type: Relation.COMPOSITION, reversed: true };
     } },
     { "name": "relation", "symbols": [{ "literal": "*.." }], "postprocess": (d) => {
+      return { type: Relation.COMPOSITION, reversed: true, dashed: true };
+    } },
+    { "name": "relation", "symbols": [{ "literal": "--*" }], "postprocess": (d) => {
+      return { type: Relation.COMPOSITION };
+    } },
+    { "name": "relation", "symbols": [{ "literal": "..*" }], "postprocess": (d) => {
       return { type: Relation.COMPOSITION, dashed: true };
     } },
     { "name": "relation", "symbols": [{ "literal": "o--" }], "postprocess": (d) => {
-      return { type: Relation.AGGREGATION };
+      return { type: Relation.AGGREGATION, reversed: true };
     } },
     { "name": "relation", "symbols": [{ "literal": "o.." }], "postprocess": (d) => {
+      return { type: Relation.AGGREGATION, reversed: true, dashed: true };
+    } },
+    { "name": "relation", "symbols": [{ "literal": "--o" }], "postprocess": (d) => {
+      return { type: Relation.AGGREGATION };
+    } },
+    { "name": "relation", "symbols": [{ "literal": "..o" }], "postprocess": (d) => {
       return { type: Relation.AGGREGATION, dashed: true };
     } },
     { "name": "relation", "symbols": [{ "literal": "-->" }], "postprocess": (d) => {
@@ -38110,10 +37977,10 @@ var grammar8 = {
       return { type: Relation.ASSOCIATION, dashed: true };
     } },
     { "name": "relation", "symbols": [{ "literal": "<--" }], "postprocess": (d) => {
-      return { type: Relation.ASSOCIATION };
+      return { type: Relation.ASSOCIATION, reversed: true };
     } },
     { "name": "relation", "symbols": [{ "literal": "<.." }], "postprocess": (d) => {
-      return { type: Relation.ASSOCIATION };
+      return { type: Relation.ASSOCIATION, reversed: true, dashed: true };
     } },
     { "name": "relation", "symbols": [{ "literal": "--" }], "postprocess": (d) => {
       return { type: Relation.LINK };
@@ -38148,6 +38015,55 @@ var grammar8 = {
       "symbols": [lexer8.has("QUOTED_WORD") ? { type: "QUOTED_WORD" } : QUOTED_WORD],
       "postprocess": function(d) {
         return getQuotedWord(d[0]);
+      }
+    },
+    { "name": "placement", "symbols": [lexer8.has("LEFT_OF") ? { type: "LEFT_OF" } : LEFT_OF], "postprocess": (d) => "LEFT_OF" },
+    { "name": "placement", "symbols": [lexer8.has("RIGHT_OF") ? { type: "RIGHT_OF" } : RIGHT_OF], "postprocess": (d) => "RIGHT_OF" },
+    { "name": "placement", "symbols": [lexer8.has("TOP_OF") ? { type: "TOP_OF" } : TOP_OF], "postprocess": (d) => "TOP_OF" },
+    { "name": "placement", "symbols": [lexer8.has("BOTTOM_OF") ? { type: "BOTTOM_OF" } : BOTTOM_OF], "postprocess": (d) => "BOTTOM_OF" },
+    { "name": "multilineNoteText$ebnf$1", "symbols": [] },
+    { "name": "multilineNoteText$ebnf$1$subexpression$1", "symbols": [lexer8.has("VALID_TEXT") ? { type: "VALID_TEXT" } : VALID_TEXT] },
+    { "name": "multilineNoteText$ebnf$1$subexpression$1", "symbols": [lexer8.has("QUOTED_WORD") ? { type: "QUOTED_WORD" } : QUOTED_WORD] },
+    { "name": "multilineNoteText$ebnf$1$subexpression$1", "symbols": [lexer8.has("NL") ? { type: "NL" } : NL] },
+    { "name": "multilineNoteText$ebnf$1", "symbols": ["multilineNoteText$ebnf$1", "multilineNoteText$ebnf$1$subexpression$1"], "postprocess": (d) => d[0].concat([d[1]]) },
+    {
+      "name": "multilineNoteText",
+      "symbols": ["multilineNoteText$ebnf$1", lexer8.has("END_NOTE") ? { type: "END_NOTE" } : END_NOTE],
+      "postprocess": function(d) {
+        const v = d[0].map((l) => {
+          return l.map((o) => tv(o));
+        }).join("");
+        return v;
+      }
+    },
+    { "name": "noteStatement$subexpression$1", "symbols": [{ "literal": "note" }] },
+    { "name": "noteStatement$subexpression$1", "symbols": [lexer8.has("NOTE") ? { type: "NOTE" } : NOTE] },
+    { "name": "noteStatement$ebnf$1", "symbols": [] },
+    { "name": "noteStatement$ebnf$1", "symbols": ["noteStatement$ebnf$1", lexer8.has("WS") ? { type: "WS" } : WS], "postprocess": (d) => d[0].concat([d[1]]) },
+    { "name": "noteStatement$ebnf$2", "symbols": [] },
+    { "name": "noteStatement$ebnf$2", "symbols": ["noteStatement$ebnf$2", lexer8.has("WS") ? { type: "WS" } : WS], "postprocess": (d) => d[0].concat([d[1]]) },
+    {
+      "name": "noteStatement",
+      "symbols": ["noteStatement$subexpression$1", "noteStatement$ebnf$1", "placement", lexer8.has("WS") ? { type: "WS" } : WS, lexer8.has("VALID_TEXT") ? { type: "VALID_TEXT" } : VALID_TEXT, "noteStatement$ebnf$2", lexer8.has("COLON") ? { type: "COLON" } : COLON, "words", lexer8.has("NL") ? { type: "NL" } : NL],
+      "postprocess": function(d) {
+        const text = d[7].trim();
+        return { type: "note", placement: d[2], target: tv(d[4]).trim(), text };
+      }
+    },
+    { "name": "noteStatement$subexpression$2", "symbols": [{ "literal": "note" }] },
+    { "name": "noteStatement$subexpression$2", "symbols": [lexer8.has("START_NOTE") ? { type: "START_NOTE" } : START_NOTE] },
+    { "name": "noteStatement$ebnf$3", "symbols": [] },
+    { "name": "noteStatement$ebnf$3", "symbols": ["noteStatement$ebnf$3", lexer8.has("WS") ? { type: "WS" } : WS], "postprocess": (d) => d[0].concat([d[1]]) },
+    { "name": "noteStatement$ebnf$4", "symbols": [] },
+    { "name": "noteStatement$ebnf$4", "symbols": ["noteStatement$ebnf$4", lexer8.has("WS") ? { type: "WS" } : WS], "postprocess": (d) => d[0].concat([d[1]]) },
+    { "name": "noteStatement$ebnf$5", "symbols": [] },
+    { "name": "noteStatement$ebnf$5", "symbols": ["noteStatement$ebnf$5", lexer8.has("WS") ? { type: "WS" } : WS], "postprocess": (d) => d[0].concat([d[1]]) },
+    {
+      "name": "noteStatement",
+      "symbols": ["noteStatement$subexpression$2", "noteStatement$ebnf$3", "placement", "noteStatement$ebnf$4", lexer8.has("VALID_TEXT") ? { type: "VALID_TEXT" } : VALID_TEXT, "noteStatement$ebnf$5", lexer8.has("NL") ? { type: "NL" } : NL, "multilineNoteText", lexer8.has("NL") ? { type: "NL" } : NL],
+      "postprocess": function(d) {
+        const text = d[7];
+        return { type: "note", placement: d[2], target: tv(d[4]).trim(), text };
       }
     }
   ],
@@ -38910,7 +38826,7 @@ __export(shape_exports, {
   Text: () => text_default2
 });
 
-// ../../node_modules/.pnpm/tslib@2.3.1/node_modules/tslib/tslib.es6.js
+// ../../node_modules/.pnpm/tslib@2.6.2/node_modules/tslib/tslib.es6.mjs
 var extendStatics = function(d, b10) {
   extendStatics = Object.setPrototypeOf || { __proto__: [] } instanceof Array && function(d2, b11) {
     d2.__proto__ = b11;
@@ -38942,6 +38858,16 @@ var __assign = function() {
   };
   return __assign.apply(this, arguments);
 };
+function __decorate(decorators, target, key, desc) {
+  var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+  if (typeof Reflect === "object" && typeof Reflect.decorate === "function")
+    r = Reflect.decorate(decorators, target, key, desc);
+  else
+    for (var i2 = decorators.length - 1; i2 >= 0; i2--)
+      if (d = decorators[i2])
+        r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+  return c > 3 && r && Object.defineProperty(target, key, r), r;
+}
 function __spreadArrays() {
   for (var s = 0, i2 = 0, il = arguments.length; i2 < il; i2++)
     s += arguments[i2].length;
@@ -39608,88 +39534,6 @@ var GraphEvent = (
 );
 var graph_event_default = GraphEvent;
 
-// ../../node_modules/.pnpm/@antv+event-emitter@0.1.2/node_modules/@antv/event-emitter/esm/index.js
-var WILDCARD2 = "*";
-var EventEmitter2 = (
-  /** @class */
-  function() {
-    function EventEmitter3() {
-      this._events = {};
-    }
-    EventEmitter3.prototype.on = function(evt, callback, once) {
-      if (!this._events[evt]) {
-        this._events[evt] = [];
-      }
-      this._events[evt].push({
-        callback,
-        once: !!once
-      });
-      return this;
-    };
-    EventEmitter3.prototype.once = function(evt, callback) {
-      this.on(evt, callback, true);
-      return this;
-    };
-    EventEmitter3.prototype.emit = function(evt) {
-      var _this = this;
-      var args = [];
-      for (var _i = 1; _i < arguments.length; _i++) {
-        args[_i - 1] = arguments[_i];
-      }
-      var events = this._events[evt] || [];
-      var wildcardEvents = this._events[WILDCARD2] || [];
-      var doEmit = function(es) {
-        var length3 = es.length;
-        for (var i2 = 0; i2 < length3; i2++) {
-          if (!es[i2]) {
-            continue;
-          }
-          var _a = es[i2], callback = _a.callback, once = _a.once;
-          if (once) {
-            es.splice(i2, 1);
-            if (es.length === 0) {
-              delete _this._events[evt];
-            }
-            length3--;
-            i2--;
-          }
-          callback.apply(_this, args);
-        }
-      };
-      doEmit(events);
-      doEmit(wildcardEvents);
-    };
-    EventEmitter3.prototype.off = function(evt, callback) {
-      if (!evt) {
-        this._events = {};
-      } else {
-        if (!callback) {
-          delete this._events[evt];
-        } else {
-          var events = this._events[evt] || [];
-          var length_1 = events.length;
-          for (var i2 = 0; i2 < length_1; i2++) {
-            if (events[i2].callback === callback) {
-              events.splice(i2, 1);
-              length_1--;
-              i2--;
-            }
-          }
-          if (events.length === 0) {
-            delete this._events[evt];
-          }
-        }
-      }
-      return this;
-    };
-    EventEmitter3.prototype.getEvents = function() {
-      return this._events;
-    };
-    return EventEmitter3;
-  }()
-);
-var esm_default2 = EventEmitter2;
-
 // ../../node_modules/.pnpm/@antv+g-base@0.5.11/node_modules/@antv/g-base/esm/util/util.js
 function removeFromArray(arr2, obj) {
   var index2 = arr2.indexOf(obj);
@@ -39746,7 +39590,7 @@ var Base = (
       this.destroyed = true;
     };
     return Base3;
-  }(esm_default2)
+  }(esm_default)
 );
 var base_default = Base;
 
@@ -40121,7 +39965,7 @@ var MATRIX = "matrix";
 var CLONE_CFGS = ["zIndex", "capture", "visible", "type"];
 var RESERVED_PORPS = ["repeat"];
 var DELEGATION_SPLIT = ":";
-var WILDCARD3 = "*";
+var WILDCARD2 = "*";
 function _cloneArrayAttr(arr2) {
   var result = [];
   for (var i2 = 0; i2 < arr2.length; i2++) {
@@ -40607,7 +40451,7 @@ var Element2 = (
     Element4.prototype.emitDelegateEvent = function(element, name, eventObj) {
       var events = this.getEvents();
       var eventName = name + DELEGATION_SPLIT + eventObj.type;
-      if (events[eventName] || events[WILDCARD3]) {
+      if (events[eventName] || events[WILDCARD2]) {
         eventObj.name = eventName;
         eventObj.currentTarget = element;
         eventObj.delegateTarget = this;
@@ -45693,9 +45537,8 @@ var pintoraStandalone = {
       };
       drawResult = parseAndDraw(code, safeAssign({ containerSize }, options));
     } catch (error) {
-      //const onError = options.onError || console.warn;
-      console.warn(code);
-      console.warn(error);
+      const onError = options.onError || console.warn;
+      onError(error);
     }
     try {
       if (drawResult) {
@@ -45755,7 +45598,7 @@ var pintoraStandalone = {
         prevSibling.remove();
       }
       const wrapper = document.createElement("div");
-      wrapper.className=(CLASSES.wrapper);
+      wrapper.classList.add(CLASSES.wrapper);
       container.style.display = "none";
       if (container.parentNode) {
         container.parentNode.insertBefore(wrapper, container);
@@ -45773,7 +45616,6 @@ var pintoraStandalone = {
       };
     }
     const code = opts.getContent ? opts.getContent(container) : container.innerText;
-    console.log(code);
     pintoraStandalone.renderTo(code, {
       container: resultContainer,
       renderer,
@@ -49260,18 +49102,6 @@ function _define_property(obj, key, value) {
   } else
     obj[key] = value;
   return obj;
-}
-
-// ../../node_modules/.pnpm/tslib@2.6.2/node_modules/tslib/tslib.es6.mjs
-function __decorate(decorators, target, key, desc) {
-  var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-  if (typeof Reflect === "object" && typeof Reflect.decorate === "function")
-    r = Reflect.decorate(decorators, target, key, desc);
-  else
-    for (var i2 = decorators.length - 1; i2 >= 0; i2--)
-      if (d = decorators[i2])
-        r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-  return c > 3 && r && Object.defineProperty(target, key, r), r;
 }
 
 // ../../node_modules/.pnpm/fontkit@2.0.2/node_modules/fontkit/dist/browser-module.mjs
@@ -63201,20 +63031,4 @@ safe-buffer/index.js:
 
 sax/lib/sax.js:
   (*! http://mths.be/fromcodepoint v0.1.0 by @mathias *)
-
-tslib/tslib.es6.js:
-  (*! *****************************************************************************
-  Copyright (c) Microsoft Corporation.
-  
-  Permission to use, copy, modify, and/or distribute this software for any
-  purpose with or without fee is hereby granted.
-  
-  THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH
-  REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY
-  AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT,
-  INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM
-  LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR
-  OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
-  PERFORMANCE OF THIS SOFTWARE.
-  ***************************************************************************** *)
 */
