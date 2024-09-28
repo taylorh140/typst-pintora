@@ -1,1 +1,3 @@
-#import "./pintorita.typ": render
+#import "./pintorita.typ": render, render_svg
+
+
