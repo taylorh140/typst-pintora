@@ -15,7 +15,7 @@ Typst package for drawing the following from markup:
 
 
 ````typ
-#import "@preview/pintorita:0.1.1"
+#import "@preview/pintorita:0.1.2"
 
 #set page(height: auto, width: auto, fill: black, margin: 2em)
 #set text(fill: white)
