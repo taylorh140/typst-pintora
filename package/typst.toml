@@ -1,6 +1,6 @@
 [package]
 name = "pintorita"
-version = "0.1.1"
+version = "0.1.2"
 entrypoint = "lib.typ"
 authors = ["Min Chen (hikerpig)","Taylorh140"]
 license = "MIT"

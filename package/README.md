@@ -64,14 +64,33 @@ Render a pintora string to an image
 #### Arguments
 
 * `src`: `str` - pintora source string
-* `factor`": scale output svg, "factor:0.5" will scale images down by half, so scale can be consistent across renders.
+* `factor`: scale output svg, "factor:0.5" will scale images down by half, so scale can be consistent across renders.
+* `style`: `str` diagram style, `default` or `dark` or `larkLight` or `larkDark`
+* `font`: `str` font family, default is `Source Code Pro, sans-serif`
 * All other arguments are passed to `image.decode` so you can customize the image size
 
 #### Returns
 
 The image, of type `content`
 
+### `render_svg`
+
+Render a pintora string to an image
+
+#### Arguments
+
+* `src`: `str` - pintora source string
+* `factor`: scale output svg, "factor:0.5" will scale images down by half, so scale can be consistent across renders.
+* `style`: `str` diagram style, `default` or `dark` or `larkLight` or `larkDark`
+* `font`: `str` font family, default is `Source Code Pro, sans-serif`
+* All other arguments are passed to `image.decode` so you can customize the image size
+
+#### Returns
+
+The svg image
+
 ## History
 
 * 0.1.0 - Inital Release
 * 0.1.1 - Updated to Jogs 0.2.3 and pintora 0.7.3
+* 0.1.2 - Fixed strange offset of text rows in class diagram, added `render_svg` function and more customization options
