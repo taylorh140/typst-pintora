@@ -15,14 +15,19 @@
 
 #let render(src, ..args) = {
   let named-args = args.named()
+
   let factor = named-args.at("factor",default:none)
   let style = named-args.at("style",default:"larkLight")
   let font = named-args.at("font",default:"Arial")
+
   let svg-output = call-js-function(pintora-bytecode, "PintoraRender", src, style, font)
 
   let width = getWidth(svg-output, factor)
 
-  image.decode(svg-output, ..args.pos(), ..named-args)
+  image.decode(
+    svg-output, 
+    width: width,
+  )
 }
 
 #let render-svg(src, ..args) = {
