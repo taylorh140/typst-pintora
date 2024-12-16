@@ -3,9 +3,9 @@
 #let pintora-src = read("./pintora.js")
 #let pintora-bytecode = compile-js(pintora-src)
 
-#let getWidth(svg-output, factor) = {
+#let getNewWidth(svg-output, factor, width) = {
   if (factor == none) {
-    return auto
+    return width
   }
 
   let svg-width = svg-output.find(regex("width=\"(\d+)")).find(regex("\d+"))
@@ -20,13 +20,19 @@
   let style = named-args.at("style",default:"larkLight")
   let font = named-args.at("font",default:"Arial")
 
+  let width = named-args.at("width",default:auto)
+
   let svg-output = call-js-function(pintora-bytecode, "PintoraRender", src, style, font)
 
-  let width = getWidth(svg-output, factor)
+  let width = getNewWidth(svg-output, factor, width)
 
   image.decode(
     svg-output, 
     width: width,
+    format: named-args.at("format", default:auto),
+    height: named-args.at("height", default:auto),
+    alt: named-args.at("alt", default:none),
+    fit: named-args.at("fit", default:"cover")
   )
 }
 
@@ -37,7 +43,6 @@
   let style = named-args.at("style",default:"larkLight")
   let font = named-args.at("font",default:"Arial")
   let svg-output = call-js-function(pintora-bytecode, "PintoraRender", src, style, font)
-
 
   svg-output
 }
