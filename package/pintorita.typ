@@ -38,13 +38,6 @@
   let font = named-args.at("font",default:"Arial")
   let svg-output = call-js-function(pintora-bytecode, "PintoraRender", src, style, font)
 
-  if (factor != none){
-    let svg-width = svg-output.find(regex("width=\"(\d+)")).find(regex("\d+"))
 
-    let new-width = int(svg-width) * factor * 1pt
-    named-args.insert("width", new-width) 
-    let junk = named-args.remove("factor")
-  }
   svg-output
 }
-
