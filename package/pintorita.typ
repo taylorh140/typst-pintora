@@ -8,6 +8,10 @@
     return width
   }
 
+  if (width != auto) {
+    panic("invalid arguments. factor and width cannot both be set.")
+  }
+
   let svg-width = svg-output.find(regex("width=\"(\d+)")).find(regex("\d+"))
   return int(svg-width) * factor * 1pt
 }
