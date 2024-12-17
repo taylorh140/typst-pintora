@@ -13,35 +13,33 @@
   return width
 }
 
-#let render(src, ..args) = {
+#let render(
+  src,
+  factor: none,
+  style: "larkLight",
+  font: "Arial",
+  width: auto,
+  ..args,
+) = {
   let named-args = args.named()
-
-  let factor = named-args.at("factor",default:none)
-  let style = named-args.at("style",default:"larkLight")
-  let font = named-args.at("font",default:"Arial")
-
-  let width = named-args.at("width",default:auto)
 
   let svg-output = call-js-function(pintora-bytecode, "PintoraRender", src, style, font)
 
-  let width = getNewWidth(svg-output, factor, width)
+  let newWidth = getNewWidth(svg-output, factor, width)
 
   image.decode(
-    svg-output, 
-    width: width,
-    format: named-args.at("format", default:auto),
-    height: named-args.at("height", default:auto),
-    alt: named-args.at("alt", default:none),
-    fit: named-args.at("fit", default:"cover")
+    svg-output,
+    width: newWidth,
+    ..args,
   )
 }
 
-#let render-svg(src, ..args) = {
+#let render-svg(
+  src,
+  style: "larkLight",
+  font: "Arial",
+) = {
   // style: ["default", "larkLight", "larkDark", "dark"]
-  let named-args = args.named()
-  let factor = named-args.at("factor",default:none)
-  let style = named-args.at("style",default:"larkLight")
-  let font = named-args.at("font",default:"Arial")
   let svg-output = call-js-function(pintora-bytecode, "PintoraRender", src, style, font)
 
   svg-output
