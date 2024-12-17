@@ -9,8 +9,7 @@
   }
 
   let svg-width = svg-output.find(regex("width=\"(\d+)")).find(regex("\d+"))
-  let width = int(svg-width) * factor * 1pt
-  return width
+  return int(svg-width) * factor * 1pt
 }
 
 #let render(
