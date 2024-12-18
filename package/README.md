@@ -15,7 +15,7 @@ Typst package for drawing the following from markup:
 
 
 ````typ
-#import "@preview/pintorita:0.1.2"
+#import "@preview/pintorita:0.1.3"
 
 #set page(height: auto, width: auto, fill: black, margin: 2em)
 #set text(fill: white)
@@ -80,7 +80,6 @@ Render a pintora string to an image
 #### Arguments
 
 * `src`: `str` - pintora source string
-* `factor`: scale output svg, "factor:0.5" will scale images down by half, so scale can be consistent across renders.
 * `style`: `str` diagram style, `default` or `dark` or `larkLight` or `larkDark`
 * `font`: `str` font family, default is `Source Code Pro, sans-serif`
 * All other arguments are passed to `image.decode` so you can customize the image size
@@ -94,3 +93,4 @@ The svg image
 * 0.1.0 - Inital Release
 * 0.1.1 - Updated to Jogs 0.2.3 and pintora 0.7.3
 * 0.1.2 - Fixed strange offset of text rows in class diagram, added `render-svg` function and more customization options
+* 0.1.3 - Bug Fixes for argument handling. 
