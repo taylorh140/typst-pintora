@@ -3,38 +3,47 @@
 #let pintora-src = read("./pintora.js")
 #let pintora-bytecode = compile-js(pintora-src)
 
-#let render(src, ..args) = {
-  let named-args = args.named()
-  let factor = named-args.at("factor",default:none)
-  let style = named-args.at("style",default:"larkLight")
-  let font = named-args.at("font",default:"Arial")
-  let svg-output = call-js-function(pintora-bytecode, "PintoraRender", src, style, font)
-
-  if (factor != none){
-    let svg-width = svg-output.find(regex("width=\"(\d+)")).find(regex("\d+"))
-
-    let new-width = int(svg-width) * factor * 1pt
-    named-args.insert("width", new-width) 
-    let junk = named-args.remove("factor")
+#let getNewWidth(svg-output, factor, width) = {
+  if (factor == none) {
+    return width
   }
-  image.decode(svg-output, ..args.pos(), ..named-args)
+
+  if (width != auto) {
+    panic("invalid arguments. factor and width cannot both be set.")
+  }
+
+  let svg-width = svg-output.find(regex("width=\"(\d+)")).find(regex("\d+"))
+  return int(svg-width) * factor * 1pt
 }
 
-#let render-svg(src, ..args) = {
-  // style: ["default", "larkLight", "larkDark", "dark"]
+#let render(
+  src,
+  factor: none,
+  style: "larkLight",
+  font: "Arial",
+  width: auto,
+  ..args,
+) = {
   let named-args = args.named()
-  let factor = named-args.at("factor",default:none)
-  let style = named-args.at("style",default:"larkLight")
-  let font = named-args.at("font",default:"Arial")
+
   let svg-output = call-js-function(pintora-bytecode, "PintoraRender", src, style, font)
 
-  if (factor != none){
-    let svg-width = svg-output.find(regex("width=\"(\d+)")).find(regex("\d+"))
+  let newWidth = getNewWidth(svg-output, factor, width)
 
-    let new-width = int(svg-width) * factor * 1pt
-    named-args.insert("width", new-width) 
-    let junk = named-args.remove("factor")
-  }
+  image.decode(
+    svg-output,
+    width: newWidth,
+    ..args,
+  )
+}
+
+#let render-svg(
+  src,
+  style: "larkLight",
+  font: "Arial",
+) = {
+  // style: ["default", "larkLight", "larkDark", "dark"]
+  let svg-output = call-js-function(pintora-bytecode, "PintoraRender", src, style, font)
+
   svg-output
 }
-
