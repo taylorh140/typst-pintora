@@ -33,8 +33,7 @@ var __toESM = (mod2, isNodeMode, target) => (target = mod2 != null ? __create(__
 var __toCommonJS = (mod2) => __copyProps(__defProp({}, "__esModule", { value: true }), mod2);
 var __toBinary = /* @__PURE__ */ (() => {
   var table = new Uint8Array(128);
-  for (var i2 = 0; i2 < 64; i2++)
-    table[i2 < 26 ? i2 + 65 : i2 < 52 ? i2 + 71 : i2 < 62 ? i2 - 4 : i2 * 4 - 205] = i2;
+  for (var i2 = 0; i2 < 64; i2++) table[i2 < 26 ? i2 + 65 : i2 < 52 ? i2 + 71 : i2 < 62 ? i2 - 4 : i2 * 4 - 205] = i2;
   return (base64) => {
     var n2 = base64.length, bytes = new Uint8Array((n2 - (base64[n2 - 1] == "=") - (base64[n2 - 2] == "=")) * 3 / 4 | 0);
     for (var i3 = 0, j = 0; i3 < n2; ) {
@@ -156,34 +155,22 @@ var require_kind_of = __commonJS({
   "../../node_modules/.pnpm/kind-of@6.0.3/node_modules/kind-of/index.js"(exports2, module2) {
     var toString5 = Object.prototype.toString;
     module2.exports = function kindOf(val) {
-      if (val === void 0)
-        return "undefined";
-      if (val === null)
-        return "null";
+      if (val === void 0) return "undefined";
+      if (val === null) return "null";
       var type = typeof val;
-      if (type === "boolean")
-        return "boolean";
-      if (type === "string")
-        return "string";
-      if (type === "number")
-        return "number";
-      if (type === "symbol")
-        return "symbol";
+      if (type === "boolean") return "boolean";
+      if (type === "string") return "string";
+      if (type === "number") return "number";
+      if (type === "symbol") return "symbol";
       if (type === "function") {
         return isGeneratorFn(val) ? "generatorfunction" : "function";
       }
-      if (isArray3(val))
-        return "array";
-      if (isBuffer3(val))
-        return "buffer";
-      if (isArguments3(val))
-        return "arguments";
-      if (isDate(val))
-        return "date";
-      if (isError(val))
-        return "error";
-      if (isRegexp(val))
-        return "regexp";
+      if (isArray3(val)) return "array";
+      if (isBuffer3(val)) return "buffer";
+      if (isArguments3(val)) return "arguments";
+      if (isDate(val)) return "date";
+      if (isError(val)) return "error";
+      if (isRegexp(val)) return "regexp";
       switch (ctorName(val)) {
         case "Symbol":
           return "symbol";
@@ -238,21 +225,18 @@ var require_kind_of = __commonJS({
       return typeof val.constructor === "function" ? val.constructor.name : null;
     }
     function isArray3(val) {
-      if (Array.isArray)
-        return Array.isArray(val);
+      if (Array.isArray) return Array.isArray(val);
       return val instanceof Array;
     }
     function isError(val) {
       return val instanceof Error || typeof val.message === "string" && val.constructor && typeof val.constructor.stackTraceLimit === "number";
     }
     function isDate(val) {
-      if (val instanceof Date)
-        return true;
+      if (val instanceof Date) return true;
       return typeof val.toDateString === "function" && typeof val.getDate === "function" && typeof val.setDate === "function";
     }
     function isRegexp(val) {
-      if (val instanceof RegExp)
-        return true;
+      if (val instanceof RegExp) return true;
       return typeof val.flags === "string" && typeof val.ignoreCase === "boolean" && typeof val.multiline === "boolean" && typeof val.global === "boolean";
     }
     function isGeneratorFn(name, val) {
@@ -372,14 +356,11 @@ var require_is_plain_object = __commonJS({
     }
     module2.exports = function isPlainObject(o) {
       var ctor, prot;
-      if (isObjectObject(o) === false)
-        return false;
+      if (isObjectObject(o) === false) return false;
       ctor = o.constructor;
-      if (typeof ctor !== "function")
-        return false;
+      if (typeof ctor !== "function") return false;
       prot = ctor.prototype;
-      if (isObjectObject(prot) === false)
-        return false;
+      if (isObjectObject(prot) === false) return false;
       if (prot.hasOwnProperty("isPrototypeOf") === false) {
         return false;
       }
@@ -764,16 +745,11 @@ var require_tinycolor = __commonJS({
         s = bound01(s, 100);
         l = bound01(l, 100);
         function hue2rgb(p2, q2, t) {
-          if (t < 0)
-            t += 1;
-          if (t > 1)
-            t -= 1;
-          if (t < 1 / 6)
-            return p2 + (q2 - p2) * 6 * t;
-          if (t < 1 / 2)
-            return q2;
-          if (t < 2 / 3)
-            return p2 + (q2 - p2) * (2 / 3 - t) * 6;
+          if (t < 0) t += 1;
+          if (t > 1) t -= 1;
+          if (t < 1 / 6) return p2 + (q2 - p2) * 6 * t;
+          if (t < 1 / 2) return q2;
+          if (t < 2 / 3) return p2 + (q2 - p2) * (2 / 3 - t) * 6;
           return p2;
         }
         if (s === 0) {
@@ -1382,8 +1358,7 @@ var require_moo = __commonJS({
         return "(" + s + ")";
       }
       function reUnion(regexps) {
-        if (!regexps.length)
-          return "(?!)";
+        if (!regexps.length) return "(?!)";
         var source = regexps.map(function(s) {
           return "(?:" + s + ")";
         }).join("|");
@@ -1393,14 +1368,10 @@ var require_moo = __commonJS({
         if (typeof obj === "string") {
           return "(?:" + reEscape(obj) + ")";
         } else if (isRegExp(obj)) {
-          if (obj.ignoreCase)
-            throw new Error("RegExp /i flag not allowed");
-          if (obj.global)
-            throw new Error("RegExp /g flag is implied");
-          if (obj.sticky)
-            throw new Error("RegExp /y flag is implied");
-          if (obj.multiline)
-            throw new Error("RegExp /m flag is implied");
+          if (obj.ignoreCase) throw new Error("RegExp /i flag not allowed");
+          if (obj.global) throw new Error("RegExp /g flag is implied");
+          if (obj.sticky) throw new Error("RegExp /y flag is implied");
+          if (obj.multiline) throw new Error("RegExp /m flag is implied");
           return obj.source;
         } else {
           throw new Error("Not a pattern: " + obj);
@@ -1422,16 +1393,14 @@ var require_moo = __commonJS({
           var match = [];
           rules.forEach(function(rule) {
             if (isObject3(rule)) {
-              if (match.length)
-                result.push(ruleOptions(key, match));
+              if (match.length) result.push(ruleOptions(key, match));
               result.push(ruleOptions(key, rule));
               match = [];
             } else {
               match.push(rule);
             }
           });
-          if (match.length)
-            result.push(ruleOptions(key, match));
+          if (match.length) result.push(ruleOptions(key, match));
         }
         return result;
       }
@@ -1566,8 +1535,7 @@ var require_moo = __commonJS({
         var fallbackRule = errorRule && errorRule.fallback;
         var flags = hasSticky && !fallbackRule ? "ym" : "gm";
         var suffix = hasSticky || fallbackRule ? "" : "|";
-        if (unicodeFlag === true)
-          flags += "u";
+        if (unicodeFlag === true) flags += "u";
         var combined = new RegExp(reUnion(parts) + suffix, flags);
         return { regexp: combined, groups, fast, error: errorRule || defaultErrorRule };
       }
@@ -1588,8 +1556,7 @@ var require_moo = __commonJS({
         var all = states8.$all ? toRules(states8.$all) : [];
         delete states8.$all;
         var keys3 = Object.getOwnPropertyNames(states8);
-        if (!start)
-          start = keys3[0];
+        if (!start) start = keys3[0];
         var ruleMap = /* @__PURE__ */ Object.create(null);
         for (var i2 = 0; i2 < keys3.length; i2++) {
           var key = keys3[i2];
@@ -1601,8 +1568,7 @@ var require_moo = __commonJS({
           var included = /* @__PURE__ */ Object.create(null);
           for (var j = 0; j < rules.length; j++) {
             var rule = rules[j];
-            if (!rule.include)
-              continue;
+            if (!rule.include) continue;
             var splice5 = [j, 1];
             if (rule.include !== key && !included[rule.include]) {
               included[rule.include] = true;
@@ -1612,8 +1578,7 @@ var require_moo = __commonJS({
               }
               for (var k = 0; k < newRules.length; k++) {
                 var newRule = newRules[k];
-                if (rules.indexOf(newRule) !== -1)
-                  continue;
+                if (rules.indexOf(newRule) !== -1) continue;
                 splice5.push(newRule);
               }
             }
@@ -1707,8 +1672,7 @@ var require_moo = __commonJS({
         };
       };
       Lexer.prototype.setState = function(state) {
-        if (!state || this.state === state)
-          return;
+        if (!state || this.state === state) return;
         this.state = state;
         var info = this.states[state];
         this.groups = info.groups;
@@ -1811,12 +1775,9 @@ var require_moo = __commonJS({
         if (group.shouldThrow) {
           throw new Error(this.formatError(token, "invalid syntax"));
         }
-        if (group.pop)
-          this.popState();
-        else if (group.push)
-          this.pushState(group.push);
-        else if (group.next)
-          this.setState(group.next);
+        if (group.pop) this.popState();
+        else if (group.push) this.pushState(group.push);
+        else if (group.next) this.setState(group.next);
         return token;
       };
       if (typeof Symbol !== "undefined" && Symbol.iterator) {
@@ -2049,8 +2010,7 @@ var require_nearley = __commonJS({
             this.line
           );
           var nextLineBreak = buffer.indexOf("\n", this.index);
-          if (nextLineBreak === -1)
-            nextLineBreak = buffer.length;
+          if (nextLineBreak === -1) nextLineBreak = buffer.length;
           var col = this.index - this.lastLineBreak;
           var lastLineDigits = String(this.line).length;
           message += " at line " + this.line + " col " + col + ":\n\n";
@@ -2329,8 +2289,7 @@ var require_dayjs_min = __commonJS({
         var e3 = -t2.utcOffset(), n3 = Math.abs(e3), r2 = Math.floor(n3 / 60), i3 = n3 % 60;
         return (e3 <= 0 ? "+" : "-") + m(r2, 2, "0") + ":" + m(i3, 2, "0");
       }, m: function t2(e3, n3) {
-        if (e3.date() < n3.date())
-          return -t2(n3, e3);
+        if (e3.date() < n3.date()) return -t2(n3, e3);
         var r2 = 12 * (n3.year() - e3.year()) + (n3.month() - e3.month()), i3 = e3.clone().add(r2, f), s2 = n3 - i3 < 0, u2 = e3.clone().add(r2 + (s2 ? -1 : 1), f);
         return +(-(r2 + (n3 - i3) / (s2 ? i3 - u2 : u2 - i3)) || 0);
       }, a: function(t2) {
@@ -2345,18 +2304,15 @@ var require_dayjs_min = __commonJS({
         return t2 instanceof _3;
       }, S = function(t2, e3, n3) {
         var r2;
-        if (!t2)
-          return D;
-        if ("string" == typeof t2)
-          v[t2] && (r2 = t2), e3 && (v[t2] = e3, r2 = t2);
+        if (!t2) return D;
+        if ("string" == typeof t2) v[t2] && (r2 = t2), e3 && (v[t2] = e3, r2 = t2);
         else {
           var i3 = t2.name;
           v[i3] = t2, r2 = i3;
         }
         return !n3 && r2 && (D = r2), r2 || !n3 && D;
       }, w = function(t2, e3) {
-        if (p(t2))
-          return t2.clone();
+        if (p(t2)) return t2.clone();
         var n3 = "object" == typeof e3 ? e3 : {};
         return n3.date = t2, n3.args = arguments, new _3(n3);
       }, O = g;
@@ -2371,12 +2327,9 @@ var require_dayjs_min = __commonJS({
         return m2.parse = function(t2) {
           this.$d = function(t3) {
             var e3 = t3.date, n3 = t3.utc;
-            if (null === e3)
-              return /* @__PURE__ */ new Date(NaN);
-            if (O.u(e3))
-              return /* @__PURE__ */ new Date();
-            if (e3 instanceof Date)
-              return new Date(e3);
+            if (null === e3) return /* @__PURE__ */ new Date(NaN);
+            if (O.u(e3)) return /* @__PURE__ */ new Date();
+            if (e3 instanceof Date) return new Date(e3);
             if ("string" == typeof e3 && !/Z$/i.test(e3)) {
               var r2 = e3.match(l);
               if (r2) {
@@ -2440,8 +2393,7 @@ var require_dayjs_min = __commonJS({
           if (o2 === f || o2 === c) {
             var y3 = this.clone().set(d, 1);
             y3.$d[$3](l2), y3.init(), this.$d = y3.set(d, Math.min(this.$D, y3.daysInMonth())).$d;
-          } else
-            $3 && this.$d[$3](l2);
+          } else $3 && this.$d[$3](l2);
           return this.init(), this;
         }, m2.set = function(t2, e3) {
           return this.clone().$set(t2, e3);
@@ -2454,22 +2406,17 @@ var require_dayjs_min = __commonJS({
             var e3 = w($3);
             return O.w(e3.date(e3.date() + Math.round(t2 * r2)), $3);
           };
-          if (l2 === f)
-            return this.set(f, this.$M + r2);
-          if (l2 === c)
-            return this.set(c, this.$y + r2);
-          if (l2 === a)
-            return y3(1);
-          if (l2 === o)
-            return y3(7);
+          if (l2 === f) return this.set(f, this.$M + r2);
+          if (l2 === c) return this.set(c, this.$y + r2);
+          if (l2 === a) return y3(1);
+          if (l2 === o) return y3(7);
           var M3 = (d2 = {}, d2[s] = e, d2[u] = n2, d2[i2] = t, d2)[l2] || 1, m3 = this.$d.getTime() + r2 * M3;
           return O.w(m3, this);
         }, m2.subtract = function(t2, e3) {
           return this.add(-1 * t2, e3);
         }, m2.format = function(t2) {
           var e3 = this, n3 = this.$locale();
-          if (!this.isValid())
-            return n3.invalidDate || $2;
+          if (!this.isValid()) return n3.invalidDate || $2;
           var r2 = t2 || "YYYY-MM-DDTHH:mm:ssZ", i3 = O.z(this), s2 = this.$H, u2 = this.$m, a2 = this.$M, o2 = n3.weekdays, f2 = n3.months, h2 = function(t3, n4, i4, s3) {
             return t3 && (t3[n4] || t3(e3, r2)) || i4[n4].substr(0, s3);
           }, c2 = function(t3) {
@@ -2491,8 +2438,7 @@ var require_dayjs_min = __commonJS({
         }, m2.$locale = function() {
           return v[this.$L];
         }, m2.locale = function(t2, e3) {
-          if (!t2)
-            return this.$L;
+          if (!t2) return this.$L;
           var n3 = this.clone(), r2 = S(t2, e3, true);
           return r2 && (n3.$L = r2), n3;
         }, m2.clone = function() {
@@ -2646,17 +2592,13 @@ var require_path_browserify = __commonJS({
       },
       normalize: function normalize4(path4) {
         assertPath(path4);
-        if (path4.length === 0)
-          return ".";
+        if (path4.length === 0) return ".";
         var isAbsolute = path4.charCodeAt(0) === 47;
         var trailingSeparator = path4.charCodeAt(path4.length - 1) === 47;
         path4 = normalizeStringPosix(path4, !isAbsolute);
-        if (path4.length === 0 && !isAbsolute)
-          path4 = ".";
-        if (path4.length > 0 && trailingSeparator)
-          path4 += "/";
-        if (isAbsolute)
-          return "/" + path4;
+        if (path4.length === 0 && !isAbsolute) path4 = ".";
+        if (path4.length > 0 && trailingSeparator) path4 += "/";
+        if (isAbsolute) return "/" + path4;
         return path4;
       },
       isAbsolute: function isAbsolute(path4) {
@@ -2684,12 +2626,10 @@ var require_path_browserify = __commonJS({
       relative: function relative(from, to) {
         assertPath(from);
         assertPath(to);
-        if (from === to)
-          return "";
+        if (from === to) return "";
         from = posix.resolve(from);
         to = posix.resolve(to);
-        if (from === to)
-          return "";
+        if (from === to) return "";
         var fromStart = 1;
         for (; fromStart < from.length; ++fromStart) {
           if (from.charCodeAt(fromStart) !== 47)
@@ -2754,8 +2694,7 @@ var require_path_browserify = __commonJS({
       },
       dirname: function dirname2(path4) {
         assertPath(path4);
-        if (path4.length === 0)
-          return ".";
+        if (path4.length === 0) return ".";
         var code = path4.charCodeAt(0);
         var hasRoot = code === 47;
         var end = -1;
@@ -2771,23 +2710,19 @@ var require_path_browserify = __commonJS({
             matchedSlash = false;
           }
         }
-        if (end === -1)
-          return hasRoot ? "/" : ".";
-        if (hasRoot && end === 1)
-          return "//";
+        if (end === -1) return hasRoot ? "/" : ".";
+        if (hasRoot && end === 1) return "//";
         return path4.slice(0, end);
       },
       basename: function basename(path4, ext) {
-        if (ext !== void 0 && typeof ext !== "string")
-          throw new TypeError('"ext" argument must be a string');
+        if (ext !== void 0 && typeof ext !== "string") throw new TypeError('"ext" argument must be a string');
         assertPath(path4);
         var start = 0;
         var end = -1;
         var matchedSlash = true;
         var i2;
         if (ext !== void 0 && ext.length > 0 && ext.length <= path4.length) {
-          if (ext.length === path4.length && ext === path4)
-            return "";
+          if (ext.length === path4.length && ext === path4) return "";
           var extIdx = ext.length - 1;
           var firstNonSlashEnd = -1;
           for (i2 = path4.length - 1; i2 >= 0; --i2) {
@@ -2814,10 +2749,8 @@ var require_path_browserify = __commonJS({
               }
             }
           }
-          if (start === end)
-            end = firstNonSlashEnd;
-          else if (end === -1)
-            end = path4.length;
+          if (start === end) end = firstNonSlashEnd;
+          else if (end === -1) end = path4.length;
           return path4.slice(start, end);
         } else {
           for (i2 = path4.length - 1; i2 >= 0; --i2) {
@@ -2831,8 +2764,7 @@ var require_path_browserify = __commonJS({
               end = i2 + 1;
             }
           }
-          if (end === -1)
-            return "";
+          if (end === -1) return "";
           return path4.slice(start, end);
         }
       },
@@ -2881,8 +2813,7 @@ var require_path_browserify = __commonJS({
       parse: function parse9(path4) {
         assertPath(path4);
         var ret = { root: "", dir: "", base: "", ext: "", name: "" };
-        if (path4.length === 0)
-          return ret;
+        if (path4.length === 0) return ret;
         var code = path4.charCodeAt(0);
         var isAbsolute = code === 47;
         var start;
@@ -2912,10 +2843,8 @@ var require_path_browserify = __commonJS({
             end = i2 + 1;
           }
           if (code === 46) {
-            if (startDot === -1)
-              startDot = i2;
-            else if (preDotState !== 1)
-              preDotState = 1;
+            if (startDot === -1) startDot = i2;
+            else if (preDotState !== 1) preDotState = 1;
           } else if (startDot !== -1) {
             preDotState = -1;
           }
@@ -2924,10 +2853,8 @@ var require_path_browserify = __commonJS({
         preDotState === 0 || // The (right-most) trimmed path component is exactly '..'
         preDotState === 1 && startDot === end - 1 && startDot === startPart + 1) {
           if (end !== -1) {
-            if (startPart === 0 && isAbsolute)
-              ret.base = ret.name = path4.slice(1, end);
-            else
-              ret.base = ret.name = path4.slice(startPart, end);
+            if (startPart === 0 && isAbsolute) ret.base = ret.name = path4.slice(1, end);
+            else ret.base = ret.name = path4.slice(startPart, end);
           }
         } else {
           if (startPart === 0 && isAbsolute) {
@@ -2939,10 +2866,8 @@ var require_path_browserify = __commonJS({
           }
           ret.ext = path4.slice(startDot, end);
         }
-        if (startPart > 0)
-          ret.dir = path4.slice(0, startPart - 1);
-        else if (isAbsolute)
-          ret.dir = "/";
+        if (startPart > 0) ret.dir = path4.slice(0, startPart - 1);
+        else if (isAbsolute) ret.dir = "/";
         return ret;
       },
       sep: "/",
@@ -5787,8 +5712,7 @@ var require_emitter_component = __commonJS({
   "../../node_modules/.pnpm/emitter-component@1.1.2/node_modules/emitter-component/index.js"(exports2, module2) {
     module2.exports = Emitter;
     function Emitter(obj) {
-      if (obj)
-        return mixin2(obj);
+      if (obj) return mixin2(obj);
     }
     function mixin2(obj) {
       for (var key in Emitter.prototype) {
@@ -5819,8 +5743,7 @@ var require_emitter_component = __commonJS({
         return this;
       }
       var callbacks = this._callbacks[event];
-      if (!callbacks)
-        return this;
+      if (!callbacks) return this;
       if (1 == arguments.length) {
         delete this._callbacks[event];
         return this;
@@ -5888,17 +5811,14 @@ var require_stream = __commonJS({
       }
       var didOnEnd = false;
       function onend() {
-        if (didOnEnd)
-          return;
+        if (didOnEnd) return;
         didOnEnd = true;
         dest.end();
       }
       function onclose() {
-        if (didOnEnd)
-          return;
+        if (didOnEnd) return;
         didOnEnd = true;
-        if (typeof dest.destroy === "function")
-          dest.destroy();
+        if (typeof dest.destroy === "function") dest.destroy();
       }
       function onerror(er) {
         cleanup2();
@@ -5955,8 +5875,7 @@ var require_base64_js = __commonJS({
         throw new Error("Invalid string. Length must be a multiple of 4");
       }
       var validLen = b64.indexOf("=");
-      if (validLen === -1)
-        validLen = len3;
+      if (validLen === -1) validLen = len3;
       var placeHoldersLen = validLen === len3 ? 0 : 4 - validLen % 4;
       return [validLen, placeHoldersLen];
     }
@@ -6149,16 +6068,14 @@ var require_buffer = __commonJS({
     Object.defineProperty(Buffer5.prototype, "parent", {
       enumerable: true,
       get: function() {
-        if (!Buffer5.isBuffer(this))
-          return void 0;
+        if (!Buffer5.isBuffer(this)) return void 0;
         return this.buffer;
       }
     });
     Object.defineProperty(Buffer5.prototype, "offset", {
       enumerable: true,
       get: function() {
-        if (!Buffer5.isBuffer(this))
-          return void 0;
+        if (!Buffer5.isBuffer(this)) return void 0;
         return this.byteOffset;
       }
     });
@@ -6210,8 +6127,7 @@ var require_buffer = __commonJS({
         return Buffer5.from(valueOf, encodingOrOffset, length3);
       }
       const b10 = fromObject(value);
-      if (b10)
-        return b10;
+      if (b10) return b10;
       if (typeof Symbol !== "undefined" && Symbol.toPrimitive != null && typeof value[Symbol.toPrimitive] === "function") {
         return Buffer5.from(value[Symbol.toPrimitive]("string"), encodingOrOffset, length3);
       }
@@ -6338,17 +6254,14 @@ var require_buffer = __commonJS({
       return b10 != null && b10._isBuffer === true && b10 !== Buffer5.prototype;
     };
     Buffer5.compare = function compare(a, b10) {
-      if (isInstance(a, Uint8Array))
-        a = Buffer5.from(a, a.offset, a.byteLength);
-      if (isInstance(b10, Uint8Array))
-        b10 = Buffer5.from(b10, b10.offset, b10.byteLength);
+      if (isInstance(a, Uint8Array)) a = Buffer5.from(a, a.offset, a.byteLength);
+      if (isInstance(b10, Uint8Array)) b10 = Buffer5.from(b10, b10.offset, b10.byteLength);
       if (!Buffer5.isBuffer(a) || !Buffer5.isBuffer(b10)) {
         throw new TypeError(
           'The "buf1", "buf2" arguments must be one of type Buffer or Uint8Array'
         );
       }
-      if (a === b10)
-        return 0;
+      if (a === b10) return 0;
       let x2 = a.length;
       let y2 = b10.length;
       for (let i2 = 0, len2 = Math.min(x2, y2); i2 < len2; ++i2) {
@@ -6358,10 +6271,8 @@ var require_buffer = __commonJS({
           break;
         }
       }
-      if (x2 < y2)
-        return -1;
-      if (y2 < x2)
-        return 1;
+      if (x2 < y2) return -1;
+      if (y2 < x2) return 1;
       return 0;
     };
     Buffer5.isEncoding = function isEncoding(encoding) {
@@ -6402,8 +6313,7 @@ var require_buffer = __commonJS({
         let buf = list[i2];
         if (isInstance(buf, Uint8Array)) {
           if (pos + buf.length > buffer.length) {
-            if (!Buffer5.isBuffer(buf))
-              buf = Buffer5.from(buf);
+            if (!Buffer5.isBuffer(buf)) buf = Buffer5.from(buf);
             buf.copy(buffer, pos);
           } else {
             Uint8Array.prototype.set.call(
@@ -6435,8 +6345,7 @@ var require_buffer = __commonJS({
       }
       const len2 = string.length;
       const mustMatch = arguments.length > 2 && arguments[2] === true;
-      if (!mustMatch && len2 === 0)
-        return 0;
+      if (!mustMatch && len2 === 0) return 0;
       let loweredCase = false;
       for (; ; ) {
         switch (encoding) {
@@ -6485,8 +6394,7 @@ var require_buffer = __commonJS({
       if (end <= start) {
         return "";
       }
-      if (!encoding)
-        encoding = "utf8";
+      if (!encoding) encoding = "utf8";
       while (true) {
         switch (encoding) {
           case "hex":
@@ -6507,8 +6415,7 @@ var require_buffer = __commonJS({
           case "utf-16le":
             return utf16leSlice(this, start, end);
           default:
-            if (loweredCase)
-              throw new TypeError("Unknown encoding: " + encoding);
+            if (loweredCase) throw new TypeError("Unknown encoding: " + encoding);
             encoding = (encoding + "").toLowerCase();
             loweredCase = true;
         }
@@ -6556,26 +6463,21 @@ var require_buffer = __commonJS({
     };
     Buffer5.prototype.toString = function toString5() {
       const length3 = this.length;
-      if (length3 === 0)
-        return "";
-      if (arguments.length === 0)
-        return utf8Slice(this, 0, length3);
+      if (length3 === 0) return "";
+      if (arguments.length === 0) return utf8Slice(this, 0, length3);
       return slowToString.apply(this, arguments);
     };
     Buffer5.prototype.toLocaleString = Buffer5.prototype.toString;
     Buffer5.prototype.equals = function equals3(b10) {
-      if (!Buffer5.isBuffer(b10))
-        throw new TypeError("Argument must be a Buffer");
-      if (this === b10)
-        return true;
+      if (!Buffer5.isBuffer(b10)) throw new TypeError("Argument must be a Buffer");
+      if (this === b10) return true;
       return Buffer5.compare(this, b10) === 0;
     };
     Buffer5.prototype.inspect = function inspect() {
       let str3 = "";
       const max4 = exports2.INSPECT_MAX_BYTES;
       str3 = this.toString("hex", 0, max4).replace(/(.{2})/g, "$1 ").trim();
-      if (this.length > max4)
-        str3 += " ... ";
+      if (this.length > max4) str3 += " ... ";
       return "<Buffer " + str3 + ">";
     };
     if (customInspectSymbol) {
@@ -6618,8 +6520,7 @@ var require_buffer = __commonJS({
       end >>>= 0;
       thisStart >>>= 0;
       thisEnd >>>= 0;
-      if (this === target)
-        return 0;
+      if (this === target) return 0;
       let x2 = thisEnd - thisStart;
       let y2 = end - start;
       const len2 = Math.min(x2, y2);
@@ -6632,15 +6533,12 @@ var require_buffer = __commonJS({
           break;
         }
       }
-      if (x2 < y2)
-        return -1;
-      if (y2 < x2)
-        return 1;
+      if (x2 < y2) return -1;
+      if (y2 < x2) return 1;
       return 0;
     };
     function bidirectionalIndexOf(buffer, val, byteOffset, encoding, dir) {
-      if (buffer.length === 0)
-        return -1;
+      if (buffer.length === 0) return -1;
       if (typeof byteOffset === "string") {
         encoding = byteOffset;
         byteOffset = 0;
@@ -6653,18 +6551,13 @@ var require_buffer = __commonJS({
       if (numberIsNaN(byteOffset)) {
         byteOffset = dir ? 0 : buffer.length - 1;
       }
-      if (byteOffset < 0)
-        byteOffset = buffer.length + byteOffset;
+      if (byteOffset < 0) byteOffset = buffer.length + byteOffset;
       if (byteOffset >= buffer.length) {
-        if (dir)
-          return -1;
-        else
-          byteOffset = buffer.length - 1;
+        if (dir) return -1;
+        else byteOffset = buffer.length - 1;
       } else if (byteOffset < 0) {
-        if (dir)
-          byteOffset = 0;
-        else
-          return -1;
+        if (dir) byteOffset = 0;
+        else return -1;
       }
       if (typeof val === "string") {
         val = Buffer5.from(val, encoding);
@@ -6715,19 +6608,15 @@ var require_buffer = __commonJS({
         let foundIndex = -1;
         for (i2 = byteOffset; i2 < arrLength; i2++) {
           if (read(arr2, i2) === read(val, foundIndex === -1 ? 0 : i2 - foundIndex)) {
-            if (foundIndex === -1)
-              foundIndex = i2;
-            if (i2 - foundIndex + 1 === valLength)
-              return foundIndex * indexSize;
+            if (foundIndex === -1) foundIndex = i2;
+            if (i2 - foundIndex + 1 === valLength) return foundIndex * indexSize;
           } else {
-            if (foundIndex !== -1)
-              i2 -= i2 - foundIndex;
+            if (foundIndex !== -1) i2 -= i2 - foundIndex;
             foundIndex = -1;
           }
         }
       } else {
-        if (byteOffset + valLength > arrLength)
-          byteOffset = arrLength - valLength;
+        if (byteOffset + valLength > arrLength) byteOffset = arrLength - valLength;
         for (i2 = byteOffset; i2 >= 0; i2--) {
           let found = true;
           for (let j = 0; j < valLength; j++) {
@@ -6736,8 +6625,7 @@ var require_buffer = __commonJS({
               break;
             }
           }
-          if (found)
-            return i2;
+          if (found) return i2;
         }
       }
       return -1;
@@ -6769,8 +6657,7 @@ var require_buffer = __commonJS({
       let i2;
       for (i2 = 0; i2 < length3; ++i2) {
         const parsed = parseInt(string.substr(i2 * 2, 2), 16);
-        if (numberIsNaN(parsed))
-          return i2;
+        if (numberIsNaN(parsed)) return i2;
         buf[offset + i2] = parsed;
       }
       return i2;
@@ -6800,8 +6687,7 @@ var require_buffer = __commonJS({
         offset = offset >>> 0;
         if (isFinite(length3)) {
           length3 = length3 >>> 0;
-          if (encoding === void 0)
-            encoding = "utf8";
+          if (encoding === void 0) encoding = "utf8";
         } else {
           encoding = length3;
           length3 = void 0;
@@ -6812,13 +6698,11 @@ var require_buffer = __commonJS({
         );
       }
       const remaining = this.length - offset;
-      if (length3 === void 0 || length3 > remaining)
-        length3 = remaining;
+      if (length3 === void 0 || length3 > remaining) length3 = remaining;
       if (string.length > 0 && (length3 < 0 || offset < 0) || offset > this.length) {
         throw new RangeError("Attempt to write outside buffer bounds");
       }
-      if (!encoding)
-        encoding = "utf8";
+      if (!encoding) encoding = "utf8";
       let loweredCase = false;
       for (; ; ) {
         switch (encoding) {
@@ -6839,8 +6723,7 @@ var require_buffer = __commonJS({
           case "utf-16le":
             return ucs2Write(this, string, offset, length3);
           default:
-            if (loweredCase)
-              throw new TypeError("Unknown encoding: " + encoding);
+            if (loweredCase) throw new TypeError("Unknown encoding: " + encoding);
             encoding = ("" + encoding).toLowerCase();
             loweredCase = true;
         }
@@ -6953,10 +6836,8 @@ var require_buffer = __commonJS({
     }
     function hexSlice(buf, start, end) {
       const len2 = buf.length;
-      if (!start || start < 0)
-        start = 0;
-      if (!end || end < 0 || end > len2)
-        end = len2;
+      if (!start || start < 0) start = 0;
+      if (!end || end < 0 || end > len2) end = len2;
       let out = "";
       for (let i2 = start; i2 < end; ++i2) {
         out += hexSliceLookupTable[buf[i2]];
@@ -6977,35 +6858,29 @@ var require_buffer = __commonJS({
       end = end === void 0 ? len2 : ~~end;
       if (start < 0) {
         start += len2;
-        if (start < 0)
-          start = 0;
+        if (start < 0) start = 0;
       } else if (start > len2) {
         start = len2;
       }
       if (end < 0) {
         end += len2;
-        if (end < 0)
-          end = 0;
+        if (end < 0) end = 0;
       } else if (end > len2) {
         end = len2;
       }
-      if (end < start)
-        end = start;
+      if (end < start) end = start;
       const newBuf = this.subarray(start, end);
       Object.setPrototypeOf(newBuf, Buffer5.prototype);
       return newBuf;
     };
     function checkOffset(offset, ext, length3) {
-      if (offset % 1 !== 0 || offset < 0)
-        throw new RangeError("offset is not uint");
-      if (offset + ext > length3)
-        throw new RangeError("Trying to access beyond buffer length");
+      if (offset % 1 !== 0 || offset < 0) throw new RangeError("offset is not uint");
+      if (offset + ext > length3) throw new RangeError("Trying to access beyond buffer length");
     }
     Buffer5.prototype.readUintLE = Buffer5.prototype.readUIntLE = function readUIntLE(offset, byteLength3, noAssert) {
       offset = offset >>> 0;
       byteLength3 = byteLength3 >>> 0;
-      if (!noAssert)
-        checkOffset(offset, byteLength3, this.length);
+      if (!noAssert) checkOffset(offset, byteLength3, this.length);
       let val = this[offset];
       let mul3 = 1;
       let i2 = 0;
@@ -7029,32 +6904,27 @@ var require_buffer = __commonJS({
     };
     Buffer5.prototype.readUint8 = Buffer5.prototype.readUInt8 = function readUInt8(offset, noAssert) {
       offset = offset >>> 0;
-      if (!noAssert)
-        checkOffset(offset, 1, this.length);
+      if (!noAssert) checkOffset(offset, 1, this.length);
       return this[offset];
     };
     Buffer5.prototype.readUint16LE = Buffer5.prototype.readUInt16LE = function readUInt16LE(offset, noAssert) {
       offset = offset >>> 0;
-      if (!noAssert)
-        checkOffset(offset, 2, this.length);
+      if (!noAssert) checkOffset(offset, 2, this.length);
       return this[offset] | this[offset + 1] << 8;
     };
     Buffer5.prototype.readUint16BE = Buffer5.prototype.readUInt16BE = function readUInt16BE(offset, noAssert) {
       offset = offset >>> 0;
-      if (!noAssert)
-        checkOffset(offset, 2, this.length);
+      if (!noAssert) checkOffset(offset, 2, this.length);
       return this[offset] << 8 | this[offset + 1];
     };
     Buffer5.prototype.readUint32LE = Buffer5.prototype.readUInt32LE = function readUInt32LE(offset, noAssert) {
       offset = offset >>> 0;
-      if (!noAssert)
-        checkOffset(offset, 4, this.length);
+      if (!noAssert) checkOffset(offset, 4, this.length);
       return (this[offset] | this[offset + 1] << 8 | this[offset + 2] << 16) + this[offset + 3] * 16777216;
     };
     Buffer5.prototype.readUint32BE = Buffer5.prototype.readUInt32BE = function readUInt32BE(offset, noAssert) {
       offset = offset >>> 0;
-      if (!noAssert)
-        checkOffset(offset, 4, this.length);
+      if (!noAssert) checkOffset(offset, 4, this.length);
       return this[offset] * 16777216 + (this[offset + 1] << 16 | this[offset + 2] << 8 | this[offset + 3]);
     };
     Buffer5.prototype.readBigUInt64LE = defineBigIntMethod(function readBigUInt64LE(offset) {
@@ -7084,8 +6954,7 @@ var require_buffer = __commonJS({
     Buffer5.prototype.readIntLE = function readIntLE(offset, byteLength3, noAssert) {
       offset = offset >>> 0;
       byteLength3 = byteLength3 >>> 0;
-      if (!noAssert)
-        checkOffset(offset, byteLength3, this.length);
+      if (!noAssert) checkOffset(offset, byteLength3, this.length);
       let val = this[offset];
       let mul3 = 1;
       let i2 = 0;
@@ -7093,15 +6962,13 @@ var require_buffer = __commonJS({
         val += this[offset + i2] * mul3;
       }
       mul3 *= 128;
-      if (val >= mul3)
-        val -= Math.pow(2, 8 * byteLength3);
+      if (val >= mul3) val -= Math.pow(2, 8 * byteLength3);
       return val;
     };
     Buffer5.prototype.readIntBE = function readIntBE(offset, byteLength3, noAssert) {
       offset = offset >>> 0;
       byteLength3 = byteLength3 >>> 0;
-      if (!noAssert)
-        checkOffset(offset, byteLength3, this.length);
+      if (!noAssert) checkOffset(offset, byteLength3, this.length);
       let i2 = byteLength3;
       let mul3 = 1;
       let val = this[offset + --i2];
@@ -7109,42 +6976,35 @@ var require_buffer = __commonJS({
         val += this[offset + --i2] * mul3;
       }
       mul3 *= 128;
-      if (val >= mul3)
-        val -= Math.pow(2, 8 * byteLength3);
+      if (val >= mul3) val -= Math.pow(2, 8 * byteLength3);
       return val;
     };
     Buffer5.prototype.readInt8 = function readInt8(offset, noAssert) {
       offset = offset >>> 0;
-      if (!noAssert)
-        checkOffset(offset, 1, this.length);
-      if (!(this[offset] & 128))
-        return this[offset];
+      if (!noAssert) checkOffset(offset, 1, this.length);
+      if (!(this[offset] & 128)) return this[offset];
       return (255 - this[offset] + 1) * -1;
     };
     Buffer5.prototype.readInt16LE = function readInt16LE(offset, noAssert) {
       offset = offset >>> 0;
-      if (!noAssert)
-        checkOffset(offset, 2, this.length);
+      if (!noAssert) checkOffset(offset, 2, this.length);
       const val = this[offset] | this[offset + 1] << 8;
       return val & 32768 ? val | 4294901760 : val;
     };
     Buffer5.prototype.readInt16BE = function readInt16BE(offset, noAssert) {
       offset = offset >>> 0;
-      if (!noAssert)
-        checkOffset(offset, 2, this.length);
+      if (!noAssert) checkOffset(offset, 2, this.length);
       const val = this[offset + 1] | this[offset] << 8;
       return val & 32768 ? val | 4294901760 : val;
     };
     Buffer5.prototype.readInt32LE = function readInt32LE(offset, noAssert) {
       offset = offset >>> 0;
-      if (!noAssert)
-        checkOffset(offset, 4, this.length);
+      if (!noAssert) checkOffset(offset, 4, this.length);
       return this[offset] | this[offset + 1] << 8 | this[offset + 2] << 16 | this[offset + 3] << 24;
     };
     Buffer5.prototype.readInt32BE = function readInt32BE(offset, noAssert) {
       offset = offset >>> 0;
-      if (!noAssert)
-        checkOffset(offset, 4, this.length);
+      if (!noAssert) checkOffset(offset, 4, this.length);
       return this[offset] << 24 | this[offset + 1] << 16 | this[offset + 2] << 8 | this[offset + 3];
     };
     Buffer5.prototype.readBigInt64LE = defineBigIntMethod(function readBigInt64LE(offset) {
@@ -7172,35 +7032,28 @@ var require_buffer = __commonJS({
     });
     Buffer5.prototype.readFloatLE = function readFloatLE(offset, noAssert) {
       offset = offset >>> 0;
-      if (!noAssert)
-        checkOffset(offset, 4, this.length);
+      if (!noAssert) checkOffset(offset, 4, this.length);
       return ieee754.read(this, offset, true, 23, 4);
     };
     Buffer5.prototype.readFloatBE = function readFloatBE(offset, noAssert) {
       offset = offset >>> 0;
-      if (!noAssert)
-        checkOffset(offset, 4, this.length);
+      if (!noAssert) checkOffset(offset, 4, this.length);
       return ieee754.read(this, offset, false, 23, 4);
     };
     Buffer5.prototype.readDoubleLE = function readDoubleLE(offset, noAssert) {
       offset = offset >>> 0;
-      if (!noAssert)
-        checkOffset(offset, 8, this.length);
+      if (!noAssert) checkOffset(offset, 8, this.length);
       return ieee754.read(this, offset, true, 52, 8);
     };
     Buffer5.prototype.readDoubleBE = function readDoubleBE(offset, noAssert) {
       offset = offset >>> 0;
-      if (!noAssert)
-        checkOffset(offset, 8, this.length);
+      if (!noAssert) checkOffset(offset, 8, this.length);
       return ieee754.read(this, offset, false, 52, 8);
     };
     function checkInt(buf, value, offset, ext, max4, min4) {
-      if (!Buffer5.isBuffer(buf))
-        throw new TypeError('"buffer" argument must be a Buffer instance');
-      if (value > max4 || value < min4)
-        throw new RangeError('"value" argument is out of bounds');
-      if (offset + ext > buf.length)
-        throw new RangeError("Index out of range");
+      if (!Buffer5.isBuffer(buf)) throw new TypeError('"buffer" argument must be a Buffer instance');
+      if (value > max4 || value < min4) throw new RangeError('"value" argument is out of bounds');
+      if (offset + ext > buf.length) throw new RangeError("Index out of range");
     }
     Buffer5.prototype.writeUintLE = Buffer5.prototype.writeUIntLE = function writeUIntLE(value, offset, byteLength3, noAssert) {
       value = +value;
@@ -7237,16 +7090,14 @@ var require_buffer = __commonJS({
     Buffer5.prototype.writeUint8 = Buffer5.prototype.writeUInt8 = function writeUInt8(value, offset, noAssert) {
       value = +value;
       offset = offset >>> 0;
-      if (!noAssert)
-        checkInt(this, value, offset, 1, 255, 0);
+      if (!noAssert) checkInt(this, value, offset, 1, 255, 0);
       this[offset] = value & 255;
       return offset + 1;
     };
     Buffer5.prototype.writeUint16LE = Buffer5.prototype.writeUInt16LE = function writeUInt16LE(value, offset, noAssert) {
       value = +value;
       offset = offset >>> 0;
-      if (!noAssert)
-        checkInt(this, value, offset, 2, 65535, 0);
+      if (!noAssert) checkInt(this, value, offset, 2, 65535, 0);
       this[offset] = value & 255;
       this[offset + 1] = value >>> 8;
       return offset + 2;
@@ -7254,8 +7105,7 @@ var require_buffer = __commonJS({
     Buffer5.prototype.writeUint16BE = Buffer5.prototype.writeUInt16BE = function writeUInt16BE(value, offset, noAssert) {
       value = +value;
       offset = offset >>> 0;
-      if (!noAssert)
-        checkInt(this, value, offset, 2, 65535, 0);
+      if (!noAssert) checkInt(this, value, offset, 2, 65535, 0);
       this[offset] = value >>> 8;
       this[offset + 1] = value & 255;
       return offset + 2;
@@ -7263,8 +7113,7 @@ var require_buffer = __commonJS({
     Buffer5.prototype.writeUint32LE = Buffer5.prototype.writeUInt32LE = function writeUInt32LE(value, offset, noAssert) {
       value = +value;
       offset = offset >>> 0;
-      if (!noAssert)
-        checkInt(this, value, offset, 4, 4294967295, 0);
+      if (!noAssert) checkInt(this, value, offset, 4, 4294967295, 0);
       this[offset + 3] = value >>> 24;
       this[offset + 2] = value >>> 16;
       this[offset + 1] = value >>> 8;
@@ -7274,8 +7123,7 @@ var require_buffer = __commonJS({
     Buffer5.prototype.writeUint32BE = Buffer5.prototype.writeUInt32BE = function writeUInt32BE(value, offset, noAssert) {
       value = +value;
       offset = offset >>> 0;
-      if (!noAssert)
-        checkInt(this, value, offset, 4, 4294967295, 0);
+      if (!noAssert) checkInt(this, value, offset, 4, 4294967295, 0);
       this[offset] = value >>> 24;
       this[offset + 1] = value >>> 16;
       this[offset + 2] = value >>> 8;
@@ -7369,18 +7217,15 @@ var require_buffer = __commonJS({
     Buffer5.prototype.writeInt8 = function writeInt8(value, offset, noAssert) {
       value = +value;
       offset = offset >>> 0;
-      if (!noAssert)
-        checkInt(this, value, offset, 1, 127, -128);
-      if (value < 0)
-        value = 255 + value + 1;
+      if (!noAssert) checkInt(this, value, offset, 1, 127, -128);
+      if (value < 0) value = 255 + value + 1;
       this[offset] = value & 255;
       return offset + 1;
     };
     Buffer5.prototype.writeInt16LE = function writeInt16LE(value, offset, noAssert) {
       value = +value;
       offset = offset >>> 0;
-      if (!noAssert)
-        checkInt(this, value, offset, 2, 32767, -32768);
+      if (!noAssert) checkInt(this, value, offset, 2, 32767, -32768);
       this[offset] = value & 255;
       this[offset + 1] = value >>> 8;
       return offset + 2;
@@ -7388,8 +7233,7 @@ var require_buffer = __commonJS({
     Buffer5.prototype.writeInt16BE = function writeInt16BE(value, offset, noAssert) {
       value = +value;
       offset = offset >>> 0;
-      if (!noAssert)
-        checkInt(this, value, offset, 2, 32767, -32768);
+      if (!noAssert) checkInt(this, value, offset, 2, 32767, -32768);
       this[offset] = value >>> 8;
       this[offset + 1] = value & 255;
       return offset + 2;
@@ -7397,8 +7241,7 @@ var require_buffer = __commonJS({
     Buffer5.prototype.writeInt32LE = function writeInt32LE(value, offset, noAssert) {
       value = +value;
       offset = offset >>> 0;
-      if (!noAssert)
-        checkInt(this, value, offset, 4, 2147483647, -2147483648);
+      if (!noAssert) checkInt(this, value, offset, 4, 2147483647, -2147483648);
       this[offset] = value & 255;
       this[offset + 1] = value >>> 8;
       this[offset + 2] = value >>> 16;
@@ -7408,10 +7251,8 @@ var require_buffer = __commonJS({
     Buffer5.prototype.writeInt32BE = function writeInt32BE(value, offset, noAssert) {
       value = +value;
       offset = offset >>> 0;
-      if (!noAssert)
-        checkInt(this, value, offset, 4, 2147483647, -2147483648);
-      if (value < 0)
-        value = 4294967295 + value + 1;
+      if (!noAssert) checkInt(this, value, offset, 4, 2147483647, -2147483648);
+      if (value < 0) value = 4294967295 + value + 1;
       this[offset] = value >>> 24;
       this[offset + 1] = value >>> 16;
       this[offset + 2] = value >>> 8;
@@ -7425,10 +7266,8 @@ var require_buffer = __commonJS({
       return wrtBigUInt64BE(this, value, offset, -BigInt("0x8000000000000000"), BigInt("0x7fffffffffffffff"));
     });
     function checkIEEE754(buf, value, offset, ext, max4, min4) {
-      if (offset + ext > buf.length)
-        throw new RangeError("Index out of range");
-      if (offset < 0)
-        throw new RangeError("Index out of range");
+      if (offset + ext > buf.length) throw new RangeError("Index out of range");
+      if (offset < 0) throw new RangeError("Index out of range");
     }
     function writeFloat(buf, value, offset, littleEndian, noAssert) {
       value = +value;
@@ -7461,31 +7300,20 @@ var require_buffer = __commonJS({
       return writeDouble(this, value, offset, false, noAssert);
     };
     Buffer5.prototype.copy = function copy4(target, targetStart, start, end) {
-      if (!Buffer5.isBuffer(target))
-        throw new TypeError("argument should be a Buffer");
-      if (!start)
-        start = 0;
-      if (!end && end !== 0)
-        end = this.length;
-      if (targetStart >= target.length)
-        targetStart = target.length;
-      if (!targetStart)
-        targetStart = 0;
-      if (end > 0 && end < start)
-        end = start;
-      if (end === start)
-        return 0;
-      if (target.length === 0 || this.length === 0)
-        return 0;
+      if (!Buffer5.isBuffer(target)) throw new TypeError("argument should be a Buffer");
+      if (!start) start = 0;
+      if (!end && end !== 0) end = this.length;
+      if (targetStart >= target.length) targetStart = target.length;
+      if (!targetStart) targetStart = 0;
+      if (end > 0 && end < start) end = start;
+      if (end === start) return 0;
+      if (target.length === 0 || this.length === 0) return 0;
       if (targetStart < 0) {
         throw new RangeError("targetStart out of bounds");
       }
-      if (start < 0 || start >= this.length)
-        throw new RangeError("Index out of range");
-      if (end < 0)
-        throw new RangeError("sourceEnd out of bounds");
-      if (end > this.length)
-        end = this.length;
+      if (start < 0 || start >= this.length) throw new RangeError("Index out of range");
+      if (end < 0) throw new RangeError("sourceEnd out of bounds");
+      if (end > this.length) end = this.length;
       if (target.length - targetStart < end - start) {
         end = target.length - targetStart + start;
       }
@@ -7536,8 +7364,7 @@ var require_buffer = __commonJS({
       }
       start = start >>> 0;
       end = end === void 0 ? this.length : end >>> 0;
-      if (!val)
-        val = 0;
+      if (!val) val = 0;
       let i2;
       if (typeof val === "number") {
         for (i2 = start; i2 < end; ++i2) {
@@ -7676,8 +7503,7 @@ var require_buffer = __commonJS({
     function base64clean(str3) {
       str3 = str3.split("=")[0];
       str3 = str3.trim().replace(INVALID_BASE64_RE, "");
-      if (str3.length < 2)
-        return "";
+      if (str3.length < 2) return "";
       while (str3.length % 4 !== 0) {
         str3 = str3 + "=";
       }
@@ -7694,51 +7520,43 @@ var require_buffer = __commonJS({
         if (codePoint > 55295 && codePoint < 57344) {
           if (!leadSurrogate) {
             if (codePoint > 56319) {
-              if ((units -= 3) > -1)
-                bytes.push(239, 191, 189);
+              if ((units -= 3) > -1) bytes.push(239, 191, 189);
               continue;
             } else if (i2 + 1 === length3) {
-              if ((units -= 3) > -1)
-                bytes.push(239, 191, 189);
+              if ((units -= 3) > -1) bytes.push(239, 191, 189);
               continue;
             }
             leadSurrogate = codePoint;
             continue;
           }
           if (codePoint < 56320) {
-            if ((units -= 3) > -1)
-              bytes.push(239, 191, 189);
+            if ((units -= 3) > -1) bytes.push(239, 191, 189);
             leadSurrogate = codePoint;
             continue;
           }
           codePoint = (leadSurrogate - 55296 << 10 | codePoint - 56320) + 65536;
         } else if (leadSurrogate) {
-          if ((units -= 3) > -1)
-            bytes.push(239, 191, 189);
+          if ((units -= 3) > -1) bytes.push(239, 191, 189);
         }
         leadSurrogate = null;
         if (codePoint < 128) {
-          if ((units -= 1) < 0)
-            break;
+          if ((units -= 1) < 0) break;
           bytes.push(codePoint);
         } else if (codePoint < 2048) {
-          if ((units -= 2) < 0)
-            break;
+          if ((units -= 2) < 0) break;
           bytes.push(
             codePoint >> 6 | 192,
             codePoint & 63 | 128
           );
         } else if (codePoint < 65536) {
-          if ((units -= 3) < 0)
-            break;
+          if ((units -= 3) < 0) break;
           bytes.push(
             codePoint >> 12 | 224,
             codePoint >> 6 & 63 | 128,
             codePoint & 63 | 128
           );
         } else if (codePoint < 1114112) {
-          if ((units -= 4) < 0)
-            break;
+          if ((units -= 4) < 0) break;
           bytes.push(
             codePoint >> 18 | 240,
             codePoint >> 12 & 63 | 128,
@@ -7762,8 +7580,7 @@ var require_buffer = __commonJS({
       let c, hi, lo;
       const byteArray = [];
       for (let i2 = 0; i2 < str3.length; ++i2) {
-        if ((units -= 2) < 0)
-          break;
+        if ((units -= 2) < 0) break;
         c = str3.charCodeAt(i2);
         hi = c >> 8;
         lo = c % 256;
@@ -7778,8 +7595,7 @@ var require_buffer = __commonJS({
     function blitBuffer(src, dst, offset, length3) {
       let i2;
       for (i2 = 0; i2 < length3; ++i2) {
-        if (i2 + offset >= dst.length || i2 >= src.length)
-          break;
+        if (i2 + offset >= dst.length || i2 >= src.length) break;
         dst[i2 + offset] = src[i2];
       }
       return i2;
@@ -7893,8 +7709,7 @@ var require_string_decoder = __commonJS({
       }
     };
     function _normalizeEncoding(enc) {
-      if (!enc)
-        return "utf8";
+      if (!enc) return "utf8";
       var retried;
       while (true) {
         switch (enc) {
@@ -7914,8 +7729,7 @@ var require_string_decoder = __commonJS({
           case "hex":
             return enc;
           default:
-            if (retried)
-              return;
+            if (retried) return;
             enc = ("" + enc).toLowerCase();
             retried = true;
         }
@@ -7923,8 +7737,7 @@ var require_string_decoder = __commonJS({
     }
     function normalizeEncoding(enc) {
       var nenc = _normalizeEncoding(enc);
-      if (typeof nenc !== "string" && (Buffer5.isEncoding === isEncoding || !isEncoding(enc)))
-        throw new Error("Unknown encoding: " + enc);
+      if (typeof nenc !== "string" && (Buffer5.isEncoding === isEncoding || !isEncoding(enc))) throw new Error("Unknown encoding: " + enc);
       return nenc || enc;
     }
     exports2.StringDecoder = StringDecoder;
@@ -7956,21 +7769,18 @@ var require_string_decoder = __commonJS({
       this.lastChar = Buffer5.allocUnsafe(nb);
     }
     StringDecoder.prototype.write = function(buf) {
-      if (buf.length === 0)
-        return "";
+      if (buf.length === 0) return "";
       var r;
       var i2;
       if (this.lastNeed) {
         r = this.fillLast(buf);
-        if (r === void 0)
-          return "";
+        if (r === void 0) return "";
         i2 = this.lastNeed;
         this.lastNeed = 0;
       } else {
         i2 = 0;
       }
-      if (i2 < buf.length)
-        return r ? r + this.text(buf, i2) : this.text(buf, i2);
+      if (i2 < buf.length) return r ? r + this.text(buf, i2) : this.text(buf, i2);
       return r || "";
     };
     StringDecoder.prototype.end = utf8End;
@@ -7984,43 +7794,32 @@ var require_string_decoder = __commonJS({
       this.lastNeed -= buf.length;
     };
     function utf8CheckByte(byte) {
-      if (byte <= 127)
-        return 0;
-      else if (byte >> 5 === 6)
-        return 2;
-      else if (byte >> 4 === 14)
-        return 3;
-      else if (byte >> 3 === 30)
-        return 4;
+      if (byte <= 127) return 0;
+      else if (byte >> 5 === 6) return 2;
+      else if (byte >> 4 === 14) return 3;
+      else if (byte >> 3 === 30) return 4;
       return byte >> 6 === 2 ? -1 : -2;
     }
     function utf8CheckIncomplete(self2, buf, i2) {
       var j = buf.length - 1;
-      if (j < i2)
-        return 0;
+      if (j < i2) return 0;
       var nb = utf8CheckByte(buf[j]);
       if (nb >= 0) {
-        if (nb > 0)
-          self2.lastNeed = nb - 1;
+        if (nb > 0) self2.lastNeed = nb - 1;
         return nb;
       }
-      if (--j < i2 || nb === -2)
-        return 0;
+      if (--j < i2 || nb === -2) return 0;
       nb = utf8CheckByte(buf[j]);
       if (nb >= 0) {
-        if (nb > 0)
-          self2.lastNeed = nb - 2;
+        if (nb > 0) self2.lastNeed = nb - 2;
         return nb;
       }
-      if (--j < i2 || nb === -2)
-        return 0;
+      if (--j < i2 || nb === -2) return 0;
       nb = utf8CheckByte(buf[j]);
       if (nb >= 0) {
         if (nb > 0) {
-          if (nb === 2)
-            nb = 0;
-          else
-            self2.lastNeed = nb - 3;
+          if (nb === 2) nb = 0;
+          else self2.lastNeed = nb - 3;
         }
         return nb;
       }
@@ -8047,8 +7846,7 @@ var require_string_decoder = __commonJS({
     function utf8FillLast(buf) {
       var p = this.lastTotal - this.lastNeed;
       var r = utf8CheckExtraBytes(this, buf, p);
-      if (r !== void 0)
-        return r;
+      if (r !== void 0) return r;
       if (this.lastNeed <= buf.length) {
         buf.copy(this.lastChar, p, 0, this.lastNeed);
         return this.lastChar.toString(this.encoding, 0, this.lastTotal);
@@ -8058,8 +7856,7 @@ var require_string_decoder = __commonJS({
     }
     function utf8Text(buf, i2) {
       var total = utf8CheckIncomplete(this, buf, i2);
-      if (!this.lastNeed)
-        return buf.toString("utf8", i2);
+      if (!this.lastNeed) return buf.toString("utf8", i2);
       this.lastTotal = total;
       var end = buf.length - (total - this.lastNeed);
       buf.copy(this.lastChar, 0, end);
@@ -8067,8 +7864,7 @@ var require_string_decoder = __commonJS({
     }
     function utf8End(buf) {
       var r = buf && buf.length ? this.write(buf) : "";
-      if (this.lastNeed)
-        return r + "\uFFFD";
+      if (this.lastNeed) return r + "\uFFFD";
       return r;
     }
     function utf16Text(buf, i2) {
@@ -8101,8 +7897,7 @@ var require_string_decoder = __commonJS({
     }
     function base64Text(buf, i2) {
       var n2 = (buf.length - i2) % 3;
-      if (n2 === 0)
-        return buf.toString("base64", i2);
+      if (n2 === 0) return buf.toString("base64", i2);
       this.lastNeed = 3 - n2;
       this.lastTotal = 3;
       if (n2 === 1) {
@@ -8115,8 +7910,7 @@ var require_string_decoder = __commonJS({
     }
     function base64End(buf) {
       var r = buf && buf.length ? this.write(buf) : "";
-      if (this.lastNeed)
-        return r + this.lastChar.toString("base64", 0, 3 - this.lastNeed);
+      if (this.lastNeed) return r + this.lastChar.toString("base64", 0, 3 - this.lastNeed);
       return r;
     }
     function simpleWrite(buf) {
@@ -8214,9 +8008,7 @@ var require_sax = __commonJS({
       if (!Object.keys) {
         Object.keys = function(o) {
           var a = [];
-          for (var i2 in o)
-            if (o.hasOwnProperty(i2))
-              a.push(i2);
+          for (var i2 in o) if (o.hasOwnProperty(i2)) a.push(i2);
           return a;
         };
       }
@@ -8736,21 +8528,17 @@ var require_sax = __commonJS({
         parser[event] && parser[event](data);
       }
       function emitNode(parser, nodeType, data) {
-        if (parser.textNode)
-          closeText(parser);
+        if (parser.textNode) closeText(parser);
         emit(parser, nodeType, data);
       }
       function closeText(parser) {
         parser.textNode = textopts(parser.opt, parser.textNode);
-        if (parser.textNode)
-          emit(parser, "ontext", parser.textNode);
+        if (parser.textNode) emit(parser, "ontext", parser.textNode);
         parser.textNode = "";
       }
       function textopts(opt, text) {
-        if (opt.trim)
-          text = text.trim();
-        if (opt.normalize)
-          text = text.replace(/\s+/g, " ");
+        if (opt.trim) text = text.trim();
+        if (opt.normalize) text = text.replace(/\s+/g, " ");
         return text;
       }
       function error(parser, er) {
@@ -8764,8 +8552,7 @@ var require_sax = __commonJS({
         return parser;
       }
       function end(parser) {
-        if (parser.sawRoot && !parser.closedRoot)
-          strictFail(parser, "Unclosed root tag");
+        if (parser.sawRoot && !parser.closedRoot) strictFail(parser, "Unclosed root tag");
         if (parser.state !== S.BEGIN && parser.state !== S.BEGIN_WHITESPACE && parser.state !== S.TEXT) {
           error(parser, "Unexpected end");
         }
@@ -8785,8 +8572,7 @@ var require_sax = __commonJS({
         }
       }
       function newTag(parser) {
-        if (!parser.strict)
-          parser.tagName = parser.tagName[parser.looseCase]();
+        if (!parser.strict) parser.tagName = parser.tagName[parser.looseCase]();
         var parent = parser.tags[parser.tags.length - 1] || parser;
         var tag2 = parser.tag = { name: parser.tagName, attributes: {} };
         if (parser.opt.xmlns) {
@@ -8963,8 +8749,7 @@ var require_sax = __commonJS({
             });
           }
         }
-        if (t === 0)
-          parser.closedRoot = true;
+        if (t === 0) parser.closedRoot = true;
         parser.tagName = parser.attribValue = parser.attribName = "";
         parser.attribList.length = 0;
         parser.state = S.TEXT;
@@ -9634,8 +9419,7 @@ var require_events = __commonJS({
       };
     }
     function ProcessEmitWarning(warning) {
-      if (console && console.warn)
-        console.warn(warning);
+      if (console && console.warn) console.warn(warning);
     }
     var NumberIsNaN = Number.isNaN || function NumberIsNaN2(value) {
       return value !== value;
@@ -9691,8 +9475,7 @@ var require_events = __commonJS({
     };
     EventEmitter2.prototype.emit = function emit(type) {
       var args = [];
-      for (var i2 = 1; i2 < arguments.length; i2++)
-        args.push(arguments[i2]);
+      for (var i2 = 1; i2 < arguments.length; i2++) args.push(arguments[i2]);
       var doError = type === "error";
       var events = this._events;
       if (events !== void 0)
@@ -9863,8 +9646,7 @@ var require_events = __commonJS({
         var key;
         for (i2 = 0; i2 < keys3.length; ++i2) {
           key = keys3[i2];
-          if (key === "removeListener")
-            continue;
+          if (key === "removeListener") continue;
           this.removeAllListeners(key);
         }
         this.removeAllListeners("removeListener");
@@ -11190,38 +10972,28 @@ var require_fast_deep_equal = __commonJS({
   "../../node_modules/.pnpm/fast-deep-equal@3.1.3/node_modules/fast-deep-equal/index.js"(exports2, module2) {
     "use strict";
     module2.exports = function equal(a, b10) {
-      if (a === b10)
-        return true;
+      if (a === b10) return true;
       if (a && b10 && typeof a == "object" && typeof b10 == "object") {
-        if (a.constructor !== b10.constructor)
-          return false;
+        if (a.constructor !== b10.constructor) return false;
         var length3, i2, keys3;
         if (Array.isArray(a)) {
           length3 = a.length;
-          if (length3 != b10.length)
-            return false;
+          if (length3 != b10.length) return false;
           for (i2 = length3; i2-- !== 0; )
-            if (!equal(a[i2], b10[i2]))
-              return false;
+            if (!equal(a[i2], b10[i2])) return false;
           return true;
         }
-        if (a.constructor === RegExp)
-          return a.source === b10.source && a.flags === b10.flags;
-        if (a.valueOf !== Object.prototype.valueOf)
-          return a.valueOf() === b10.valueOf();
-        if (a.toString !== Object.prototype.toString)
-          return a.toString() === b10.toString();
+        if (a.constructor === RegExp) return a.source === b10.source && a.flags === b10.flags;
+        if (a.valueOf !== Object.prototype.valueOf) return a.valueOf() === b10.valueOf();
+        if (a.toString !== Object.prototype.toString) return a.toString() === b10.toString();
         keys3 = Object.keys(a);
         length3 = keys3.length;
-        if (length3 !== Object.keys(b10).length)
-          return false;
+        if (length3 !== Object.keys(b10).length) return false;
         for (i2 = length3; i2-- !== 0; )
-          if (!Object.prototype.hasOwnProperty.call(b10, keys3[i2]))
-            return false;
+          if (!Object.prototype.hasOwnProperty.call(b10, keys3[i2])) return false;
         for (i2 = length3; i2-- !== 0; ) {
           var key = keys3[i2];
-          if (!equal(a[key], b10[key]))
-            return false;
+          if (!equal(a[key], b10[key])) return false;
         }
         return true;
       }
@@ -11280,10 +11052,8 @@ var require_tiny_inflate = __commonJS({
     var lengths = new Uint8Array(288 + 32);
     function tinf_build_bits_base(bits, base, delta, first) {
       var i2, sum;
-      for (i2 = 0; i2 < delta; ++i2)
-        bits[i2] = 0;
-      for (i2 = 0; i2 < 30 - delta; ++i2)
-        bits[i2 + delta] = i2 / delta | 0;
+      for (i2 = 0; i2 < delta; ++i2) bits[i2] = 0;
+      for (i2 = 0; i2 < 30 - delta; ++i2) bits[i2 + delta] = i2 / delta | 0;
       for (sum = first, i2 = 0; i2 < 30; ++i2) {
         base[i2] = sum;
         sum += 1 << bits[i2];
@@ -11291,40 +11061,30 @@ var require_tiny_inflate = __commonJS({
     }
     function tinf_build_fixed_trees(lt, dt) {
       var i2;
-      for (i2 = 0; i2 < 7; ++i2)
-        lt.table[i2] = 0;
+      for (i2 = 0; i2 < 7; ++i2) lt.table[i2] = 0;
       lt.table[7] = 24;
       lt.table[8] = 152;
       lt.table[9] = 112;
-      for (i2 = 0; i2 < 24; ++i2)
-        lt.trans[i2] = 256 + i2;
-      for (i2 = 0; i2 < 144; ++i2)
-        lt.trans[24 + i2] = i2;
-      for (i2 = 0; i2 < 8; ++i2)
-        lt.trans[24 + 144 + i2] = 280 + i2;
-      for (i2 = 0; i2 < 112; ++i2)
-        lt.trans[24 + 144 + 8 + i2] = 144 + i2;
-      for (i2 = 0; i2 < 5; ++i2)
-        dt.table[i2] = 0;
+      for (i2 = 0; i2 < 24; ++i2) lt.trans[i2] = 256 + i2;
+      for (i2 = 0; i2 < 144; ++i2) lt.trans[24 + i2] = i2;
+      for (i2 = 0; i2 < 8; ++i2) lt.trans[24 + 144 + i2] = 280 + i2;
+      for (i2 = 0; i2 < 112; ++i2) lt.trans[24 + 144 + 8 + i2] = 144 + i2;
+      for (i2 = 0; i2 < 5; ++i2) dt.table[i2] = 0;
       dt.table[5] = 32;
-      for (i2 = 0; i2 < 32; ++i2)
-        dt.trans[i2] = i2;
+      for (i2 = 0; i2 < 32; ++i2) dt.trans[i2] = i2;
     }
     var offs = new Uint16Array(16);
     function tinf_build_tree(t, lengths2, off, num) {
       var i2, sum;
-      for (i2 = 0; i2 < 16; ++i2)
-        t.table[i2] = 0;
-      for (i2 = 0; i2 < num; ++i2)
-        t.table[lengths2[off + i2]]++;
+      for (i2 = 0; i2 < 16; ++i2) t.table[i2] = 0;
+      for (i2 = 0; i2 < num; ++i2) t.table[lengths2[off + i2]]++;
       t.table[0] = 0;
       for (sum = 0, i2 = 0; i2 < 16; ++i2) {
         offs[i2] = sum;
         sum += t.table[i2];
       }
       for (i2 = 0; i2 < num; ++i2) {
-        if (lengths2[off + i2])
-          t.trans[offs[lengths2[off + i2]]++] = i2;
+        if (lengths2[off + i2]) t.trans[offs[lengths2[off + i2]]++] = i2;
       }
     }
     function tinf_getbit(d) {
@@ -11372,8 +11132,7 @@ var require_tiny_inflate = __commonJS({
       hlit = tinf_read_bits(d, 5, 257);
       hdist = tinf_read_bits(d, 5, 1);
       hclen = tinf_read_bits(d, 4, 4);
-      for (i2 = 0; i2 < 19; ++i2)
-        lengths[i2] = 0;
+      for (i2 = 0; i2 < 19; ++i2) lengths[i2] = 0;
       for (i2 = 0; i2 < hclen; ++i2) {
         var clen = tinf_read_bits(d, 3, 0);
         lengths[clcidx[i2]] = clen;
@@ -11724,8 +11483,7 @@ var require_clone = __commonJS({
             child = [];
           } else if (clone4.__isRegExp(parent2)) {
             child = new RegExp(parent2.source, __getRegExpFlags(parent2));
-            if (parent2.lastIndex)
-              child.lastIndex = parent2.lastIndex;
+            if (parent2.lastIndex) child.lastIndex = parent2.lastIndex;
           } else if (clone4.__isDate(parent2)) {
             child = new Date(parent2.getTime());
           } else if (useBuffer && Buffer.isBuffer(parent2)) {
@@ -11838,12 +11596,9 @@ var require_clone = __commonJS({
       clone4.__isRegExp = __isRegExp;
       function __getRegExpFlags(re) {
         var flags = "";
-        if (re.global)
-          flags += "g";
-        if (re.ignoreCase)
-          flags += "i";
-        if (re.multiline)
-          flags += "m";
+        if (re.global) flags += "g";
+        if (re.ignoreCase) flags += "i";
+        if (re.multiline) flags += "m";
         return flags;
       }
       clone4.__getRegExpFlags = __getRegExpFlags;
@@ -12100,8 +11855,7 @@ var require_huffman = __commonJS({
       var left = 1 << len2 - root_bits;
       while (len2 < MAX_LENGTH) {
         left -= count[len2];
-        if (left <= 0)
-          break;
+        if (left <= 0) break;
         ++len2;
         left <<= 1;
       }
@@ -14692,8 +14446,7 @@ var require_decode = __commonJS({
     function MoveToFront(v, index2) {
       var value = v[index2];
       var i2 = index2;
-      for (; i2; --i2)
-        v[i2] = v[i2 - 1];
+      for (; i2; --i2) v[i2] = v[i2 - 1];
       v[0] = value;
     }
     function InverseMoveToFrontTransform(v, v_len) {
@@ -14705,8 +14458,7 @@ var require_decode = __commonJS({
       for (i2 = 0; i2 < v_len; ++i2) {
         var index2 = v[i2];
         v[i2] = mtf[index2];
-        if (index2)
-          MoveToFront(mtf, index2);
+        if (index2) MoveToFront(mtf, index2);
       }
     }
     function HuffmanTreeGroup(alphabet_size, num_htrees) {
@@ -15084,8 +14836,7 @@ var require_decode = __commonJS({
             ++pos;
           }
           meta_block_remaining_len -= insert_length;
-          if (meta_block_remaining_len <= 0)
-            break;
+          if (meta_block_remaining_len <= 0) break;
           if (distance_code < 0) {
             var context;
             br.readMoreInput();
@@ -15710,14 +15461,13 @@ var EPSILON = 1e-6;
 var ARRAY_TYPE = typeof Float32Array !== "undefined" ? Float32Array : Array;
 var RANDOM = Math.random;
 var degree = Math.PI / 180;
-if (!Math.hypot)
-  Math.hypot = function() {
-    var y2 = 0, i2 = arguments.length;
-    while (i2--) {
-      y2 += arguments[i2] * arguments[i2];
-    }
-    return Math.sqrt(y2);
-  };
+if (!Math.hypot) Math.hypot = function() {
+  var y2 = 0, i2 = arguments.length;
+  while (i2--) {
+    y2 += arguments[i2] * arguments[i2];
+  }
+  return Math.sqrt(y2);
+};
 
 // ../../node_modules/.pnpm/gl-matrix@3.4.3/node_modules/gl-matrix/esm/mat3.js
 var mat3_exports = {};
@@ -16868,7 +16618,7 @@ var BaseDb = class {
   }
 };
 
-// ../../node_modules/.pnpm/dedent@1.5.1/node_modules/dedent/dist/dedent.mjs
+// ../../node_modules/.pnpm/dedent@1.5.1_babel-plugin-macros@3.1.0/node_modules/dedent/dist/dedent.mjs
 function ownKeys(object, enumerableOnly) {
   var keys3 = Object.keys(object);
   if (Object.getOwnPropertySymbols) {
@@ -16904,13 +16654,11 @@ function _toPropertyKey(arg) {
   return typeof key === "symbol" ? key : String(key);
 }
 function _toPrimitive(input, hint) {
-  if (typeof input !== "object" || input === null)
-    return input;
+  if (typeof input !== "object" || input === null) return input;
   var prim2 = input[Symbol.toPrimitive];
   if (prim2 !== void 0) {
     var res = prim2.call(input, hint || "default");
-    if (typeof res !== "object")
-      return res;
+    if (typeof res !== "object") return res;
     throw new TypeError("@@toPrimitive must return a primitive value.");
   }
   return (hint === "string" ? String : Number)(input);
@@ -17298,149 +17046,6 @@ var db_default = {
 // ../pintora-diagrams/lib/util/theme.js
 var PALETTE = themeRegistry.palettes.AYU_LIGHT;
 
-// ../pintora-diagrams/lib/util/config.js
-function baseGetConfigFromGlobalConfig(globalConfig, configContext, configKey9) {
-  var _a;
-  const coreConfig = safeAssign({}, globalConfig.core, (_a = configContext.overrideConfig) === null || _a === void 0 ? void 0 : _a.core);
-  return safeAssign({ fontFamily: coreConfig.defaultFontFamily, useMaxWidth: coreConfig.useMaxWidth }, globalConfig[configKey9] || {});
-}
-function makeConfigurator(opts) {
-  const { configKey: configKey9, defaultConfig: defaultConfig9 } = opts;
-  function getConfig2(configContext, extraConfig) {
-    var _a, _b;
-    const globalConfig = config_default.gnernateNewConfig(configContext.overrideConfig || {});
-    const t = (_a = globalConfig.themeConfig) === null || _a === void 0 ? void 0 : _a.themeVariables;
-    const conf6 = { ...defaultConfig9 };
-    safeAssign(conf6, opts.getConfigFromTheme(t, conf6));
-    const getConfigFromGlobalConfig = opts.getConfigFromGlobalConfig || baseGetConfigFromGlobalConfig;
-    safeAssign(conf6, getConfigFromGlobalConfig(globalConfig, configContext, configKey9));
-    if (extraConfig)
-      safeAssign(conf6, extraConfig);
-    safeAssign(conf6, (_b = configContext.overrideConfig) === null || _b === void 0 ? void 0 : _b[configKey9]);
-    if (opts.getConfigFromParamDirectives) {
-      safeAssign(conf6, opts.getConfigFromParamDirectives(configContext.configParams));
-    }
-    return conf6;
-  }
-  return {
-    getConfig: getConfig2
-  };
-}
-function getParamRulesFromConfig(config2) {
-  const out = {};
-  for (const [key, value] of Object.entries(config2)) {
-    const t = typeof value;
-    let valueType;
-    if (t === "number") {
-      valueType = "size";
-    } else if (t === "boolean") {
-      valueType = "boolean";
-    } else if (t === "string") {
-      if (/color|background/.test(key.toLowerCase())) {
-        valueType = "color";
-      } else {
-        valueType = "string";
-      }
-    }
-    if (valueType) {
-      out[key] = { valueType };
-    }
-  }
-  return out;
-}
-
-// ../pintora-diagrams/lib/sequence/config.js
-var defaultConfig = {
-  noteWidth: 80,
-  noteHeight: 50,
-  noteMargin: 10,
-  boxMargin: 10,
-  activationWidth: 10,
-  diagramMarginX: 10,
-  diagramMarginY: 10,
-  boxTextMargin: 5,
-  messageFontSize: 16,
-  messageFontFamily: DEFAULT_FONT_FAMILY,
-  messageFontWeight: 400,
-  messageTextColor: PALETTE.normalDark,
-  boxFontWeight: 700,
-  wrapPadding: 10,
-  labelBoxWidth: 50,
-  labelBoxHeight: 20,
-  loopLineColor: PALETTE.orange,
-  mirrorActors: true,
-  actorWidth: 80,
-  actorHeight: 50,
-  actorMargin: 10,
-  actorBackground: PALETTE.orange,
-  actorBorderColor: PALETTE.normalDark,
-  actorTextColor: PALETTE.normalDark,
-  actorLineColor: PALETTE.normalDark,
-  participantBoxPadding: 10,
-  participantBackground: "transparent",
-  noteTextColor: PALETTE.normalDark,
-  activationBackground: PALETTE.neutralGray,
-  dividerFontWeight: 600,
-  dividerTextColor: PALETTE.normalDark,
-  dividerMargin: 15,
-  showSequenceNumbers: false,
-  useMaxWidth: false
-};
-var SEQUENCE_PARAM_DIRECTIVE_RULES = {
-  noteMargin: { valueType: "size" },
-  boxMargin: { valueType: "size" },
-  activationWidth: { valueType: "size" },
-  diagramMarginX: { valueType: "size" },
-  diagramMarginY: { valueType: "size" },
-  boxTextMargin: { valueType: "size" },
-  messageFontSize: { valueType: "fontSize" },
-  messageFontFamily: { valueType: "string" },
-  messageTextColor: { valueType: "color" },
-  wrapPadding: { valueType: "size" },
-  labelBoxWidth: { valueType: "size" },
-  labelBoxHeight: { valueType: "size" },
-  loopLineColor: { valueType: "color" },
-  actorWidth: { valueType: "size" },
-  actorHeight: { valueType: "size" },
-  actorMargin: { valueType: "size" },
-  actorBackground: { valueType: "color" },
-  actorBorderColor: { valueType: "color" },
-  actorTextColor: { valueType: "color" },
-  actorLineColor: { valueType: "color" },
-  noteTextColor: { valueType: "color" },
-  activationBackground: { valueType: "color" },
-  dividerTextColor: { valueType: "color" },
-  useMaxWidth: { valueType: "boolean" }
-};
-var configKey = "sequence";
-var configurator = makeConfigurator({
-  defaultConfig,
-  configKey,
-  getConfigFromGlobalConfig(globalConfig, configContext, configKey9) {
-    return safeAssign({
-      ...baseGetConfigFromGlobalConfig(globalConfig, configContext, configKey9),
-      messageFontFamily: globalConfig.core.defaultFontFamily
-    });
-  },
-  getConfigFromParamDirectives(configParams) {
-    return interpreteConfigs(SEQUENCE_PARAM_DIRECTIVE_RULES, configParams);
-  },
-  getConfigFromTheme(t) {
-    return {
-      actorBackground: t.primaryColor,
-      actorBorderColor: t.primaryBorderColor,
-      messageTextColor: t.textColor,
-      loopLineColor: t.primaryColor,
-      actorTextColor: t.textColor,
-      actorLineColor: t.primaryLineColor,
-      noteTextColor: t.noteTextColor || t.textColor,
-      activationBackground: t.background1,
-      dividerTextColor: t.secondaryTextColor
-    };
-  }
-});
-var getConf = configurator.getConfig;
-
 // ../pintora-diagrams/lib/util/arrow/index.js
 function drawArrowTo(dest, baseLength, rad, opts) {
   const { x: x2, y: y2 } = dest;
@@ -17616,10 +17221,10 @@ function calcDirection(start, end) {
   }
   return r;
 }
-function makeLabelBg(labelDims, center, attrs = {}, theme3) {
+function makeLabelBg(labelDims, center, attrs = {}, theme2) {
   let fill = "#fff";
-  if (theme3) {
-    fill = theme3.canvasBackground || theme3.background1 || (theme3.isDark ? "#000" : "#fff");
+  if (theme2) {
+    fill = theme2.canvasBackground || theme2.background1 || (theme2.isDark ? "#000" : "#fff");
   }
   const labelBg = makeMark("rect", {
     x: center.x - labelDims.width / 2,
@@ -17676,12 +17281,12 @@ function makeEmptyGroup() {
 function makeCircle(attrs) {
   return makeMark("circle", { x: 0, y: 0, r: 0, ...attrs });
 }
-var getBaseNote = function(theme3) {
+var getBaseNote = function(theme2) {
   return {
     x: 0,
     y: 0,
-    fill: theme3.noteBackground || theme3.groupBackground,
-    stroke: theme3.primaryBorderColor,
+    fill: theme2.noteBackground || theme2.groupBackground,
+    stroke: theme2.primaryBorderColor,
     width: 50,
     anchor: "start",
     height: 50,
@@ -17747,21 +17352,6 @@ function makeTextAtPoint(text, p, attrs = {}) {
     textBaseline: "middle",
     ...attrs
   });
-}
-
-// ../pintora-diagrams/lib/sequence/artist-util.js
-function makeLoopLabelBox(position2, width2, height, cut) {
-  const { x: x2, y: y2 } = position2;
-  const points = [
-    [x2, y2],
-    [x2 + width2, y2],
-    [x2 + width2, y2 + height - cut],
-    [x2 + width2 - cut * 1.2, y2 + height],
-    [x2, y2 + height]
-  ];
-  return makeMark("polygon", {
-    points
-  }, { class: "loop__label-box" });
 }
 
 // ../pintora-diagrams/lib/util/mark-positioner.js
@@ -17865,37 +17455,52 @@ function tryExpandBounds(base, newRegion) {
   return base;
 }
 
+// ../pintora-diagrams/lib/sequence/artist-util.js
+function makeLoopLabelBox(position2, width2, height, cut) {
+  const { x: x2, y: y2 } = position2;
+  const points = [
+    [x2, y2],
+    [x2 + width2, y2],
+    [x2 + width2, y2 + height - cut],
+    [x2 + width2 - cut * 1.2, y2 + height],
+    [x2, y2 + height]
+  ];
+  return makeMark("polygon", {
+    points
+  }, { class: "loop__label-box" });
+}
+
 // ../pintora-diagrams/lib/sequence/artist/divider.js
 function drawDivider(context, divider) {
-  const { conf: conf6, model: model3 } = context;
+  const { conf: conf5, model: model3 } = context;
   const container = context.rootMark;
-  const dividerMargin = conf6.dividerMargin;
+  const dividerMargin = conf5.dividerMargin;
   model3.tryBumpType({ [BumpType.Box]: true });
   model3.bumpVerticalPos(dividerMargin);
   const dividerTextFont = {
-    ...messageFont(conf6),
-    fontWeight: conf6.dividerFontWeight
+    ...messageFont(conf5),
+    fontWeight: conf5.dividerFontWeight
   };
   const bounds = model3.getBounds();
   const starty = model3.verticalPos;
   const startx = bounds.startx;
   const { width: width2, height } = divider;
-  const padding = conf6.wrapPadding;
-  const rectWidth = width2 + conf6.wrapPadding * 2;
+  const padding = conf5.wrapPadding;
+  const rectWidth = width2 + conf5.wrapPadding * 2;
   const rectX = startx + (bounds.stopx - rectWidth) / 2;
   const rect = makeMark("rect", {
     x: rectX,
     y: starty,
     width: rectWidth,
-    height: height + conf6.wrapPadding * 2,
-    fill: conf6.activationBackground,
-    stroke: conf6.actorBorderColor,
+    height: height + conf5.wrapPadding * 2,
+    fill: conf5.activationBackground,
+    stroke: conf5.actorBorderColor,
     lineWidth: 2
   });
   const textDims = calculateTextDimensions(divider.text);
   const textMark = makeMark("text", {
     text: divider.text,
-    fill: conf6.dividerTextColor,
+    fill: conf5.dividerTextColor,
     x: rectX + width2 / 2 + padding,
     y: starty + height / 2 + padding,
     textAlign: "center",
@@ -17910,7 +17515,7 @@ function drawDivider(context, divider) {
     y1: line1Y,
     x2: bounds.stopx,
     y2: line1Y,
-    stroke: conf6.actorLineColor
+    stroke: conf5.actorLineColor
   });
   const line2 = makeMark("line", {
     ...line1.attrs,
@@ -17936,8 +17541,8 @@ function drawDivider(context, divider) {
 
 // ../pintora-diagrams/lib/sequence/artist/loop.js
 function drawLoopTo(context, loopModel, labelText) {
-  const { conf: conf6, rootMark: mark, model: model3 } = context;
-  const loopLineColor = conf6.loopLineColor;
+  const { conf: conf5, rootMark: mark, model: model3 } = context;
+  const loopLineColor = conf5.loopLineColor;
   const group = makeMark("group", {}, { children: [], class: "loop" });
   function drawLoopLine(startx2, starty2, stopx2, stopy2) {
     const line = makeMark("line", {
@@ -17984,7 +17589,7 @@ function drawLoopTo(context, loopModel, labelText) {
       }
     });
   }
-  const { boxMargin, boxTextMargin, labelBoxWidth, labelBoxHeight, messageFontFamily: fontFamily2, messageFontSize: fontSize2, messageFontWeight: fontWeight, messageTextColor: textColor } = conf6;
+  const { boxMargin, boxTextMargin, labelBoxWidth, labelBoxHeight, messageFontFamily: fontFamily2, messageFontSize: fontSize2, messageFontWeight: fontWeight, messageTextColor: textColor } = conf5;
   const tAttrs = getBaseText();
   safeAssign(tAttrs, {
     text: labelText,
@@ -17997,12 +17602,12 @@ function drawLoopTo(context, loopModel, labelText) {
     fill: textColor
   });
   const labelTextMark = makeMark("text", tAttrs, { class: "label-text" });
-  const labelTextSize = calculateTextDimensions(labelText, messageFont(conf6));
+  const labelTextSize = calculateTextDimensions(labelText, messageFont(conf5));
   const labelWidth = Math.max(labelTextSize.width + 2 * boxTextMargin, labelBoxWidth);
   const labelHeight = Math.max(labelTextSize.height + 2 * boxTextMargin, labelBoxHeight);
   const labelWrap = makeLoopLabelBox({ x: startx, y: starty }, labelWidth, labelHeight, 5);
   safeAssign(labelWrap.attrs, {
-    fill: conf6.actorBackground,
+    fill: conf5.actorBackground,
     stroke: loopLineColor
   });
   const loopWidth = stopx - startx;
@@ -18032,9 +17637,9 @@ function drawLoopTo(context, loopModel, labelText) {
           fontFamily: fontFamily2,
           fontSize: fontSize2,
           fontWeight,
-          fill: conf6.messageTextColor
+          fill: conf5.messageTextColor
         }, { class: "loop__title" });
-        const { height: sectionHeight } = calculateTextDimensions(sectionTitle, boxFont(conf6));
+        const { height: sectionHeight } = calculateTextDimensions(sectionTitle, boxFont(conf5));
         loopModel.sections[idx].height += sectionHeight - (boxMargin + boxTextMargin);
         group.children.push(sectionTitleMark);
       }
@@ -18042,6 +17647,151 @@ function drawLoopTo(context, loopModel, labelText) {
   }
   mark.children.push(group);
 }
+
+// ../pintora-diagrams/lib/util/config.js
+function baseGetConfigFromGlobalConfig(globalConfig, configContext, configKey9) {
+  var _a;
+  const coreConfig = safeAssign({}, globalConfig.core, (_a = configContext.overrideConfig) === null || _a === void 0 ? void 0 : _a.core);
+  return safeAssign({ fontFamily: coreConfig.defaultFontFamily, useMaxWidth: coreConfig.useMaxWidth }, globalConfig[configKey9] || {});
+}
+function makeConfigurator(opts) {
+  const { configKey: configKey9, defaultConfig: defaultConfig9 } = opts;
+  function getConfig2(configContext, extraConfig) {
+    var _a;
+    const globalConfig = config_default.gnernateNewConfig(configContext.overrideConfig || {});
+    const conf5 = { ...defaultConfig9, themeConfig: globalConfig.themeConfig };
+    safeAssign(conf5, opts.getConfigFromTheme(conf5.themeConfig.themeVariables, conf5));
+    const getConfigFromGlobalConfig = opts.getConfigFromGlobalConfig || baseGetConfigFromGlobalConfig;
+    safeAssign(conf5, getConfigFromGlobalConfig(globalConfig, configContext, configKey9));
+    if (extraConfig)
+      safeAssign(conf5, extraConfig);
+    safeAssign(conf5, (_a = configContext.overrideConfig) === null || _a === void 0 ? void 0 : _a[configKey9]);
+    if (opts.getConfigFromParamDirectives) {
+      safeAssign(conf5, opts.getConfigFromParamDirectives(configContext.configParams));
+    }
+    return conf5;
+  }
+  return {
+    getConfig: getConfig2
+  };
+}
+function getParamRulesFromConfig(config2) {
+  const out = {};
+  for (const [key, value] of Object.entries(config2)) {
+    const t = typeof value;
+    let valueType;
+    if (t === "number") {
+      valueType = "size";
+    } else if (t === "boolean") {
+      valueType = "boolean";
+    } else if (t === "string") {
+      if (/color|background/.test(key.toLowerCase())) {
+        valueType = "color";
+      } else {
+        valueType = "string";
+      }
+    }
+    if (valueType) {
+      out[key] = { valueType };
+    }
+  }
+  return out;
+}
+
+// ../pintora-diagrams/lib/sequence/config.js
+var defaultConfig = {
+  noteWidth: 80,
+  noteHeight: 50,
+  noteMargin: 10,
+  boxMargin: 10,
+  activationWidth: 10,
+  diagramMarginX: 10,
+  diagramMarginY: 10,
+  boxTextMargin: 5,
+  messageFontSize: 16,
+  messageFontFamily: DEFAULT_FONT_FAMILY,
+  messageFontWeight: 400,
+  messageTextColor: PALETTE.normalDark,
+  boxFontWeight: 700,
+  wrapPadding: 10,
+  labelBoxWidth: 50,
+  labelBoxHeight: 20,
+  loopLineColor: PALETTE.orange,
+  mirrorActors: true,
+  actorWidth: 80,
+  actorHeight: 50,
+  actorMargin: 10,
+  actorBackground: PALETTE.orange,
+  actorBorderColor: PALETTE.normalDark,
+  actorTextColor: PALETTE.normalDark,
+  actorLineColor: PALETTE.normalDark,
+  participantBoxPadding: 10,
+  participantBackground: "transparent",
+  participantBorderColor: PALETTE.normalDark,
+  noteTextColor: PALETTE.normalDark,
+  activationBackground: PALETTE.neutralGray,
+  dividerFontWeight: 600,
+  dividerTextColor: PALETTE.normalDark,
+  dividerMargin: 15,
+  showSequenceNumbers: false,
+  useMaxWidth: false
+};
+var SEQUENCE_PARAM_DIRECTIVE_RULES = {
+  noteMargin: { valueType: "size" },
+  boxMargin: { valueType: "size" },
+  activationWidth: { valueType: "size" },
+  diagramMarginX: { valueType: "size" },
+  diagramMarginY: { valueType: "size" },
+  boxTextMargin: { valueType: "size" },
+  messageFontSize: { valueType: "fontSize" },
+  messageFontFamily: { valueType: "string" },
+  messageTextColor: { valueType: "color" },
+  wrapPadding: { valueType: "size" },
+  labelBoxWidth: { valueType: "size" },
+  labelBoxHeight: { valueType: "size" },
+  loopLineColor: { valueType: "color" },
+  actorWidth: { valueType: "size" },
+  actorHeight: { valueType: "size" },
+  actorMargin: { valueType: "size" },
+  actorBackground: { valueType: "color" },
+  actorBorderColor: { valueType: "color" },
+  actorTextColor: { valueType: "color" },
+  actorLineColor: { valueType: "color" },
+  participantBorderColor: { valueType: "color" },
+  noteTextColor: { valueType: "color" },
+  activationBackground: { valueType: "color" },
+  dividerTextColor: { valueType: "color" },
+  useMaxWidth: { valueType: "boolean" }
+};
+var configKey = "sequence";
+var configurator = makeConfigurator({
+  defaultConfig,
+  configKey,
+  getConfigFromGlobalConfig(globalConfig, configContext, configKey9) {
+    return safeAssign({
+      ...baseGetConfigFromGlobalConfig(globalConfig, configContext, configKey9),
+      messageFontFamily: globalConfig.core.defaultFontFamily
+    });
+  },
+  getConfigFromParamDirectives(configParams) {
+    return interpreteConfigs(SEQUENCE_PARAM_DIRECTIVE_RULES, configParams);
+  },
+  getConfigFromTheme(t) {
+    return {
+      actorBackground: t.primaryColor,
+      actorBorderColor: t.primaryBorderColor,
+      messageTextColor: t.textColor,
+      loopLineColor: t.primaryColor,
+      actorTextColor: t.textColor,
+      actorLineColor: t.primaryLineColor,
+      noteTextColor: t.noteTextColor || t.textColor,
+      activationBackground: t.background1,
+      dividerTextColor: t.secondaryTextColor,
+      participantBorderColor: t.textColor
+    };
+  }
+});
+var getConf = configurator.getConfig;
 
 // ../pintora-diagrams/lib/sequence/artist.js
 var conf;
@@ -18061,7 +17811,7 @@ var sequenceArtist = {
   draw(ir, config2, opts) {
     var _a;
     conf = getConf(ir, config2);
-    theme = config_default.getConfig().themeConfig.themeVariables;
+    theme = conf.themeConfig.themeVariables;
     model.init();
     const { messages, title } = ir;
     const actorKeys = db.getActorKeys();
@@ -18801,12 +18551,12 @@ var drawActors = function(rootMark, ir, opts) {
   model.bumpVerticalPos(model.actorHeight);
 };
 function drawParticipantBoxes(context) {
-  const { model: model3, rootMark, conf: conf6 } = context;
+  const { model: model3, rootMark, conf: conf5 } = context;
   if (!model3.hasParticipantBox())
     return;
   const boxesGroup = makeEmptyGroup();
   boxesGroup.class = "sequence__participant-boxes";
-  const padding = conf6.participantBoxPadding;
+  const padding = conf5.participantBoxPadding;
   rootMark.children.unshift(boxesGroup);
   const modelBounds = model3.getBounds();
   for (const boxInfo of model3.boxInfos.values()) {
@@ -18820,19 +18570,19 @@ function drawParticipantBoxes(context) {
       y: 0,
       width: width2,
       height: modelBounds.stopy - modelBounds.starty,
-      fill: participantBox.background || conf6.participantBackground,
-      stroke: conf6.actorTextColor
+      fill: participantBox.background || conf5.participantBackground,
+      stroke: conf5.participantBorderColor
     });
     boxesGroup.children.push(rect);
     if (participantBox.text) {
-      const fontConfig = boxFont(conf6);
+      const fontConfig = boxFont(conf5);
       const textMark = makeMark("text", {
         text: participantBox.text,
         x: startx + width2 / 2,
-        y: conf6.participantBoxPadding,
+        y: conf5.participantBoxPadding,
         textBaseline: "top",
         textAlign: "center",
-        fill: conf6.actorTextColor,
+        fill: conf5.actorTextColor,
         ...fontConfig,
         fontWeight: "bold"
       });
@@ -19899,7 +19649,7 @@ var configurator2 = makeConfigurator({
   getConfigFromParamDirectives(configParams) {
     return interpreteConfigs(ER_PARAM_DIRECTIVE_RULES, configParams);
   },
-  getConfigFromTheme(t, conf6) {
+  getConfigFromTheme(t, conf5) {
     return {
       stroke: t.primaryBorderColor,
       fill: t.primaryColor,
@@ -19907,7 +19657,7 @@ var configurator2 = makeConfigurator({
       edgeColor: t.primaryLineColor,
       textColor: t.textColor,
       labelBackground: t.canvasBackground || t.background1,
-      attributeFill: t.lightestBackground || conf6.attributeFill
+      attributeFill: t.lightestBackground || conf5.attributeFill
     };
   }
 });
@@ -22068,12 +21818,10 @@ Path.prototype = path.prototype = {
   arcTo: function(x1, y1, x2, y2, r) {
     x1 = +x1, y1 = +y1, x2 = +x2, y2 = +y2, r = +r;
     var x0 = this._x1, y0 = this._y1, x21 = x2 - x1, y21 = y2 - y1, x01 = x0 - x1, y01 = y0 - y1, l01_2 = x01 * x01 + y01 * y01;
-    if (r < 0)
-      throw new Error("negative radius: " + r);
+    if (r < 0) throw new Error("negative radius: " + r);
     if (this._x1 === null) {
       this._ += "M" + (this._x1 = x1) + "," + (this._y1 = y1);
-    } else if (!(l01_2 > epsilon))
-      ;
+    } else if (!(l01_2 > epsilon)) ;
     else if (!(Math.abs(y01 * x21 - y21 * x01) > epsilon) || !r) {
       this._ += "L" + (this._x1 = x1) + "," + (this._y1 = y1);
     } else {
@@ -22087,17 +21835,14 @@ Path.prototype = path.prototype = {
   arc: function(x2, y2, r, a0, a1, ccw) {
     x2 = +x2, y2 = +y2, r = +r, ccw = !!ccw;
     var dx = r * Math.cos(a0), dy = r * Math.sin(a0), x0 = x2 + dx, y0 = y2 + dy, cw = 1 ^ ccw, da = ccw ? a0 - a1 : a1 - a0;
-    if (r < 0)
-      throw new Error("negative radius: " + r);
+    if (r < 0) throw new Error("negative radius: " + r);
     if (this._x1 === null) {
       this._ += "M" + x0 + "," + y0;
     } else if (Math.abs(this._x1 - x0) > epsilon || Math.abs(this._y1 - y0) > epsilon) {
       this._ += "L" + x0 + "," + y0;
     }
-    if (!r)
-      return;
-    if (da < 0)
-      da = da % tau + tau;
+    if (!r) return;
+    if (da < 0) da = da % tau + tau;
     if (da > tauEpsilon) {
       this._ += "A" + r + "," + r + ",0,1," + cw + "," + (x2 - dx) + "," + (y2 - dy) + "A" + r + "," + r + ",0,1," + cw + "," + (this._x1 = x0) + "," + (this._y1 = y0);
     } else if (da > epsilon) {
@@ -22141,8 +21886,7 @@ Linear.prototype = {
     this._point = 0;
   },
   lineEnd: function() {
-    if (this._line || this._line !== 0 && this._point === 1)
-      this._context.closePath();
+    if (this._line || this._line !== 0 && this._point === 1) this._context.closePath();
     this._line = 1 - this._line;
   },
   point: function(x2, y2) {
@@ -22179,20 +21923,15 @@ function line_default(x2, y2) {
   y2 = typeof y2 === "function" ? y2 : y2 === void 0 ? y : constant_default(y2);
   function line(data) {
     var i2, n2 = (data = array_default(data)).length, d, defined0 = false, buffer;
-    if (context == null)
-      output = curve(buffer = path_default());
+    if (context == null) output = curve(buffer = path_default());
     for (i2 = 0; i2 <= n2; ++i2) {
       if (!(i2 < n2 && defined(d = data[i2], i2, data)) === defined0) {
-        if (defined0 = !defined0)
-          output.lineStart();
-        else
-          output.lineEnd();
+        if (defined0 = !defined0) output.lineStart();
+        else output.lineEnd();
       }
-      if (defined0)
-        output.point(+x2(d, i2, data), +y2(d, i2, data));
+      if (defined0) output.point(+x2(d, i2, data), +y2(d, i2, data));
     }
-    if (buffer)
-      return output = null, buffer + "" || null;
+    if (buffer) return output = null, buffer + "" || null;
   }
   line.x = function(_3) {
     return arguments.length ? (x2 = typeof _3 === "function" ? _3 : constant_default(+_3), line) : x2;
@@ -22245,8 +21984,7 @@ Basis.prototype = {
         this._context.lineTo(this._x1, this._y1);
         break;
     }
-    if (this._line || this._line !== 0 && this._point === 1)
-      this._context.closePath();
+    if (this._line || this._line !== 0 && this._point === 1) this._context.closePath();
     this._line = 1 - this._line;
   },
   point: function(x2, y2) {
@@ -26134,8 +25872,7 @@ function components(g) {
   const cmpts = [];
   let cmpt;
   function dfs2(v) {
-    if (_2.has(visited, v))
-      return;
+    if (_2.has(visited, v)) return;
     visited[v] = true;
     cmpt.push(v);
     _2.each(g.successors(v), dfs2);
@@ -28854,10 +28591,10 @@ var erArtist = {
     };
   }
 };
-function getFontConfig(conf6) {
+function getFontConfig(conf5) {
   return {
-    fontSize: conf6.fontSize,
-    fontFamily: conf6.fontFamily
+    fontSize: conf5.fontSize,
+    fontFamily: conf5.fontFamily
   };
 }
 var drawAttributes = (group, entityText, attributes) => {
@@ -29187,11 +28924,11 @@ function drawInheritances(ir, g, rootMark) {
     });
   });
 }
-function makeLinePath(edge, conf6) {
-  const pathCommands = conf6.edgeType === "curved" ? getPointsCurvePath(edge.points) : getPointsLinearPath(edge.points);
+function makeLinePath(edge, conf5) {
+  const pathCommands = conf5.edgeType === "curved" ? getPointsCurvePath(edge.points) : getPointsLinearPath(edge.points);
   const linePath = makeMark("path", {
     path: pathCommands,
-    stroke: conf6.edgeColor,
+    stroke: conf5.edgeColor,
     lineJoin: "round"
   });
   return linePath;
@@ -30032,10 +29769,10 @@ var adjustMarkInGraph = function(dagreWrapper) {
   });
   return { labelBounds };
 };
-function getFontConfig2(conf6) {
+function getFontConfig2(conf5) {
   return {
-    fontSize: conf6.fontSize,
-    fontFamily: conf6.fontFamily
+    fontSize: conf5.fontSize,
+    fontFamily: conf5.fontFamily
   };
 }
 var artist_default3 = componentArtist;
@@ -30624,6 +30361,24 @@ var ActivityDb = class extends BaseDb {
 };
 var db4 = new ActivityDb();
 
+// ../pintora-diagrams/lib/util/env.js
+var isDev = typeof location !== "undefined" && location.hostname === "localhost";
+
+// ../pintora-diagrams/lib/activity/artist-util.js
+function makeTextMark(conf5, text, textDims, attrs) {
+  return makeMark("text", {
+    text,
+    width: textDims.width,
+    height: textDims.height,
+    fill: conf5.textColor,
+    fontSize: conf5.fontSize,
+    fontFamily: conf5.fontFamily,
+    textBaseline: "middle",
+    textAlign: "center",
+    ...attrs
+  });
+}
+
 // ../pintora-diagrams/lib/activity/config.js
 var defaultConfig4 = {
   diagramPadding: 15,
@@ -30687,31 +30442,11 @@ var configurator4 = makeConfigurator({
 });
 var getConf4 = configurator4.getConfig;
 
-// ../pintora-diagrams/lib/util/env.js
-var isDev = typeof location !== "undefined" && location.hostname === "localhost";
-
-// ../pintora-diagrams/lib/activity/artist-util.js
-function makeTextMark(conf6, text, textDims, attrs) {
-  return makeMark("text", {
-    text,
-    width: textDims.width,
-    height: textDims.height,
-    fill: conf6.textColor,
-    fontSize: conf6.fontSize,
-    fontFamily: conf6.fontFamily,
-    textBaseline: "middle",
-    textAlign: "center",
-    ...attrs
-  });
-}
-
 // ../pintora-diagrams/lib/activity/artist.js
-var conf4;
 var model2;
 var activityDraw;
-var theme2;
 function calcTextDims(text, attrs = {}) {
-  const _attrs = Object.assign(getFontConfig3(conf4), attrs);
+  const _attrs = Object.assign(getFontConfig3(model2.conf), attrs);
   return calculateTextDimensions(text, _attrs);
 }
 function isDetachAlikeKeyword(keyword) {
@@ -30722,9 +30457,8 @@ function isEndAlikeKeyword(keyword) {
 }
 var erArtist2 = {
   draw(ir, config2, opts) {
-    conf4 = getConf4(ir, config2);
-    model2 = new ArtistModel(ir);
-    theme2 = config_default.getConfig().themeConfig.themeVariables;
+    const conf5 = getConf4(ir, config2);
+    model2 = new ArtistModel(ir, conf5);
     const rootMark = makeEmptyGroup();
     const g = createLayoutGraph({
       multigraph: true,
@@ -30733,9 +30467,9 @@ var erArtist2 = {
     }).setGraph({
       rankdir: "TB",
       nodesep: 60,
-      edgesep: conf4.edgesep,
+      edgesep: conf5.edgesep,
       ranksep: 30,
-      splines: getGraphSplinesOption(conf4.edgeType)
+      splines: getGraphSplinesOption(conf5.edgeType)
     }).setDefaultEdgeLabel(function() {
       return {};
     });
@@ -30760,20 +30494,20 @@ var erArtist2 = {
     let titleSize = void 0;
     let titleMark = void 0;
     if (title) {
-      const titleFont = { fontSize: conf4.fontSize, fontFamily: conf4.fontFamily };
-      const titleResult = makeTitleMark(title, titleFont, { fill: conf4.textColor });
+      const titleFont = { fontSize: conf5.fontSize, fontFamily: conf5.fontFamily };
+      const titleResult = makeTitleMark(title, titleFont, { fill: conf5.textColor });
       titleSize = titleResult.titleSize;
       titleMark = titleResult.mark;
       titleMark.class = "activity__title";
       rootMark.children.push(titleMark);
-      titleSize.height += conf4.fontSize;
+      titleSize.height += conf5.fontSize;
     }
     const { width: width2, height } = adjustRootMarkBounds({
       rootMark,
       gBounds: bounds,
-      padX: conf4.diagramPadding,
-      padY: conf4.diagramPadding,
-      useMaxWidth: conf4.useMaxWidth,
+      padX: conf5.diagramPadding,
+      padY: conf5.diagramPadding,
+      useMaxWidth: conf5.useMaxWidth,
       containerSize: opts === null || opts === void 0 ? void 0 : opts.containerSize,
       titleSize,
       titleMark
@@ -30787,13 +30521,14 @@ var erArtist2 = {
 };
 function getActionRectSize(text) {
   const textDims = calcTextDims(text);
-  const rectWidth = textDims.width + conf4.actionPaddingX * 2;
-  const rectHeight = textDims.height + conf4.actionPaddingY * 2;
+  const rectWidth = textDims.width + model2.conf.actionPaddingX * 2;
+  const rectHeight = textDims.height + model2.conf.actionPaddingY * 2;
   return { rectWidth, rectHeight };
 }
 var ArtistModel = class {
-  constructor(ir) {
+  constructor(ir, conf5) {
     this.ir = ir;
+    this.conf = conf5;
     this.stepModelMap = /* @__PURE__ */ new Map();
     this.stepNotesMap = /* @__PURE__ */ new Map();
     this.stepArrowLabelMap = /* @__PURE__ */ new Map();
@@ -31156,24 +30891,41 @@ var ActivityDraw = class {
           height: 1
         });
         this.g.setEdge(id9, dummyNode.id, { label });
-        this.g.setEdge(dummyNode.id, endId);
+        this.g.setEdge(dummyNode.id, endId, { label: "" });
         if (stepModel.parentId) {
-          this.g.setParent(dummyNode.id, stepModel.parentId);
+          const parentStepModel = this.model.stepModelMap.get(stepModel.parentId);
+          let closestGroup = null;
+          let p = parentStepModel;
+          while (p) {
+            if (p.type === "group") {
+              closestGroup = p;
+              break;
+            }
+            if (p.parentId) {
+              p = this.model.stepModelMap.get(p.parentId);
+              if (!p)
+                break;
+            }
+          }
+          if (closestGroup) {
+            this.g.setParent(dummyNode.id, closestGroup.id);
+          }
         }
       }
     };
     drawChildren2(condition.then.children, condition.then.label || "yes");
     if (condition.else) {
-      drawChildren2(condition.else.children, "no");
+      drawChildren2(condition.else.children, condition.else.label || "no");
     }
     return result;
   }
   drawDecisionMarks(message) {
+    const conf5 = model2.conf;
     const { rectWidth, rectHeight } = getActionRectSize(message);
-    const side = Math.ceil(conf4.fontSize * 0.8);
+    const side = Math.ceil(conf5.fontSize * 0.8);
     const decisionBg = makeMark("path", {
-      fill: conf4.actionBackground,
-      stroke: conf4.actionBorderColor,
+      fill: conf5.actionBackground,
+      stroke: conf5.actionBorderColor,
       path: [
         ["m", 0, rectHeight / 2],
         ["l", side, rectHeight / 2],
@@ -31185,10 +30937,10 @@ var ActivityDraw = class {
       ]
     }, { class: "activity__decision-bg" });
     const textDims = calcTextDims(message);
-    const textMark = makeTextMark(conf4, message, textDims, {
+    const textMark = makeTextMark(conf5, message, textDims, {
       y: rectHeight / 2,
       x: rectWidth / 2,
-      fontSize: conf4.fontSize,
+      fontSize: conf5.fontSize,
       textBaseline: "middle",
       textAlign: "center"
     });
@@ -31200,6 +30952,7 @@ var ActivityDraw = class {
     };
   }
   drawDiamondMark(id9, attrs = {}, opts = {}) {
+    const conf5 = model2.conf;
     const diamondSide = 10;
     const diamondMark = makeMark("path", {
       width: 20,
@@ -31211,8 +30964,8 @@ var ActivityDraw = class {
         ["l", -diamondSide, -diamondSide],
         ["Z"]
       ],
-      fill: conf4.actionBackground,
-      stroke: conf4.actionBorderColor,
+      fill: conf5.actionBackground,
+      stroke: conf5.actionBorderColor,
       ...attrs
     }, { class: opts.class || "activity__condition-end" });
     const moveDiamond = (x2, y2) => {
@@ -31274,6 +31027,7 @@ var ActivityDraw = class {
     return result;
   }
   drawGroup(parentMark, aGroup) {
+    const conf5 = model2.conf;
     const { id: id9 } = aGroup;
     const group = makeEmptyGroup();
     const stepModel = model2.stepModelMap.get(id9);
@@ -31285,16 +31039,16 @@ var ActivityDraw = class {
       endId
     };
     const bgMark = makeMark("rect", {
-      fill: aGroup.background || conf4.groupBackground,
-      stroke: conf4.groupBorderColor,
+      fill: aGroup.background || conf5.groupBackground,
+      stroke: conf5.groupBorderColor,
       lineWidth: 2,
       radius: 2
     }, { class: "activity__group-rect" });
     const groupLabel = aGroup.label || aGroup.name;
-    const fontConfig = getFontConfig3(conf4);
+    const fontConfig = getFontConfig3(conf5);
     const labelMark = makeMark("text", {
       text: groupLabel,
-      fill: conf4.textColor,
+      fill: conf5.textColor,
       ...fontConfig,
       fontWeight: "bold",
       textBaseline: "top"
@@ -31436,7 +31190,10 @@ var ActivityDraw = class {
     if (repeat.firstAction) {
       const firstActionGroup = makeEmptyGroup();
       firstActionGroup.class = "activity__repeat-start";
-      const { rectMark, textMark: textMark2, actionInfo } = drawActionMarks({ message: repeat.firstAction.message, conf: conf4 });
+      const { rectMark, textMark: textMark2, actionInfo } = drawActionMarks({
+        message: repeat.firstAction.message,
+        conf: model2.conf
+      });
       firstActionGroup.children.push(rectMark, textMark2);
       startMark = firstActionGroup;
       this.g.setNode(startId, {
@@ -31472,7 +31229,7 @@ var ActivityDraw = class {
     });
     parentMark.children.push(group, startMark);
     group.children.push(decisionBg, textMark);
-    const childrenResults = repeat.children.map((s, i2) => {
+    const childrenResults = repeat.children.map((s) => {
       const childResult = this.drawStep(parentMark, s);
       return childResult;
     });
@@ -31489,13 +31246,14 @@ var ActivityDraw = class {
     return result;
   }
   drawKeyword(parentMark, keyword) {
+    const conf5 = model2.conf;
     const stepModel = model2.stepModelMap.get(keyword.id);
     const group = makeEmptyGroup();
     group.class = "activity__keyword";
     const { label, id: id9 } = keyword;
     const r = 10;
-    const stroke = conf4.keywordBackground;
-    const fill = conf4.keywordBackground;
+    const stroke = conf5.keywordBackground;
+    const fill = conf5.keywordBackground;
     if (label === "start") {
       const bgMark = makeCircle({
         r,
@@ -31534,6 +31292,7 @@ var ActivityDraw = class {
     return result;
   }
   drawFork(parentMark, fork) {
+    const conf5 = model2.conf;
     const { id: id9 } = fork;
     const group = makeEmptyGroup();
     const stepModel = model2.stepModelMap.get(id9);
@@ -31542,7 +31301,7 @@ var ActivityDraw = class {
       height: 4,
       x: 0,
       y: 0,
-      fill: conf4.keywordBackground,
+      fill: conf5.keywordBackground,
       radius: 2
     });
     const getFrameBounds = () => {
@@ -31674,17 +31433,18 @@ var ActivityDraw = class {
   }
   drawNote(parentMark, note) {
     const { id: id9, text } = note;
+    const conf5 = model2.conf;
     const group = makeMark("group", {
       x: 0,
       y: 0
     }, { children: [], class: "activity__note" });
     parentMark.children.push(group);
-    const fontConfig = { fontSize: conf4.fontSize, fontFamily: conf4.fontFamily };
+    const fontConfig = { fontSize: conf5.fontSize, fontFamily: conf5.fontFamily };
     const textDims = calcTextDims(text, fontConfig);
-    const rectAttrs = getBaseNote(theme2);
+    const rectAttrs = getBaseNote(conf5.themeConfig.themeVariables);
     const noteModel = {
-      width: textDims.width + 2 * conf4.noteMargin,
-      height: textDims.height + 2 * conf4.noteMargin
+      width: textDims.width + 2 * conf5.noteMargin,
+      height: textDims.height + 2 * conf5.noteMargin
     };
     const noteRect = {
       type: "rect",
@@ -31693,7 +31453,7 @@ var ActivityDraw = class {
     };
     const textMark = {
       type: "text",
-      attrs: { fill: conf4.noteTextColor, text, textBaseline: "middle", ...fontConfig }
+      attrs: { fill: conf5.noteTextColor, text, textBaseline: "middle", ...fontConfig }
     };
     const targetStepModel = this.model.stepModelMap.get(note.target);
     if (targetStepModel) {
@@ -31709,14 +31469,14 @@ var ActivityDraw = class {
         const targetNodeData = this.g.node(targetStepModel.id);
         let x2;
         if (note.placement === "left") {
-          x2 = targetNodeData.x - targetNodeData.width / 2 - noteModel.width - conf4.noteMargin;
+          x2 = targetNodeData.x - targetNodeData.width / 2 - noteModel.width - conf5.noteMargin;
         } else {
-          x2 = targetNodeData.x + targetNodeData.width / 2 + conf4.noteMargin;
+          x2 = targetNodeData.x + targetNodeData.width / 2 + conf5.noteMargin;
         }
         const y2 = targetNodeData.y - targetNodeData.height / 2;
         safeAssign(textMark.attrs, {
-          x: x2 + conf4.noteMargin,
-          y: y2 + textDims.height / 2 + conf4.noteMargin,
+          x: x2 + conf5.noteMargin,
+          y: y2 + textDims.height / 2 + conf5.noteMargin,
           width: noteModel.width
         });
         safeAssign(rectAttrs, {
@@ -31736,7 +31496,7 @@ var ActivityDraw = class {
 function drawAction(parentMark, action, g) {
   const stepModel = model2.stepModelMap.get(action.id);
   const group = makeEmptyGroup();
-  const { textMark, rectMark, actionInfo } = drawActionMarks({ message: action.message, conf: conf4 });
+  const { textMark, rectMark, actionInfo } = drawActionMarks({ message: action.message, conf: model2.conf });
   const { rectWidth, rectHeight } = actionInfo;
   group.children.push(rectMark, textMark);
   g.setNode(action.id, {
@@ -31755,8 +31515,8 @@ function drawAction(parentMark, action, g) {
     stepModel
   };
 }
-function drawActionMarks({ message, conf: conf6 }) {
-  const fontConfig = getFontConfig3(conf6);
+function drawActionMarks({ message, conf: conf5 }) {
+  const fontConfig = getFontConfig3(conf5);
   const textDims = getTextDimensionsInPresicion(message, fontConfig);
   const actionInfo = getActionRectSize(message);
   const rectMark = makeMark("rect", {
@@ -31764,10 +31524,10 @@ function drawActionMarks({ message, conf: conf6 }) {
     height: actionInfo.rectHeight,
     x: 0,
     y: 0,
-    fill: conf6.actionBackground,
-    stroke: conf6.actionBorderColor
+    fill: conf5.actionBackground,
+    stroke: conf5.actionBorderColor
   });
-  const textMark = makeTextMark(conf6, message, textDims, {
+  const textMark = makeTextMark(conf5, message, textDims, {
     y: actionInfo.rectHeight / 2,
     x: actionInfo.rectWidth / 2,
     ...fontConfig,
@@ -31783,6 +31543,7 @@ function drawActionMarks({ message, conf: conf6 }) {
 function drawEdges(parent, g) {
   const edgeGroup = makeMark("group", {}, { children: [] });
   const bounds = makeBounds();
+  const conf5 = model2.conf;
   g.edges().forEach((e) => {
     const edge = g.edge(e);
     if (!edge.points)
@@ -31805,17 +31566,17 @@ function drawEdges(parent, g) {
         });
       });
     }
-    const shouldUseCurvePath = conf4.edgeType === "curved";
+    const shouldUseCurvePath = conf5.edgeType === "curved";
     const path4 = shouldUseCurvePath ? getPointsCurvePath(edge.points) : getPointsLinearPath(edge.points);
     const linePath = makeMark("path", {
       path: path4,
-      stroke: conf4.edgeColor,
+      stroke: conf5.edgeColor,
       lineJoin: "round"
     });
     const pointsForDirection = restPoints.slice(-2);
     const arrowRad = calcDirection.apply(null, pointsForDirection);
     const arrowMark = drawArrowTo(lastPoint, 8, arrowRad, {
-      color: conf4.edgeColor
+      color: conf5.edgeColor
     });
     const labelPoint = edge.labelPoint || getPointAt(edge.points, 0.4, true);
     if (!labelPoint)
@@ -31825,9 +31586,9 @@ function drawEdges(parent, g) {
     let labelMark = null;
     let labelBgMark = null;
     if (edge.label) {
-      const fontConfig = getFontConfig3(conf4);
+      const fontConfig = getFontConfig3(conf5);
       const labelDims = calcTextDims(edge.label, fontConfig);
-      labelBgMark = makeLabelBg(labelDims, { x: labelX, y: labelY }, { fill: conf4.labelBackground }, theme2);
+      labelBgMark = makeLabelBg(labelDims, { x: labelX, y: labelY }, { fill: conf5.labelBackground }, model2.conf.themeConfig.themeVariables);
       labelMark = makeMark("text", {
         text: edge.label,
         id: [e.v, e.w].join("-"),
@@ -31835,7 +31596,7 @@ function drawEdges(parent, g) {
         textBaseline: "middle",
         x: labelX,
         y: labelY,
-        fill: conf4.labelTextColor,
+        fill: conf5.labelTextColor,
         ...fontConfig
       }, { class: "activity__edge-label" });
       const labelBounds = calcBound([labelBgMark]);
@@ -31846,10 +31607,10 @@ function drawEdges(parent, g) {
   parent.children.push(edgeGroup);
   return { bounds };
 }
-function getFontConfig3(conf6) {
+function getFontConfig3(conf5) {
   return {
-    fontSize: conf6.fontSize,
-    fontFamily: conf6.fontFamily
+    fontSize: conf5.fontSize,
+    fontFamily: conf5.fontFamily
   };
 }
 var artist_default4 = erArtist2;
@@ -32639,16 +32400,16 @@ var StyleContexts = class _StyleContexts {
 };
 var artist = makeArtist({
   draw(ir, config2, opts) {
-    const conf6 = getConf5(ir, config2);
+    const conf5 = getConf5(ir, config2);
     const rootMark = makeEmptyGroup();
-    const dotDraw = new DOTDraw(ir, conf6, rootMark);
+    const dotDraw = new DOTDraw(ir, conf5, rootMark);
     const drawResult = dotDraw.draw();
     const gBounds = dotDraw.dagreWrapper.getGraphBounds();
     let { width: width2, height } = adjustRootMarkBounds({
       rootMark,
       gBounds,
-      padX: conf6.diagramPadding,
-      padY: conf6.diagramPadding
+      padX: conf5.diagramPadding,
+      padY: conf5.diagramPadding
     });
     if (drawResult) {
       if (drawResult.labelHeight) {
@@ -32659,8 +32420,8 @@ var artist = makeArtist({
         safeAssign(frameAttrs, {
           width: width2,
           height,
-          x: -conf6.diagramPadding,
-          y: -conf6.diagramPadding
+          x: -conf5.diagramPadding,
+          y: -conf5.diagramPadding
         });
       }
     }
@@ -32672,9 +32433,9 @@ var artist = makeArtist({
   }
 });
 var DOTDraw = class {
-  constructor(ir, conf6, rootMark) {
+  constructor(ir, conf5, rootMark) {
     this.ir = ir;
-    this.conf = conf6;
+    this.conf = conf5;
     this.rootMark = rootMark;
     this.drawnNodeIds = /* @__PURE__ */ new Set();
     this.edgeNodeIds = /* @__PURE__ */ new Set();
@@ -32688,11 +32449,11 @@ var DOTDraw = class {
       directed: true,
       compound: true
     }).setGraph({
-      rankdir: conf6.layoutDirection,
-      nodesep: conf6.nodesep,
-      edgesep: conf6.edgesep,
-      ranksep: conf6.ranksep,
-      splines: getGraphSplinesOption(conf6.edgeType)
+      rankdir: conf5.layoutDirection,
+      nodesep: conf5.nodesep,
+      edgesep: conf5.edgesep,
+      ranksep: conf5.ranksep,
+      splines: getGraphSplinesOption(conf5.edgeType)
     });
     this.dagreWrapper = new DagreWrapper(this.g);
   }
@@ -32740,7 +32501,7 @@ var DOTDraw = class {
     if (irGraph.attrs) {
       parentInfo.styleContexts.update(irGraph.attrs);
     }
-    const conf6 = this.conf;
+    const conf5 = this.conf;
     const graphContext = parentInfo.styleContexts.graph;
     const fontConfig = this.getFontConfig(graphContext);
     const graphAttrs2 = ((_a = irGraph.attrs) === null || _a === void 0 ? void 0 : _a.graph) || {};
@@ -32763,7 +32524,7 @@ var DOTDraw = class {
           const graphStyle = graphAttrMapper(graphAttrs2, graphContext);
           const subGraphRect = makeMark("rect", {
             ...rectGeometry,
-            stroke: conf6.nodeBorderColor,
+            stroke: conf5.nodeBorderColor,
             ...graphStyle
           });
           parentInfo.mark.children.unshift(subGraphRect);
@@ -32772,7 +32533,7 @@ var DOTDraw = class {
             const labelMark = makeTextAtPoint(graphLabel, labelPoint, {
               textBaseline: "hanging",
               ...fontConfig,
-              fill: conf6.labelTextColor,
+              fill: conf5.labelTextColor,
               ...graphLabelAttrMapper(graphAttrs2, graphContext)
             });
             parentInfo.mark.children.push(labelMark);
@@ -32876,7 +32637,7 @@ var DOTDraw = class {
     tuples.forEach(([v1, v2]) => {
       this.edgeNodeIds.add(v1.id);
       this.edgeNodeIds.add(v2.id);
-      const conf6 = this.conf;
+      const conf5 = this.conf;
       this.g.setEdge(v1.id, v2.id, {
         onLayout: (edge) => {
           const edgeStyleContext = parentInfo.styleContexts.edge;
@@ -32898,7 +32659,7 @@ var DOTDraw = class {
           }
           const pathMark = makeMark("path", {
             path: path4,
-            stroke: conf6.edgeColor,
+            stroke: conf5.edgeColor,
             lineDash,
             lineWidth,
             ...pathAttrs
@@ -32910,7 +32671,7 @@ var DOTDraw = class {
             const arrowHeadType = attrs.arrowhead || edgeStyleContext.getValue("arrowhead") || "normal";
             const arrowMark = drawArrowTo(last(edge.points), 8, arrowDirection, {
               type: ARROW_TYPE_MAP[arrowHeadType] || "triangle",
-              color: pathAttrs.stroke || conf6.edgeColor,
+              color: pathAttrs.stroke || conf5.edgeColor,
               bgColor: graphAttrs2.fill || this.conf.backgroundColor
             });
             edgeGroup.children.push(arrowMark);
@@ -32943,7 +32704,7 @@ var DOTDraw = class {
     if (!((_a = irGraph.attrs) === null || _a === void 0 ? void 0 : _a.graph))
       return;
     const graphAttrs2 = irGraph.attrs.graph;
-    const conf6 = this.conf;
+    const conf5 = this.conf;
     const bounds = this.dagreWrapper.getGraphBounds();
     let frameRect;
     const graphContext = parentInfo.styleContexts.graph;
@@ -32966,7 +32727,7 @@ var DOTDraw = class {
       const labelMark = makeTextAtPoint(label, labelPoint, {
         textBaseline: "hanging",
         ...fontConfig,
-        fill: conf6.labelTextColor,
+        fill: conf5.labelTextColor,
         ...graphLabelAttrMapper(graphAttrs2, graphContext)
       });
       parentInfo.mark.children.push(labelMark);
@@ -33696,11 +33457,11 @@ var configurator6 = makeConfigurator({
 var getConf6 = configurator6.getConfig;
 
 // ../pintora-diagrams/lib/mindmap/artist.js
-var conf5;
+var conf4;
 var mmDraw;
 var mmArtist = {
   draw(ir, config2, opts) {
-    conf5 = Object.assign(getConf6(ir), config2 || {});
+    conf4 = Object.assign(getConf6(ir), config2 || {});
     mmDraw = new MMDraw(ir);
     if (isDev) {
       ;
@@ -33717,20 +33478,20 @@ var mmArtist = {
     let titleSize = void 0;
     let titleMark = void 0;
     if (title) {
-      const titleFont = { fontSize: conf5.maxFontSize, fontFamily: conf5.fontFamily };
-      const titleResult = makeTitleMark(title, titleFont, { fill: conf5.textColor });
+      const titleFont = { fontSize: conf4.maxFontSize, fontFamily: conf4.fontFamily };
+      const titleResult = makeTitleMark(title, titleFont, { fill: conf4.textColor });
       titleSize = titleResult.titleSize;
       titleMark = titleResult.mark;
       titleMark.class = "mindmap__title";
       rootMark.children.push(titleMark);
-      titleSize.height += conf5.maxFontSize;
+      titleSize.height += conf4.maxFontSize;
     }
     const { width: width2, height } = adjustRootMarkBounds({
       rootMark,
       gBounds: bounds,
-      padX: conf5.diagramPadding,
-      padY: conf5.diagramPadding,
-      useMaxWidth: conf5.useMaxWidth,
+      padX: conf4.diagramPadding,
+      padY: conf4.diagramPadding,
+      useMaxWidth: conf4.useMaxWidth,
       containerSize: opts === null || opts === void 0 ? void 0 : opts.containerSize,
       titleSize,
       titleMark
@@ -33753,10 +33514,10 @@ var MMDraw = class {
       directed: true,
       compound: true
     }).setGraph({
-      rankdir: conf5.layoutDirection,
+      rankdir: conf4.layoutDirection,
       nodesep: 30,
       edgesep: 30,
-      ranksep: conf5.levelDistance
+      ranksep: conf4.levelDistance
     }).setDefaultEdgeLabel(function() {
       return {};
     });
@@ -33774,13 +33535,13 @@ var MMDraw = class {
     });
   }
   getNodeStyleOfLevel(level) {
-    const bgColor = conf5[`l${level}NodeBgColor`] || conf5.nodeBgColor;
-    const textColor = conf5[`l${level}NodeTextColor`] || conf5.textColor;
+    const bgColor = conf4[`l${level}NodeBgColor`] || conf4.nodeBgColor;
+    const textColor = conf4[`l${level}NodeTextColor`] || conf4.textColor;
     return { bgColor, textColor };
   }
   drawNode(rootMark, tree, node2) {
-    const fontSize2 = Math.max(conf5.minFontSize, conf5.maxFontSize - (node2.depth - 1) * 2);
-    const fontConfig = getFontConfig4(conf5, { fontSize: fontSize2, fontWeight: conf5.nodeFontWeight });
+    const fontSize2 = Math.max(conf4.minFontSize, conf4.maxFontSize - (node2.depth - 1) * 2);
+    const fontConfig = getFontConfig4(conf4, { fontSize: fontSize2, fontWeight: conf4.nodeFontWeight });
     const labelDim = calculateTextDimensions(node2.label, fontConfig);
     const group = makeEmptyGroup();
     group.class = "mindmap__node";
@@ -33794,7 +33555,7 @@ var MMDraw = class {
       width: rectWidth,
       height: rectHeight,
       fill: nodeStyle.bgColor,
-      radius: conf5.borderRadius
+      radius: conf4.borderRadius
     });
     const textMark = makeMark("text", {
       text: node2.label,
@@ -33864,7 +33625,7 @@ var MMDraw = class {
       const path4 = getPointsLinearPath(newPoints);
       const linePath = makeMark("path", {
         path: path4,
-        stroke: conf5.edgeColor,
+        stroke: conf4.edgeColor,
         lineJoin: "round"
       });
       edgeGroup.children.push(linePath);
@@ -33872,9 +33633,9 @@ var MMDraw = class {
     rootMark.children.push(edgeGroup);
   }
 };
-function getFontConfig4(conf6, f) {
+function getFontConfig4(conf5, f) {
   return {
-    fontFamily: conf6.fontFamily,
+    fontFamily: conf5.fontFamily,
     ...f
   };
 }
@@ -34151,8 +33912,7 @@ function newInterval(floori, offseti, count, field) {
     var range2 = [], previous;
     start = interval2.ceil(start);
     step = step == null ? 1 : Math.floor(step);
-    if (!(start < stop) || !(step > 0))
-      return range2;
+    if (!(start < stop) || !(step > 0)) return range2;
     do
       range2.push(previous = /* @__PURE__ */ new Date(+start)), offseti(start, step), floori(start);
     while (previous < start && start < stop);
@@ -34160,21 +33920,17 @@ function newInterval(floori, offseti, count, field) {
   };
   interval2.filter = function(test) {
     return newInterval(function(date2) {
-      if (date2 >= date2)
-        while (floori(date2), !test(date2))
-          date2.setTime(date2 - 1);
+      if (date2 >= date2) while (floori(date2), !test(date2)) date2.setTime(date2 - 1);
     }, function(date2, step) {
       if (date2 >= date2) {
-        if (step < 0)
-          while (++step <= 0) {
-            while (offseti(date2, -1), !test(date2)) {
-            }
+        if (step < 0) while (++step <= 0) {
+          while (offseti(date2, -1), !test(date2)) {
           }
-        else
-          while (--step >= 0) {
-            while (offseti(date2, 1), !test(date2)) {
-            }
+        }
+        else while (--step >= 0) {
+          while (offseti(date2, 1), !test(date2)) {
           }
+        }
       }
     });
   };
@@ -34205,10 +33961,8 @@ var millisecond = newInterval(function() {
 });
 millisecond.every = function(k) {
   k = Math.floor(k);
-  if (!isFinite(k) || !(k > 0))
-    return null;
-  if (!(k > 1))
-    return millisecond;
+  if (!isFinite(k) || !(k > 0)) return null;
+  if (!(k > 1)) return millisecond;
   return newInterval(function(date2) {
     date2.setTime(Math.floor(date2 / k) * k);
   }, function(date2, step) {
@@ -34460,28 +34214,22 @@ function bisector(f) {
   }
   function left(a, x2, lo = 0, hi = a.length) {
     if (lo < hi) {
-      if (compare1(x2, x2) !== 0)
-        return hi;
+      if (compare1(x2, x2) !== 0) return hi;
       do {
         const mid = lo + hi >>> 1;
-        if (compare2(a[mid], x2) < 0)
-          lo = mid + 1;
-        else
-          hi = mid;
+        if (compare2(a[mid], x2) < 0) lo = mid + 1;
+        else hi = mid;
       } while (lo < hi);
     }
     return lo;
   }
   function right(a, x2, lo = 0, hi = a.length) {
     if (lo < hi) {
-      if (compare1(x2, x2) !== 0)
-        return hi;
+      if (compare1(x2, x2) !== 0) return hi;
       do {
         const mid = lo + hi >>> 1;
-        if (compare2(a[mid], x2) <= 0)
-          lo = mid + 1;
-        else
-          hi = mid;
+        if (compare2(a[mid], x2) <= 0) lo = mid + 1;
+        else hi = mid;
       } while (lo < hi);
     }
     return lo;
@@ -34511,12 +34259,9 @@ var e5 = Math.sqrt(10);
 var e2 = Math.sqrt(2);
 function tickStep(start, stop, count) {
   var step0 = Math.abs(stop - start) / Math.max(0, count), step1 = Math.pow(10, Math.floor(Math.log(step0) / Math.LN10)), error = step0 / step1;
-  if (error >= e10)
-    step1 *= 10;
-  else if (error >= e5)
-    step1 *= 5;
-  else if (error >= e2)
-    step1 *= 2;
+  if (error >= e10) step1 *= 10;
+  else if (error >= e5) step1 *= 5;
+  else if (error >= e2) step1 *= 2;
   return stop < start ? -step1 : step1;
 }
 
@@ -34544,8 +34289,7 @@ function ticker(year2, month2, week, day2, hour2, minute2) {
   ];
   function ticks2(start, stop, count) {
     const reverse = stop < start;
-    if (reverse)
-      [start, stop] = [stop, start];
+    if (reverse) [start, stop] = [stop, start];
     const interval2 = count && typeof count.range === "function" ? count : tickInterval(start, stop, count);
     const ticks3 = interval2 ? interval2.range(start, +stop + 1) : [];
     return reverse ? ticks3.reverse() : ticks3;
@@ -34553,10 +34297,8 @@ function ticker(year2, month2, week, day2, hour2, minute2) {
   function tickInterval(start, stop, count) {
     const target = Math.abs(stop - start) / count;
     const i2 = bisector(([, , step2]) => step2).right(tickIntervals, target);
-    if (i2 === tickIntervals.length)
-      return year2.every(tickStep(start / durationYear, stop / durationYear, count));
-    if (i2 === 0)
-      return millisecond_default.every(Math.max(tickStep(start, stop, count), 1));
+    if (i2 === tickIntervals.length) return year2.every(tickStep(start / durationYear, stop / durationYear, count));
+    if (i2 === 0) return millisecond_default.every(Math.max(tickStep(start, stop, count), 1));
     const [t, step] = tickIntervals[target / tickIntervals[i2 - 1][2] < tickIntervals[i2][2] / target ? i2 - 1 : i2];
     return t.every(step);
   }
@@ -34934,8 +34676,7 @@ function define_default(constructor, factory, prototype) {
 }
 function extend(parent, definition) {
   var prototype = Object.create(parent.prototype);
-  for (var key in definition)
-    prototype[key] = definition[key];
+  for (var key in definition) prototype[key] = definition[key];
   return prototype;
 }
 
@@ -35136,15 +34877,12 @@ function rgbn(n2) {
   return new Rgb(n2 >> 16 & 255, n2 >> 8 & 255, n2 & 255, 1);
 }
 function rgba(r, g, b10, a) {
-  if (a <= 0)
-    r = g = b10 = NaN;
+  if (a <= 0) r = g = b10 = NaN;
   return new Rgb(r, g, b10, a);
 }
 function rgbConvert(o) {
-  if (!(o instanceof Color))
-    o = color(o);
-  if (!o)
-    return new Rgb();
+  if (!(o instanceof Color)) o = color(o);
+  if (!o) return new Rgb();
   o = o.rgb();
   return new Rgb(o.r, o.g, o.b, o.opacity);
 }
@@ -35191,32 +34929,22 @@ function hex(value) {
   return (value < 16 ? "0" : "") + value.toString(16);
 }
 function hsla(h, s, l, a) {
-  if (a <= 0)
-    h = s = l = NaN;
-  else if (l <= 0 || l >= 1)
-    h = s = NaN;
-  else if (s <= 0)
-    h = NaN;
+  if (a <= 0) h = s = l = NaN;
+  else if (l <= 0 || l >= 1) h = s = NaN;
+  else if (s <= 0) h = NaN;
   return new Hsl(h, s, l, a);
 }
 function hslConvert(o) {
-  if (o instanceof Hsl)
-    return new Hsl(o.h, o.s, o.l, o.opacity);
-  if (!(o instanceof Color))
-    o = color(o);
-  if (!o)
-    return new Hsl();
-  if (o instanceof Hsl)
-    return o;
+  if (o instanceof Hsl) return new Hsl(o.h, o.s, o.l, o.opacity);
+  if (!(o instanceof Color)) o = color(o);
+  if (!o) return new Hsl();
+  if (o instanceof Hsl) return o;
   o = o.rgb();
   var r = o.r / 255, g = o.g / 255, b10 = o.b / 255, min4 = Math.min(r, g, b10), max4 = Math.max(r, g, b10), h = NaN, s = max4 - min4, l = (max4 + min4) / 2;
   if (s) {
-    if (r === max4)
-      h = (g - b10) / s + (g < b10) * 6;
-    else if (g === max4)
-      h = (b10 - r) / s + 2;
-    else
-      h = (r - g) / s + 4;
+    if (r === max4) h = (g - b10) / s + (g < b10) * 6;
+    else if (g === max4) h = (b10 - r) / s + 2;
+    else h = (r - g) / s + 4;
     s /= l < 0.5 ? max4 + min4 : 2 - max4 - min4;
     h *= 60;
   } else {
@@ -35352,12 +35080,10 @@ var rgbBasisClosed = rgbSpline(basisClosed_default);
 
 // ../../node_modules/.pnpm/d3-interpolate@3.0.1/node_modules/d3-interpolate/src/numberArray.js
 function numberArray_default(a, b10) {
-  if (!b10)
-    b10 = [];
+  if (!b10) b10 = [];
   var n2 = a ? Math.min(b10.length, a.length) : 0, c = b10.slice(), i2;
   return function(t) {
-    for (i2 = 0; i2 < n2; ++i2)
-      c[i2] = a[i2] * (1 - t) + b10[i2] * t;
+    for (i2 = 0; i2 < n2; ++i2) c[i2] = a[i2] * (1 - t) + b10[i2] * t;
     return c;
   };
 }
@@ -35368,13 +35094,10 @@ function isNumberArray(x2) {
 // ../../node_modules/.pnpm/d3-interpolate@3.0.1/node_modules/d3-interpolate/src/array.js
 function genericArray(a, b10) {
   var nb = b10 ? b10.length : 0, na = a ? Math.min(nb, a.length) : 0, x2 = new Array(na), c = new Array(nb), i2;
-  for (i2 = 0; i2 < na; ++i2)
-    x2[i2] = value_default(a[i2], b10[i2]);
-  for (; i2 < nb; ++i2)
-    c[i2] = b10[i2];
+  for (i2 = 0; i2 < na; ++i2) x2[i2] = value_default(a[i2], b10[i2]);
+  for (; i2 < nb; ++i2) c[i2] = b10[i2];
   return function(t) {
-    for (i2 = 0; i2 < na; ++i2)
-      c[i2] = x2[i2](t);
+    for (i2 = 0; i2 < na; ++i2) c[i2] = x2[i2](t);
     return c;
   };
 }
@@ -35397,10 +35120,8 @@ function number_default(a, b10) {
 // ../../node_modules/.pnpm/d3-interpolate@3.0.1/node_modules/d3-interpolate/src/object.js
 function object_default(a, b10) {
   var i2 = {}, c = {}, k;
-  if (a === null || typeof a !== "object")
-    a = {};
-  if (b10 === null || typeof b10 !== "object")
-    b10 = {};
+  if (a === null || typeof a !== "object") a = {};
+  if (b10 === null || typeof b10 !== "object") b10 = {};
   for (k in b10) {
     if (k in a) {
       i2[k] = value_default(a[k], b10[k]);
@@ -35409,8 +35130,7 @@ function object_default(a, b10) {
     }
   }
   return function(t) {
-    for (k in i2)
-      c[k] = i2[k](t);
+    for (k in i2) c[k] = i2[k](t);
     return c;
   };
 }
@@ -35434,16 +35154,12 @@ function string_default(a, b10) {
   while ((am = reA.exec(a)) && (bm = reB.exec(b10))) {
     if ((bs = bm.index) > bi) {
       bs = b10.slice(bi, bs);
-      if (s[i2])
-        s[i2] += bs;
-      else
-        s[++i2] = bs;
+      if (s[i2]) s[i2] += bs;
+      else s[++i2] = bs;
     }
     if ((am = am[0]) === (bm = bm[0])) {
-      if (s[i2])
-        s[i2] += bm;
-      else
-        s[++i2] = bm;
+      if (s[i2]) s[i2] += bm;
+      else s[++i2] = bm;
     } else {
       s[++i2] = null;
       q.push({ i: i2, x: number_default(am, bm) });
@@ -35452,14 +35168,11 @@ function string_default(a, b10) {
   }
   if (bi < b10.length) {
     bs = b10.slice(bi);
-    if (s[i2])
-      s[i2] += bs;
-    else
-      s[++i2] = bs;
+    if (s[i2]) s[i2] += bs;
+    else s[++i2] = bs;
   }
   return s.length < 2 ? q[0] ? one(q[0].x) : zero2(b10) : (b10 = q.length, function(t) {
-    for (var i3 = 0, o; i3 < b10; ++i3)
-      s[(o = q[i3]).i] = o.x(t);
+    for (var i3 = 0, o; i3 < b10; ++i3) s[(o = q[i3]).i] = o.x(t);
     return s.join("");
   });
 }
@@ -35501,18 +35214,15 @@ function normalize3(a, b10) {
 }
 function clamper(a, b10) {
   var t;
-  if (a > b10)
-    t = a, a = b10, b10 = t;
+  if (a > b10) t = a, a = b10, b10 = t;
   return function(x2) {
     return Math.max(a, Math.min(b10, x2));
   };
 }
 function bimap(domain, range2, interpolate) {
   var d0 = domain[0], d1 = domain[1], r0 = range2[0], r1 = range2[1];
-  if (d1 < d0)
-    d0 = normalize3(d1, d0), r0 = interpolate(r1, r0);
-  else
-    d0 = normalize3(d0, d1), r0 = interpolate(r0, r1);
+  if (d1 < d0) d0 = normalize3(d1, d0), r0 = interpolate(r1, r0);
+  else d0 = normalize3(d0, d1), r0 = interpolate(r0, r1);
   return function(x2) {
     return r0(d0(x2));
   };
@@ -35539,8 +35249,7 @@ function transformer() {
   var domain = unit, range2 = unit, interpolate = value_default, transform7, untransform, unknown, clamp2 = identity4, piecewise, output, input;
   function rescale() {
     var n2 = Math.min(domain.length, range2.length);
-    if (clamp2 !== identity4)
-      clamp2 = clamper(domain[0], domain[n2 - 1]);
+    if (clamp2 !== identity4) clamp2 = clamper(domain[0], domain[n2 - 1]);
     piecewise = n2 > 2 ? polymap : bimap;
     output = input = null;
     return scale3;
@@ -35725,17 +35434,13 @@ function formatLocale(locale2) {
   function newFormat(specifier, formats2) {
     return function(date2) {
       var string = [], i2 = -1, j = 0, n2 = specifier.length, c, pad2, format;
-      if (!(date2 instanceof Date))
-        date2 = /* @__PURE__ */ new Date(+date2);
+      if (!(date2 instanceof Date)) date2 = /* @__PURE__ */ new Date(+date2);
       while (++i2 < n2) {
         if (specifier.charCodeAt(i2) === 37) {
           string.push(specifier.slice(j, i2));
-          if ((pad2 = pads[c = specifier.charAt(++i2)]) != null)
-            c = specifier.charAt(++i2);
-          else
-            pad2 = c === "e" ? " " : "0";
-          if (format = formats2[c])
-            c = format(date2, pad2);
+          if ((pad2 = pads[c = specifier.charAt(++i2)]) != null) c = specifier.charAt(++i2);
+          else pad2 = c === "e" ? " " : "0";
+          if (format = formats2[c]) c = format(date2, pad2);
           string.push(c);
           j = i2 + 1;
         }
@@ -35747,23 +35452,15 @@ function formatLocale(locale2) {
   function newParse(specifier, Z) {
     return function(string) {
       var d = newDate(1900, void 0, 1), i2 = parseSpecifier(d, specifier, string += "", 0), week, day2;
-      if (i2 != string.length)
-        return null;
-      if ("Q" in d)
-        return new Date(d.Q);
-      if ("s" in d)
-        return new Date(d.s * 1e3 + ("L" in d ? d.L : 0));
-      if (Z && !("Z" in d))
-        d.Z = 0;
-      if ("p" in d)
-        d.H = d.H % 12 + d.p * 12;
-      if (d.m === void 0)
-        d.m = "q" in d ? d.q : 0;
+      if (i2 != string.length) return null;
+      if ("Q" in d) return new Date(d.Q);
+      if ("s" in d) return new Date(d.s * 1e3 + ("L" in d ? d.L : 0));
+      if (Z && !("Z" in d)) d.Z = 0;
+      if ("p" in d) d.H = d.H % 12 + d.p * 12;
+      if (d.m === void 0) d.m = "q" in d ? d.q : 0;
       if ("V" in d) {
-        if (d.V < 1 || d.V > 53)
-          return null;
-        if (!("w" in d))
-          d.w = 1;
+        if (d.V < 1 || d.V > 53) return null;
+        if (!("w" in d)) d.w = 1;
         if ("Z" in d) {
           week = utcDate(newDate(d.y, 0, 1)), day2 = week.getUTCDay();
           week = day2 > 4 || day2 === 0 ? utcMonday.ceil(week) : utcMonday(week);
@@ -35780,8 +35477,7 @@ function formatLocale(locale2) {
           d.d = week.getDate() + (d.w + 6) % 7;
         }
       } else if ("W" in d || "U" in d) {
-        if (!("w" in d))
-          d.w = "u" in d ? d.u % 7 : "W" in d ? 1 : 0;
+        if (!("w" in d)) d.w = "u" in d ? d.u % 7 : "W" in d ? 1 : 0;
         day2 = "Z" in d ? utcDate(newDate(d.y, 0, 1)).getUTCDay() : localDate(newDate(d.y, 0, 1)).getDay();
         d.m = 0;
         d.d = "W" in d ? (d.w + 6) % 7 + d.W * 7 - (day2 + 5) % 7 : d.w + d.U * 7 - (day2 + 6) % 7;
@@ -35797,14 +35493,12 @@ function formatLocale(locale2) {
   function parseSpecifier(d, specifier, string, j) {
     var i2 = 0, n2 = specifier.length, m = string.length, c, parse9;
     while (i2 < n2) {
-      if (j >= m)
-        return -1;
+      if (j >= m) return -1;
       c = specifier.charCodeAt(i2++);
       if (c === 37) {
         c = specifier.charAt(i2++);
         parse9 = parses[c in pads ? specifier.charAt(i2++) : c];
-        if (!parse9 || (j = parse9(d, string, j)) < 0)
-          return -1;
+        if (!parse9 || (j = parse9(d, string, j)) < 0) return -1;
       } else if (c != string.charCodeAt(j++)) {
         return -1;
       }
@@ -36200,8 +35894,7 @@ function calendar(ticks2, tickInterval, year2, month2, week, day2, hour2, minute
   };
   scale3.nice = function(interval2) {
     var d = domain();
-    if (!interval2 || typeof interval2.range !== "function")
-      interval2 = tickInterval(d[0], d[d.length - 1], interval2 == null ? 10 : interval2);
+    if (!interval2 || typeof interval2.range !== "function") interval2 = tickInterval(d[0], d[d.length - 1], interval2 == null ? 10 : interval2);
     return interval2 ? domain(nice(d, interval2)) : scale3;
   };
   scale3.copy = function() {
@@ -36250,7 +35943,7 @@ var configurator7 = makeConfigurator({
   getConfigFromParamDirectives(configParams) {
     return interpreteConfigs(GANTT_PARAM_DIRECTIVE_RULES, configParams);
   },
-  getConfigFromTheme(t, conf6) {
+  getConfigFromTheme(t, conf5) {
     const canvasBgInstance = (0, import_tinycolor2.default)(t.canvasBackground || "white");
     const isBgLight = canvasBgInstance.isLight();
     let fontColorOverBackground;
@@ -36267,7 +35960,7 @@ var configurator7 = makeConfigurator({
     (0, import_tinycolor2.default)(fontColorOverBackground);
     return {
       barBackground: t.primaryColor,
-      barBorderColor: conf6.fontColor,
+      barBorderColor: conf5.fontColor,
       fontColor: t.textColor,
       axisLabelColor: fontColorOverBackground,
       sectionLabelColor: fontColorOverBackground,
@@ -36282,13 +35975,13 @@ var getConf7 = configurator7.getConfig;
 var artist2 = makeArtist({
   draw(ir, config2, opts) {
     var _a;
-    const conf6 = getConf7(ir, config2);
+    const conf5 = getConf7(ir, config2);
     const rootMark = makeEmptyGroup();
     let w = 1e3;
     if ((_a = opts.containerSize) === null || _a === void 0 ? void 0 : _a.width) {
       w = opts.containerSize.width;
     }
-    const ganttDraw = new GanttDraw(ir, conf6, rootMark, w);
+    const ganttDraw = new GanttDraw(ir, conf5, rootMark, w);
     ganttDraw.makeGant();
     const size4 = ganttDraw.getPageSize();
     const { width: width2, height } = size4;
@@ -36308,9 +36001,9 @@ var GANTT_LAYER_CONFIG = {
   title: 15
 };
 var GanttDraw = class {
-  constructor(ir, conf6, rootMark, w) {
+  constructor(ir, conf5, rootMark, w) {
     this.ir = ir;
-    this.conf = conf6;
+    this.conf = conf5;
     this.rootMark = rootMark;
     this.sectionLabelWidth = 0;
     this.layerManager = new LayerManager();
@@ -36327,8 +36020,8 @@ var GanttDraw = class {
       return Number(d.renderEndTime || d.endTime);
     }));
     this.fontConfig = {
-      fontSize: conf6.fontSize,
-      fontFamily: conf6.fontFamily
+      fontSize: conf5.fontSize,
+      fontFamily: conf5.fontFamily
     };
     const categories = taskArray.map((task) => task.section);
     this.categories = categories;
@@ -36345,14 +36038,14 @@ var GanttDraw = class {
     const makeTimeScaleAndTicks = (width2) => {
       const axisFormat = this.ir.attrs.axisFormat || this.conf.axisFormat;
       const sampleLabelWidth = calculateTextDimensions((0, import_dayjs2.default)().format(axisFormat), {
-        fontSize: conf6.axisLabelFontSize
+        fontSize: conf5.axisLabelFontSize
       }).width;
       const timeInterval = getAxisTimeInterval({ axisFormat, axisInterval: this.ir.attrs.axisInterval });
-      const timeScale2 = time2().domain([this.startDate, this.endDate]).rangeRound([0, width2 - conf6.sidePadding * 2 - this.sectionLabelWidth - sampleLabelWidth / 4]);
+      const timeScale2 = time2().domain([this.startDate, this.endDate]).rangeRound([0, width2 - conf5.sidePadding * 2 - this.sectionLabelWidth - sampleLabelWidth / 4]);
       const ticks3 = timeScale2.ticks(timeInterval).map((date2) => {
         const day2 = (0, import_dayjs2.default)(date2);
         const label = day2.format(axisFormat);
-        const labelWidth = calculateTextDimensions(label, { fontSize: conf6.axisLabelFontSize }).width;
+        const labelWidth = calculateTextDimensions(label, { fontSize: conf5.axisLabelFontSize }).width;
         return {
           date: date2,
           label,
@@ -36362,10 +36055,10 @@ var GanttDraw = class {
       return { timeScale: timeScale2, ticks: ticks3 };
     };
     const { ticks: tempTicks } = makeTimeScaleAndTicks(w);
-    const axisLabelGap = conf6.axisLabelFontSize / 2;
-    const minWidth = tempTicks.reduce((acc, tick) => acc + tick.labelWidth + axisLabelGap, 0) + conf6.sidePadding * 2 + sectionLabelMaxWidth;
+    const axisLabelGap = conf5.axisLabelFontSize / 2;
+    const minWidth = tempTicks.reduce((acc, tick) => acc + tick.labelWidth + axisLabelGap, 0) + conf5.sidePadding * 2 + sectionLabelMaxWidth;
     this.titleTextDims = ir.attrs.title ? calculateTextDimensions(ir.attrs.title, this.fontConfig) : { width: 0, height: 0 };
-    const h = taskArray.length * (conf6.barHeight + conf6.barGap) + 2 * conf6.topPadding + conf6.gridLineStartPadding + conf6.axisLabelFontSize + this.titleTextDims.height;
+    const h = taskArray.length * (conf5.barHeight + conf5.barGap) + 2 * conf5.topPadding + conf5.gridLineStartPadding + conf5.axisLabelFontSize + this.titleTextDims.height;
     this.height = h;
     this.width = Math.max(w, minWidth);
     const { timeScale, ticks: ticks2 } = makeTimeScaleAndTicks(this.width);
@@ -36380,9 +36073,9 @@ var GanttDraw = class {
   }
   makeGant() {
     const { taskArray } = this;
-    const { conf: conf6 } = this;
-    const barHeight = conf6.barHeight;
-    const gap = barHeight + conf6.barGap;
+    const { conf: conf5 } = this;
+    const barHeight = conf5.barHeight;
+    const gap = barHeight + conf5.barGap;
     this.drawTitle();
     const { sectionsHeight } = this.drawSections(taskArray, gap);
     this.drawExcludeDays({ sectionsHeight });
@@ -36446,10 +36139,10 @@ var GanttDraw = class {
     });
   }
   drawSections(taskArray, sectionUnitHeight) {
-    const { conf: conf6 } = this;
+    const { conf: conf5 } = this;
     const w = this.width;
     const sectionBackgrounGroup = makeEmptyGroup();
-    const { gridLineStartPadding, gridLineWidth, sectionBackgrounds, sidePadding, topPadding, barHeight, barGap } = conf6;
+    const { gridLineStartPadding, gridLineWidth, sectionBackgrounds, sidePadding, topPadding, barHeight, barGap } = conf5;
     const yStart = gridLineStartPadding + topPadding + (this.titleTextDims.height || 0);
     this.layerManager.addMark("sectionBackground", sectionBackgrounGroup);
     const sectionsMap = /* @__PURE__ */ new Map();
@@ -36475,7 +36168,7 @@ var GanttDraw = class {
             x: sidePadding,
             y: sectionY + sectionUnitHeight / 2,
             ...this.fontConfig,
-            fill: conf6.sectionLabelColor,
+            fill: conf5.sectionLabelColor,
             textAlign: "left",
             textBaseline: "middle"
           });
@@ -36489,13 +36182,13 @@ var GanttDraw = class {
       let barEndX = taskXOffset + this.getScaledTimeX(task.renderEndTime || task.endTime);
       let barWidth = barEndX - barStartX;
       const baseAttrs = {
-        radius: conf6.barBorderRadius,
+        radius: conf5.barBorderRadius,
         x: taskX,
         y: task.order * sectionUnitHeight + yStart + barGap / 2,
         width: barWidth,
         height: barHeight,
-        fill: conf6.barBackground,
-        stroke: conf6.barBorderColor
+        fill: conf5.barBackground,
+        stroke: conf5.barBorderColor
       };
       const taskRect = makeMark("rect", { ...baseAttrs });
       const appearanceInfo = getTaskAppearanceInfo({
@@ -36526,7 +36219,7 @@ var GanttDraw = class {
       } else {
         textX = barStartX + barWidth / 2 + taskMarkOffset.x;
       }
-      const textY = i2 * sectionUnitHeight + conf6.barHeight / 2 + yStart;
+      const textY = i2 * sectionUnitHeight + conf5.barHeight / 2 + yStart;
       const textMark = makeMark("text", {
         text: task.label,
         x: textX + gridLineWidth / 2,
@@ -36534,7 +36227,7 @@ var GanttDraw = class {
         textAlign: "center",
         textBaseline: "middle",
         ...this.fontConfig,
-        fill: conf6.fontColor
+        fill: conf5.fontColor
       });
       sectionGroup.children.push(taskMark, textMark);
     });
@@ -36551,9 +36244,9 @@ var GanttDraw = class {
     return { sectionsHeight };
   }
   drawExcludeDays(opts) {
-    const { conf: conf6 } = this;
+    const { conf: conf5 } = this;
     const excludesBackgrounGroup = makeEmptyGroup();
-    const { gridLineStartPadding, gridLineColor, sidePadding, topPadding } = conf6;
+    const { gridLineStartPadding, gridLineColor, sidePadding, topPadding } = conf5;
     const yStart = topPadding + (this.titleTextDims.height || 0);
     this.layerManager.addMark("excludesBackground", excludesBackgrounGroup);
     const minTime = this.startDate;
@@ -36621,9 +36314,9 @@ var GanttDraw = class {
 var TASK_TAGS_INFO_MAP = {
   MILESTONE: {
     decorate(opts) {
-      const { taskMark, conf: conf6 } = opts;
+      const { taskMark, conf: conf5 } = opts;
       const curAttrs = taskMark.attrs;
-      const axisWidth = Math.min(20, conf6.barHeight);
+      const axisWidth = Math.min(20, conf5.barHeight);
       const diamondSide = axisWidth / 2;
       const centerX = curAttrs.x;
       const centerY = curAttrs.y + curAttrs.height / 2;
@@ -37130,8 +36823,8 @@ var getConf8 = configurator8.getConfig;
 var artist3 = makeArtist({
   draw(ir, config2, opts) {
     const rootMark = makeEmptyGroup();
-    const conf6 = getConf8(ir, config2);
-    const draw = new ClassDiagramDraw(ir, conf6);
+    const conf5 = getConf8(ir, config2);
+    const draw = new ClassDiagramDraw(ir, conf5);
     if (isDev) {
       ;
       window.classDraw = draw;
@@ -37140,8 +36833,8 @@ var artist3 = makeArtist({
     const { width: width2, height } = adjustRootMarkBounds({
       rootMark,
       gBounds,
-      padX: conf6.diagramPadding,
-      padY: conf6.diagramPadding
+      padX: conf5.diagramPadding,
+      padY: conf5.diagramPadding
     });
     return {
       mark: rootMark,
@@ -37151,9 +36844,9 @@ var artist3 = makeArtist({
   }
 });
 var ClassDiagramDraw = class {
-  constructor(ir, conf6) {
+  constructor(ir, conf5) {
     this.ir = ir;
-    this.conf = conf6;
+    this.conf = conf5;
     this.relationGroupMark = makeEmptyGroup();
     this.elementBounds = makeBounds();
     const g = createLayoutGraph({
@@ -37162,13 +36855,13 @@ var ClassDiagramDraw = class {
       compound: true
     }).setGraph({
       nodesep: 20,
-      edgesep: conf6.edgesep,
-      ranksep: conf6.ranksep,
-      splines: getGraphSplinesOption(conf6.edgeType),
+      edgesep: conf5.edgesep,
+      ranksep: conf5.ranksep,
+      splines: getGraphSplinesOption(conf5.edgeType),
       avoid_label_on_border: true
     });
     this.dagreWrapper = new DagreWrapper(g);
-    this.theme = config_default.getConfig().themeConfig.themeVariables;
+    this.theme = this.conf.themeConfig.themeVariables;
   }
   drawTo(rootMark) {
     this.rootMark = rootMark;
@@ -37229,18 +36922,18 @@ var ClassDiagramDraw = class {
   }
   drawRelation(r) {
     const g = this.dagreWrapper.g;
-    const { conf: conf6, relationGroupMark } = this;
+    const { conf: conf5, relationGroupMark } = this;
     let labelDims;
     const fontConfig = {
-      fontSize: conf6.fontSize,
-      fontFamily: conf6.fontFamily
+      fontSize: conf5.fontSize,
+      fontFamily: conf5.fontFamily
     };
     const startNodeId = r.reversed ? r.right : r.left;
     const ednNodeId = r.reversed ? r.left : r.right;
     let minlen = 1;
     if (r.label) {
       labelDims = calculateTextDimensions(r.label, fontConfig);
-      minlen = Math.ceil(labelDims.height / conf6.ranksep) + 1;
+      minlen = Math.ceil(labelDims.height / conf5.ranksep) + 1;
       const startNode = g.node(startNodeId);
       const extraPad = (labelDims.width - startNode.width) / 2;
       if (extraPad > 0) {
@@ -37253,20 +36946,20 @@ var ClassDiagramDraw = class {
     let leftLabelMark;
     let rightLabelMark;
     if (r.labelLeft) {
-      minlen += Math.ceil(leftLabelDims.height / conf6.ranksep);
+      minlen += Math.ceil(leftLabelDims.height / conf5.ranksep);
       leftLabelMark = makeMark("text", {
         text: r.labelLeft,
-        fill: conf6.relationLineColor,
+        fill: conf5.relationLineColor,
         class: "class__label",
         ...fontConfig
       });
       relationGroupMark.children.push(leftLabelMark);
     }
     if (r.labelRight) {
-      minlen += Math.ceil(rightLabelDims.height / conf6.ranksep);
+      minlen += Math.ceil(rightLabelDims.height / conf5.ranksep);
       rightLabelMark = makeMark("text", {
         text: r.labelRight,
-        fill: conf6.relationLineColor,
+        fill: conf5.relationLineColor,
         class: "class__label",
         ...fontConfig
       });
@@ -37278,10 +36971,10 @@ var ClassDiagramDraw = class {
       label: r.relation,
       minlen,
       onLayout: (data) => {
-        const newPath = conf6.edgeType === "curved" ? getPointsCurvePath(data.points) : getPointsLinearPath(data.points);
+        const newPath = conf5.edgeType === "curved" ? getPointsCurvePath(data.points) : getPointsLinearPath(data.points);
         const lineMark = makeMark("path", {
           path: newPath,
-          stroke: conf6.relationLineColor,
+          stroke: conf5.relationLineColor,
           lineCap: "round",
           lineDash: r.dashed ? [2, 2] : null
         }, { class: "class__rel-line" });
@@ -37290,14 +36983,14 @@ var ClassDiagramDraw = class {
           const anchorPoint = (minlen === 1 ? data.labelPoint : null) || getMedianPoint(data.points).point;
           const relText = makeMark("text", {
             text: r.label,
-            fill: conf6.relationTextColor,
+            fill: conf5.relationTextColor,
             textAlign: "center",
             textBaseline: "middle",
             ...anchorPoint,
             ...fontConfig
           }, { class: "class__rel-text" });
           const relTextBg = makeLabelBg(labelDims, anchorPoint, {
-            fill: conf6.labelBackground
+            fill: conf5.labelBackground
           });
           const labelBounds = calcBound([relTextBg]);
           tryExpandBounds(this.elementBounds, labelBounds);
@@ -37309,7 +37002,7 @@ var ClassDiagramDraw = class {
         const arrowHeadType = RELATION_TO_ARROW_TYPE[r.relation];
         if (arrowHeadType) {
           const arrowMark = drawArrowTo(lastPoint, 8, arrowRad, {
-            color: conf6.relationLineColor,
+            color: conf5.relationLineColor,
             type: arrowHeadType
           });
           relationGroupMark.children.push(arrowMark);
@@ -37336,14 +37029,14 @@ var ClassDiagramDraw = class {
       x: 0,
       y: 0
     }, { children: [], class: "activity__note" });
-    const { rootMark, conf: conf6, theme: theme3 } = this;
+    const { rootMark, conf: conf5, theme: theme2 } = this;
     rootMark.children.push(group);
-    const fontConfig = { fontSize: conf6.fontSize, fontFamily: conf6.fontFamily };
+    const fontConfig = { fontSize: conf5.fontSize, fontFamily: conf5.fontFamily };
     const textDims = calculateTextDimensions(text, fontConfig);
-    const rectAttrs = getBaseNote(theme3);
+    const rectAttrs = getBaseNote(theme2);
     const noteModel = {
-      width: textDims.width + 2 * conf6.noteMargin,
-      height: textDims.height + 2 * conf6.noteMargin
+      width: textDims.width + 2 * conf5.noteMargin,
+      height: textDims.height + 2 * conf5.noteMargin
     };
     const noteRect = {
       type: "rect",
@@ -37352,7 +37045,7 @@ var ClassDiagramDraw = class {
     };
     const textMark = {
       type: "text",
-      attrs: { fill: conf6.noteTextColor, text, textBaseline: "middle", ...fontConfig }
+      attrs: { fill: conf5.noteTextColor, text, textBaseline: "middle", ...fontConfig }
     };
     let isHorizontal = false;
     if (note.placement === "LEFT_OF") {
@@ -37387,18 +37080,18 @@ var ClassDiagramDraw = class {
         let x2 = targetNodeStartX;
         let y2 = targetNodeStartY;
         if (note.placement === "LEFT_OF") {
-          x2 = targetNodeStartX - noteModel.width - conf6.noteMargin;
+          x2 = targetNodeStartX - noteModel.width - conf5.noteMargin;
         } else if (note.placement === "RIGHT_OF") {
-          x2 = targetNodeData.x + targetNodeData.width / 2 + conf6.noteMargin;
+          x2 = targetNodeData.x + targetNodeData.width / 2 + conf5.noteMargin;
         }
         if (note.placement === "TOP_OF") {
-          y2 = targetNodeStartY - noteModel.height - conf6.noteMargin;
+          y2 = targetNodeStartY - noteModel.height - conf5.noteMargin;
         } else if (note.placement === "BOTTOM_OF") {
-          y2 = targetNodeStartY + targetNodeData.height + noteModel.height + conf6.noteMargin;
+          y2 = targetNodeStartY + targetNodeData.height + noteModel.height + conf5.noteMargin;
         }
         safeAssign(textMark.attrs, {
-          x: x2 + conf6.noteMargin,
-          y: y2 + textDims.height / 2 + conf6.noteMargin,
+          x: x2 + conf5.noteMargin,
+          y: y2 + textDims.height / 2 + conf5.noteMargin,
           width: noteModel.width
         });
         safeAssign(rectAttrs, {
@@ -37425,9 +37118,9 @@ var RELATION_TO_ARROW_TYPE = {
   [Relation.AGGREGATION]: "ediamond"
 };
 var EntityMarkBuilder = class {
-  constructor(g, conf6) {
+  constructor(g, conf5) {
     this.g = g;
-    this.conf = conf6;
+    this.conf = conf5;
     this.group = makeEmptyGroup();
     this.rowPadding = 8;
     this.curY = 0;
@@ -38831,9 +38524,7 @@ var extendStatics = function(d, b10) {
   extendStatics = Object.setPrototypeOf || { __proto__: [] } instanceof Array && function(d2, b11) {
     d2.__proto__ = b11;
   } || function(d2, b11) {
-    for (var p in b11)
-      if (Object.prototype.hasOwnProperty.call(b11, p))
-        d2[p] = b11[p];
+    for (var p in b11) if (Object.prototype.hasOwnProperty.call(b11, p)) d2[p] = b11[p];
   };
   return extendStatics(d, b10);
 };
@@ -38850,9 +38541,7 @@ var __assign = function() {
   __assign = Object.assign || function __assign2(t) {
     for (var s, i2 = 1, n2 = arguments.length; i2 < n2; i2++) {
       s = arguments[i2];
-      for (var p in s)
-        if (Object.prototype.hasOwnProperty.call(s, p))
-          t[p] = s[p];
+      for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p];
     }
     return t;
   };
@@ -38860,17 +38549,12 @@ var __assign = function() {
 };
 function __decorate(decorators, target, key, desc) {
   var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-  if (typeof Reflect === "object" && typeof Reflect.decorate === "function")
-    r = Reflect.decorate(decorators, target, key, desc);
-  else
-    for (var i2 = decorators.length - 1; i2 >= 0; i2--)
-      if (d = decorators[i2])
-        r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+  if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+  else for (var i2 = decorators.length - 1; i2 >= 0; i2--) if (d = decorators[i2]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
   return c > 3 && r && Object.defineProperty(target, key, r), r;
 }
 function __spreadArrays() {
-  for (var s = 0, i2 = 0, il = arguments.length; i2 < il; i2++)
-    s += arguments[i2].length;
+  for (var s = 0, i2 = 0, il = arguments.length; i2 < il; i2++) s += arguments[i2].length;
   for (var r = Array(s), k = 0, i2 = 0; i2 < il; i2++)
     for (var a = arguments[i2], j = 0, jl = a.length; j < jl; j++, k++)
       r[k] = a[j];
@@ -39596,14 +39280,12 @@ var base_default = Base;
 
 // ../../node_modules/.pnpm/detect-browser@5.3.0/node_modules/detect-browser/es/index.js
 var __spreadArray = function(to, from, pack) {
-  if (pack || arguments.length === 2)
-    for (var i2 = 0, l = from.length, ar; i2 < l; i2++) {
-      if (ar || !(i2 in from)) {
-        if (!ar)
-          ar = Array.prototype.slice.call(from, 0, i2);
-        ar[i2] = from[i2];
-      }
+  if (pack || arguments.length === 2) for (var i2 = 0, l = from.length, ar; i2 < l; i2++) {
+    if (ar || !(i2 in from)) {
+      if (!ar) ar = Array.prototype.slice.call(from, 0, i2);
+      ar[i2] = from[i2];
     }
+  }
   return to.concat(ar || Array.prototype.slice.call(from));
 };
 var BrowserInfo = (
@@ -40923,14 +40605,11 @@ function Timer() {
 Timer.prototype = timer.prototype = {
   constructor: Timer,
   restart: function(callback, delay, time3) {
-    if (typeof callback !== "function")
-      throw new TypeError("callback is not a function");
+    if (typeof callback !== "function") throw new TypeError("callback is not a function");
     time3 = (time3 == null ? now() : +time3) + (delay == null ? 0 : +delay);
     if (!this._next && taskTail !== this) {
-      if (taskTail)
-        taskTail._next = this;
-      else
-        taskHead = this;
+      if (taskTail) taskTail._next = this;
+      else taskHead = this;
       taskTail = this;
     }
     this._call = callback;
@@ -40955,8 +40634,7 @@ function timerFlush() {
   ++frame;
   var t = taskHead, e;
   while (t) {
-    if ((e = clockNow - t._time) >= 0)
-      t._call.call(null, e);
+    if ((e = clockNow - t._time) >= 0) t._call.call(null, e);
     t = t._next;
   }
   --frame;
@@ -40974,15 +40652,13 @@ function wake() {
 }
 function poke() {
   var now2 = clock.now(), delay = now2 - clockLast;
-  if (delay > pokeDelay)
-    clockSkew -= delay, clockLast = now2;
+  if (delay > pokeDelay) clockSkew -= delay, clockLast = now2;
 }
 function nap() {
   var t02, t12 = taskHead, t2, time3 = Infinity;
   while (t12) {
     if (t12._call) {
-      if (time3 > t12._time)
-        time3 = t12._time;
+      if (time3 > t12._time) time3 = t12._time;
       t02 = t12, t12 = t12._next;
     } else {
       t2 = t12._next, t12._next = null;
@@ -40993,19 +40669,14 @@ function nap() {
   sleep(time3);
 }
 function sleep(time3) {
-  if (frame)
-    return;
-  if (timeout)
-    timeout = clearTimeout(timeout);
+  if (frame) return;
+  if (timeout) timeout = clearTimeout(timeout);
   var delay = time3 - clockNow;
   if (delay > 24) {
-    if (time3 < Infinity)
-      timeout = setTimeout(wake, time3 - clock.now() - clockSkew);
-    if (interval)
-      interval = clearInterval(interval);
+    if (time3 < Infinity) timeout = setTimeout(wake, time3 - clock.now() - clockSkew);
+    if (interval) interval = clearInterval(interval);
   } else {
-    if (!interval)
-      clockLast = clock.now(), interval = setInterval(poke, pokeDelay);
+    if (!interval) clockLast = clock.now(), interval = setInterval(poke, pokeDelay);
     frame = 1, setFrame(wake);
   }
 }
@@ -41102,12 +40773,10 @@ var rgbBasisClosed2 = rgbSpline2(basisClosed_default2);
 
 // ../../node_modules/.pnpm/d3-interpolate@1.4.0/node_modules/d3-interpolate/src/numberArray.js
 function numberArray_default2(a, b10) {
-  if (!b10)
-    b10 = [];
+  if (!b10) b10 = [];
   var n2 = a ? Math.min(b10.length, a.length) : 0, c = b10.slice(), i2;
   return function(t) {
-    for (i2 = 0; i2 < n2; ++i2)
-      c[i2] = a[i2] * (1 - t) + b10[i2] * t;
+    for (i2 = 0; i2 < n2; ++i2) c[i2] = a[i2] * (1 - t) + b10[i2] * t;
     return c;
   };
 }
@@ -41121,13 +40790,10 @@ function array_default2(a, b10) {
 }
 function genericArray2(a, b10) {
   var nb = b10 ? b10.length : 0, na = a ? Math.min(nb, a.length) : 0, x2 = new Array(na), c = new Array(nb), i2;
-  for (i2 = 0; i2 < na; ++i2)
-    x2[i2] = value_default2(a[i2], b10[i2]);
-  for (; i2 < nb; ++i2)
-    c[i2] = b10[i2];
+  for (i2 = 0; i2 < na; ++i2) x2[i2] = value_default2(a[i2], b10[i2]);
+  for (; i2 < nb; ++i2) c[i2] = b10[i2];
   return function(t) {
-    for (i2 = 0; i2 < na; ++i2)
-      c[i2] = x2[i2](t);
+    for (i2 = 0; i2 < na; ++i2) c[i2] = x2[i2](t);
     return c;
   };
 }
@@ -41150,10 +40816,8 @@ function number_default2(a, b10) {
 // ../../node_modules/.pnpm/d3-interpolate@1.4.0/node_modules/d3-interpolate/src/object.js
 function object_default2(a, b10) {
   var i2 = {}, c = {}, k;
-  if (a === null || typeof a !== "object")
-    a = {};
-  if (b10 === null || typeof b10 !== "object")
-    b10 = {};
+  if (a === null || typeof a !== "object") a = {};
+  if (b10 === null || typeof b10 !== "object") b10 = {};
   for (k in b10) {
     if (k in a) {
       i2[k] = value_default2(a[k], b10[k]);
@@ -41162,8 +40826,7 @@ function object_default2(a, b10) {
     }
   }
   return function(t) {
-    for (k in i2)
-      c[k] = i2[k](t);
+    for (k in i2) c[k] = i2[k](t);
     return c;
   };
 }
@@ -41187,16 +40850,12 @@ function string_default2(a, b10) {
   while ((am = reA2.exec(a)) && (bm = reB2.exec(b10))) {
     if ((bs = bm.index) > bi) {
       bs = b10.slice(bi, bs);
-      if (s[i2])
-        s[i2] += bs;
-      else
-        s[++i2] = bs;
+      if (s[i2]) s[i2] += bs;
+      else s[++i2] = bs;
     }
     if ((am = am[0]) === (bm = bm[0])) {
-      if (s[i2])
-        s[i2] += bm;
-      else
-        s[++i2] = bm;
+      if (s[i2]) s[i2] += bm;
+      else s[++i2] = bm;
     } else {
       s[++i2] = null;
       q.push({ i: i2, x: number_default2(am, bm) });
@@ -41205,14 +40864,11 @@ function string_default2(a, b10) {
   }
   if (bi < b10.length) {
     bs = b10.slice(bi);
-    if (s[i2])
-      s[i2] += bs;
-    else
-      s[++i2] = bs;
+    if (s[i2]) s[i2] += bs;
+    else s[++i2] = bs;
   }
   return s.length < 2 ? q[0] ? one2(q[0].x) : zero3(b10) : (b10 = q.length, function(t) {
-    for (var i3 = 0, o; i3 < b10; ++i3)
-      s[(o = q[i3]).i] = o.x(t);
+    for (var i3 = 0, o; i3 < b10; ++i3) s[(o = q[i3]).i] = o.x(t);
     return s.join("");
   });
 }
@@ -45543,14 +45199,12 @@ var pintoraStandalone = {
     try {
       if (drawResult) {
         let graphicIR = drawResult.graphicIR;
-        if (options.enhanceGraphicIR)
-          graphicIR = options.enhanceGraphicIR(graphicIR);
+        if (options.enhanceGraphicIR) graphicIR = options.enhanceGraphicIR(graphicIR);
         if (!graphicIR.bgColor) {
           const diagramIR = drawResult.diagramIR;
-          const conf6 = config_default.gnernateNewConfig(diagramIR.overrideConfig || {});
-          const canvasBackground = conf6.themeConfig.themeVariables?.canvasBackground;
-          if (canvasBackground)
-            graphicIR.bgColor = canvasBackground;
+          const conf5 = config_default.gnernateNewConfig(diagramIR.overrideConfig || {});
+          const canvasBackground = conf5.themeConfig.themeVariables?.canvasBackground;
+          if (canvasBackground) graphicIR.bgColor = canvasBackground;
         }
         const originOnRender = options.onRender;
         render(graphicIR, {
@@ -45568,8 +45222,7 @@ var pintoraStandalone = {
                 );
               }
             }
-            if (originOnRender)
-              originOnRender(renderer);
+            if (originOnRender) originOnRender(renderer);
           }
         });
       }
@@ -45822,18 +45475,15 @@ var Node = class _Node extends EventTarget {
     return clone3;
   }
   contains(node2) {
-    if (node2 === this)
-      return false;
+    if (node2 === this) return false;
     while (node2.parentNode) {
-      if (node2 === this)
-        return true;
+      if (node2 === this) return true;
       node2 = node2.parentNode;
     }
     return false;
   }
   getRootNode() {
-    if (!this.parentNode || this.nodeType === _Node.DOCUMENT_NODE)
-      return this;
+    if (!this.parentNode || this.nodeType === _Node.DOCUMENT_NODE) return this;
     return this.parentNode.getRootNode();
   }
   hasChildNodes() {
@@ -45901,8 +45551,7 @@ var Node = class _Node extends EventTarget {
     bool = bool && this.prefix === node2.prefix;
     bool = bool && this.nodeValue === node2.nodeValue;
     bool = bool && this.childNodes.length === node2.childNodes.length;
-    if (!bool)
-      return false;
+    if (!bool) return false;
     bool = bool && !this.childNodes.reduce((last4, curr, index2) => {
       return last4 && curr.isEqualNode(node2.childNodes[index2]);
     }, true);
@@ -45921,8 +45570,7 @@ var Node = class _Node extends EventTarget {
       return this.prefix;
     }
     for (const [key, val] of this.attrs.entries()) {
-      if (!key.includes(":"))
-        continue;
+      if (!key.includes(":")) continue;
       const [attrPrefix, name] = key.split(":");
       if (attrPrefix === "xmlns" && val === namespaceURI && originalElement.lookupNamespaceURI(name) === namespaceURI) {
         return name;
@@ -45940,8 +45588,7 @@ var Node = class _Node extends EventTarget {
           return this.namespaceURI;
         }
         for (const [key, val] of this.attrs.entries()) {
-          if (!key.includes(":"))
-            continue;
+          if (!key.includes(":")) continue;
           const [attrPrefix, name] = key.split(":");
           if (attrPrefix === "xmlns" && name === prefix) {
             if (val != null) {
@@ -46036,8 +45683,7 @@ var Node = class _Node extends EventTarget {
   removeChild(node2) {
     node2.parentNode = null;
     const index2 = this.childNodes.indexOf(node2);
-    if (index2 === -1)
-      return node2;
+    if (index2 === -1) return node2;
     this.childNodes.splice(index2, 1);
     return node2;
   }
@@ -46056,12 +45702,9 @@ var Node = class _Node extends EventTarget {
     return child || null;
   }
   get textContent() {
-    if (this.nodeType === _Node.TEXT_NODE)
-      return this.data;
-    if (this.nodeType === _Node.CDATA_SECTION_NODE)
-      return this.data;
-    if (this.nodeType === _Node.COMMENT_NODE)
-      return this.data;
+    if (this.nodeType === _Node.TEXT_NODE) return this.data;
+    if (this.nodeType === _Node.CDATA_SECTION_NODE) return this.data;
+    if (this.nodeType === _Node.COMMENT_NODE) return this.data;
     return this.childNodes.reduce(function(last4, current) {
       return last4 + current.textContent;
     }, "");
@@ -46149,28 +45792,24 @@ var nodesToNode = (nodes, document2) => {
 // ../../node_modules/.pnpm/svgdom@0.1.19/node_modules/svgdom/src/dom/mixins/ChildNode.js
 var ChildNode = {
   before(...nodes) {
-    if (!this.parentNode)
-      return;
+    if (!this.parentNode) return;
     const node2 = nodesToNode(nodes, this.ownerDocument);
     this.parentNode.insertBefore(node2, this);
   },
   after(...nodes) {
-    if (!this.parentNode)
-      return;
+    if (!this.parentNode) return;
     const node2 = nodesToNode(nodes, this.ownerDocument);
     this.parentNode.insertBefore(node2, this.nextSibling);
   },
   replaceWith(...nodes) {
-    if (!this.parentNode)
-      return;
+    if (!this.parentNode) return;
     const next = this.nextSibling;
     const node2 = nodesToNode(nodes, this.ownerDocument);
     this.parentNode.insertBefore(node2, next);
     this.remove();
   },
   remove() {
-    if (!this.parentNode)
-      return;
+    if (!this.parentNode) return;
     this.parentNode.removeChild(this);
   }
 };
@@ -46269,28 +45908,17 @@ extendStatic(NodeFilter, {
 
 // ../../node_modules/.pnpm/svgdom@0.1.19/node_modules/svgdom/src/utils/NodeIterator.js
 var showThisNode = (whatToShow, node2) => {
-  if (whatToShow === NodeFilter.SHOW_ALL)
-    return true;
-  if (whatToShow & NodeFilter.SHOW_ELEMENT && node2.nodeType === node2.ELEMENT_NODE)
-    return true;
-  if (whatToShow & NodeFilter.SHOW_TEXT && node2.nodeType === node2.TEXT_NODE)
-    return true;
-  if (whatToShow & NodeFilter.SHOW_ENTITY_REFERENCE && node2.nodeType === node2.ENTITY_REFERENCE_NODE)
-    return true;
-  if (whatToShow & NodeFilter.SHOW_ENTITY && node2.nodeType === node2.ENTITY_NODE)
-    return true;
-  if (whatToShow & NodeFilter.SHOW_PROCESSING_INSTRUCTION && node2.nodeType === node2.PROCESSING_INSTRUCTION_NODE)
-    return true;
-  if (whatToShow & NodeFilter.SHOW_COMMENT && node2.nodeType === node2.COMMENT_NODE)
-    return true;
-  if (whatToShow & NodeFilter.SHOW_DOCUMENT && node2.nodeType === node2.DOCUMENT_NODE)
-    return true;
-  if (whatToShow & NodeFilter.SHOW_DOCUMENT_TYPE && node2.nodeType === node2.DOCUMENT_TYPE_NODE)
-    return true;
-  if (whatToShow & NodeFilter.SHOW_DOCUMENT_FRAGMENT && node2.nodeType === node2.DOCUMENT_FRAGMENT_NODE)
-    return true;
-  if (whatToShow & NodeFilter.SHOW_NOTATION && node2.nodeType === node2.NOTATION_NODE)
-    return true;
+  if (whatToShow === NodeFilter.SHOW_ALL) return true;
+  if (whatToShow & NodeFilter.SHOW_ELEMENT && node2.nodeType === node2.ELEMENT_NODE) return true;
+  if (whatToShow & NodeFilter.SHOW_TEXT && node2.nodeType === node2.TEXT_NODE) return true;
+  if (whatToShow & NodeFilter.SHOW_ENTITY_REFERENCE && node2.nodeType === node2.ENTITY_REFERENCE_NODE) return true;
+  if (whatToShow & NodeFilter.SHOW_ENTITY && node2.nodeType === node2.ENTITY_NODE) return true;
+  if (whatToShow & NodeFilter.SHOW_PROCESSING_INSTRUCTION && node2.nodeType === node2.PROCESSING_INSTRUCTION_NODE) return true;
+  if (whatToShow & NodeFilter.SHOW_COMMENT && node2.nodeType === node2.COMMENT_NODE) return true;
+  if (whatToShow & NodeFilter.SHOW_DOCUMENT && node2.nodeType === node2.DOCUMENT_NODE) return true;
+  if (whatToShow & NodeFilter.SHOW_DOCUMENT_TYPE && node2.nodeType === node2.DOCUMENT_TYPE_NODE) return true;
+  if (whatToShow & NodeFilter.SHOW_DOCUMENT_FRAGMENT && node2.nodeType === node2.DOCUMENT_FRAGMENT_NODE) return true;
+  if (whatToShow & NodeFilter.SHOW_NOTATION && node2.nodeType === node2.NOTATION_NODE) return true;
   return false;
 };
 var NodeIterator = class _NodeIterator {
@@ -46302,11 +45930,9 @@ var NodeIterator = class _NodeIterator {
   *[Symbol.iterator]() {
     const nodes = this.root.childNodes;
     for (const node2 of nodes) {
-      if (!showThisNode(this.whatToShow, node2))
-        continue;
+      if (!showThisNode(this.whatToShow, node2)) continue;
       const filterRet = this.filter(node2);
-      if (filterRet === NodeFilter.FILTER_REJECT)
-        continue;
+      if (filterRet === NodeFilter.FILTER_REJECT) continue;
       if (filterRet === NodeFilter.FILTER_ACCEPT) {
         yield node2;
       }
@@ -46405,14 +46031,10 @@ var splitNotInBrackets = (str3, delimiter2) => {
       lastIndex = i2 + 1;
       continue;
     }
-    if (ch === "(")
-      ++roundBrackets;
-    else if (ch === ")")
-      --roundBrackets;
-    else if (ch === "[")
-      ++squareBrackets;
-    else if (ch === "]")
-      --squareBrackets;
+    if (ch === "(") ++roundBrackets;
+    else if (ch === ")") --roundBrackets;
+    else if (ch === "[") ++squareBrackets;
+    else if (ch === "]") --squareBrackets;
   }
   split.push(str3.slice(lastIndex).trim());
   return split;
@@ -46439,18 +46061,12 @@ var CssQuery = class _CssQuery {
       let roundBrackets = 0;
       let squareBrackets = 0;
       query2 = query2.replace(/[()[\]>~+]/g, function(ch) {
-        if (ch === "(")
-          ++roundBrackets;
-        else if (ch === ")")
-          --roundBrackets;
-        else if (ch === "[")
-          ++squareBrackets;
-        else if (ch === "]")
-          --squareBrackets;
-        if ("()[]".indexOf(ch) > -1)
-          return ch;
-        if (squareBrackets || roundBrackets)
-          return ch;
+        if (ch === "(") ++roundBrackets;
+        else if (ch === ")") --roundBrackets;
+        else if (ch === "[") ++squareBrackets;
+        else if (ch === "]") --squareBrackets;
+        if ("()[]".indexOf(ch) > -1) return ch;
+        if (squareBrackets || roundBrackets) return ch;
         return " " + ch + " ";
       });
       query2 = splitNotInBrackets(query2, " ").filter((el) => !!el.length);
@@ -46487,10 +46103,8 @@ var CssQuery = class _CssQuery {
     if (!new CssQueryNode(last4[1]).matches(node2, scope)) {
       return false;
     }
-    if (!query.length)
-      return true;
-    if (last4[0] === ",")
-      return true;
+    if (!query.length) return true;
+    if (last4[0] === ",") return true;
     if (last4[0] === "+") {
       return !!node2.previousSibling && this.matchHelper(query, node2.previousSibling, scope);
     }
@@ -46518,19 +46132,14 @@ var CssQuery = class _CssQuery {
 CssQuery.cache = /* @__PURE__ */ new Map();
 CssQuery.cacheKeys = [];
 var nth3 = (node, arr, nth) => {
-  if (nth === "even")
-    nth = "2n";
-  else if (nth === "odd")
-    nth = "2n+1";
-  if (/[^\d\-n+*/]+/.test(nth))
-    return false;
+  if (nth === "even") nth = "2n";
+  else if (nth === "odd") nth = "2n+1";
+  if (/[^\d\-n+*/]+/.test(nth)) return false;
   nth = nth.replace("n", "*n");
   for (var i, n = 0, nl = arr.length; n < nl; ++n) {
     i = eval(nth);
-    if (i > nl)
-      break;
-    if (arr[i - 1] === node)
-      return true;
+    if (i > nl) break;
+    if (arr[i - 1] === node) return true;
   }
   return false;
 };
@@ -46610,8 +46219,7 @@ var CssQueryNode = class {
   }
   matches(node2, scope) {
     let i2;
-    if (node2.nodeType !== 1)
-      return false;
+    if (node2.nodeType !== 1) return false;
     if (node2.namespaceURI === html) {
       this.tag = this.tag.toUpperCase();
     }
@@ -46650,8 +46258,7 @@ var ParentNode = {
     const nodes = [];
     for (const node2 of iter) {
       nodes.push(node2);
-      if (single)
-        return nodes;
+      if (single) return nodes;
     }
     return nodes;
   },
@@ -46772,8 +46379,7 @@ var HTMLParser = function(str3, el) {
   parser.ontext = (str4) => currentTag.appendChild(document2.createTextNode(str4));
   parser.oncomment = (str4) => currentTag.appendChild(document2.createComment(str4));
   parser.onopentag = (node2) => {
-    if (node2.name === "svgdom:wrapper")
-      return;
+    if (node2.name === "svgdom:wrapper") return;
     const attrs = node2.attributes;
     const uri = node2.uri || currentTag.lookupNamespaceURI(node2.prefix || null);
     var newElement = document2.createElementNS(uri, node2.name);
@@ -46784,8 +46390,7 @@ var HTMLParser = function(str3, el) {
     currentTag = newElement;
   };
   parser.onclosetag = (tagName) => {
-    if (tagName === "svgdom:wrapper")
-      return;
+    if (tagName === "svgdom:wrapper") return;
     currentTag = currentTag.parentNode;
   };
   parser.onopencdata = () => {
@@ -46810,8 +46415,7 @@ var mapMap = function(map4, cb) {
 };
 var mapToCss = function(myMap) {
   return mapMap(myMap, function(value, key) {
-    if (!value)
-      return false;
+    if (!value) return false;
     return decamelize(key) + ": " + value;
   }).filter(function(el) {
     return !!el;
@@ -46829,8 +46433,7 @@ var cssToMap = function(css) {
 var validateAndExtract = (ns, name) => {
   let prefix = null;
   let localname = name;
-  if (!ns)
-    ns = null;
+  if (!ns) ns = null;
   if (name.includes(":")) {
     [prefix, localname] = name.split(":");
   }
@@ -46849,8 +46452,7 @@ var validateAndExtract = (ns, name) => {
   return [ns, prefix, localname];
 };
 var getAttributeByNsAndLocalName = (el, ns, localName) => {
-  if (!ns)
-    ns = null;
+  if (!ns) ns = null;
   return [...el.attrs].find((node2) => node2.localName === localName && node2.namespaceURI === ns);
 };
 var getAttributeByQualifiedName = (el, qualifiedName) => {
@@ -46878,8 +46480,7 @@ var getStyleProxy = (node2) => {
         };
       }
       key = decamelize(key);
-      if (!styleMap.has(key))
-        return "";
+      if (!styleMap.has(key)) return "";
       return styleMap.get(key);
     },
     set(target, key, value) {
@@ -46940,8 +46541,7 @@ var Element3 = class extends Node {
     return attr;
   }
   removeAttributeNode(node2) {
-    if (!this.attrs.delete(node2))
-      throw new Error("Attribute cannot be removed because it was not found on the element");
+    if (!this.attrs.delete(node2)) throw new Error("Attribute cannot be removed because it was not found on the element");
     return node2;
   }
   // call is: d.removeAttributeNS('http://www.mozilla.org/ns/specialspace', 'align', 'center');
@@ -47019,12 +46619,9 @@ var Element3 = class extends Node {
   }
   get innerHTML() {
     return this.childNodes.map((node2) => {
-      if (node2.nodeType === Node.TEXT_NODE)
-        return htmlEntities2(node2.data);
-      if (node2.nodeType === Node.CDATA_SECTION_NODE)
-        return cdata(node2.data);
-      if (node2.nodeType === Node.COMMENT_NODE)
-        return comment(node2.data);
+      if (node2.nodeType === Node.TEXT_NODE) return htmlEntities2(node2.data);
+      if (node2.nodeType === Node.CDATA_SECTION_NODE) return cdata(node2.data);
+      if (node2.nodeType === Node.COMMENT_NODE) return comment(node2.data);
       return node2.outerHTML;
     }).join("");
   }
@@ -47243,8 +46840,7 @@ var Point = class _Point {
   }
   normalize() {
     const abs = this.abs();
-    if (!abs)
-      throw new Error("Can't normalize vector of zero length");
+    if (!abs) throw new Error("Can't normalize vector of zero length");
     return this.div(abs);
   }
   reflectAt(p) {
@@ -47290,8 +46886,7 @@ var Box = class _Box {
   }
   // Merge rect box with another, return a new instance
   merge(box) {
-    if (box instanceof NoBox)
-      return new _Box(this);
+    if (box instanceof NoBox) return new _Box(this);
     var x2 = Math.min(this.x, box.x);
     var y2 = Math.min(this.y, box.y);
     return new _Box(
@@ -47364,8 +46959,7 @@ var SVGMatrix = class _SVGMatrix {
     var e = this.e;
     var f = this.f;
     var det = a * d - b10 * c;
-    if (!det)
-      throw new Error("Cannot invert " + this);
+    if (!det) throw new Error("Cannot invert " + this);
     var na = d / det;
     var nb = -b10 / det;
     var nc = -c / det;
@@ -47530,10 +47124,8 @@ var mlhvqtcsa = "mlhvqtcsaz".split("");
 for (let i2 = 0, il = mlhvqtcsa.length; i2 < il; ++i2) {
   pathHandlers[mlhvqtcsa[i2]] = /* @__PURE__ */ function(i3) {
     return function(c, p, r, p0, reflectionIsPossible) {
-      if (i3 === "H")
-        c[0] = c[0] + p.x;
-      else if (i3 === "V")
-        c[0] = c[0] + p.y;
+      if (i3 === "H") c[0] = c[0] + p.x;
+      else if (i3 === "V") c[0] = c[0] + p.y;
       else if (i3 === "A") {
         c[5] = c[5] + p.x;
         c[6] = c[6] + p.y;
@@ -47553,8 +47145,7 @@ function isBeziere(obj) {
   return obj instanceof Cubic;
 }
 var pathParser = (array) => {
-  if (!array)
-    return [];
+  if (!array) return [];
   const paramCnt = { M: 2, L: 2, H: 1, V: 1, C: 6, S: 4, Q: 4, T: 2, A: 7, Z: 0 };
   array = array.replace(numbersWithDots, pathRegReplace).replace(pathLetters, " $& ").replace(hyphen, "$1 -").trim().split(delimiter);
   const arr2 = [];
@@ -47614,8 +47205,7 @@ var Move = class {
 };
 var Arc = class _Arc {
   constructor(p1, p2, rx, ry, \u03C6, arc, sweep) {
-    if (!rx || !ry)
-      return new Line2(p1, p2);
+    if (!rx || !ry) return new Line2(p1, p2);
     rx = Math.abs(rx);
     ry = Math.abs(ry);
     this.p1 = p1.clone();
@@ -47656,8 +47246,7 @@ var Arc = class _Arc {
         dividend / (divisor1 + divisor2)
       ));
     }
-    if (this.arc === this.sweep)
-      c_ = c_.mul(-1);
+    if (this.arc === this.sweep) c_ = c_.mul(-1);
     const c = c_.transform(matrixFactory(
       cos\u03C6,
       sin\u03C6,
@@ -47679,10 +47268,8 @@ var Arc = class _Arc {
       (-p1_.y - c_.y) / ry
     ));
     \u0394\u03B8 = \u0394\u03B8 % (2 * Math.PI);
-    if (!sweep && \u0394\u03B8 > 0)
-      \u0394\u03B8 -= 2 * Math.PI;
-    if (sweep && \u0394\u03B8 < 0)
-      \u0394\u03B8 += 2 * Math.PI;
+    if (!sweep && \u0394\u03B8 > 0) \u0394\u03B8 -= 2 * Math.PI;
+    if (sweep && \u0394\u03B8 < 0) \u0394\u03B8 += 2 * Math.PI;
     this.c = c;
     this.theta = \u03B8 * 180 / Math.PI;
     this.theta2 = (\u03B8 + \u0394\u03B8) * 180 / Math.PI;
@@ -47717,8 +47304,7 @@ var Arc = class _Arc {
     return new _Arc(this.p1, this.p2, this.rx, this.ry, this.phi, this.arc, this.sweep);
   }
   getCloud() {
-    if (this.p1.equals(this.p2))
-      return new PointCloud([this.p1]);
+    if (this.p1.equals(this.p2)) return new PointCloud([this.p1]);
     let \u03B801 = Math.atan(-this.sin\u03C6 / this.cos\u03C6 * this.ry / this.rx) * 180 / Math.PI;
     let \u03B802 = Math.atan(this.cos\u03C6 / this.sin\u03C6 * this.ry / this.rx) * 180 / Math.PI;
     let \u03B81 = this.theta;
@@ -47732,27 +47318,21 @@ var Arc = class _Arc {
       \u03B81 = \u03B82;
       \u03B82 = temp;
     }
-    while (\u03B801 - 90 > \u03B801)
-      \u03B801 -= 90;
-    while (\u03B801 < \u03B81)
-      \u03B801 += 90;
-    while (\u03B802 - 90 > \u03B802)
-      \u03B802 -= 90;
-    while (\u03B802 < \u03B81)
-      \u03B802 += 90;
+    while (\u03B801 - 90 > \u03B801) \u03B801 -= 90;
+    while (\u03B801 < \u03B81) \u03B801 += 90;
+    while (\u03B802 - 90 > \u03B802) \u03B802 -= 90;
+    while (\u03B802 < \u03B81) \u03B802 += 90;
     const angleToTest = [\u03B801, \u03B802, \u03B801 + 90, \u03B802 + 90, \u03B801 + 180, \u03B802 + 180, \u03B801 + 270, \u03B802 + 270];
     const points = angleToTest.filter(function(angle2) {
       return angle2 > \u03B81 && angle2 < \u03B82;
     }).map(function(angle2) {
-      while (this.theta < angle2)
-        angle2 -= 360;
+      while (this.theta < angle2) angle2 -= 360;
       return this.pointAt((angle2 - this.theta) % 360 / this.delta);
     }.bind(this)).concat(this.p1, this.p2);
     return new PointCloud(points);
   }
   length() {
-    if (this.p1.equals(this.p2))
-      return 0;
+    if (this.p1.equals(this.p2)) return 0;
     const length3 = this.p2.sub(this.p1).abs();
     const ret = this.splitAt(0.5);
     const len1 = ret[0].p2.sub(ret[0].p1).abs();
@@ -47763,8 +47343,7 @@ var Arc = class _Arc {
     return ret[0].length() + ret[1].length();
   }
   pointAt(t) {
-    if (this.p1.equals(this.p2))
-      return this.p1.clone();
+    if (this.p1.equals(this.p2)) return this.p1.clone();
     const tInAngle = (this.theta + t * this.delta) / 180 * Math.PI;
     const sin\u03B8 = Math.sin(tInAngle);
     const cos\u03B8 = Math.cos(tInAngle);
@@ -47828,16 +47407,13 @@ var Cubic = class _Cubic {
     const a = 3 * (-p1 + 3 * p2 - 3 * p3 + p4);
     const b10 = 6 * (p1 - 2 * p2 + p3);
     const c = 3 * (p2 - p1);
-    if (a === 0)
-      return [-c / b10].filter(function(el) {
-        return el > 0 && el < 1;
-      });
-    if (b10 * b10 - 4 * a * c < 0)
-      return [];
-    if (b10 * b10 - 4 * a * c === 0)
-      return [Math.round(-b10 / (2 * a) * 1e5) / 1e5].filter(function(el) {
-        return el > 0 && el < 1;
-      });
+    if (a === 0) return [-c / b10].filter(function(el) {
+      return el > 0 && el < 1;
+    });
+    if (b10 * b10 - 4 * a * c < 0) return [];
+    if (b10 * b10 - 4 * a * c === 0) return [Math.round(-b10 / (2 * a) * 1e5) / 1e5].filter(function(el) {
+      return el > 0 && el < 1;
+    });
     return [
       Math.round((-b10 + Math.sqrt(b10 * b10 - 4 * a * c)) / (2 * a) * 1e5) / 1e5,
       Math.round((-b10 - Math.sqrt(b10 * b10 - 4 * a * c)) / (2 * a) * 1e5) / 1e5
@@ -48014,10 +47590,8 @@ var pointAtLength = function(d, len2) {
       return segs[segs.length - 1].p1.native();
     }
   }
-  if (t <= 0)
-    return segs[0].p1.native();
-  while (segs[segs.length - 1] instanceof Move)
-    segs.pop();
+  if (t <= 0) return segs[0].p1.native();
+  while (segs[segs.length - 1] instanceof Move) segs.pop();
   let segEnd = 0;
   for (const il = segLengths.length; i2 < il; ++i2) {
     const k = segLengths[i2] / length3;
@@ -48048,8 +47622,7 @@ var pathFrom = {
     const r = parseFloat(node2.getAttribute("r")) || 0;
     const x2 = parseFloat(node2.getAttribute("cx")) || 0;
     const y2 = parseFloat(node2.getAttribute("cy")) || 0;
-    if (r === 0)
-      return "M0 0";
+    if (r === 0) return "M0 0";
     return `M ${x2 - r} ${y2} A ${r} ${r} 0 0 0 ${x2 + r} ${y2} A ${r} ${r} 0 0 0 ${x2 - r} ${y2}`;
   },
   ellipse(node2) {
@@ -49099,8 +48672,7 @@ var VoidPointer = class {
 function _define_property(obj, key, value) {
   if (key in obj) {
     Object.defineProperty(obj, key, { value, enumerable: true, configurable: true, writable: true });
-  } else
-    obj[key] = value;
+  } else obj[key] = value;
   return obj;
 }
 
@@ -49179,8 +48751,7 @@ function $d636bc798e7178db$export$185802fd694ee1f5(buffer, postscriptName) {
     let format = $d636bc798e7178db$var$formats[i2];
     if (format.probe(buffer)) {
       let font = new format(new (0, DecodeStream)(buffer));
-      if (postscriptName)
-        return font.getFont(postscriptName);
+      if (postscriptName) return font.getFont(postscriptName);
       return font;
     }
   }
@@ -49207,8 +48778,7 @@ function $e71565f2ce09cb6b$export$69a3209f1a06c04d(target, key1, descriptor) {
         let cache1 = /* @__PURE__ */ new Map();
         function memoized(...args) {
           let key = args.length > 0 ? args[0] : "value";
-          if (cache1.has(key))
-            return cache1.get(key);
+          if (cache1.has(key)) return cache1.get(key);
           let result = fn.apply(this, args);
           cache1.set(key, result);
           return result;
@@ -49408,8 +48978,7 @@ var $dbf51cb3d3fe409d$export$2e2bcd8739ae039 = new Struct({
   // Maximum levels of recursion; 1 for simple components
 });
 function $e449ad78d50845fe$export$badc544e0651b6b1(platformID, encodingID, languageID = 0) {
-  if (platformID === 1 && $e449ad78d50845fe$export$479e671907f486d1[languageID])
-    return $e449ad78d50845fe$export$479e671907f486d1[languageID];
+  if (platformID === 1 && $e449ad78d50845fe$export$479e671907f486d1[languageID]) return $e449ad78d50845fe$export$479e671907f486d1[languageID];
   return $e449ad78d50845fe$export$6fef87b7618bdf0b[platformID][encodingID];
 }
 var $e449ad78d50845fe$var$SINGLE_BYTE_ENCODINGS = /* @__PURE__ */ new Set([
@@ -49431,25 +49000,21 @@ var $e449ad78d50845fe$var$MAC_ENCODINGS = {
 var $e449ad78d50845fe$var$encodingCache = /* @__PURE__ */ new Map();
 function $e449ad78d50845fe$export$1dceb3c14ed68bee(encoding) {
   let cached = $e449ad78d50845fe$var$encodingCache.get(encoding);
-  if (cached)
-    return cached;
+  if (cached) return cached;
   let mapping = $e449ad78d50845fe$var$MAC_ENCODINGS[encoding];
   if (mapping) {
     let res = /* @__PURE__ */ new Map();
-    for (let i2 = 0; i2 < mapping.length; i2++)
-      res.set(mapping.charCodeAt(i2), 128 + i2);
+    for (let i2 = 0; i2 < mapping.length; i2++) res.set(mapping.charCodeAt(i2), 128 + i2);
     $e449ad78d50845fe$var$encodingCache.set(encoding, res);
     return res;
   }
   if ($e449ad78d50845fe$var$SINGLE_BYTE_ENCODINGS.has(encoding)) {
     let decoder = new TextDecoder(encoding);
     let mapping2 = new Uint8Array(128);
-    for (let i2 = 0; i2 < 128; i2++)
-      mapping2[i2] = 128 + i2;
+    for (let i2 = 0; i2 < 128; i2++) mapping2[i2] = 128 + i2;
     let res = /* @__PURE__ */ new Map();
     let s = decoder.decode(mapping2);
-    for (let i1 = 0; i1 < 128; i1++)
-      res.set(s.charCodeAt(i1), 128 + i1);
+    for (let i1 = 0; i1 < 128; i1++) res.set(s.charCodeAt(i1), 128 + i1);
     $e449ad78d50845fe$var$encodingCache.set(encoding, res);
     return res;
   }
@@ -49951,30 +49516,23 @@ $2bcf221753ec8e32$var$NameTable.process = function(stream) {
   var records = {};
   for (let record of this.records) {
     let language = (0, $e449ad78d50845fe$export$2092376fd002e13)[record.platformID][record.languageID];
-    if (language == null && this.langTags != null && record.languageID >= 32768)
-      language = this.langTags[record.languageID - 32768].tag;
-    if (language == null)
-      language = record.platformID + "-" + record.languageID;
+    if (language == null && this.langTags != null && record.languageID >= 32768) language = this.langTags[record.languageID - 32768].tag;
+    if (language == null) language = record.platformID + "-" + record.languageID;
     let key = record.nameID >= 256 ? "fontFeatures" : $2bcf221753ec8e32$var$NAMES[record.nameID] || record.nameID;
-    if (records[key] == null)
-      records[key] = {};
+    if (records[key] == null) records[key] = {};
     let obj = records[key];
-    if (record.nameID >= 256)
-      obj = obj[record.nameID] || (obj[record.nameID] = {});
-    if (typeof record.string === "string" || typeof obj[language] !== "string")
-      obj[language] = record.string;
+    if (record.nameID >= 256) obj = obj[record.nameID] || (obj[record.nameID] = {});
+    if (typeof record.string === "string" || typeof obj[language] !== "string") obj[language] = record.string;
   }
   this.records = records;
 };
 $2bcf221753ec8e32$var$NameTable.preEncode = function() {
-  if (Array.isArray(this.records))
-    return;
+  if (Array.isArray(this.records)) return;
   this.version = 0;
   let records = [];
   for (let key in this.records) {
     let val = this.records[key];
-    if (key === "fontFeatures")
-      continue;
+    if (key === "fontFeatures") continue;
     records.push({
       platformID: 3,
       encodingID: 1,
@@ -49983,15 +49541,14 @@ $2bcf221753ec8e32$var$NameTable.preEncode = function() {
       length: val.en.length * 2,
       string: val.en
     });
-    if (key === "postscriptName")
-      records.push({
-        platformID: 1,
-        encodingID: 0,
-        languageID: 0,
-        nameID: $2bcf221753ec8e32$var$NAMES.indexOf(key),
-        length: val.en.length,
-        string: val.en
-      });
+    if (key === "postscriptName") records.push({
+      platformID: 1,
+      encodingID: 0,
+      languageID: 0,
+      nameID: $2bcf221753ec8e32$var$NAMES.indexOf(key),
+      length: val.en.length,
+      string: val.en
+    });
   }
   this.records = records;
   this.count = records.length;
@@ -50130,15 +49687,13 @@ var $2b2b260902b1c57e$var$loca = new VersionedStruct("head.indexToLocFormat", {
 });
 $2b2b260902b1c57e$var$loca.process = function() {
   if (this.version === 0 && !this._processed) {
-    for (let i2 = 0; i2 < this.offsets.length; i2++)
-      this.offsets[i2] <<= 1;
+    for (let i2 = 0; i2 < this.offsets.length; i2++) this.offsets[i2] <<= 1;
     this._processed = true;
   }
 };
 $2b2b260902b1c57e$var$loca.preEncode = function() {
   if (this.version === 0 && this._processed !== false) {
-    for (let i2 = 0; i2 < this.offsets.length; i2++)
-      this.offsets[i2] >>>= 1;
+    for (let i2 = 0; i2 < this.offsets.length; i2++) this.offsets[i2] >>>= 1;
     this._processed = false;
   }
 };
@@ -50149,27 +49704,20 @@ var $7afb878c7bea4f66$export$2e2bcd8739ae039 = new Struct({
 var $6c92b6371bce8bd9$export$2e2bcd8739ae039 = new ArrayT(new BufferT());
 var $43e9821ef3717eec$export$2e2bcd8739ae039 = class {
   getCFFVersion(ctx2) {
-    while (ctx2 && !ctx2.hdrSize)
-      ctx2 = ctx2.parent;
+    while (ctx2 && !ctx2.hdrSize) ctx2 = ctx2.parent;
     return ctx2 ? ctx2.version : -1;
   }
   decode(stream, parent) {
     let version = this.getCFFVersion(parent);
     let count = version >= 2 ? stream.readUInt32BE() : stream.readUInt16BE();
-    if (count === 0)
-      return [];
+    if (count === 0) return [];
     let offSize = stream.readUInt8();
     let offsetType;
-    if (offSize === 1)
-      offsetType = uint8;
-    else if (offSize === 2)
-      offsetType = uint16;
-    else if (offSize === 3)
-      offsetType = uint24;
-    else if (offSize === 4)
-      offsetType = uint32;
-    else
-      throw new Error(`Bad offset size in CFFIndex: ${offSize} ${stream.pos}`);
+    if (offSize === 1) offsetType = uint8;
+    else if (offSize === 2) offsetType = uint16;
+    else if (offSize === 3) offsetType = uint24;
+    else if (offSize === 4) offsetType = uint32;
+    else throw new Error(`Bad offset size in CFFIndex: ${offSize} ${stream.pos}`);
     let ret = [];
     let startPos = stream.pos + (count + 1) * offSize - 1;
     let start = offsetType.decode(stream);
@@ -50181,11 +49729,10 @@ var $43e9821ef3717eec$export$2e2bcd8739ae039 = class {
         parent.length = end - start;
         ret.push(this.type.decode(stream, parent));
         stream.pos = pos;
-      } else
-        ret.push({
-          offset: startPos + start,
-          length: end - start
-        });
+      } else ret.push({
+        offset: startPos + start,
+        length: end - start
+      });
       start = end;
     }
     stream.pos = startPos + start;
@@ -50193,8 +49740,7 @@ var $43e9821ef3717eec$export$2e2bcd8739ae039 = class {
   }
   size(arr2, parent) {
     let size4 = 2;
-    if (arr2.length === 0)
-      return size4;
+    if (arr2.length === 0) return size4;
     let type = this.type || new BufferT();
     let offset = 1;
     for (let i2 = 0; i2 < arr2.length; i2++) {
@@ -50202,24 +49748,18 @@ var $43e9821ef3717eec$export$2e2bcd8739ae039 = class {
       offset += type.size(item, parent);
     }
     let offsetType;
-    if (offset <= 255)
-      offsetType = uint8;
-    else if (offset <= 65535)
-      offsetType = uint16;
-    else if (offset <= 16777215)
-      offsetType = uint24;
-    else if (offset <= 4294967295)
-      offsetType = uint32;
-    else
-      throw new Error("Bad offset in CFFIndex");
+    if (offset <= 255) offsetType = uint8;
+    else if (offset <= 65535) offsetType = uint16;
+    else if (offset <= 16777215) offsetType = uint24;
+    else if (offset <= 4294967295) offsetType = uint32;
+    else throw new Error("Bad offset in CFFIndex");
     size4 += 1 + offsetType.size() * (arr2.length + 1);
     size4 += offset - 1;
     return size4;
   }
   encode(stream, arr2, parent) {
     stream.writeUInt16BE(arr2.length);
-    if (arr2.length === 0)
-      return;
+    if (arr2.length === 0) return;
     let type = this.type || new BufferT();
     let sizes = [];
     let offset = 1;
@@ -50229,16 +49769,11 @@ var $43e9821ef3717eec$export$2e2bcd8739ae039 = class {
       offset += s;
     }
     let offsetType;
-    if (offset <= 255)
-      offsetType = uint8;
-    else if (offset <= 65535)
-      offsetType = uint16;
-    else if (offset <= 16777215)
-      offsetType = uint24;
-    else if (offset <= 4294967295)
-      offsetType = uint32;
-    else
-      throw new Error("Bad offset in CFFIndex");
+    if (offset <= 255) offsetType = uint8;
+    else if (offset <= 65535) offsetType = uint16;
+    else if (offset <= 16777215) offsetType = uint24;
+    else if (offset <= 4294967295) offsetType = uint32;
+    else throw new Error("Bad offset in CFFIndex");
     stream.writeUInt8(offsetType.size());
     offset = 1;
     offsetType.encode(stream, offset);
@@ -50246,8 +49781,7 @@ var $43e9821ef3717eec$export$2e2bcd8739ae039 = class {
       offset += size4;
       offsetType.encode(stream, offset);
     }
-    for (let item1 of arr2)
-      type.encode(stream, item1, parent);
+    for (let item1 of arr2) type.encode(stream, item1, parent);
     return;
   }
   constructor(type) {
@@ -50280,27 +49814,20 @@ var $c2d28e92708f99da$var$FLOAT_ENCODE_LOOKUP = {
 };
 var $c2d28e92708f99da$export$2e2bcd8739ae039 = class {
   static decode(stream, value) {
-    if (32 <= value && value <= 246)
-      return value - 139;
-    if (247 <= value && value <= 250)
-      return (value - 247) * 256 + stream.readUInt8() + 108;
-    if (251 <= value && value <= 254)
-      return -(value - 251) * 256 - stream.readUInt8() - 108;
-    if (value === 28)
-      return stream.readInt16BE();
-    if (value === 29)
-      return stream.readInt32BE();
+    if (32 <= value && value <= 246) return value - 139;
+    if (247 <= value && value <= 250) return (value - 247) * 256 + stream.readUInt8() + 108;
+    if (251 <= value && value <= 254) return -(value - 251) * 256 - stream.readUInt8() - 108;
+    if (value === 28) return stream.readInt16BE();
+    if (value === 29) return stream.readInt32BE();
     if (value === 30) {
       let str3 = "";
       while (true) {
         let b10 = stream.readUInt8();
         let n1 = b10 >> 4;
-        if (n1 === $c2d28e92708f99da$var$FLOAT_EOF)
-          break;
+        if (n1 === $c2d28e92708f99da$var$FLOAT_EOF) break;
         str3 += $c2d28e92708f99da$var$FLOAT_LOOKUP[n1];
         let n2 = b10 & 15;
-        if (n2 === $c2d28e92708f99da$var$FLOAT_EOF)
-          break;
+        if (n2 === $c2d28e92708f99da$var$FLOAT_EOF) break;
         str3 += $c2d28e92708f99da$var$FLOAT_LOOKUP[n2];
       }
       return parseFloat(str3);
@@ -50308,19 +49835,14 @@ var $c2d28e92708f99da$export$2e2bcd8739ae039 = class {
     return null;
   }
   static size(value) {
-    if (value.forceLarge)
-      value = 32768;
+    if (value.forceLarge) value = 32768;
     if ((value | 0) !== value) {
       let str3 = "" + value;
       return 1 + Math.ceil((str3.length + 1) / 2);
-    } else if (-107 <= value && value <= 107)
-      return 1;
-    else if (108 <= value && value <= 1131 || -1131 <= value && value <= -108)
-      return 2;
-    else if (-32768 <= value && value <= 32767)
-      return 3;
-    else
-      return 5;
+    } else if (-107 <= value && value <= 107) return 1;
+    else if (108 <= value && value <= 1131 || -1131 <= value && value <= -108) return 2;
+    else if (-32768 <= value && value <= 32767) return 3;
+    else return 5;
   }
   static encode(stream, value) {
     let val = Number(value);
@@ -50333,18 +49855,15 @@ var $c2d28e92708f99da$export$2e2bcd8739ae039 = class {
       for (let i2 = 0; i2 < str3.length; i2 += 2) {
         let c1 = str3[i2];
         let n1 = $c2d28e92708f99da$var$FLOAT_ENCODE_LOOKUP[c1] || +c1;
-        if (i2 === str3.length - 1)
-          var n2 = $c2d28e92708f99da$var$FLOAT_EOF;
+        if (i2 === str3.length - 1) var n2 = $c2d28e92708f99da$var$FLOAT_EOF;
         else {
           let c2 = str3[i2 + 1];
           var n2 = $c2d28e92708f99da$var$FLOAT_ENCODE_LOOKUP[c2] || +c2;
         }
         stream.writeUInt8(n1 << 4 | n2 & 15);
       }
-      if (n2 !== $c2d28e92708f99da$var$FLOAT_EOF)
-        return stream.writeUInt8($c2d28e92708f99da$var$FLOAT_EOF << 4);
-    } else if (-107 <= val && val <= 107)
-      return stream.writeUInt8(val + 139);
+      if (n2 !== $c2d28e92708f99da$var$FLOAT_EOF) return stream.writeUInt8($c2d28e92708f99da$var$FLOAT_EOF << 4);
+    } else if (-107 <= val && val <= 107) return stream.writeUInt8(val + 139);
     else if (108 <= val && val <= 1131) {
       val -= 108;
       stream.writeUInt8((val >> 8) + 247);
@@ -50364,43 +49883,34 @@ var $c2d28e92708f99da$export$2e2bcd8739ae039 = class {
 };
 var $61aa549f16d58b9b$export$2e2bcd8739ae039 = class {
   decodeOperands(type, stream, ret, operands) {
-    if (Array.isArray(type))
-      return operands.map((op, i2) => this.decodeOperands(type[i2], stream, ret, [
-        op
-      ]));
-    else if (type.decode != null)
-      return type.decode(stream, ret, operands);
-    else
-      switch (type) {
-        case "number":
-        case "offset":
-        case "sid":
-          return operands[0];
-        case "boolean":
-          return !!operands[0];
-        default:
-          return operands;
-      }
+    if (Array.isArray(type)) return operands.map((op, i2) => this.decodeOperands(type[i2], stream, ret, [
+      op
+    ]));
+    else if (type.decode != null) return type.decode(stream, ret, operands);
+    else switch (type) {
+      case "number":
+      case "offset":
+      case "sid":
+        return operands[0];
+      case "boolean":
+        return !!operands[0];
+      default:
+        return operands;
+    }
   }
   encodeOperands(type, stream, ctx2, operands) {
-    if (Array.isArray(type))
-      return operands.map((op, i2) => this.encodeOperands(type[i2], stream, ctx2, op)[0]);
-    else if (type.encode != null)
-      return type.encode(stream, operands, ctx2);
-    else if (typeof operands === "number")
-      return [
-        operands
-      ];
-    else if (typeof operands === "boolean")
-      return [
-        +operands
-      ];
-    else if (Array.isArray(operands))
-      return operands;
-    else
-      return [
-        operands
-      ];
+    if (Array.isArray(type)) return operands.map((op, i2) => this.encodeOperands(type[i2], stream, ctx2, op)[0]);
+    else if (type.encode != null) return type.encode(stream, operands, ctx2);
+    else if (typeof operands === "number") return [
+      operands
+    ];
+    else if (typeof operands === "boolean") return [
+      +operands
+    ];
+    else if (Array.isArray(operands)) return operands;
+    else return [
+      operands
+    ];
   }
   decode(stream, parent) {
     let end = stream.pos + parent.length;
@@ -50421,21 +49931,16 @@ var $61aa549f16d58b9b$export$2e2bcd8739ae039 = class {
     while (stream.pos < end) {
       let b10 = stream.readUInt8();
       if (b10 < 28) {
-        if (b10 === 12)
-          b10 = b10 << 8 | stream.readUInt8();
+        if (b10 === 12) b10 = b10 << 8 | stream.readUInt8();
         let field = this.fields[b10];
-        if (!field)
-          throw new Error(`Unknown operator ${b10}`);
+        if (!field) throw new Error(`Unknown operator ${b10}`);
         let val = this.decodeOperands(field[2], stream, ret, operands);
         if (val != null) {
-          if (val instanceof (0, PropertyDescriptor))
-            Object.defineProperty(ret, field[1], val);
-          else
-            ret[field[1]] = val;
+          if (val instanceof (0, PropertyDescriptor)) Object.defineProperty(ret, field[1], val);
+          else ret[field[1]] = val;
         }
         operands = [];
-      } else
-        operands.push((0, $c2d28e92708f99da$export$2e2bcd8739ae039).decode(stream, b10));
+      } else operands.push((0, $c2d28e92708f99da$export$2e2bcd8739ae039).decode(stream, b10));
     }
     return ret;
   }
@@ -50450,18 +49955,15 @@ var $61aa549f16d58b9b$export$2e2bcd8739ae039 = class {
     for (let k in this.fields) {
       let field = this.fields[k];
       let val = dict[field[1]];
-      if (val == null || (0, import_fast_deep_equal.default)(val, field[3]))
-        continue;
+      if (val == null || (0, import_fast_deep_equal.default)(val, field[3])) continue;
       let operands = this.encodeOperands(field[2], null, ctx2, val);
-      for (let op of operands)
-        len2 += (0, $c2d28e92708f99da$export$2e2bcd8739ae039).size(op);
+      for (let op of operands) len2 += (0, $c2d28e92708f99da$export$2e2bcd8739ae039).size(op);
       let key = Array.isArray(field[0]) ? field[0] : [
         field[0]
       ];
       len2 += key.length;
     }
-    if (includePointers)
-      len2 += ctx2.pointerSize;
+    if (includePointers) len2 += ctx2.pointerSize;
     return len2;
   }
   encode(stream, dict, parent) {
@@ -50475,16 +49977,13 @@ var $61aa549f16d58b9b$export$2e2bcd8739ae039 = class {
     ctx2.pointerOffset = stream.pos + this.size(dict, ctx2, false);
     for (let field of this.ops) {
       let val = dict[field[1]];
-      if (val == null || (0, import_fast_deep_equal.default)(val, field[3]))
-        continue;
+      if (val == null || (0, import_fast_deep_equal.default)(val, field[3])) continue;
       let operands = this.encodeOperands(field[2], stream, ctx2, val);
-      for (let op of operands)
-        (0, $c2d28e92708f99da$export$2e2bcd8739ae039).encode(stream, op);
+      for (let op of operands) (0, $c2d28e92708f99da$export$2e2bcd8739ae039).encode(stream, op);
       let key = Array.isArray(field[0]) ? field[0] : [
         field[0]
       ];
-      for (let op1 of key)
-        stream.writeUInt8(op1);
+      for (let op1 of key) stream.writeUInt8(op1);
     }
     let i2 = 0;
     while (i2 < ctx2.pointers.length) {
@@ -50529,8 +50028,7 @@ var $0e34a43d05bde82c$export$2e2bcd8739ae039 = class extends Pointer {
     ];
   }
   constructor(type, options = {}) {
-    if (options.type == null)
-      options.type = "global";
+    if (options.type == null) options.type = "global";
     super(null, type, options);
   }
 };
@@ -50546,8 +50044,7 @@ var $0e34a43d05bde82c$var$Ptr = class {
 var $6d59db2e29cc77b3$var$CFFBlendOp = class {
   static decode(stream, parent, operands) {
     let numBlends = operands.pop();
-    while (operands.length > numBlends)
-      operands.pop();
+    while (operands.length > numBlends) operands.pop();
   }
 };
 var $6d59db2e29cc77b3$export$2e2bcd8739ae039 = new (0, $61aa549f16d58b9b$export$2e2bcd8739ae039)([
@@ -52331,8 +51828,7 @@ var $1a47b0c45c1c22fe$export$441b70b7971dd419 = new Struct({
 });
 var $b84fd3dd9d8eddb2$var$PredefinedOp = class {
   decode(stream, parent, operands) {
-    if (this.predefinedOps[operands[0]])
-      return this.predefinedOps[operands[0]];
+    if (this.predefinedOps[operands[0]]) return this.predefinedOps[operands[0]];
     return this.type.decode(stream, parent, operands);
   }
   size(value, ctx2) {
@@ -52340,8 +51836,7 @@ var $b84fd3dd9d8eddb2$var$PredefinedOp = class {
   }
   encode(stream, value, ctx2) {
     let index2 = this.predefinedOps.indexOf(value);
-    if (index2 !== -1)
-      return index2;
+    if (index2 !== -1) return index2;
     return this.type.encode(stream, value, ctx2);
   }
   constructor(predefinedOps, type) {
@@ -52877,23 +52372,19 @@ var $822ac0d589e4e237$var$CFFFont = class _$822ac0d589e4e237$var$CFFFont {
       this[key] = val;
     }
     if (this.version < 2) {
-      if (this.topDictIndex.length !== 1)
-        throw new Error("Only a single font is allowed in CFF");
+      if (this.topDictIndex.length !== 1) throw new Error("Only a single font is allowed in CFF");
       this.topDict = this.topDictIndex[0];
     }
     this.isCIDFont = this.topDict.ROS != null;
     return this;
   }
   string(sid) {
-    if (this.version >= 2)
-      return null;
-    if (sid < (0, $229224aec43783c5$export$2e2bcd8739ae039).length)
-      return (0, $229224aec43783c5$export$2e2bcd8739ae039)[sid];
+    if (this.version >= 2) return null;
+    if (sid < (0, $229224aec43783c5$export$2e2bcd8739ae039).length) return (0, $229224aec43783c5$export$2e2bcd8739ae039)[sid];
     return this.stringIndex[sid - (0, $229224aec43783c5$export$2e2bcd8739ae039).length];
   }
   get postscriptName() {
-    if (this.version < 2)
-      return this.nameIndex[0];
+    if (this.version < 2) return this.nameIndex[0];
     return null;
   }
   get fullName() {
@@ -52907,15 +52398,11 @@ var $822ac0d589e4e237$var$CFFFont = class _$822ac0d589e4e237$var$CFFFont {
     return this.stream.readBuffer(this.topDict.CharStrings[glyph].length);
   }
   getGlyphName(gid) {
-    if (this.version >= 2)
-      return null;
-    if (this.isCIDFont)
-      return null;
+    if (this.version >= 2) return null;
+    if (this.isCIDFont) return null;
     let { charset } = this.topDict;
-    if (Array.isArray(charset))
-      return charset[gid];
-    if (gid === 0)
-      return ".notdef";
+    if (Array.isArray(charset)) return charset[gid];
+    if (gid === 0) return ".notdef";
     gid -= 1;
     switch (charset.version) {
       case 0:
@@ -52924,16 +52411,14 @@ var $822ac0d589e4e237$var$CFFFont = class _$822ac0d589e4e237$var$CFFFont {
       case 2:
         for (let i2 = 0; i2 < charset.ranges.length; i2++) {
           let range2 = charset.ranges[i2];
-          if (range2.offset <= gid && gid <= range2.offset + range2.nLeft)
-            return this.string(range2.first + (gid - range2.offset));
+          if (range2.offset <= gid && gid <= range2.offset + range2.nLeft) return this.string(range2.first + (gid - range2.offset));
         }
         break;
     }
     return null;
   }
   fdForGlyph(gid) {
-    if (!this.topDict.FDSelect)
-      return null;
+    if (!this.topDict.FDSelect) return null;
     switch (this.topDict.FDSelect.version) {
       case 0:
         return this.topDict.FDSelect.fds[gid];
@@ -52944,12 +52429,9 @@ var $822ac0d589e4e237$var$CFFFont = class _$822ac0d589e4e237$var$CFFFont {
         let high = ranges.length - 1;
         while (low <= high) {
           let mid = low + high >> 1;
-          if (gid < ranges[mid].first)
-            high = mid - 1;
-          else if (mid < high && gid >= ranges[mid + 1].first)
-            low = mid + 1;
-          else
-            return ranges[mid].fd;
+          if (gid < ranges[mid].first) high = mid - 1;
+          else if (mid < high && gid >= ranges[mid + 1].first) low = mid + 1;
+          else return ranges[mid].fd;
         }
       default:
         throw new Error(`Unknown FDSelect version: ${this.topDict.FDSelect.version}`);
@@ -52958,12 +52440,10 @@ var $822ac0d589e4e237$var$CFFFont = class _$822ac0d589e4e237$var$CFFFont {
   privateDictForGlyph(gid) {
     if (this.topDict.FDSelect) {
       let fd = this.fdForGlyph(gid);
-      if (this.topDict.FDArray[fd])
-        return this.topDict.FDArray[fd].Private;
+      if (this.topDict.FDArray[fd]) return this.topDict.FDArray[fd].Private;
       return null;
     }
-    if (this.version < 2)
-      return this.topDict.Private;
+    if (this.version < 2) return this.topDict.Private;
     return this.topDict.FDArray[0].Private;
   }
   constructor(stream) {
@@ -53340,16 +52820,12 @@ var $47e0e8ef515d9903$var$types = {
 var $47e0e8ef515d9903$var$ValueRecord = class {
   buildStruct(parent) {
     let struct = parent;
-    while (!struct[this.key] && struct.parent)
-      struct = struct.parent;
-    if (!struct[this.key])
-      return;
+    while (!struct[this.key] && struct.parent) struct = struct.parent;
+    if (!struct[this.key]) return;
     let fields = {};
     fields.rel = () => struct._startOffset;
     let format = struct[this.key];
-    for (let key in format)
-      if (format[key])
-        fields[key] = $47e0e8ef515d9903$var$types[key];
+    for (let key in format) if (format[key]) fields[key] = $47e0e8ef515d9903$var$types[key];
     return new Struct(fields);
   }
   size(val, ctx2) {
@@ -54312,8 +53788,7 @@ var $816c07a04b6dba87$var$Directory = new Struct({
 });
 $816c07a04b6dba87$var$Directory.process = function() {
   let tables = {};
-  for (let table of this.tables)
-    tables[table.tag] = table;
+  for (let table of this.tables) tables[table.tag] = table;
   this.tables = tables;
 };
 $816c07a04b6dba87$var$Directory.preEncode = function() {
@@ -54321,13 +53796,12 @@ $816c07a04b6dba87$var$Directory.preEncode = function() {
     let tables = [];
     for (let tag2 in this.tables) {
       let table = this.tables[tag2];
-      if (table)
-        tables.push({
-          tag: tag2,
-          checkSum: 0,
-          offset: new VoidPointer((0, $c3395722bea751e2$export$2e2bcd8739ae039)[tag2], table),
-          length: (0, $c3395722bea751e2$export$2e2bcd8739ae039)[tag2].size(table)
-        });
+      if (table) tables.push({
+        tag: tag2,
+        checkSum: 0,
+        offset: new VoidPointer((0, $c3395722bea751e2$export$2e2bcd8739ae039)[tag2], table),
+        length: (0, $c3395722bea751e2$export$2e2bcd8739ae039)[tag2].size(table)
+      });
     }
     this.tables = tables;
   }
@@ -54346,32 +53820,26 @@ function $12727730ddfc8bfe$export$2e0ae67339d5f1ac(arr2, cmp) {
   while (min4 <= max4) {
     let mid = min4 + max4 >> 1;
     let res = cmp(arr2[mid]);
-    if (res < 0)
-      max4 = mid - 1;
-    else if (res > 0)
-      min4 = mid + 1;
-    else
-      return mid;
+    if (res < 0) max4 = mid - 1;
+    else if (res > 0) min4 = mid + 1;
+    else return mid;
   }
   return -1;
 }
 function $12727730ddfc8bfe$export$d02631cccf789723(index2, end) {
   let range1 = [];
-  while (index2 < end)
-    range1.push(index2++);
+  while (index2 < end) range1.push(index2++);
   return range1;
 }
 var $12727730ddfc8bfe$export$3d28c1996ced1f14 = new TextDecoder("ascii");
 var $12727730ddfc8bfe$var$CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
 var $12727730ddfc8bfe$var$LOOKUP = new Uint8Array(256);
-for (let i2 = 0; i2 < $12727730ddfc8bfe$var$CHARS.length; i2++)
-  $12727730ddfc8bfe$var$LOOKUP[$12727730ddfc8bfe$var$CHARS.charCodeAt(i2)] = i2;
+for (let i2 = 0; i2 < $12727730ddfc8bfe$var$CHARS.length; i2++) $12727730ddfc8bfe$var$LOOKUP[$12727730ddfc8bfe$var$CHARS.charCodeAt(i2)] = i2;
 function $12727730ddfc8bfe$export$94fdf11bafc8de6b(base64) {
   let bufferLength = base64.length * 0.75;
   if (base64[base64.length - 1] === "=") {
     bufferLength--;
-    if (base64[base64.length - 2] === "=")
-      bufferLength--;
+    if (base64[base64.length - 2] === "=") bufferLength--;
   }
   let bytes = new Uint8Array(bufferLength);
   let p = 0;
@@ -54388,20 +53856,16 @@ function $12727730ddfc8bfe$export$94fdf11bafc8de6b(base64) {
 }
 var $f08dd41ef10b694c$export$2e2bcd8739ae039 = class {
   findSubtable(cmapTable, pairs) {
-    for (let [platformID, encodingID] of pairs)
-      for (let cmap of cmapTable.tables) {
-        if (cmap.platformID === platformID && cmap.encodingID === encodingID)
-          return cmap.table;
-      }
+    for (let [platformID, encodingID] of pairs) for (let cmap of cmapTable.tables) {
+      if (cmap.platformID === platformID && cmap.encodingID === encodingID) return cmap.table;
+    }
     return null;
   }
   lookup(codepoint, variationSelector) {
-    if (this.encoding)
-      codepoint = this.encoding.get(codepoint) || codepoint;
+    if (this.encoding) codepoint = this.encoding.get(codepoint) || codepoint;
     else if (variationSelector) {
       let gid = this.getVariationSelector(codepoint, variationSelector);
-      if (gid)
-        return gid;
+      if (gid) return gid;
     }
     let cmap = this.cmap;
     switch (cmap.version) {
@@ -54412,20 +53876,16 @@ var $f08dd41ef10b694c$export$2e2bcd8739ae039 = class {
         let max4 = cmap.segCount - 1;
         while (min4 <= max4) {
           let mid = min4 + max4 >> 1;
-          if (codepoint < cmap.startCode.get(mid))
-            max4 = mid - 1;
-          else if (codepoint > cmap.endCode.get(mid))
-            min4 = mid + 1;
+          if (codepoint < cmap.startCode.get(mid)) max4 = mid - 1;
+          else if (codepoint > cmap.endCode.get(mid)) min4 = mid + 1;
           else {
             let rangeOffset = cmap.idRangeOffset.get(mid);
             let gid;
-            if (rangeOffset === 0)
-              gid = codepoint + cmap.idDelta.get(mid);
+            if (rangeOffset === 0) gid = codepoint + cmap.idDelta.get(mid);
             else {
               let index2 = rangeOffset / 2 + (codepoint - cmap.startCode.get(mid)) - (cmap.segCount - mid);
               gid = cmap.glyphIndexArray.get(index2) || 0;
-              if (gid !== 0)
-                gid += cmap.idDelta.get(mid);
+              if (gid !== 0) gid += cmap.idDelta.get(mid);
             }
             return gid & 65535;
           }
@@ -54444,15 +53904,11 @@ var $f08dd41ef10b694c$export$2e2bcd8739ae039 = class {
         while (min4 <= max4) {
           let mid = min4 + max4 >> 1;
           let group = cmap.groups.get(mid);
-          if (codepoint < group.startCharCode)
-            max4 = mid - 1;
-          else if (codepoint > group.endCharCode)
-            min4 = mid + 1;
+          if (codepoint < group.startCharCode) max4 = mid - 1;
+          else if (codepoint > group.endCharCode) min4 = mid + 1;
           else {
-            if (cmap.version === 12)
-              return group.glyphID + (codepoint - group.startCharCode);
-            else
-              return group.glyphID;
+            if (cmap.version === 12) return group.glyphID + (codepoint - group.startCharCode);
+            else return group.glyphID;
           }
         }
         return 0;
@@ -54464,17 +53920,14 @@ var $f08dd41ef10b694c$export$2e2bcd8739ae039 = class {
     }
   }
   getVariationSelector(codepoint, variationSelector) {
-    if (!this.uvs)
-      return 0;
+    if (!this.uvs) return 0;
     let selectors = this.uvs.varSelectors.toArray();
     let i2 = (0, $12727730ddfc8bfe$export$2e0ae67339d5f1ac)(selectors, (x2) => variationSelector - x2.varSelector);
     let sel = selectors[i2];
-    if (i2 !== -1 && sel.defaultUVS)
-      i2 = (0, $12727730ddfc8bfe$export$2e0ae67339d5f1ac)(sel.defaultUVS, (x2) => codepoint < x2.startUnicodeValue ? -1 : codepoint > x2.startUnicodeValue + x2.additionalCount ? 1 : 0);
+    if (i2 !== -1 && sel.defaultUVS) i2 = (0, $12727730ddfc8bfe$export$2e0ae67339d5f1ac)(sel.defaultUVS, (x2) => codepoint < x2.startUnicodeValue ? -1 : codepoint > x2.startUnicodeValue + x2.additionalCount ? 1 : 0);
     if (i2 !== -1 && sel.nonDefaultUVS) {
       i2 = (0, $12727730ddfc8bfe$export$2e0ae67339d5f1ac)(sel.nonDefaultUVS, (x2) => codepoint - x2.unicodeValue);
-      if (i2 !== -1)
-        return sel.nonDefaultUVS[i2].glyphID;
+      if (i2 !== -1) return sel.nonDefaultUVS[i2].glyphID;
     }
     return 0;
   }
@@ -54501,8 +53954,7 @@ var $f08dd41ef10b694c$export$2e2bcd8739ae039 = class {
       case 12:
       case 13: {
         let res = [];
-        for (let group of cmap.groups.toArray())
-          res.push(...(0, $12727730ddfc8bfe$export$d02631cccf789723)(group.startCharCode, group.endCharCode + 1));
+        for (let group of cmap.groups.toArray()) res.push(...(0, $12727730ddfc8bfe$export$d02631cccf789723)(group.startCharCode, group.endCharCode + 1));
         return res;
       }
       case 14:
@@ -54516,9 +53968,7 @@ var $f08dd41ef10b694c$export$2e2bcd8739ae039 = class {
     switch (cmap.version) {
       case 0: {
         let res = [];
-        for (let i2 = 0; i2 < 256; i2++)
-          if (cmap.codeMap.get(i2) === gid)
-            res.push(i2);
+        for (let i2 = 0; i2 < 256; i2++) if (cmap.codeMap.get(i2) === gid) res.push(i2);
         return res;
       }
       case 4: {
@@ -54530,32 +53980,25 @@ var $f08dd41ef10b694c$export$2e2bcd8739ae039 = class {
           let delta = cmap.idDelta.get(i2);
           for (var c = start; c <= end; c++) {
             let g = 0;
-            if (rangeOffset === 0)
-              g = c + delta;
+            if (rangeOffset === 0) g = c + delta;
             else {
               let index2 = rangeOffset / 2 + (c - start) - (cmap.segCount - i2);
               g = cmap.glyphIndexArray.get(index2) || 0;
-              if (g !== 0)
-                g += delta;
+              if (g !== 0) g += delta;
             }
-            if (g === gid)
-              res.push(c);
+            if (g === gid) res.push(c);
           }
         }
         return res;
       }
       case 12: {
         let res = [];
-        for (let group of cmap.groups.toArray())
-          if (gid >= group.glyphID && gid <= group.glyphID + (group.endCharCode - group.startCharCode))
-            res.push(group.startCharCode + (gid - group.glyphID));
+        for (let group of cmap.groups.toArray()) if (gid >= group.glyphID && gid <= group.glyphID + (group.endCharCode - group.startCharCode)) res.push(group.startCharCode + (gid - group.glyphID));
         return res;
       }
       case 13: {
         let res = [];
-        for (let group of cmap.groups.toArray())
-          if (gid === group.glyphID)
-            res.push(...(0, $12727730ddfc8bfe$export$d02631cccf789723)(group.startCharCode, group.endCharCode + 1));
+        for (let group of cmap.groups.toArray()) if (gid === group.glyphID) res.push(...(0, $12727730ddfc8bfe$export$d02631cccf789723)(group.startCharCode, group.endCharCode + 1));
         return res;
       }
       default:
@@ -54600,25 +54043,22 @@ var $f08dd41ef10b694c$export$2e2bcd8739ae039 = class {
         0
       ]
     ]);
-    if (!this.cmap)
-      for (let cmap of cmapTable.tables) {
-        let encoding = (0, $e449ad78d50845fe$export$badc544e0651b6b1)(cmap.platformID, cmap.encodingID, cmap.table.language - 1);
-        let mapping = (0, $e449ad78d50845fe$export$1dceb3c14ed68bee)(encoding);
-        if (mapping) {
-          this.cmap = cmap.table;
-          this.encoding = mapping;
-        }
+    if (!this.cmap) for (let cmap of cmapTable.tables) {
+      let encoding = (0, $e449ad78d50845fe$export$badc544e0651b6b1)(cmap.platformID, cmap.encodingID, cmap.table.language - 1);
+      let mapping = (0, $e449ad78d50845fe$export$1dceb3c14ed68bee)(encoding);
+      if (mapping) {
+        this.cmap = cmap.table;
+        this.encoding = mapping;
       }
-    if (!this.cmap)
-      throw new Error("Could not find a supported cmap table");
+    }
+    if (!this.cmap) throw new Error("Could not find a supported cmap table");
     this.uvs = this.findSubtable(cmapTable, [
       [
         0,
         5
       ]
     ]);
-    if (this.uvs && this.uvs.version !== 14)
-      this.uvs = null;
+    if (this.uvs && this.uvs.version !== 14) this.uvs = null;
   }
 };
 (0, __decorate)([
@@ -54638,16 +54078,13 @@ var $0bba3a9db57637f3$export$2e2bcd8739ae039 = class {
   getKerning(left, right) {
     let res = 0;
     for (let table of this.kern.tables) {
-      if (table.coverage.crossStream)
-        continue;
+      if (table.coverage.crossStream) continue;
       switch (table.version) {
         case 0:
-          if (!table.coverage.horizontal)
-            continue;
+          if (!table.coverage.horizontal) continue;
           break;
         case 1:
-          if (table.coverage.vertical || table.coverage.variation)
-            continue;
+          if (table.coverage.vertical || table.coverage.variation) continue;
           break;
         default:
           throw new Error(`Unsupported kerning table version ${table.version}`);
@@ -54659,32 +54096,25 @@ var $0bba3a9db57637f3$export$2e2bcd8739ae039 = class {
           let pairIdx = (0, $12727730ddfc8bfe$export$2e0ae67339d5f1ac)(s.pairs, function(pair) {
             return left - pair.left || right - pair.right;
           });
-          if (pairIdx >= 0)
-            val = s.pairs[pairIdx].value;
+          if (pairIdx >= 0) val = s.pairs[pairIdx].value;
           break;
         case 2:
           let leftOffset = 0, rightOffset = 0;
-          if (left >= s.leftTable.firstGlyph && left < s.leftTable.firstGlyph + s.leftTable.nGlyphs)
-            leftOffset = s.leftTable.offsets[left - s.leftTable.firstGlyph];
-          else
-            leftOffset = s.array.off;
-          if (right >= s.rightTable.firstGlyph && right < s.rightTable.firstGlyph + s.rightTable.nGlyphs)
-            rightOffset = s.rightTable.offsets[right - s.rightTable.firstGlyph];
+          if (left >= s.leftTable.firstGlyph && left < s.leftTable.firstGlyph + s.leftTable.nGlyphs) leftOffset = s.leftTable.offsets[left - s.leftTable.firstGlyph];
+          else leftOffset = s.array.off;
+          if (right >= s.rightTable.firstGlyph && right < s.rightTable.firstGlyph + s.rightTable.nGlyphs) rightOffset = s.rightTable.offsets[right - s.rightTable.firstGlyph];
           let index2 = (leftOffset + rightOffset - s.array.off) / 2;
           val = s.array.values.get(index2);
           break;
         case 3:
-          if (left >= s.glyphCount || right >= s.glyphCount)
-            return 0;
+          if (left >= s.glyphCount || right >= s.glyphCount) return 0;
           val = s.kernValue[s.kernIndex[s.leftClass[left] * s.rightClassCount + s.rightClass[right]]];
           break;
         default:
           throw new Error(`Unsupported kerning sub-table format ${table.format}`);
       }
-      if (table.coverage.override)
-        res = val;
-      else
-        res += val;
+      if (table.coverage.override) res = val;
+      else res += val;
     }
     return res;
   }
@@ -54698,16 +54128,13 @@ var $0a4bdfeb6dfd6f5e$export$2e2bcd8739ae039 = class {
     let clusterEnd = 0;
     for (let index2 = 0; index2 < glyphs.length; index2++) {
       let glyph = glyphs[index2];
-      if (glyph.isMark)
-        clusterEnd = index2;
+      if (glyph.isMark) clusterEnd = index2;
       else {
-        if (clusterStart !== clusterEnd)
-          this.positionCluster(glyphs, positions, clusterStart, clusterEnd);
+        if (clusterStart !== clusterEnd) this.positionCluster(glyphs, positions, clusterStart, clusterEnd);
         clusterStart = clusterEnd = index2;
       }
     }
-    if (clusterStart !== clusterEnd)
-      this.positionCluster(glyphs, positions, clusterStart, clusterEnd);
+    if (clusterStart !== clusterEnd) this.positionCluster(glyphs, positions, clusterStart, clusterEnd);
     return positions;
   }
   positionCluster(glyphs, positions, clusterStart, clusterEnd) {
@@ -54750,8 +54177,7 @@ var $0a4bdfeb6dfd6f5e$export$2e2bcd8739ae039 = class {
           case "Below_Right":
           case "Attached_Below_Left":
           case "Attached_Below":
-            if (combiningClass === "Attached_Below_Left" || combiningClass === "Attached_Below")
-              baseBox.minY += yGap;
+            if (combiningClass === "Attached_Below_Left" || combiningClass === "Attached_Below") baseBox.minY += yGap;
             position2.yOffset = -baseBox.minY - markBox.maxY;
             baseBox.minY += markBox.height;
             break;
@@ -54761,8 +54187,7 @@ var $0a4bdfeb6dfd6f5e$export$2e2bcd8739ae039 = class {
           case "Above_Right":
           case "Attached_Above":
           case "Attached_Above_Right":
-            if (combiningClass === "Attached_Above" || combiningClass === "Attached_Above_Right")
-              baseBox.maxY += yGap;
+            if (combiningClass === "Attached_Above" || combiningClass === "Attached_Above_Right") baseBox.maxY += yGap;
             position2.yOffset = baseBox.maxY - markBox.minY;
             baseBox.maxY += markBox.height;
             break;
@@ -54780,32 +54205,30 @@ var $0a4bdfeb6dfd6f5e$export$2e2bcd8739ae039 = class {
   getCombiningClass(codePoint) {
     let combiningClass = (0, $747425b437e121da$export$c03b919c6651ed55)(codePoint);
     if ((codePoint & -256) === 3584) {
-      if (combiningClass === "Not_Reordered")
-        switch (codePoint) {
-          case 3633:
-          case 3636:
-          case 3637:
-          case 3638:
-          case 3639:
-          case 3655:
-          case 3660:
-          case 3645:
-          case 3662:
-            return "Above_Right";
-          case 3761:
-          case 3764:
-          case 3765:
-          case 3766:
-          case 3767:
-          case 3771:
-          case 3788:
-          case 3789:
-            return "Above";
-          case 3772:
-            return "Below";
-        }
-      else if (codePoint === 3642)
-        return "Below_Right";
+      if (combiningClass === "Not_Reordered") switch (codePoint) {
+        case 3633:
+        case 3636:
+        case 3637:
+        case 3638:
+        case 3639:
+        case 3655:
+        case 3660:
+        case 3645:
+        case 3662:
+          return "Above_Right";
+        case 3761:
+        case 3764:
+        case 3765:
+        case 3766:
+        case 3767:
+        case 3771:
+        case 3788:
+        case 3789:
+          return "Above";
+        case 3772:
+          return "Below";
+      }
+      else if (codePoint === 3642) return "Below_Right";
     }
     switch (combiningClass) {
       case "CCC10":
@@ -54880,16 +54303,12 @@ var $f34600ab9d7f70d8$export$2e2bcd8739ae039 = class _$f34600ab9d7f70d8$export$2
   }
   addPoint(x2, y2) {
     if (Math.abs(x2) !== Infinity) {
-      if (x2 < this.minX)
-        this.minX = x2;
-      if (x2 > this.maxX)
-        this.maxX = x2;
+      if (x2 < this.minX) this.minX = x2;
+      if (x2 > this.maxX) this.maxX = x2;
     }
     if (Math.abs(y2) !== Infinity) {
-      if (y2 < this.minY)
-        this.minY = y2;
-      if (y2 > this.maxY)
-        this.maxY = y2;
+      if (y2 < this.minY) this.minY = y2;
+      if (y2 > this.maxY) this.maxY = y2;
     }
   }
   copy() {
@@ -55064,11 +54483,8 @@ var $130d1a642ebcd2b7$var$UNICODE_SCRIPTS = {
 var $130d1a642ebcd2b7$var$OPENTYPE_SCRIPTS = {};
 for (let script in $130d1a642ebcd2b7$var$UNICODE_SCRIPTS) {
   let tag2 = $130d1a642ebcd2b7$var$UNICODE_SCRIPTS[script];
-  if (Array.isArray(tag2))
-    for (let t of tag2)
-      $130d1a642ebcd2b7$var$OPENTYPE_SCRIPTS[t] = script;
-  else
-    $130d1a642ebcd2b7$var$OPENTYPE_SCRIPTS[tag2] = script;
+  if (Array.isArray(tag2)) for (let t of tag2) $130d1a642ebcd2b7$var$OPENTYPE_SCRIPTS[t] = script;
+  else $130d1a642ebcd2b7$var$OPENTYPE_SCRIPTS[tag2] = script;
 }
 function $130d1a642ebcd2b7$export$ce50e82f12a827a4(tag2) {
   return $130d1a642ebcd2b7$var$OPENTYPE_SCRIPTS[tag2];
@@ -55086,8 +54502,7 @@ function $130d1a642ebcd2b7$export$e5cb25e204fb8450(string) {
       }
     }
     let script2 = (0, $747425b437e121da$export$941569448d136665)(code);
-    if (script2 !== "Common" && script2 !== "Inherited" && script2 !== "Unknown")
-      return $130d1a642ebcd2b7$var$UNICODE_SCRIPTS[script2];
+    if (script2 !== "Common" && script2 !== "Inherited" && script2 !== "Unknown") return $130d1a642ebcd2b7$var$UNICODE_SCRIPTS[script2];
   }
   return $130d1a642ebcd2b7$var$UNICODE_SCRIPTS.Unknown;
 }
@@ -55095,8 +54510,7 @@ function $130d1a642ebcd2b7$export$16fab0757cfc223d(codePoints) {
   for (let i2 = 0; i2 < codePoints.length; i2++) {
     let codePoint = codePoints[i2];
     let script3 = (0, $747425b437e121da$export$941569448d136665)(codePoint);
-    if (script3 !== "Common" && script3 !== "Inherited" && script3 !== "Unknown")
-      return $130d1a642ebcd2b7$var$UNICODE_SCRIPTS[script3];
+    if (script3 !== "Common" && script3 !== "Inherited" && script3 !== "Unknown") return $130d1a642ebcd2b7$var$UNICODE_SCRIPTS[script3];
   }
   return $130d1a642ebcd2b7$var$UNICODE_SCRIPTS.Unknown;
 }
@@ -55130,8 +54544,7 @@ var $130d1a642ebcd2b7$var$RTL = {
   // Psalter Pahlavi
 };
 function $130d1a642ebcd2b7$export$9fddb9d0dd7d8a54(script4) {
-  if ($130d1a642ebcd2b7$var$RTL[script4])
-    return "rtl";
+  if ($130d1a642ebcd2b7$var$RTL[script4]) return "rtl";
   return "ltr";
 }
 var $be07b3e97a42687a$export$2e2bcd8739ae039 = class {
@@ -55141,8 +54554,7 @@ var $be07b3e97a42687a$export$2e2bcd8739ae039 = class {
   */
   get advanceWidth() {
     let width2 = 0;
-    for (let position2 of this.positions)
-      width2 += position2.xAdvance;
+    for (let position2 of this.positions) width2 += position2.xAdvance;
     return width2;
   }
   /**
@@ -55151,8 +54563,7 @@ var $be07b3e97a42687a$export$2e2bcd8739ae039 = class {
   */
   get advanceHeight() {
     let height = 0;
-    for (let position2 of this.positions)
-      height += position2.yAdvance;
+    for (let position2 of this.positions) height += position2.yAdvance;
     return height;
   }
   /**
@@ -55181,11 +54592,8 @@ var $be07b3e97a42687a$export$2e2bcd8739ae039 = class {
     this.language = language || null;
     this.direction = direction3 || $130d1a642ebcd2b7$export$9fddb9d0dd7d8a54(script);
     this.features = {};
-    if (Array.isArray(features))
-      for (let tag2 of features)
-        this.features[tag2] = true;
-    else if (typeof features === "object")
-      this.features = features;
+    if (Array.isArray(features)) for (let tag2 of features) this.features[tag2] = true;
+    else if (typeof features === "object") this.features = features;
   }
 };
 var $1ac75d9a55b67f01$export$2e2bcd8739ae039 = class {
@@ -55642,16 +55050,14 @@ var $3b6302b64eccc32c$var$OTMapping = {
   ss19: $3b6302b64eccc32c$var$feature("stylisticAlternatives", "stylisticAltNineteen"),
   ss20: $3b6302b64eccc32c$var$feature("stylisticAlternatives", "stylisticAltTwenty")
 };
-for (let i2 = 1; i2 <= 99; i2++)
-  $3b6302b64eccc32c$var$OTMapping[`cv${`00${i2}`.slice(-2)}`] = [
-    $3b6302b64eccc32c$var$features.characterAlternatives.code,
-    i2
-  ];
+for (let i2 = 1; i2 <= 99; i2++) $3b6302b64eccc32c$var$OTMapping[`cv${`00${i2}`.slice(-2)}`] = [
+  $3b6302b64eccc32c$var$features.characterAlternatives.code,
+  i2
+];
 var $3b6302b64eccc32c$var$AATMapping = {};
 for (let ot in $3b6302b64eccc32c$var$OTMapping) {
   let aat = $3b6302b64eccc32c$var$OTMapping[ot];
-  if ($3b6302b64eccc32c$var$AATMapping[aat[0]] == null)
-    $3b6302b64eccc32c$var$AATMapping[aat[0]] = {};
+  if ($3b6302b64eccc32c$var$AATMapping[aat[0]] == null) $3b6302b64eccc32c$var$AATMapping[aat[0]] = {};
   $3b6302b64eccc32c$var$AATMapping[aat[0]][aat[1]] = ot;
 }
 function $3b6302b64eccc32c$export$b813f7d2a1677c16(features1) {
@@ -55659,8 +55065,7 @@ function $3b6302b64eccc32c$export$b813f7d2a1677c16(features1) {
   for (let k in features1) {
     let r;
     if (r = $3b6302b64eccc32c$var$OTMapping[k]) {
-      if (res[r[0]] == null)
-        res[r[0]] = {};
+      if (res[r[0]] == null) res[r[0]] = {};
       res[r[0]][r[1]] = features1[k];
     }
   }
@@ -55668,14 +55073,10 @@ function $3b6302b64eccc32c$export$b813f7d2a1677c16(features1) {
 }
 function $3b6302b64eccc32c$var$mapFeatureStrings(f) {
   let [type, setting] = f;
-  if (isNaN(type))
-    var typeCode = $3b6302b64eccc32c$var$features[type] && $3b6302b64eccc32c$var$features[type].code;
-  else
-    var typeCode = type;
-  if (isNaN(setting))
-    var settingCode = $3b6302b64eccc32c$var$features[type] && $3b6302b64eccc32c$var$features[type][setting];
-  else
-    var settingCode = setting;
+  if (isNaN(type)) var typeCode = $3b6302b64eccc32c$var$features[type] && $3b6302b64eccc32c$var$features[type].code;
+  else var typeCode = type;
+  if (isNaN(setting)) var settingCode = $3b6302b64eccc32c$var$features[type] && $3b6302b64eccc32c$var$features[type][setting];
+  else var settingCode = setting;
   return [
     typeCode,
     settingCode
@@ -55683,26 +55084,22 @@ function $3b6302b64eccc32c$var$mapFeatureStrings(f) {
 }
 function $3b6302b64eccc32c$export$bd6df347a4f391c4(features2) {
   let res = {};
-  if (Array.isArray(features2))
-    for (let k = 0; k < features2.length; k++) {
+  if (Array.isArray(features2)) for (let k = 0; k < features2.length; k++) {
+    let r;
+    let f = $3b6302b64eccc32c$var$mapFeatureStrings(features2[k]);
+    if (r = $3b6302b64eccc32c$var$AATMapping[f[0]] && $3b6302b64eccc32c$var$AATMapping[f[0]][f[1]]) res[r] = true;
+  }
+  else if (typeof features2 === "object") for (let type in features2) {
+    let feature1 = features2[type];
+    for (let setting in feature1) {
       let r;
-      let f = $3b6302b64eccc32c$var$mapFeatureStrings(features2[k]);
-      if (r = $3b6302b64eccc32c$var$AATMapping[f[0]] && $3b6302b64eccc32c$var$AATMapping[f[0]][f[1]])
-        res[r] = true;
+      let f = $3b6302b64eccc32c$var$mapFeatureStrings([
+        type,
+        setting
+      ]);
+      if (feature1[setting] && (r = $3b6302b64eccc32c$var$AATMapping[f[0]] && $3b6302b64eccc32c$var$AATMapping[f[0]][f[1]])) res[r] = true;
     }
-  else if (typeof features2 === "object")
-    for (let type in features2) {
-      let feature1 = features2[type];
-      for (let setting in feature1) {
-        let r;
-        let f = $3b6302b64eccc32c$var$mapFeatureStrings([
-          type,
-          setting
-        ]);
-        if (feature1[setting] && (r = $3b6302b64eccc32c$var$AATMapping[f[0]] && $3b6302b64eccc32c$var$AATMapping[f[0]][f[1]]))
-          res[r] = true;
-      }
-    }
+  }
   return Object.keys(res);
 }
 var $ff5ce077dae0f144$export$2e2bcd8739ae039 = class {
@@ -55717,17 +55114,12 @@ var $ff5ce077dae0f144$export$2e2bcd8739ae039 = class {
         while (min4 <= max4) {
           var mid = min4 + max4 >> 1;
           var seg = this.table.segments[mid];
-          if (seg.firstGlyph === 65535)
-            return null;
-          if (glyph < seg.firstGlyph)
-            max4 = mid - 1;
-          else if (glyph > seg.lastGlyph)
-            min4 = mid + 1;
+          if (seg.firstGlyph === 65535) return null;
+          if (glyph < seg.firstGlyph) max4 = mid - 1;
+          else if (glyph > seg.lastGlyph) min4 = mid + 1;
           else {
-            if (this.table.version === 2)
-              return seg.value;
-            else
-              return seg.values[glyph - seg.firstGlyph];
+            if (this.table.version === 2) return seg.value;
+            else return seg.values[glyph - seg.firstGlyph];
           }
         }
         return null;
@@ -55738,14 +55130,10 @@ var $ff5ce077dae0f144$export$2e2bcd8739ae039 = class {
         while (min4 <= max4) {
           var mid = min4 + max4 >> 1;
           var seg = this.table.segments[mid];
-          if (seg.glyph === 65535)
-            return null;
-          if (glyph < seg.glyph)
-            max4 = mid - 1;
-          else if (glyph > seg.glyph)
-            min4 = mid + 1;
-          else
-            return seg.value;
+          if (seg.glyph === 65535) return null;
+          if (glyph < seg.glyph) max4 = mid - 1;
+          else if (glyph > seg.glyph) min4 = mid + 1;
+          else return seg.value;
         }
         return null;
       }
@@ -55760,24 +55148,16 @@ var $ff5ce077dae0f144$export$2e2bcd8739ae039 = class {
     switch (this.table.version) {
       case 2:
       case 4:
-        for (let segment of this.table.segments)
-          if (this.table.version === 2 && segment.value === classValue)
-            res.push(...(0, $12727730ddfc8bfe$export$d02631cccf789723)(segment.firstGlyph, segment.lastGlyph + 1));
-          else {
-            for (let index2 = 0; index2 < segment.values.length; index2++)
-              if (segment.values[index2] === classValue)
-                res.push(segment.firstGlyph + index2);
-          }
+        for (let segment of this.table.segments) if (this.table.version === 2 && segment.value === classValue) res.push(...(0, $12727730ddfc8bfe$export$d02631cccf789723)(segment.firstGlyph, segment.lastGlyph + 1));
+        else {
+          for (let index2 = 0; index2 < segment.values.length; index2++) if (segment.values[index2] === classValue) res.push(segment.firstGlyph + index2);
+        }
         break;
       case 6:
-        for (let segment1 of this.table.segments)
-          if (segment1.value === classValue)
-            res.push(segment1.glyph);
+        for (let segment1 of this.table.segments) if (segment1.value === classValue) res.push(segment1.glyph);
         break;
       case 8:
-        for (let i2 = 0; i2 < this.table.values.length; i2++)
-          if (this.table.values[i2] === classValue)
-            res.push(this.table.firstGlyph + i2);
+        for (let i2 = 0; i2 < this.table.values.length; i2++) if (this.table.values[i2] === classValue) res.push(this.table.firstGlyph + i2);
         break;
       default:
         throw new Error(`Unknown lookup table format: ${this.table.version}`);
@@ -55805,16 +55185,13 @@ var $50c7aac9316f2948$export$2e2bcd8739ae039 = class {
       let glyph = null;
       let classCode = $50c7aac9316f2948$var$OUT_OF_BOUNDS_CLASS;
       let shouldAdvance = true;
-      if (index2 === glyphs.length || index2 === -1)
-        classCode = $50c7aac9316f2948$var$END_OF_TEXT_CLASS;
+      if (index2 === glyphs.length || index2 === -1) classCode = $50c7aac9316f2948$var$END_OF_TEXT_CLASS;
       else {
         glyph = glyphs[index2];
-        if (glyph.id === 65535)
-          classCode = $50c7aac9316f2948$var$DELETED_GLYPH_CLASS;
+        if (glyph.id === 65535) classCode = $50c7aac9316f2948$var$DELETED_GLYPH_CLASS;
         else {
           classCode = this.lookupTable.lookup(glyph.id);
-          if (classCode == null)
-            classCode = $50c7aac9316f2948$var$OUT_OF_BOUNDS_CLASS;
+          if (classCode == null) classCode = $50c7aac9316f2948$var$OUT_OF_BOUNDS_CLASS;
         }
       }
       let row = this.stateTable.stateArray.getItem(currentState);
@@ -55825,8 +55202,7 @@ var $50c7aac9316f2948$export$2e2bcd8739ae039 = class {
         shouldAdvance = !(entry.flags & $50c7aac9316f2948$var$DONT_ADVANCE);
       }
       currentState = entry.newState;
-      if (shouldAdvance)
-        index2 += dir;
+      if (shouldAdvance) index2 += dir;
     }
     return glyphs;
   }
@@ -55835,8 +55211,7 @@ var $50c7aac9316f2948$export$2e2bcd8739ae039 = class {
   * represented by the state machine.
   */
   traverse(opts, state = 0, visited = /* @__PURE__ */ new Set()) {
-    if (visited.has(state))
-      return;
+    if (visited.has(state)) return;
     visited.add(state);
     let { nClasses, stateArray, entryTable } = this.stateTable;
     let row = stateArray.getItem(state);
@@ -55844,12 +55219,9 @@ var $50c7aac9316f2948$export$2e2bcd8739ae039 = class {
       let entryIndex = row[classCode];
       let entry = entryTable.getItem(entryIndex);
       for (let glyph of this.lookupTable.glyphsForValue(classCode)) {
-        if (opts.enter)
-          opts.enter(glyph, entry);
-        if (entry.newState !== 0)
-          this.traverse(opts, entry.newState, visited);
-        if (opts.exit)
-          opts.exit(glyph, entry);
+        if (opts.enter) opts.enter(glyph, entry);
+        if (entry.newState !== 0) this.traverse(opts, entry.newState, visited);
+        if (opts.exit) opts.exit(glyph, entry);
       }
     }
   }
@@ -55890,14 +55262,11 @@ var $55f71433a605c87d$export$2e2bcd8739ae039 = class {
           }
         }
       }
-      for (let subtable of chain.subtables)
-        if (subtable.subFeatureFlags & flags)
-          this.processSubtable(subtable, glyphs);
+      for (let subtable of chain.subtables) if (subtable.subFeatureFlags & flags) this.processSubtable(subtable, glyphs);
     }
     let index2 = glyphs.length - 1;
     while (index2 >= 0) {
-      if (glyphs[index2].id === 65535)
-        glyphs.splice(index2, 1);
+      if (glyphs[index2].id === 65535) glyphs.splice(index2, 1);
       index2--;
     }
     return glyphs;
@@ -55939,10 +55308,8 @@ var $55f71433a605c87d$export$2e2bcd8739ae039 = class {
     }
   }
   processIndicRearragement(glyph, entry, index2) {
-    if (entry.flags & $55f71433a605c87d$var$MARK_FIRST)
-      this.firstGlyph = index2;
-    if (entry.flags & $55f71433a605c87d$var$MARK_LAST)
-      this.lastGlyph = index2;
+    if (entry.flags & $55f71433a605c87d$var$MARK_FIRST) this.firstGlyph = index2;
+    if (entry.flags & $55f71433a605c87d$var$MARK_LAST) this.lastGlyph = index2;
     $55f71433a605c87d$var$reorderGlyphs(this.glyphs, entry.flags & $55f71433a605c87d$var$VERB, this.firstGlyph, this.lastGlyph);
   }
   processContextualSubstitution(glyph, entry, index2) {
@@ -55952,23 +55319,19 @@ var $55f71433a605c87d$export$2e2bcd8739ae039 = class {
       let lookupTable = new (0, $ff5ce077dae0f144$export$2e2bcd8739ae039)(lookup);
       glyph = this.glyphs[this.markedGlyph];
       var gid = lookupTable.lookup(glyph.id);
-      if (gid)
-        this.glyphs[this.markedGlyph] = this.font.getGlyph(gid, glyph.codePoints);
+      if (gid) this.glyphs[this.markedGlyph] = this.font.getGlyph(gid, glyph.codePoints);
     }
     if (entry.currentIndex !== 65535) {
       let lookup = subsitutions.getItem(entry.currentIndex);
       let lookupTable = new (0, $ff5ce077dae0f144$export$2e2bcd8739ae039)(lookup);
       glyph = this.glyphs[index2];
       var gid = lookupTable.lookup(glyph.id);
-      if (gid)
-        this.glyphs[index2] = this.font.getGlyph(gid, glyph.codePoints);
+      if (gid) this.glyphs[index2] = this.font.getGlyph(gid, glyph.codePoints);
     }
-    if (entry.flags & $55f71433a605c87d$var$SET_MARK)
-      this.markedGlyph = index2;
+    if (entry.flags & $55f71433a605c87d$var$SET_MARK) this.markedGlyph = index2;
   }
   processLigature(glyph, entry, index2) {
-    if (entry.flags & $55f71433a605c87d$var$SET_COMPONENT)
-      this.ligatureStack.push(index2);
+    if (entry.flags & $55f71433a605c87d$var$SET_COMPONENT) this.ligatureStack.push(index2);
     if (entry.flags & $55f71433a605c87d$var$PERFORM_ACTION) {
       let actions = this.subtable.table.ligatureActions;
       let components2 = this.subtable.table.components;
@@ -55994,8 +55357,7 @@ var $55f71433a605c87d$export$2e2bcd8739ae039 = class {
           ligatureGlyphs.push(componentGlyph);
           ligatureIndex = 0;
           codePoints = [];
-        } else
-          this.glyphs[componentGlyph] = this.font.getGlyph(65535);
+        } else this.glyphs[componentGlyph] = this.font.getGlyph(65535);
       }
       this.ligatureStack.push(...ligatureGlyphs);
     }
@@ -56006,8 +55368,7 @@ var $55f71433a605c87d$export$2e2bcd8739ae039 = class {
       let glyph = glyphs[index2];
       if (glyph.id !== 65535) {
         let gid = lookupTable.lookup(glyph.id);
-        if (gid)
-          glyphs[index2] = this.font.getGlyph(gid, glyph.codePoints);
+        if (gid) glyphs[index2] = this.font.getGlyph(gid, glyph.codePoints);
       }
     }
   }
@@ -56017,13 +55378,11 @@ var $55f71433a605c87d$export$2e2bcd8739ae039 = class {
       let gid = this.subtable.table.insertionActions.getItem(insertionActionIndex++);
       insertions.push(this.font.getGlyph(gid));
     }
-    if (!isBefore)
-      glyphIndex++;
+    if (!isBefore) glyphIndex++;
     this.glyphs.splice(glyphIndex, 0, ...insertions);
   }
   processGlyphInsertion(glyph, entry, index2) {
-    if (entry.flags & $55f71433a605c87d$var$SET_MARK)
-      this.markedIndex = index2;
+    if (entry.flags & $55f71433a605c87d$var$SET_MARK) this.markedIndex = index2;
     if (entry.markedInsertIndex !== 65535) {
       let count = (entry.flags & $55f71433a605c87d$var$MARKED_INSERT_COUNT) >>> 5;
       let isBefore = !!(entry.flags & $55f71433a605c87d$var$MARKED_INSERT_BEFORE);
@@ -56037,34 +55396,27 @@ var $55f71433a605c87d$export$2e2bcd8739ae039 = class {
   }
   getSupportedFeatures() {
     let features = [];
-    for (let chain of this.morx.chains)
-      for (let feature of chain.features)
-        features.push([
-          feature.featureType,
-          feature.featureSetting
-        ]);
+    for (let chain of this.morx.chains) for (let feature of chain.features) features.push([
+      feature.featureType,
+      feature.featureSetting
+    ]);
     return features;
   }
   generateInputs(gid) {
-    if (!this.inputCache)
-      this.generateInputCache();
+    if (!this.inputCache) this.generateInputCache();
     return this.inputCache[gid] || [];
   }
   generateInputCache() {
     this.inputCache = {};
     for (let chain of this.morx.chains) {
       let flags = chain.defaultFlags;
-      for (let subtable of chain.subtables)
-        if (subtable.subFeatureFlags & flags)
-          this.generateInputsForSubtable(subtable);
+      for (let subtable of chain.subtables) if (subtable.subFeatureFlags & flags) this.generateInputsForSubtable(subtable);
     }
   }
   generateInputsForSubtable(subtable) {
-    if (subtable.type !== 2)
-      return;
+    if (subtable.type !== 2) return;
     let reverse = !!(subtable.coverage & $55f71433a605c87d$var$REVERSE_DIRECTION);
-    if (reverse)
-      throw new Error("Reverse subtable, not supported.");
+    if (reverse) throw new Error("Reverse subtable, not supported.");
     this.subtable = subtable;
     this.ligatureStack = [];
     let stateMachine = this.getStateMachine(subtable);
@@ -56085,20 +55437,17 @@ var $55f71433a605c87d$export$2e2bcd8739ae039 = class {
         process2(glyphs[glyphs.length - 1], entry, glyphs.length - 1);
         let count = 0;
         let found = 0;
-        for (let i2 = 0; i2 < glyphs.length && count <= 1; i2++)
-          if (glyphs[i2].id !== 65535) {
-            count++;
-            found = glyphs[i2].id;
-          }
+        for (let i2 = 0; i2 < glyphs.length && count <= 1; i2++) if (glyphs[i2].id !== 65535) {
+          count++;
+          found = glyphs[i2].id;
+        }
         if (count === 1) {
           let result = input.map((g) => g.id);
           let cache1 = this.inputCache[found];
-          if (cache1)
-            cache1.push(result);
-          else
-            this.inputCache[found] = [
-              result
-            ];
+          if (cache1) cache1.push(result);
+          else this.inputCache[found] = [
+            result
+          ];
         }
       },
       exit: () => {
@@ -56123,11 +55472,9 @@ var $55f71433a605c87d$export$2e2bcd8739ae039 = class {
 ], $55f71433a605c87d$export$2e2bcd8739ae039.prototype, "getStateMachine", null);
 function $55f71433a605c87d$var$swap(glyphs, rangeA, rangeB, reverseA = false, reverseB = false) {
   let end = glyphs.splice(rangeB[0] - (rangeB[1] - 1), rangeB[1]);
-  if (reverseB)
-    end.reverse();
+  if (reverseB) end.reverse();
   let start = glyphs.splice(rangeA[0], rangeA[1], ...end);
-  if (reverseA)
-    start.reverse();
+  if (reverseA) start.reverse();
   glyphs.splice(rangeB[0] - (rangeA[1] - 1), 0, ...start);
   return glyphs;
 }
@@ -56262,8 +55609,7 @@ function $55f71433a605c87d$var$reorderGlyphs(glyphs, verb, firstGlyph, lastGlyph
 }
 var $ba6dd74203be8728$export$2e2bcd8739ae039 = class {
   substitute(glyphRun) {
-    if (glyphRun.direction === "rtl")
-      glyphRun.glyphs.reverse();
+    if (glyphRun.direction === "rtl") glyphRun.glyphs.reverse();
     this.morxProcessor.process(glyphRun.glyphs, $3b6302b64eccc32c$export$b813f7d2a1677c16(glyphRun.features));
   }
   getAvailableFeatures(script, language) {
@@ -56272,18 +55618,15 @@ var $ba6dd74203be8728$export$2e2bcd8739ae039 = class {
   stringsForGlyph(gid) {
     let glyphStrings = this.morxProcessor.generateInputs(gid);
     let result = /* @__PURE__ */ new Set();
-    for (let glyphs of glyphStrings)
-      this._addStrings(glyphs, 0, result, "");
+    for (let glyphs of glyphStrings) this._addStrings(glyphs, 0, result, "");
     return result;
   }
   _addStrings(glyphs, index2, strings, string) {
     let codePoints = this.font._cmapProcessor.codePointsForGlyph(glyphs[index2]);
     for (let codePoint of codePoints) {
       let s = string + String.fromCodePoint(codePoint);
-      if (index2 < glyphs.length - 1)
-        this._addStrings(glyphs, index2 + 1, strings, s);
-      else
-        strings.add(s);
+      if (index2 < glyphs.length - 1) this._addStrings(glyphs, index2 + 1, strings, s);
+      else strings.add(s);
     }
   }
   constructor(font) {
@@ -56300,65 +55643,53 @@ var $94d7a73bd2edfc9a$export$2e2bcd8739ae039 = class {
   _addFeatures(features, global2) {
     let stageIndex = this.stages.length - 1;
     let stage = this.stages[stageIndex];
-    for (let feature of features)
-      if (this.allFeatures[feature] == null) {
-        stage.push(feature);
-        this.allFeatures[feature] = stageIndex;
-        if (global2)
-          this.globalFeatures[feature] = true;
-      }
+    for (let feature of features) if (this.allFeatures[feature] == null) {
+      stage.push(feature);
+      this.allFeatures[feature] = stageIndex;
+      if (global2) this.globalFeatures[feature] = true;
+    }
   }
   /**
   * Add features to the last stage
   */
   add(arg, global2 = true) {
-    if (this.stages.length === 0)
-      this.stages.push([]);
-    if (typeof arg === "string")
-      arg = [
-        arg
-      ];
-    if (Array.isArray(arg))
-      this._addFeatures(arg, global2);
+    if (this.stages.length === 0) this.stages.push([]);
+    if (typeof arg === "string") arg = [
+      arg
+    ];
+    if (Array.isArray(arg)) this._addFeatures(arg, global2);
     else if (typeof arg === "object") {
       this._addFeatures(arg.global || [], true);
       this._addFeatures(arg.local || [], false);
-    } else
-      throw new Error("Unsupported argument to ShapingPlan#add");
+    } else throw new Error("Unsupported argument to ShapingPlan#add");
   }
   /**
   * Add a new stage
   */
   addStage(arg, global2) {
-    if (typeof arg === "function")
-      this.stages.push(arg, []);
+    if (typeof arg === "function") this.stages.push(arg, []);
     else {
       this.stages.push([]);
       this.add(arg, global2);
     }
   }
   setFeatureOverrides(features) {
-    if (Array.isArray(features))
-      this.add(features);
-    else if (typeof features === "object")
-      for (let tag2 in features) {
-        if (features[tag2])
-          this.add(tag2);
-        else if (this.allFeatures[tag2] != null) {
-          let stage = this.stages[this.allFeatures[tag2]];
-          stage.splice(stage.indexOf(tag2), 1);
-          delete this.allFeatures[tag2];
-          delete this.globalFeatures[tag2];
-        }
+    if (Array.isArray(features)) this.add(features);
+    else if (typeof features === "object") for (let tag2 in features) {
+      if (features[tag2]) this.add(tag2);
+      else if (this.allFeatures[tag2] != null) {
+        let stage = this.stages[this.allFeatures[tag2]];
+        stage.splice(stage.indexOf(tag2), 1);
+        delete this.allFeatures[tag2];
+        delete this.globalFeatures[tag2];
       }
+    }
   }
   /**
   * Assigns the global features to the given glyphs
   */
   assignGlobalFeatures(glyphs) {
-    for (let glyph of glyphs)
-      for (let feature in this.globalFeatures)
-        glyph.features[feature] = true;
+    for (let glyph of glyphs) for (let feature in this.globalFeatures) glyph.features[feature] = true;
   }
   /**
   * Executes the planned stages using the given OTProcessor
@@ -56366,10 +55697,8 @@ var $94d7a73bd2edfc9a$export$2e2bcd8739ae039 = class {
   process(processor, glyphs, positions) {
     for (let stage of this.stages) {
       if (typeof stage === "function") {
-        if (!positions)
-          stage(this.font, glyphs, this);
-      } else if (stage.length > 0)
-        processor.applyFeatures(stage, glyphs, positions);
+        if (!positions) stage(this.font, glyphs, this);
+      } else if (stage.length > 0) processor.applyFeatures(stage, glyphs, positions);
     }
   }
   constructor(font, script, direction3) {
@@ -56751,26 +56080,22 @@ var $764eb544bbe1ccf0$export$2e2bcd8739ae039 = class extends (0, $649970d87335b3
         continue;
       }
       [prevAction, curAction, state] = $764eb544bbe1ccf0$var$STATE_TABLE[state][type];
-      if (prevAction !== $764eb544bbe1ccf0$var$NONE && prev !== -1)
-        actions[prev] = prevAction;
+      if (prevAction !== $764eb544bbe1ccf0$var$NONE && prev !== -1) actions[prev] = prevAction;
       actions[i2] = curAction;
       prev = i2;
     }
     for (let index2 = 0; index2 < glyphs.length; index2++) {
       let feature;
       var glyph = glyphs[index2];
-      if (feature = actions[index2])
-        glyph.features[feature] = true;
+      if (feature = actions[index2]) glyph.features[feature] = true;
     }
   }
 };
 function $764eb544bbe1ccf0$var$getShapingClass(codePoint) {
   let res = $764eb544bbe1ccf0$var$trie.get(codePoint);
-  if (res)
-    return res - 1;
+  if (res) return res - 1;
   let category = (0, $747425b437e121da$export$410364bbb673ddbc)(codePoint);
-  if (category === "Mn" || category === "Me" || category === "Cf")
-    return $764eb544bbe1ccf0$var$ShapingClasses.Transparent;
+  if (category === "Mn" || category === "Me" || category === "Cf") return $764eb544bbe1ccf0$var$ShapingClasses.Transparent;
   return $764eb544bbe1ccf0$var$ShapingClasses.Non_Joining;
 }
 var $85d408632270248b$export$2e2bcd8739ae039 = class {
@@ -56788,10 +56113,8 @@ var $85d408632270248b$export$2e2bcd8739ae039 = class {
   }
   move(dir) {
     this.index += dir;
-    while (0 <= this.index && this.index < this.glyphs.length && this.shouldIgnore(this.glyphs[this.index]))
-      this.index += dir;
-    if (0 > this.index || this.index >= this.glyphs.length)
-      return null;
+    while (0 <= this.index && this.index < this.glyphs.length && this.shouldIgnore(this.glyphs[this.index])) this.index += dir;
+    if (0 > this.index || this.index >= this.glyphs.length) return null;
     return this.glyphs[this.index];
   }
   next() {
@@ -56816,8 +56139,7 @@ var $85d408632270248b$export$2e2bcd8739ae039 = class {
   increment(count = 1) {
     let dir = count < 0 ? -1 : 1;
     count = Math.abs(count);
-    while (count--)
-      this.move(dir);
+    while (count--) this.move(dir);
     return this.glyphs[this.index];
   }
   constructor(glyphs, options) {
@@ -56832,17 +56154,13 @@ var $a83b9c36aaa94fd3$var$DEFAULT_SCRIPTS = [
 ];
 var $a83b9c36aaa94fd3$export$2e2bcd8739ae039 = class {
   findScript(script) {
-    if (this.table.scriptList == null)
-      return null;
-    if (!Array.isArray(script))
-      script = [
-        script
-      ];
-    for (let s of script)
-      for (let entry of this.table.scriptList) {
-        if (entry.tag === s)
-          return entry;
-      }
+    if (this.table.scriptList == null) return null;
+    if (!Array.isArray(script)) script = [
+      script
+    ];
+    for (let s of script) for (let entry of this.table.scriptList) {
+      if (entry.tag === s) return entry;
+    }
     return null;
   }
   selectScript(script, language, direction3) {
@@ -56850,28 +56168,23 @@ var $a83b9c36aaa94fd3$export$2e2bcd8739ae039 = class {
     let entry;
     if (!this.script || script !== this.scriptTag) {
       entry = this.findScript(script);
-      if (!entry)
-        entry = this.findScript($a83b9c36aaa94fd3$var$DEFAULT_SCRIPTS);
-      if (!entry)
-        return this.scriptTag;
+      if (!entry) entry = this.findScript($a83b9c36aaa94fd3$var$DEFAULT_SCRIPTS);
+      if (!entry) return this.scriptTag;
       this.scriptTag = entry.tag;
       this.script = entry.script;
       this.language = null;
       this.languageTag = null;
       changed = true;
     }
-    if (!direction3 || direction3 !== this.direction)
-      this.direction = direction3 || $130d1a642ebcd2b7$export$9fddb9d0dd7d8a54(script);
-    if (language && language.length < 4)
-      language += " ".repeat(4 - language.length);
+    if (!direction3 || direction3 !== this.direction) this.direction = direction3 || $130d1a642ebcd2b7$export$9fddb9d0dd7d8a54(script);
+    if (language && language.length < 4) language += " ".repeat(4 - language.length);
     if (!language || language !== this.languageTag) {
       this.language = null;
-      for (let lang of this.script.langSysRecords)
-        if (lang.tag === language) {
-          this.language = lang.langSys;
-          this.languageTag = lang.tag;
-          break;
-        }
+      for (let lang of this.script.langSysRecords) if (lang.tag === language) {
+        this.language = lang.langSys;
+        this.languageTag = lang.tag;
+        break;
+      }
       if (!this.language) {
         this.language = this.script.defaultLangSys;
         this.languageTag = null;
@@ -56880,12 +56193,11 @@ var $a83b9c36aaa94fd3$export$2e2bcd8739ae039 = class {
     }
     if (changed) {
       this.features = {};
-      if (this.language)
-        for (let featureIndex of this.language.featureIndexes) {
-          let record = this.table.featureList[featureIndex];
-          let substituteFeature = this.substituteFeatureForVariations(featureIndex);
-          this.features[record.tag] = substituteFeature || record.feature;
-        }
+      if (this.language) for (let featureIndex of this.language.featureIndexes) {
+        let record = this.table.featureList[featureIndex];
+        let substituteFeature = this.substituteFeatureForVariations(featureIndex);
+        this.features[record.tag] = substituteFeature || record.feature;
+      }
     }
     return this.scriptTag;
   }
@@ -56893,11 +56205,9 @@ var $a83b9c36aaa94fd3$export$2e2bcd8739ae039 = class {
     let lookups = [];
     for (let tag2 of userFeatures) {
       let feature = this.features[tag2];
-      if (!feature)
-        continue;
+      if (!feature) continue;
       for (let lookupIndex of feature.lookupListIndexes) {
-        if (exclude && exclude.indexOf(lookupIndex) !== -1)
-          continue;
+        if (exclude && exclude.indexOf(lookupIndex) !== -1) continue;
         lookups.push({
           feature: tag2,
           index: lookupIndex,
@@ -56909,25 +56219,21 @@ var $a83b9c36aaa94fd3$export$2e2bcd8739ae039 = class {
     return lookups;
   }
   substituteFeatureForVariations(featureIndex) {
-    if (this.variationsIndex === -1)
-      return null;
+    if (this.variationsIndex === -1) return null;
     let record = this.table.featureVariations.featureVariationRecords[this.variationsIndex];
     let substitutions = record.featureTableSubstitution.substitutions;
     for (let substitution of substitutions) {
-      if (substitution.featureIndex === featureIndex)
-        return substitution.alternateFeatureTable;
+      if (substitution.featureIndex === featureIndex) return substitution.alternateFeatureTable;
     }
     return null;
   }
   findVariationsIndex(coords) {
     let variations = this.table.featureVariations;
-    if (!variations)
-      return -1;
+    if (!variations) return -1;
     let records = variations.featureVariationRecords;
     for (let i2 = 0; i2 < records.length; i2++) {
       let conditions = records[i2].conditionSet.conditionTable;
-      if (this.variationConditionsMatch(conditions, coords))
-        return i2;
+      if (this.variationConditionsMatch(conditions, coords)) return i2;
     }
     return -1;
   }
@@ -56955,8 +56261,7 @@ var $a83b9c36aaa94fd3$export$2e2bcd8739ae039 = class {
         }
         for (let table of lookup.subTables) {
           let res = this.applyLookup(lookup.lookupType, table);
-          if (res)
-            break;
+          if (res) break;
         }
         this.glyphIterator.next();
       }
@@ -56974,23 +56279,20 @@ var $a83b9c36aaa94fd3$export$2e2bcd8739ae039 = class {
       let lookup = this.table.lookupList.get(lookupRecord.lookupListIndex);
       this.glyphIterator.reset(lookup.flags, this.glyphIterator.index);
       for (let table of lookup.subTables) {
-        if (this.applyLookup(lookup.lookupType, table))
-          break;
+        if (this.applyLookup(lookup.lookupType, table)) break;
       }
     }
     this.glyphIterator.reset(options, glyphIndex);
     return true;
   }
   coverageIndex(coverage, glyph) {
-    if (glyph == null)
-      glyph = this.glyphIterator.cur.id;
+    if (glyph == null) glyph = this.glyphIterator.cur.id;
     switch (coverage.version) {
       case 1:
         return coverage.glyphs.indexOf(glyph);
       case 2:
         for (let range2 of coverage.rangeRecords) {
-          if (range2.start <= glyph && glyph <= range2.end)
-            return range2.startCoverageIndex + glyph - range2.start;
+          if (range2.start <= glyph && glyph <= range2.end) return range2.startCoverageIndex + glyph - range2.start;
         }
         break;
     }
@@ -57001,14 +56303,12 @@ var $a83b9c36aaa94fd3$export$2e2bcd8739ae039 = class {
     let glyph = this.glyphIterator.increment(sequenceIndex);
     let idx = 0;
     while (idx < sequence.length && glyph && fn(sequence[idx], glyph)) {
-      if (matched)
-        matched.push(this.glyphIterator.index);
+      if (matched) matched.push(this.glyphIterator.index);
       idx++;
       glyph = this.glyphIterator.next();
     }
     this.glyphIterator.index = pos;
-    if (idx < sequence.length)
-      return false;
+    if (idx < sequence.length) return false;
     return matched || true;
   }
   sequenceMatches(sequenceIndex, sequence) {
@@ -57016,8 +56316,7 @@ var $a83b9c36aaa94fd3$export$2e2bcd8739ae039 = class {
   }
   sequenceMatchIndices(sequenceIndex, sequence) {
     return this.match(sequenceIndex, sequence, (component, glyph) => {
-      if (!(this.currentFeature in glyph.features))
-        return false;
+      if (!(this.currentFeature in glyph.features)) return false;
       return component === glyph.id;
     }, []);
   }
@@ -57028,13 +56327,11 @@ var $a83b9c36aaa94fd3$export$2e2bcd8739ae039 = class {
     switch (classDef.version) {
       case 1:
         let i2 = glyph - classDef.startGlyph;
-        if (i2 >= 0 && i2 < classDef.classValueArray.length)
-          return classDef.classValueArray[i2];
+        if (i2 >= 0 && i2 < classDef.classValueArray.length) return classDef.classValueArray[i2];
         break;
       case 2:
         for (let range2 of classDef.classRangeRecord) {
-          if (range2.start <= glyph && glyph <= range2.end)
-            return range2.class;
+          if (range2.start <= glyph && glyph <= range2.end) return range2.class;
         }
         break;
     }
@@ -57048,29 +56345,23 @@ var $a83b9c36aaa94fd3$export$2e2bcd8739ae039 = class {
     switch (table.version) {
       case 1:
         index2 = this.coverageIndex(table.coverage);
-        if (index2 === -1)
-          return false;
+        if (index2 === -1) return false;
         set3 = table.ruleSets[index2];
         for (let rule of set3) {
-          if (this.sequenceMatches(1, rule.input))
-            return this.applyLookupList(rule.lookupRecords);
+          if (this.sequenceMatches(1, rule.input)) return this.applyLookupList(rule.lookupRecords);
         }
         break;
       case 2:
-        if (this.coverageIndex(table.coverage) === -1)
-          return false;
+        if (this.coverageIndex(table.coverage) === -1) return false;
         index2 = this.getClassID(this.glyphIterator.cur.id, table.classDef);
-        if (index2 === -1)
-          return false;
+        if (index2 === -1) return false;
         set3 = table.classSet[index2];
         for (let rule1 of set3) {
-          if (this.classSequenceMatches(1, rule1.classes, table.classDef))
-            return this.applyLookupList(rule1.lookupRecords);
+          if (this.classSequenceMatches(1, rule1.classes, table.classDef)) return this.applyLookupList(rule1.lookupRecords);
         }
         break;
       case 3:
-        if (this.coverageSequenceMatches(0, table.coverages))
-          return this.applyLookupList(table.lookupRecords);
+        if (this.coverageSequenceMatches(0, table.coverages)) return this.applyLookupList(table.lookupRecords);
         break;
     }
     return false;
@@ -57080,29 +56371,23 @@ var $a83b9c36aaa94fd3$export$2e2bcd8739ae039 = class {
     switch (table.version) {
       case 1:
         index2 = this.coverageIndex(table.coverage);
-        if (index2 === -1)
-          return false;
+        if (index2 === -1) return false;
         let set3 = table.chainRuleSets[index2];
         for (let rule of set3) {
-          if (this.sequenceMatches(-rule.backtrack.length, rule.backtrack) && this.sequenceMatches(1, rule.input) && this.sequenceMatches(1 + rule.input.length, rule.lookahead))
-            return this.applyLookupList(rule.lookupRecords);
+          if (this.sequenceMatches(-rule.backtrack.length, rule.backtrack) && this.sequenceMatches(1, rule.input) && this.sequenceMatches(1 + rule.input.length, rule.lookahead)) return this.applyLookupList(rule.lookupRecords);
         }
         break;
       case 2:
-        if (this.coverageIndex(table.coverage) === -1)
-          return false;
+        if (this.coverageIndex(table.coverage) === -1) return false;
         index2 = this.getClassID(this.glyphIterator.cur.id, table.inputClassDef);
         let rules = table.chainClassSet[index2];
-        if (!rules)
-          return false;
+        if (!rules) return false;
         for (let rule2 of rules) {
-          if (this.classSequenceMatches(-rule2.backtrack.length, rule2.backtrack, table.backtrackClassDef) && this.classSequenceMatches(1, rule2.input, table.inputClassDef) && this.classSequenceMatches(1 + rule2.input.length, rule2.lookahead, table.lookaheadClassDef))
-            return this.applyLookupList(rule2.lookupRecords);
+          if (this.classSequenceMatches(-rule2.backtrack.length, rule2.backtrack, table.backtrackClassDef) && this.classSequenceMatches(1, rule2.input, table.inputClassDef) && this.classSequenceMatches(1 + rule2.input.length, rule2.lookahead, table.lookaheadClassDef)) return this.applyLookupList(rule2.lookupRecords);
         }
         break;
       case 3:
-        if (this.coverageSequenceMatches(-table.backtrackGlyphCount, table.backtrackCoverage) && this.coverageSequenceMatches(0, table.inputCoverage) && this.coverageSequenceMatches(table.inputGlyphCount, table.lookaheadCoverage))
-          return this.applyLookupList(table.lookupRecords);
+        if (this.coverageSequenceMatches(-table.backtrackGlyphCount, table.backtrackCoverage) && this.coverageSequenceMatches(0, table.inputCoverage) && this.coverageSequenceMatches(table.inputGlyphCount, table.lookaheadCoverage)) return this.applyLookupList(table.lookupRecords);
         break;
     }
     return false;
@@ -57153,13 +56438,11 @@ var $10e7b257e1a9a756$export$2e2bcd8739ae039 = class _$10e7b257e1a9a756$export$2
     this.codePoints = codePoints;
     this.id = id9;
     this.features = {};
-    if (Array.isArray(features))
-      for (let i2 = 0; i2 < features.length; i2++) {
-        let feature = features[i2];
-        this.features[feature] = true;
-      }
-    else if (typeof features === "object")
-      Object.assign(this.features, features);
+    if (Array.isArray(features)) for (let i2 = 0; i2 < features.length; i2++) {
+      let feature = features[i2];
+      this.features[feature] = true;
+    }
+    else if (typeof features === "object") Object.assign(this.features, features);
     this.ligatureID = null;
     this.ligatureComponent = null;
     this.isLigated = false;
@@ -57189,8 +56472,7 @@ var $e1c6bbc8cb416f8c$export$2e2bcd8739ae039 = class extends (0, $649970d87335b3
       [action, state] = $e1c6bbc8cb416f8c$var$STATE_TABLE[state][type];
       switch (action) {
         case $e1c6bbc8cb416f8c$var$DECOMPOSE:
-          if (!plan.font.hasGlyphForCodePoint(code))
-            i2 = $e1c6bbc8cb416f8c$var$decompose(glyphs, i2, plan.font);
+          if (!plan.font.hasGlyphForCodePoint(code)) i2 = $e1c6bbc8cb416f8c$var$decompose(glyphs, i2, plan.font);
           break;
         case $e1c6bbc8cb416f8c$var$COMPOSE:
           i2 = $e1c6bbc8cb416f8c$var$compose(glyphs, i2, plan.font);
@@ -57237,18 +56519,12 @@ var $e1c6bbc8cb416f8c$var$LV = 4;
 var $e1c6bbc8cb416f8c$var$LVT = 5;
 var $e1c6bbc8cb416f8c$var$M = 6;
 function $e1c6bbc8cb416f8c$var$getType(code) {
-  if ($e1c6bbc8cb416f8c$var$isL(code))
-    return $e1c6bbc8cb416f8c$var$L;
-  if ($e1c6bbc8cb416f8c$var$isV(code))
-    return $e1c6bbc8cb416f8c$var$V;
-  if ($e1c6bbc8cb416f8c$var$isT(code))
-    return $e1c6bbc8cb416f8c$var$T;
-  if ($e1c6bbc8cb416f8c$var$isLV(code))
-    return $e1c6bbc8cb416f8c$var$LV;
-  if ($e1c6bbc8cb416f8c$var$isLVT(code))
-    return $e1c6bbc8cb416f8c$var$LVT;
-  if ($e1c6bbc8cb416f8c$var$isTone(code))
-    return $e1c6bbc8cb416f8c$var$M;
+  if ($e1c6bbc8cb416f8c$var$isL(code)) return $e1c6bbc8cb416f8c$var$L;
+  if ($e1c6bbc8cb416f8c$var$isV(code)) return $e1c6bbc8cb416f8c$var$V;
+  if ($e1c6bbc8cb416f8c$var$isT(code)) return $e1c6bbc8cb416f8c$var$T;
+  if ($e1c6bbc8cb416f8c$var$isLV(code)) return $e1c6bbc8cb416f8c$var$LV;
+  if ($e1c6bbc8cb416f8c$var$isLVT(code)) return $e1c6bbc8cb416f8c$var$LVT;
+  if ($e1c6bbc8cb416f8c$var$isTone(code)) return $e1c6bbc8cb416f8c$var$M;
   return $e1c6bbc8cb416f8c$var$X;
 }
 var $e1c6bbc8cb416f8c$var$NO_ACTION = 0;
@@ -57396,8 +56672,7 @@ function $e1c6bbc8cb416f8c$var$decompose(glyphs, i2, font) {
   s = s / $e1c6bbc8cb416f8c$var$T_COUNT | 0;
   let l = $e1c6bbc8cb416f8c$var$L_BASE + s / $e1c6bbc8cb416f8c$var$V_COUNT | 0;
   let v = $e1c6bbc8cb416f8c$var$V_BASE + s % $e1c6bbc8cb416f8c$var$V_COUNT;
-  if (!font.hasGlyphForCodePoint(l) || !font.hasGlyphForCodePoint(v) || t !== $e1c6bbc8cb416f8c$var$T_BASE && !font.hasGlyphForCodePoint(t))
-    return i2;
+  if (!font.hasGlyphForCodePoint(l) || !font.hasGlyphForCodePoint(v) || t !== $e1c6bbc8cb416f8c$var$T_BASE && !font.hasGlyphForCodePoint(t)) return i2;
   let ljmo = $e1c6bbc8cb416f8c$var$getGlyph(font, l, glyph.features);
   ljmo.features.ljmo = true;
   let vjmo = $e1c6bbc8cb416f8c$var$getGlyph(font, v, glyph.features);
@@ -57435,8 +56710,7 @@ function $e1c6bbc8cb416f8c$var$compose(glyphs, i2, font) {
     }
     let l = ljmo.codePoints[0];
     let v = vjmo.codePoints[0];
-    if ($e1c6bbc8cb416f8c$var$isCombiningL(l) && $e1c6bbc8cb416f8c$var$isCombiningV(v))
-      lv = $e1c6bbc8cb416f8c$var$HANGUL_BASE + ((l - $e1c6bbc8cb416f8c$var$L_BASE) * $e1c6bbc8cb416f8c$var$V_COUNT + (v - $e1c6bbc8cb416f8c$var$V_BASE)) * $e1c6bbc8cb416f8c$var$T_COUNT;
+    if ($e1c6bbc8cb416f8c$var$isCombiningL(l) && $e1c6bbc8cb416f8c$var$isCombiningV(v)) lv = $e1c6bbc8cb416f8c$var$HANGUL_BASE + ((l - $e1c6bbc8cb416f8c$var$L_BASE) * $e1c6bbc8cb416f8c$var$V_COUNT + (v - $e1c6bbc8cb416f8c$var$V_BASE)) * $e1c6bbc8cb416f8c$var$T_COUNT;
   }
   let t = tjmo && tjmo.codePoints[0] || $e1c6bbc8cb416f8c$var$T_BASE;
   if (lv != null && (t === $e1c6bbc8cb416f8c$var$T_BASE || $e1c6bbc8cb416f8c$var$isCombiningT(t))) {
@@ -57447,12 +56721,9 @@ function $e1c6bbc8cb416f8c$var$compose(glyphs, i2, font) {
       return i2 - del + 1;
     }
   }
-  if (ljmo)
-    ljmo.features.ljmo = true;
-  if (vjmo)
-    vjmo.features.vjmo = true;
-  if (tjmo)
-    tjmo.features.tjmo = true;
+  if (ljmo) ljmo.features.ljmo = true;
+  if (vjmo) vjmo.features.vjmo = true;
+  if (tjmo) tjmo.features.tjmo = true;
   if (prevType === $e1c6bbc8cb416f8c$var$LV) {
     $e1c6bbc8cb416f8c$var$decompose(glyphs, i2 - 1, font);
     return i2 + 1;
@@ -57473,8 +56744,7 @@ function $e1c6bbc8cb416f8c$var$getLength(code) {
 function $e1c6bbc8cb416f8c$var$reorderToneMark(glyphs, i2, font) {
   let glyph = glyphs[i2];
   let code = glyphs[i2].codePoints[0];
-  if (font.glyphForCodePoint(code).advanceWidth === 0)
-    return;
+  if (font.glyphForCodePoint(code).advanceWidth === 0) return;
   let prev = glyphs[i2 - 1].codePoints[0];
   let len2 = $e1c6bbc8cb416f8c$var$getLength(prev);
   glyphs.splice(i2, 1);
@@ -57742,18 +57012,15 @@ function $7826f90f6f0cecc9$var$setupSyllables(font, glyphs) {
   for (let [start, end, tags] of $7826f90f6f0cecc9$var$stateMachine.match(glyphs.map($7826f90f6f0cecc9$var$indicCategory))) {
     if (start > last4) {
       ++syllable;
-      for (let i2 = last4; i2 < start; i2++)
-        glyphs[i2].shaperInfo = new $7826f90f6f0cecc9$var$IndicInfo((0, $90a9d3398ee54fe5$export$a513ea61a7bee91c).X, (0, $90a9d3398ee54fe5$export$1a1f61c9c4dd9df0).End, "non_indic_cluster", syllable);
+      for (let i2 = last4; i2 < start; i2++) glyphs[i2].shaperInfo = new $7826f90f6f0cecc9$var$IndicInfo((0, $90a9d3398ee54fe5$export$a513ea61a7bee91c).X, (0, $90a9d3398ee54fe5$export$1a1f61c9c4dd9df0).End, "non_indic_cluster", syllable);
     }
     ++syllable;
-    for (let i2 = start; i2 <= end; i2++)
-      glyphs[i2].shaperInfo = new $7826f90f6f0cecc9$var$IndicInfo(1 << $7826f90f6f0cecc9$var$indicCategory(glyphs[i2]), $7826f90f6f0cecc9$var$indicPosition(glyphs[i2]), tags[0], syllable);
+    for (let i2 = start; i2 <= end; i2++) glyphs[i2].shaperInfo = new $7826f90f6f0cecc9$var$IndicInfo(1 << $7826f90f6f0cecc9$var$indicCategory(glyphs[i2]), $7826f90f6f0cecc9$var$indicPosition(glyphs[i2]), tags[0], syllable);
     last4 = end + 1;
   }
   if (last4 < glyphs.length) {
     ++syllable;
-    for (let i2 = last4; i2 < glyphs.length; i2++)
-      glyphs[i2].shaperInfo = new $7826f90f6f0cecc9$var$IndicInfo((0, $90a9d3398ee54fe5$export$a513ea61a7bee91c).X, (0, $90a9d3398ee54fe5$export$1a1f61c9c4dd9df0).End, "non_indic_cluster", syllable);
+    for (let i2 = last4; i2 < glyphs.length; i2++) glyphs[i2].shaperInfo = new $7826f90f6f0cecc9$var$IndicInfo((0, $90a9d3398ee54fe5$export$a513ea61a7bee91c).X, (0, $90a9d3398ee54fe5$export$1a1f61c9c4dd9df0).End, "non_indic_cluster", syllable);
   }
 }
 function $7826f90f6f0cecc9$var$isConsonant(glyph) {
@@ -57766,10 +57033,9 @@ function $7826f90f6f0cecc9$var$isHalantOrCoeng(glyph) {
   return glyph.shaperInfo.category & (0, $90a9d3398ee54fe5$export$ca9599b2a300afc);
 }
 function $7826f90f6f0cecc9$var$wouldSubstitute(glyphs, feature) {
-  for (let glyph of glyphs)
-    glyph.features = {
-      [feature]: true
-    };
+  for (let glyph of glyphs) glyph.features = {
+    [feature]: true
+  };
   let GSUB = glyphs[0]._font._layoutEngine.engine.GSUBProcessor;
   GSUB.applyFeatures([
     feature
@@ -57782,12 +57048,9 @@ function $7826f90f6f0cecc9$var$consonantPosition(font, consonant, virama) {
     consonant,
     virama
   ];
-  if ($7826f90f6f0cecc9$var$wouldSubstitute(glyphs.slice(0, 2), "blwf") || $7826f90f6f0cecc9$var$wouldSubstitute(glyphs.slice(1, 3), "blwf"))
-    return (0, $90a9d3398ee54fe5$export$1a1f61c9c4dd9df0).Below_C;
-  else if ($7826f90f6f0cecc9$var$wouldSubstitute(glyphs.slice(0, 2), "pstf") || $7826f90f6f0cecc9$var$wouldSubstitute(glyphs.slice(1, 3), "pstf"))
-    return (0, $90a9d3398ee54fe5$export$1a1f61c9c4dd9df0).Post_C;
-  else if ($7826f90f6f0cecc9$var$wouldSubstitute(glyphs.slice(0, 2), "pref") || $7826f90f6f0cecc9$var$wouldSubstitute(glyphs.slice(1, 3), "pref"))
-    return (0, $90a9d3398ee54fe5$export$1a1f61c9c4dd9df0).Post_C;
+  if ($7826f90f6f0cecc9$var$wouldSubstitute(glyphs.slice(0, 2), "blwf") || $7826f90f6f0cecc9$var$wouldSubstitute(glyphs.slice(1, 3), "blwf")) return (0, $90a9d3398ee54fe5$export$1a1f61c9c4dd9df0).Below_C;
+  else if ($7826f90f6f0cecc9$var$wouldSubstitute(glyphs.slice(0, 2), "pstf") || $7826f90f6f0cecc9$var$wouldSubstitute(glyphs.slice(1, 3), "pstf")) return (0, $90a9d3398ee54fe5$export$1a1f61c9c4dd9df0).Post_C;
+  else if ($7826f90f6f0cecc9$var$wouldSubstitute(glyphs.slice(0, 2), "pref") || $7826f90f6f0cecc9$var$wouldSubstitute(glyphs.slice(1, 3), "pref")) return (0, $90a9d3398ee54fe5$export$1a1f61c9c4dd9df0).Post_C;
   return (0, $90a9d3398ee54fe5$export$1a1f61c9c4dd9df0).Base_C;
 }
 function $7826f90f6f0cecc9$var$initialReordering(font, glyphs, plan) {
@@ -57799,22 +57062,18 @@ function $7826f90f6f0cecc9$var$initialReordering(font, glyphs, plan) {
     let info = new (0, $10e7b257e1a9a756$export$2e2bcd8739ae039)(font, virama, [
       indicConfig.virama
     ]);
-    for (let i2 = 0; i2 < glyphs.length; i2++)
-      if (glyphs[i2].shaperInfo.position === (0, $90a9d3398ee54fe5$export$1a1f61c9c4dd9df0).Base_C)
-        glyphs[i2].shaperInfo.position = $7826f90f6f0cecc9$var$consonantPosition(font, glyphs[i2].copy(), info);
+    for (let i2 = 0; i2 < glyphs.length; i2++) if (glyphs[i2].shaperInfo.position === (0, $90a9d3398ee54fe5$export$1a1f61c9c4dd9df0).Base_C) glyphs[i2].shaperInfo.position = $7826f90f6f0cecc9$var$consonantPosition(font, glyphs[i2].copy(), info);
   }
   for (let start = 0, end = $7826f90f6f0cecc9$var$nextSyllable(glyphs, 0); start < glyphs.length; start = end, end = $7826f90f6f0cecc9$var$nextSyllable(glyphs, start)) {
     let { category, syllableType } = glyphs[start].shaperInfo;
-    if (syllableType === "symbol_cluster" || syllableType === "non_indic_cluster")
-      continue;
+    if (syllableType === "symbol_cluster" || syllableType === "non_indic_cluster") continue;
     if (syllableType === "broken_cluster" && dottedCircle) {
       let g = new (0, $10e7b257e1a9a756$export$2e2bcd8739ae039)(font, dottedCircle, [
         9676
       ]);
       g.shaperInfo = new $7826f90f6f0cecc9$var$IndicInfo(1 << $7826f90f6f0cecc9$var$indicCategory(g), $7826f90f6f0cecc9$var$indicPosition(g), glyphs[start].shaperInfo.syllableType, glyphs[start].shaperInfo.syllable);
       let i2 = start;
-      while (i2 < end && glyphs[i2].shaperInfo.category === (0, $90a9d3398ee54fe5$export$a513ea61a7bee91c).Repha)
-        i2++;
+      while (i2 < end && glyphs[i2].shaperInfo.category === (0, $90a9d3398ee54fe5$export$a513ea61a7bee91c).Repha) i2++;
       glyphs.splice(i2++, 0, g);
       end++;
     }
@@ -57829,15 +57088,13 @@ function $7826f90f6f0cecc9$var$initialReordering(font, glyphs, plan) {
       ];
       if ($7826f90f6f0cecc9$var$wouldSubstitute(g.slice(0, 2), "rphf") || indicConfig.rephMode === "Explicit" && $7826f90f6f0cecc9$var$wouldSubstitute(g, "rphf")) {
         limit += 2;
-        while (limit < end && $7826f90f6f0cecc9$var$isJoiner(glyphs[limit]))
-          limit++;
+        while (limit < end && $7826f90f6f0cecc9$var$isJoiner(glyphs[limit])) limit++;
         base = start;
         hasReph = true;
       }
     } else if (indicConfig.rephMode === "Log_Repha" && glyphs[start].shaperInfo.category === (0, $90a9d3398ee54fe5$export$a513ea61a7bee91c).Repha) {
       limit++;
-      while (limit < end && $7826f90f6f0cecc9$var$isJoiner(glyphs[limit]))
-        limit++;
+      while (limit < end && $7826f90f6f0cecc9$var$isJoiner(glyphs[limit])) limit++;
       base = start;
       hasReph = true;
     }
@@ -57852,55 +57109,44 @@ function $7826f90f6f0cecc9$var$initialReordering(font, glyphs, plan) {
               base = i2;
               break;
             }
-            if (info.position === (0, $90a9d3398ee54fe5$export$1a1f61c9c4dd9df0).Below_C)
-              seenBelow = true;
+            if (info.position === (0, $90a9d3398ee54fe5$export$1a1f61c9c4dd9df0).Below_C) seenBelow = true;
             base = i2;
-          } else if (start < i2 && info.category === (0, $90a9d3398ee54fe5$export$a513ea61a7bee91c).ZWJ && glyphs[i2 - 1].shaperInfo.category === (0, $90a9d3398ee54fe5$export$a513ea61a7bee91c).H)
-            break;
+          } else if (start < i2 && info.category === (0, $90a9d3398ee54fe5$export$a513ea61a7bee91c).ZWJ && glyphs[i2 - 1].shaperInfo.category === (0, $90a9d3398ee54fe5$export$a513ea61a7bee91c).H) break;
         } while (i2 > limit);
         break;
       }
       case "First":
         base = start;
-        for (let i2 = base + 1; i2 < end; i2++)
-          if ($7826f90f6f0cecc9$var$isConsonant(glyphs[i2]))
-            glyphs[i2].shaperInfo.position = (0, $90a9d3398ee54fe5$export$1a1f61c9c4dd9df0).Below_C;
+        for (let i2 = base + 1; i2 < end; i2++) if ($7826f90f6f0cecc9$var$isConsonant(glyphs[i2])) glyphs[i2].shaperInfo.position = (0, $90a9d3398ee54fe5$export$1a1f61c9c4dd9df0).Below_C;
     }
-    if (hasReph && base === start && limit - base <= 2)
-      hasReph = false;
+    if (hasReph && base === start && limit - base <= 2) hasReph = false;
     for (let i1 = start; i1 < base; i1++) {
       let info = glyphs[i1].shaperInfo;
       info.position = Math.min((0, $90a9d3398ee54fe5$export$1a1f61c9c4dd9df0).Pre_C, info.position);
     }
-    if (base < end)
-      glyphs[base].shaperInfo.position = (0, $90a9d3398ee54fe5$export$1a1f61c9c4dd9df0).Base_C;
-    for (let i2 = base + 1; i2 < end; i2++)
-      if (glyphs[i2].shaperInfo.category === (0, $90a9d3398ee54fe5$export$a513ea61a7bee91c).M) {
-        for (let j = i2 + 1; j < end; j++)
-          if ($7826f90f6f0cecc9$var$isConsonant(glyphs[j])) {
-            glyphs[j].shaperInfo.position = (0, $90a9d3398ee54fe5$export$1a1f61c9c4dd9df0).Final_C;
-            break;
-          }
+    if (base < end) glyphs[base].shaperInfo.position = (0, $90a9d3398ee54fe5$export$1a1f61c9c4dd9df0).Base_C;
+    for (let i2 = base + 1; i2 < end; i2++) if (glyphs[i2].shaperInfo.category === (0, $90a9d3398ee54fe5$export$a513ea61a7bee91c).M) {
+      for (let j = i2 + 1; j < end; j++) if ($7826f90f6f0cecc9$var$isConsonant(glyphs[j])) {
+        glyphs[j].shaperInfo.position = (0, $90a9d3398ee54fe5$export$1a1f61c9c4dd9df0).Final_C;
         break;
       }
-    if (hasReph)
-      glyphs[start].shaperInfo.position = (0, $90a9d3398ee54fe5$export$1a1f61c9c4dd9df0).Ra_To_Become_Reph;
+      break;
+    }
+    if (hasReph) glyphs[start].shaperInfo.position = (0, $90a9d3398ee54fe5$export$1a1f61c9c4dd9df0).Ra_To_Become_Reph;
     if (plan.isOldSpec) {
       let disallowDoubleHalants = plan.unicodeScript !== "Malayalam";
-      for (let i2 = base + 1; i2 < end; i2++)
-        if (glyphs[i2].shaperInfo.category === (0, $90a9d3398ee54fe5$export$a513ea61a7bee91c).H) {
-          let j;
-          for (j = end - 1; j > i2; j--) {
-            if ($7826f90f6f0cecc9$var$isConsonant(glyphs[j]) || disallowDoubleHalants && glyphs[j].shaperInfo.category === (0, $90a9d3398ee54fe5$export$a513ea61a7bee91c).H)
-              break;
-          }
-          if (glyphs[j].shaperInfo.category !== (0, $90a9d3398ee54fe5$export$a513ea61a7bee91c).H && j > i2) {
-            let t = glyphs[i2];
-            glyphs.splice(i2, 0, ...glyphs.splice(i2 + 1, j - i2));
-            glyphs[j] = t;
-          }
-          break;
+      for (let i2 = base + 1; i2 < end; i2++) if (glyphs[i2].shaperInfo.category === (0, $90a9d3398ee54fe5$export$a513ea61a7bee91c).H) {
+        let j;
+        for (j = end - 1; j > i2; j--) {
+          if ($7826f90f6f0cecc9$var$isConsonant(glyphs[j]) || disallowDoubleHalants && glyphs[j].shaperInfo.category === (0, $90a9d3398ee54fe5$export$a513ea61a7bee91c).H) break;
         }
+        if (glyphs[j].shaperInfo.category !== (0, $90a9d3398ee54fe5$export$a513ea61a7bee91c).H && j > i2) {
+          let t = glyphs[i2];
+          glyphs.splice(i2, 0, ...glyphs.splice(i2 + 1, j - i2));
+          glyphs[j] = t;
+        }
+        break;
+      }
     }
     let lastPos = (0, $90a9d3398ee54fe5$export$1a1f61c9c4dd9df0).Start;
     for (let i3 = start; i3 < end; i3++) {
@@ -57908,40 +57154,32 @@ function $7826f90f6f0cecc9$var$initialReordering(font, glyphs, plan) {
       if (info.category & ((0, $90a9d3398ee54fe5$export$bbcd928767338e0d) | (0, $90a9d3398ee54fe5$export$a513ea61a7bee91c).N | (0, $90a9d3398ee54fe5$export$a513ea61a7bee91c).RS | (0, $90a9d3398ee54fe5$export$a513ea61a7bee91c).CM | (0, $90a9d3398ee54fe5$export$ca9599b2a300afc) & info.category)) {
         info.position = lastPos;
         if (info.category === (0, $90a9d3398ee54fe5$export$a513ea61a7bee91c).H && info.position === (0, $90a9d3398ee54fe5$export$1a1f61c9c4dd9df0).Pre_M) {
-          for (let j = i3; j > start; j--)
-            if (glyphs[j - 1].shaperInfo.position !== (0, $90a9d3398ee54fe5$export$1a1f61c9c4dd9df0).Pre_M) {
-              info.position = glyphs[j - 1].shaperInfo.position;
-              break;
-            }
+          for (let j = i3; j > start; j--) if (glyphs[j - 1].shaperInfo.position !== (0, $90a9d3398ee54fe5$export$1a1f61c9c4dd9df0).Pre_M) {
+            info.position = glyphs[j - 1].shaperInfo.position;
+            break;
+          }
         }
-      } else if (info.position !== (0, $90a9d3398ee54fe5$export$1a1f61c9c4dd9df0).SMVD)
-        lastPos = info.position;
+      } else if (info.position !== (0, $90a9d3398ee54fe5$export$1a1f61c9c4dd9df0).SMVD) lastPos = info.position;
     }
     let last4 = base;
     for (let i4 = base + 1; i4 < end; i4++) {
       if ($7826f90f6f0cecc9$var$isConsonant(glyphs[i4])) {
-        for (let j = last4 + 1; j < i4; j++)
-          if (glyphs[j].shaperInfo.position < (0, $90a9d3398ee54fe5$export$1a1f61c9c4dd9df0).SMVD)
-            glyphs[j].shaperInfo.position = glyphs[i4].shaperInfo.position;
+        for (let j = last4 + 1; j < i4; j++) if (glyphs[j].shaperInfo.position < (0, $90a9d3398ee54fe5$export$1a1f61c9c4dd9df0).SMVD) glyphs[j].shaperInfo.position = glyphs[i4].shaperInfo.position;
         last4 = i4;
-      } else if (glyphs[i4].shaperInfo.category === (0, $90a9d3398ee54fe5$export$a513ea61a7bee91c).M)
-        last4 = i4;
+      } else if (glyphs[i4].shaperInfo.category === (0, $90a9d3398ee54fe5$export$a513ea61a7bee91c).M) last4 = i4;
     }
     let arr2 = glyphs.slice(start, end);
     arr2.sort((a, b10) => a.shaperInfo.position - b10.shaperInfo.position);
     glyphs.splice(start, arr2.length, ...arr2);
-    for (let i5 = start; i5 < end; i5++)
-      if (glyphs[i5].shaperInfo.position === (0, $90a9d3398ee54fe5$export$1a1f61c9c4dd9df0).Base_C) {
-        base = i5;
-        break;
-      }
-    for (let i6 = start; i6 < end && glyphs[i6].shaperInfo.position === (0, $90a9d3398ee54fe5$export$1a1f61c9c4dd9df0).Ra_To_Become_Reph; i6++)
-      glyphs[i6].features.rphf = true;
+    for (let i5 = start; i5 < end; i5++) if (glyphs[i5].shaperInfo.position === (0, $90a9d3398ee54fe5$export$1a1f61c9c4dd9df0).Base_C) {
+      base = i5;
+      break;
+    }
+    for (let i6 = start; i6 < end && glyphs[i6].shaperInfo.position === (0, $90a9d3398ee54fe5$export$1a1f61c9c4dd9df0).Ra_To_Become_Reph; i6++) glyphs[i6].features.rphf = true;
     let blwf = !plan.isOldSpec && indicConfig.blwfMode === "Pre_And_Post";
     for (let i7 = start; i7 < base; i7++) {
       glyphs[i7].features.half = true;
-      if (blwf)
-        glyphs[i7].features.blwf = true;
+      if (blwf) glyphs[i7].features.blwf = true;
     }
     for (let i8 = base + 1; i8 < end; i8++) {
       glyphs[i8].features.abvf = true;
@@ -57949,11 +57187,10 @@ function $7826f90f6f0cecc9$var$initialReordering(font, glyphs, plan) {
       glyphs[i8].features.blwf = true;
     }
     if (plan.isOldSpec && plan.unicodeScript === "Devanagari") {
-      for (let i2 = start; i2 + 1 < base; i2++)
-        if (glyphs[i2].shaperInfo.category === (0, $90a9d3398ee54fe5$export$a513ea61a7bee91c).Ra && glyphs[i2 + 1].shaperInfo.category === (0, $90a9d3398ee54fe5$export$a513ea61a7bee91c).H && (i2 + 1 === base || glyphs[i2 + 2].shaperInfo.category === (0, $90a9d3398ee54fe5$export$a513ea61a7bee91c).ZWJ)) {
-          glyphs[i2].features.blwf = true;
-          glyphs[i2 + 1].features.blwf = true;
-        }
+      for (let i2 = start; i2 + 1 < base; i2++) if (glyphs[i2].shaperInfo.category === (0, $90a9d3398ee54fe5$export$a513ea61a7bee91c).Ra && glyphs[i2 + 1].shaperInfo.category === (0, $90a9d3398ee54fe5$export$a513ea61a7bee91c).H && (i2 + 1 === base || glyphs[i2 + 2].shaperInfo.category === (0, $90a9d3398ee54fe5$export$a513ea61a7bee91c).ZWJ)) {
+        glyphs[i2].features.blwf = true;
+        glyphs[i2 + 1].features.blwf = true;
+      }
     }
     let prefLen = 2;
     if (features.pref && base + prefLen < end)
@@ -57963,24 +57200,19 @@ function $7826f90f6f0cecc9$var$initialReordering(font, glyphs, plan) {
           glyphs[i9 + 1].copy()
         ];
         if ($7826f90f6f0cecc9$var$wouldSubstitute(g, "pref")) {
-          for (let j = 0; j < prefLen; j++)
-            glyphs[i9++].features.pref = true;
-          if (features.cfar)
-            for (; i9 < end; i9++)
-              glyphs[i9].features.cfar = true;
+          for (let j = 0; j < prefLen; j++) glyphs[i9++].features.pref = true;
+          if (features.cfar) for (; i9 < end; i9++) glyphs[i9].features.cfar = true;
           break;
         }
       }
-    for (let i10 = start + 1; i10 < end; i10++)
-      if ($7826f90f6f0cecc9$var$isJoiner(glyphs[i10])) {
-        let nonJoiner = glyphs[i10].shaperInfo.category === (0, $90a9d3398ee54fe5$export$a513ea61a7bee91c).ZWNJ;
-        let j = i10;
-        do {
-          j--;
-          if (nonJoiner)
-            delete glyphs[j].features.half;
-        } while (j > start && !$7826f90f6f0cecc9$var$isConsonant(glyphs[j]));
-      }
+    for (let i10 = start + 1; i10 < end; i10++) if ($7826f90f6f0cecc9$var$isJoiner(glyphs[i10])) {
+      let nonJoiner = glyphs[i10].shaperInfo.category === (0, $90a9d3398ee54fe5$export$a513ea61a7bee91c).ZWNJ;
+      let j = i10;
+      do {
+        j--;
+        if (nonJoiner) delete glyphs[j].features.half;
+      } while (j > start && !$7826f90f6f0cecc9$var$isConsonant(glyphs[j]));
+    }
   }
 }
 function $7826f90f6f0cecc9$var$finalReordering(font, glyphs, plan) {
@@ -57989,66 +57221,50 @@ function $7826f90f6f0cecc9$var$finalReordering(font, glyphs, plan) {
   for (let start = 0, end = $7826f90f6f0cecc9$var$nextSyllable(glyphs, 0); start < glyphs.length; start = end, end = $7826f90f6f0cecc9$var$nextSyllable(glyphs, start)) {
     let tryPref = !!features.pref;
     let base = start;
-    for (; base < end; base++)
-      if (glyphs[base].shaperInfo.position >= (0, $90a9d3398ee54fe5$export$1a1f61c9c4dd9df0).Base_C) {
-        if (tryPref && base + 1 < end) {
-          for (let i2 = base + 1; i2 < end; i2++)
-            if (glyphs[i2].features.pref) {
-              if (!(glyphs[i2].substituted && glyphs[i2].isLigated && !glyphs[i2].isMultiplied)) {
-                base = i2;
-                while (base < end && $7826f90f6f0cecc9$var$isHalantOrCoeng(glyphs[base]))
-                  base++;
-                glyphs[base].shaperInfo.position = (0, $90a9d3398ee54fe5$export$1a1f61c9c4dd9df0).BASE_C;
-                tryPref = false;
-              }
-              break;
-            }
-        }
-        if (plan.unicodeScript === "Malayalam")
-          for (let i2 = base + 1; i2 < end; i2++) {
-            while (i2 < end && $7826f90f6f0cecc9$var$isJoiner(glyphs[i2]))
-              i2++;
-            if (i2 === end || !$7826f90f6f0cecc9$var$isHalantOrCoeng(glyphs[i2]))
-              break;
-            i2++;
-            while (i2 < end && $7826f90f6f0cecc9$var$isJoiner(glyphs[i2]))
-              i2++;
-            if (i2 < end && $7826f90f6f0cecc9$var$isConsonant(glyphs[i2]) && glyphs[i2].shaperInfo.position === (0, $90a9d3398ee54fe5$export$1a1f61c9c4dd9df0).Below_C) {
-              base = i2;
-              glyphs[base].shaperInfo.position = (0, $90a9d3398ee54fe5$export$1a1f61c9c4dd9df0).Base_C;
-            }
+    for (; base < end; base++) if (glyphs[base].shaperInfo.position >= (0, $90a9d3398ee54fe5$export$1a1f61c9c4dd9df0).Base_C) {
+      if (tryPref && base + 1 < end) {
+        for (let i2 = base + 1; i2 < end; i2++) if (glyphs[i2].features.pref) {
+          if (!(glyphs[i2].substituted && glyphs[i2].isLigated && !glyphs[i2].isMultiplied)) {
+            base = i2;
+            while (base < end && $7826f90f6f0cecc9$var$isHalantOrCoeng(glyphs[base])) base++;
+            glyphs[base].shaperInfo.position = (0, $90a9d3398ee54fe5$export$1a1f61c9c4dd9df0).BASE_C;
+            tryPref = false;
           }
-        if (start < base && glyphs[base].shaperInfo.position > (0, $90a9d3398ee54fe5$export$1a1f61c9c4dd9df0).Base_C)
-          base--;
-        break;
+          break;
+        }
       }
-    if (base === end && start < base && glyphs[base - 1].shaperInfo.category === (0, $90a9d3398ee54fe5$export$a513ea61a7bee91c).ZWJ)
-      base--;
-    if (base < end)
-      while (start < base && glyphs[base].shaperInfo.category & ((0, $90a9d3398ee54fe5$export$a513ea61a7bee91c).N | (0, $90a9d3398ee54fe5$export$ca9599b2a300afc)))
-        base--;
+      if (plan.unicodeScript === "Malayalam") for (let i2 = base + 1; i2 < end; i2++) {
+        while (i2 < end && $7826f90f6f0cecc9$var$isJoiner(glyphs[i2])) i2++;
+        if (i2 === end || !$7826f90f6f0cecc9$var$isHalantOrCoeng(glyphs[i2])) break;
+        i2++;
+        while (i2 < end && $7826f90f6f0cecc9$var$isJoiner(glyphs[i2])) i2++;
+        if (i2 < end && $7826f90f6f0cecc9$var$isConsonant(glyphs[i2]) && glyphs[i2].shaperInfo.position === (0, $90a9d3398ee54fe5$export$1a1f61c9c4dd9df0).Below_C) {
+          base = i2;
+          glyphs[base].shaperInfo.position = (0, $90a9d3398ee54fe5$export$1a1f61c9c4dd9df0).Base_C;
+        }
+      }
+      if (start < base && glyphs[base].shaperInfo.position > (0, $90a9d3398ee54fe5$export$1a1f61c9c4dd9df0).Base_C) base--;
+      break;
+    }
+    if (base === end && start < base && glyphs[base - 1].shaperInfo.category === (0, $90a9d3398ee54fe5$export$a513ea61a7bee91c).ZWJ) base--;
+    if (base < end) while (start < base && glyphs[base].shaperInfo.category & ((0, $90a9d3398ee54fe5$export$a513ea61a7bee91c).N | (0, $90a9d3398ee54fe5$export$ca9599b2a300afc))) base--;
     if (start + 1 < end && start < base) {
       let newPos = base === end ? base - 2 : base - 1;
       if (plan.unicodeScript !== "Malayalam" && plan.unicodeScript !== "Tamil") {
-        while (newPos > start && !(glyphs[newPos].shaperInfo.category & ((0, $90a9d3398ee54fe5$export$a513ea61a7bee91c).M | (0, $90a9d3398ee54fe5$export$ca9599b2a300afc))))
-          newPos--;
+        while (newPos > start && !(glyphs[newPos].shaperInfo.category & ((0, $90a9d3398ee54fe5$export$a513ea61a7bee91c).M | (0, $90a9d3398ee54fe5$export$ca9599b2a300afc)))) newPos--;
         if ($7826f90f6f0cecc9$var$isHalantOrCoeng(glyphs[newPos]) && glyphs[newPos].shaperInfo.position !== (0, $90a9d3398ee54fe5$export$1a1f61c9c4dd9df0).Pre_M) {
-          if (newPos + 1 < end && $7826f90f6f0cecc9$var$isJoiner(glyphs[newPos + 1]))
-            newPos++;
-        } else
-          newPos = start;
+          if (newPos + 1 < end && $7826f90f6f0cecc9$var$isJoiner(glyphs[newPos + 1])) newPos++;
+        } else newPos = start;
       }
       if (start < newPos && glyphs[newPos].shaperInfo.position !== (0, $90a9d3398ee54fe5$export$1a1f61c9c4dd9df0).Pre_M) {
-        for (let i2 = newPos; i2 > start; i2--)
-          if (glyphs[i2 - 1].shaperInfo.position === (0, $90a9d3398ee54fe5$export$1a1f61c9c4dd9df0).Pre_M) {
-            let oldPos = i2 - 1;
-            if (oldPos < base && base <= newPos)
-              base--;
-            let tmp = glyphs[oldPos];
-            glyphs.splice(oldPos, 0, ...glyphs.splice(oldPos + 1, newPos - oldPos));
-            glyphs[newPos] = tmp;
-            newPos--;
-          }
+        for (let i2 = newPos; i2 > start; i2--) if (glyphs[i2 - 1].shaperInfo.position === (0, $90a9d3398ee54fe5$export$1a1f61c9c4dd9df0).Pre_M) {
+          let oldPos = i2 - 1;
+          if (oldPos < base && base <= newPos) base--;
+          let tmp = glyphs[oldPos];
+          glyphs.splice(oldPos, 0, ...glyphs.splice(oldPos + 1, newPos - oldPos));
+          glyphs[newPos] = tmp;
+          newPos--;
+        }
       }
     }
     if (start + 1 < end && glyphs[start].shaperInfo.position === (0, $90a9d3398ee54fe5$export$1a1f61c9c4dd9df0).Ra_To_Become_Reph && glyphs[start].shaperInfo.category === (0, $90a9d3398ee54fe5$export$a513ea61a7bee91c).Repha !== (glyphs[start].isLigated && !glyphs[start].isMultiplied)) {
@@ -58057,93 +57273,75 @@ function $7826f90f6f0cecc9$var$finalReordering(font, glyphs, plan) {
       let found = false;
       if (rephPos !== (0, $90a9d3398ee54fe5$export$1a1f61c9c4dd9df0).After_Post) {
         newRephPos = start + 1;
-        while (newRephPos < base && !$7826f90f6f0cecc9$var$isHalantOrCoeng(glyphs[newRephPos]))
-          newRephPos++;
+        while (newRephPos < base && !$7826f90f6f0cecc9$var$isHalantOrCoeng(glyphs[newRephPos])) newRephPos++;
         if (newRephPos < base && $7826f90f6f0cecc9$var$isHalantOrCoeng(glyphs[newRephPos])) {
-          if (newRephPos + 1 < base && $7826f90f6f0cecc9$var$isJoiner(glyphs[newRephPos + 1]))
-            newRephPos++;
+          if (newRephPos + 1 < base && $7826f90f6f0cecc9$var$isJoiner(glyphs[newRephPos + 1])) newRephPos++;
           found = true;
         }
         if (!found && rephPos === (0, $90a9d3398ee54fe5$export$1a1f61c9c4dd9df0).After_Main) {
           newRephPos = base;
-          while (newRephPos + 1 < end && glyphs[newRephPos + 1].shaperInfo.position <= (0, $90a9d3398ee54fe5$export$1a1f61c9c4dd9df0).After_Main)
-            newRephPos++;
+          while (newRephPos + 1 < end && glyphs[newRephPos + 1].shaperInfo.position <= (0, $90a9d3398ee54fe5$export$1a1f61c9c4dd9df0).After_Main) newRephPos++;
           found = newRephPos < end;
         }
         if (!found && rephPos === (0, $90a9d3398ee54fe5$export$1a1f61c9c4dd9df0).After_Sub) {
           newRephPos = base;
-          while (newRephPos + 1 < end && !(glyphs[newRephPos + 1].shaperInfo.position & ((0, $90a9d3398ee54fe5$export$1a1f61c9c4dd9df0).Post_C | (0, $90a9d3398ee54fe5$export$1a1f61c9c4dd9df0).After_Post | (0, $90a9d3398ee54fe5$export$1a1f61c9c4dd9df0).SMVD)))
-            newRephPos++;
+          while (newRephPos + 1 < end && !(glyphs[newRephPos + 1].shaperInfo.position & ((0, $90a9d3398ee54fe5$export$1a1f61c9c4dd9df0).Post_C | (0, $90a9d3398ee54fe5$export$1a1f61c9c4dd9df0).After_Post | (0, $90a9d3398ee54fe5$export$1a1f61c9c4dd9df0).SMVD))) newRephPos++;
           found = newRephPos < end;
         }
       }
       if (!found) {
         newRephPos = start + 1;
-        while (newRephPos < base && !$7826f90f6f0cecc9$var$isHalantOrCoeng(glyphs[newRephPos]))
-          newRephPos++;
+        while (newRephPos < base && !$7826f90f6f0cecc9$var$isHalantOrCoeng(glyphs[newRephPos])) newRephPos++;
         if (newRephPos < base && $7826f90f6f0cecc9$var$isHalantOrCoeng(glyphs[newRephPos])) {
-          if (newRephPos + 1 < base && $7826f90f6f0cecc9$var$isJoiner(glyphs[newRephPos + 1]))
-            newRephPos++;
+          if (newRephPos + 1 < base && $7826f90f6f0cecc9$var$isJoiner(glyphs[newRephPos + 1])) newRephPos++;
           found = true;
         }
       }
       if (!found) {
         newRephPos = end - 1;
-        while (newRephPos > start && glyphs[newRephPos].shaperInfo.position === (0, $90a9d3398ee54fe5$export$1a1f61c9c4dd9df0).SMVD)
-          newRephPos--;
+        while (newRephPos > start && glyphs[newRephPos].shaperInfo.position === (0, $90a9d3398ee54fe5$export$1a1f61c9c4dd9df0).SMVD) newRephPos--;
         if ($7826f90f6f0cecc9$var$isHalantOrCoeng(glyphs[newRephPos])) {
-          for (let i2 = base + 1; i2 < newRephPos; i2++)
-            if (glyphs[i2].shaperInfo.category === (0, $90a9d3398ee54fe5$export$a513ea61a7bee91c).M)
-              newRephPos--;
+          for (let i2 = base + 1; i2 < newRephPos; i2++) if (glyphs[i2].shaperInfo.category === (0, $90a9d3398ee54fe5$export$a513ea61a7bee91c).M) newRephPos--;
         }
       }
       let reph = glyphs[start];
       glyphs.splice(start, 0, ...glyphs.splice(start + 1, newRephPos - start));
       glyphs[newRephPos] = reph;
-      if (start < base && base <= newRephPos)
-        base--;
+      if (start < base && base <= newRephPos) base--;
     }
     if (tryPref && base + 1 < end) {
-      for (let i2 = base + 1; i2 < end; i2++)
-        if (glyphs[i2].features.pref) {
-          if (glyphs[i2].isLigated && !glyphs[i2].isMultiplied) {
-            let newPos = base;
-            if (plan.unicodeScript !== "Malayalam" && plan.unicodeScript !== "Tamil") {
-              while (newPos > start && !(glyphs[newPos - 1].shaperInfo.category & ((0, $90a9d3398ee54fe5$export$a513ea61a7bee91c).M | (0, $90a9d3398ee54fe5$export$ca9599b2a300afc))))
+      for (let i2 = base + 1; i2 < end; i2++) if (glyphs[i2].features.pref) {
+        if (glyphs[i2].isLigated && !glyphs[i2].isMultiplied) {
+          let newPos = base;
+          if (plan.unicodeScript !== "Malayalam" && plan.unicodeScript !== "Tamil") {
+            while (newPos > start && !(glyphs[newPos - 1].shaperInfo.category & ((0, $90a9d3398ee54fe5$export$a513ea61a7bee91c).M | (0, $90a9d3398ee54fe5$export$ca9599b2a300afc)))) newPos--;
+            if (newPos > start && glyphs[newPos - 1].shaperInfo.category === (0, $90a9d3398ee54fe5$export$a513ea61a7bee91c).M) {
+              let oldPos2 = i2;
+              for (let j = base + 1; j < oldPos2; j++) if (glyphs[j].shaperInfo.category === (0, $90a9d3398ee54fe5$export$a513ea61a7bee91c).M) {
                 newPos--;
-              if (newPos > start && glyphs[newPos - 1].shaperInfo.category === (0, $90a9d3398ee54fe5$export$a513ea61a7bee91c).M) {
-                let oldPos2 = i2;
-                for (let j = base + 1; j < oldPos2; j++)
-                  if (glyphs[j].shaperInfo.category === (0, $90a9d3398ee54fe5$export$a513ea61a7bee91c).M) {
-                    newPos--;
-                    break;
-                  }
+                break;
               }
             }
-            if (newPos > start && $7826f90f6f0cecc9$var$isHalantOrCoeng(glyphs[newPos - 1])) {
-              if (newPos < end && $7826f90f6f0cecc9$var$isJoiner(glyphs[newPos]))
-                newPos++;
-            }
-            let oldPos = i2;
-            let tmp = glyphs[oldPos];
-            glyphs.splice(newPos + 1, 0, ...glyphs.splice(newPos, oldPos - newPos));
-            glyphs[newPos] = tmp;
-            if (newPos <= base && base < oldPos)
-              base++;
           }
-          break;
+          if (newPos > start && $7826f90f6f0cecc9$var$isHalantOrCoeng(glyphs[newPos - 1])) {
+            if (newPos < end && $7826f90f6f0cecc9$var$isJoiner(glyphs[newPos])) newPos++;
+          }
+          let oldPos = i2;
+          let tmp = glyphs[oldPos];
+          glyphs.splice(newPos + 1, 0, ...glyphs.splice(newPos, oldPos - newPos));
+          glyphs[newPos] = tmp;
+          if (newPos <= base && base < oldPos) base++;
         }
+        break;
+      }
     }
-    if (glyphs[start].shaperInfo.position === (0, $90a9d3398ee54fe5$export$1a1f61c9c4dd9df0).Pre_M && (!start || !/Cf|Mn/.test((0, $747425b437e121da$export$410364bbb673ddbc)(glyphs[start - 1].codePoints[0]))))
-      glyphs[start].features.init = true;
+    if (glyphs[start].shaperInfo.position === (0, $90a9d3398ee54fe5$export$1a1f61c9c4dd9df0).Pre_M && (!start || !/Cf|Mn/.test((0, $747425b437e121da$export$410364bbb673ddbc)(glyphs[start - 1].codePoints[0])))) glyphs[start].features.init = true;
   }
 }
 function $7826f90f6f0cecc9$var$nextSyllable(glyphs, start) {
-  if (start >= glyphs.length)
-    return start;
+  if (start >= glyphs.length) return start;
   let syllable = glyphs[start].shaperInfo.syllable;
-  while (++start < glyphs.length && glyphs[start].shaperInfo.syllable === syllable)
-    ;
+  while (++start < glyphs.length && glyphs[start].shaperInfo.syllable === syllable) ;
   return start;
 }
 var { categories: $7ab494fe977143c6$var$categories, decompositions: $7ab494fe977143c6$var$decompositions } = (0, /* @__PURE__ */ $parcel$interopDefault2($aa333a9607471296$exports));
@@ -58218,26 +57416,21 @@ function $7ab494fe977143c6$var$setupSyllables(font, glyphs) {
   let syllable = 0;
   for (let [start, end, tags] of $7ab494fe977143c6$var$stateMachine.match(glyphs.map($7ab494fe977143c6$var$useCategory))) {
     ++syllable;
-    for (let i2 = start; i2 <= end; i2++)
-      glyphs[i2].shaperInfo = new $7ab494fe977143c6$var$USEInfo($7ab494fe977143c6$var$categories[$7ab494fe977143c6$var$useCategory(glyphs[i2])], tags[0], syllable);
+    for (let i2 = start; i2 <= end; i2++) glyphs[i2].shaperInfo = new $7ab494fe977143c6$var$USEInfo($7ab494fe977143c6$var$categories[$7ab494fe977143c6$var$useCategory(glyphs[i2])], tags[0], syllable);
     let limit = glyphs[start].shaperInfo.category === "R" ? 1 : Math.min(3, end - start);
-    for (let i1 = start; i1 < start + limit; i1++)
-      glyphs[i1].features.rphf = true;
+    for (let i1 = start; i1 < start + limit; i1++) glyphs[i1].features.rphf = true;
   }
 }
 function $7ab494fe977143c6$var$clearSubstitutionFlags(font, glyphs) {
-  for (let glyph of glyphs)
-    glyph.substituted = false;
+  for (let glyph of glyphs) glyph.substituted = false;
 }
 function $7ab494fe977143c6$var$recordRphf(font, glyphs) {
-  for (let glyph of glyphs)
-    if (glyph.substituted && glyph.features.rphf)
-      glyph.shaperInfo.category = "R";
+  for (let glyph of glyphs) if (glyph.substituted && glyph.features.rphf)
+    glyph.shaperInfo.category = "R";
 }
 function $7ab494fe977143c6$var$recordPref(font, glyphs) {
-  for (let glyph of glyphs)
-    if (glyph.substituted)
-      glyph.shaperInfo.category = "VPre";
+  for (let glyph of glyphs) if (glyph.substituted)
+    glyph.shaperInfo.category = "VPre";
 }
 function $7ab494fe977143c6$var$reorder(font, glyphs) {
   let dottedCircle = font.glyphForCodePoint(9676).id;
@@ -58245,15 +57438,13 @@ function $7ab494fe977143c6$var$reorder(font, glyphs) {
     let i2, j;
     let info = glyphs[start].shaperInfo;
     let type = info.syllableType;
-    if (type !== "virama_terminated_cluster" && type !== "standard_cluster" && type !== "broken_cluster")
-      continue;
+    if (type !== "virama_terminated_cluster" && type !== "standard_cluster" && type !== "broken_cluster") continue;
     if (type === "broken_cluster" && dottedCircle) {
       let g = new (0, $10e7b257e1a9a756$export$2e2bcd8739ae039)(font, dottedCircle, [
         9676
       ]);
       g.shaperInfo = info;
-      for (i2 = start; i2 < end && glyphs[i2].shaperInfo.category === "R"; i2++)
-        ;
+      for (i2 = start; i2 < end && glyphs[i2].shaperInfo.category === "R"; i2++) ;
       glyphs.splice(++i2, 0, g);
       end++;
     }
@@ -58261,8 +57452,7 @@ function $7ab494fe977143c6$var$reorder(font, glyphs) {
       for (i2 = start + 1; i2 < end; i2++) {
         info = glyphs[i2].shaperInfo;
         if ($7ab494fe977143c6$var$isBase(info) || $7ab494fe977143c6$var$isHalant(glyphs[i2])) {
-          if ($7ab494fe977143c6$var$isHalant(glyphs[i2]))
-            i2--;
+          if ($7ab494fe977143c6$var$isHalant(glyphs[i2])) i2--;
           glyphs.splice(start, 0, ...glyphs.splice(start + 1, i2 - start), glyphs[i2]);
           break;
         }
@@ -58271,17 +57461,14 @@ function $7ab494fe977143c6$var$reorder(font, glyphs) {
       info = glyphs[i2].shaperInfo;
       if ($7ab494fe977143c6$var$isBase(info) || $7ab494fe977143c6$var$isHalant(glyphs[i2]))
         j = $7ab494fe977143c6$var$isHalant(glyphs[i2]) ? i2 + 1 : i2;
-      else if ((info.category === "VPre" || info.category === "VMPre") && j < i2)
-        glyphs.splice(j, 1, glyphs[i2], ...glyphs.splice(j, i2 - j));
+      else if ((info.category === "VPre" || info.category === "VMPre") && j < i2) glyphs.splice(j, 1, glyphs[i2], ...glyphs.splice(j, i2 - j));
     }
   }
 }
 function $7ab494fe977143c6$var$nextSyllable(glyphs, start) {
-  if (start >= glyphs.length)
-    return start;
+  if (start >= glyphs.length) return start;
   let syllable = glyphs[start].shaperInfo.syllable;
-  while (++start < glyphs.length && glyphs[start].shaperInfo.syllable === syllable)
-    ;
+  while (++start < glyphs.length && glyphs[start].shaperInfo.syllable === syllable) ;
   return start;
 }
 function $7ab494fe977143c6$var$isHalant(glyph) {
@@ -58368,14 +57555,12 @@ var $102b6fe50f1d50b4$var$SHAPERS = {
   DFLT: (0, $649970d87335b30f$export$2e2bcd8739ae039)
 };
 function $102b6fe50f1d50b4$export$7877a478dd30fd3d(script) {
-  if (!Array.isArray(script))
-    script = [
-      script
-    ];
+  if (!Array.isArray(script)) script = [
+    script
+  ];
   for (let s of script) {
     let shaper = $102b6fe50f1d50b4$var$SHAPERS[s];
-    if (shaper)
-      return shaper;
+    if (shaper) return shaper;
   }
   return 0, $649970d87335b30f$export$2e2bcd8739ae039;
 }
@@ -58384,8 +57569,7 @@ var $0a876c45f1f7c41c$export$2e2bcd8739ae039 = class extends (0, $a83b9c36aaa94f
     switch (lookupType) {
       case 1: {
         let index2 = this.coverageIndex(table.coverage);
-        if (index2 === -1)
-          return false;
+        if (index2 === -1) return false;
         let glyph = this.glyphIterator.cur;
         switch (table.version) {
           case 1:
@@ -58434,53 +57618,44 @@ var $0a876c45f1f7c41c$export$2e2bcd8739ae039 = class extends (0, $a83b9c36aaa94f
       }
       case 4: {
         let index2 = this.coverageIndex(table.coverage);
-        if (index2 === -1)
-          return false;
+        if (index2 === -1) return false;
         for (let ligature of table.ligatureSets.get(index2)) {
           let matched = this.sequenceMatchIndices(1, ligature.components);
-          if (!matched)
-            continue;
+          if (!matched) continue;
           let curGlyph = this.glyphIterator.cur;
           let characters = curGlyph.codePoints.slice();
-          for (let index3 of matched)
-            characters.push(...this.glyphs[index3].codePoints);
+          for (let index3 of matched) characters.push(...this.glyphs[index3].codePoints);
           let ligatureGlyph = new (0, $10e7b257e1a9a756$export$2e2bcd8739ae039)(this.font, ligature.glyph, characters, curGlyph.features);
           ligatureGlyph.shaperInfo = curGlyph.shaperInfo;
           ligatureGlyph.isLigated = true;
           ligatureGlyph.substituted = true;
           let isMarkLigature = curGlyph.isMark;
-          for (let i2 = 0; i2 < matched.length && isMarkLigature; i2++)
-            isMarkLigature = this.glyphs[matched[i2]].isMark;
+          for (let i2 = 0; i2 < matched.length && isMarkLigature; i2++) isMarkLigature = this.glyphs[matched[i2]].isMark;
           ligatureGlyph.ligatureID = isMarkLigature ? null : this.ligatureID++;
           let lastLigID = curGlyph.ligatureID;
           let lastNumComps = curGlyph.codePoints.length;
           let curComps = lastNumComps;
           let idx = this.glyphIterator.index + 1;
           for (let matchIndex of matched) {
-            if (isMarkLigature)
-              idx = matchIndex;
-            else
-              while (idx < matchIndex) {
-                var ligatureComponent = curComps - lastNumComps + Math.min(this.glyphs[idx].ligatureComponent || 1, lastNumComps);
-                this.glyphs[idx].ligatureID = ligatureGlyph.ligatureID;
-                this.glyphs[idx].ligatureComponent = ligatureComponent;
-                idx++;
-              }
+            if (isMarkLigature) idx = matchIndex;
+            else while (idx < matchIndex) {
+              var ligatureComponent = curComps - lastNumComps + Math.min(this.glyphs[idx].ligatureComponent || 1, lastNumComps);
+              this.glyphs[idx].ligatureID = ligatureGlyph.ligatureID;
+              this.glyphs[idx].ligatureComponent = ligatureComponent;
+              idx++;
+            }
             lastLigID = this.glyphs[idx].ligatureID;
             lastNumComps = this.glyphs[idx].codePoints.length;
             curComps += lastNumComps;
             idx++;
           }
-          if (lastLigID && !isMarkLigature)
-            for (let i1 = idx; i1 < this.glyphs.length; i1++) {
-              if (this.glyphs[i1].ligatureID === lastLigID) {
-                var ligatureComponent = curComps - lastNumComps + Math.min(this.glyphs[i1].ligatureComponent || 1, lastNumComps);
-                this.glyphs[i1].ligatureComponent = ligatureComponent;
-              } else
-                break;
-            }
-          for (let i2 = matched.length - 1; i2 >= 0; i2--)
-            this.glyphs.splice(matched[i2], 1);
+          if (lastLigID && !isMarkLigature) for (let i1 = idx; i1 < this.glyphs.length; i1++) {
+            if (this.glyphs[i1].ligatureID === lastLigID) {
+              var ligatureComponent = curComps - lastNumComps + Math.min(this.glyphs[i1].ligatureComponent || 1, lastNumComps);
+              this.glyphs[i1].ligatureComponent = ligatureComponent;
+            } else break;
+          }
+          for (let i2 = matched.length - 1; i2 >= 0; i2--) this.glyphs.splice(matched[i2], 1);
           this.glyphs[this.glyphIterator.index] = ligatureGlyph;
           return true;
         }
@@ -58500,33 +57675,24 @@ var $0a876c45f1f7c41c$export$2e2bcd8739ae039 = class extends (0, $a83b9c36aaa94f
 var $c96c93587d49c14d$export$2e2bcd8739ae039 = class extends (0, $a83b9c36aaa94fd3$export$2e2bcd8739ae039) {
   applyPositionValue(sequenceIndex, value) {
     let position2 = this.positions[this.glyphIterator.peekIndex(sequenceIndex)];
-    if (value.xAdvance != null)
-      position2.xAdvance += value.xAdvance;
-    if (value.yAdvance != null)
-      position2.yAdvance += value.yAdvance;
-    if (value.xPlacement != null)
-      position2.xOffset += value.xPlacement;
-    if (value.yPlacement != null)
-      position2.yOffset += value.yPlacement;
+    if (value.xAdvance != null) position2.xAdvance += value.xAdvance;
+    if (value.yAdvance != null) position2.yAdvance += value.yAdvance;
+    if (value.xPlacement != null) position2.xOffset += value.xPlacement;
+    if (value.yPlacement != null) position2.yOffset += value.yPlacement;
     let variationProcessor = this.font._variationProcessor;
     let variationStore = this.font.GDEF && this.font.GDEF.itemVariationStore;
     if (variationProcessor && variationStore) {
-      if (value.xPlaDevice)
-        position2.xOffset += variationProcessor.getDelta(variationStore, value.xPlaDevice.a, value.xPlaDevice.b);
-      if (value.yPlaDevice)
-        position2.yOffset += variationProcessor.getDelta(variationStore, value.yPlaDevice.a, value.yPlaDevice.b);
-      if (value.xAdvDevice)
-        position2.xAdvance += variationProcessor.getDelta(variationStore, value.xAdvDevice.a, value.xAdvDevice.b);
-      if (value.yAdvDevice)
-        position2.yAdvance += variationProcessor.getDelta(variationStore, value.yAdvDevice.a, value.yAdvDevice.b);
+      if (value.xPlaDevice) position2.xOffset += variationProcessor.getDelta(variationStore, value.xPlaDevice.a, value.xPlaDevice.b);
+      if (value.yPlaDevice) position2.yOffset += variationProcessor.getDelta(variationStore, value.yPlaDevice.a, value.yPlaDevice.b);
+      if (value.xAdvDevice) position2.xAdvance += variationProcessor.getDelta(variationStore, value.xAdvDevice.a, value.xAdvDevice.b);
+      if (value.yAdvDevice) position2.yAdvance += variationProcessor.getDelta(variationStore, value.yAdvDevice.a, value.yAdvDevice.b);
     }
   }
   applyLookup(lookupType, table) {
     switch (lookupType) {
       case 1: {
         let index2 = this.coverageIndex(table.coverage);
-        if (index2 === -1)
-          return false;
+        if (index2 === -1) return false;
         switch (table.version) {
           case 1:
             this.applyPositionValue(0, table.value);
@@ -58539,26 +57705,22 @@ var $c96c93587d49c14d$export$2e2bcd8739ae039 = class extends (0, $a83b9c36aaa94f
       }
       case 2: {
         let nextGlyph = this.glyphIterator.peek();
-        if (!nextGlyph)
-          return false;
+        if (!nextGlyph) return false;
         let index2 = this.coverageIndex(table.coverage);
-        if (index2 === -1)
-          return false;
+        if (index2 === -1) return false;
         switch (table.version) {
           case 1:
             let set3 = table.pairSets.get(index2);
-            for (let pair of set3)
-              if (pair.secondGlyph === nextGlyph.id) {
-                this.applyPositionValue(0, pair.value1);
-                this.applyPositionValue(1, pair.value2);
-                return true;
-              }
+            for (let pair of set3) if (pair.secondGlyph === nextGlyph.id) {
+              this.applyPositionValue(0, pair.value1);
+              this.applyPositionValue(1, pair.value2);
+              return true;
+            }
             return false;
           case 2:
             let class1 = this.getClassID(this.glyphIterator.cur.id, table.classDef1);
             let class2 = this.getClassID(nextGlyph.id, table.classDef2);
-            if (class1 === -1 || class2 === -1)
-              return false;
+            if (class1 === -1 || class2 === -1) return false;
             var pair1 = table.classRecords.get(class1).get(class2);
             this.applyPositionValue(0, pair1.value1);
             this.applyPositionValue(1, pair1.value2);
@@ -58568,14 +57730,11 @@ var $c96c93587d49c14d$export$2e2bcd8739ae039 = class extends (0, $a83b9c36aaa94f
       case 3: {
         let nextIndex = this.glyphIterator.peekIndex();
         let nextGlyph = this.glyphs[nextIndex];
-        if (!nextGlyph)
-          return false;
+        if (!nextGlyph) return false;
         let curRecord = table.entryExitRecords[this.coverageIndex(table.coverage)];
-        if (!curRecord || !curRecord.exitAnchor)
-          return false;
+        if (!curRecord || !curRecord.exitAnchor) return false;
         let nextRecord = table.entryExitRecords[this.coverageIndex(table.coverage, nextGlyph.id)];
-        if (!nextRecord || !nextRecord.entryAnchor)
-          return false;
+        if (!nextRecord || !nextRecord.entryAnchor) return false;
         let entry = this.getAnchor(nextRecord.entryAnchor);
         let exit = this.getAnchor(curRecord.exitAnchor);
         let cur = this.positions[this.glyphIterator.index];
@@ -58606,16 +57765,12 @@ var $c96c93587d49c14d$export$2e2bcd8739ae039 = class extends (0, $a83b9c36aaa94f
       }
       case 4: {
         let markIndex = this.coverageIndex(table.markCoverage);
-        if (markIndex === -1)
-          return false;
+        if (markIndex === -1) return false;
         let baseGlyphIndex = this.glyphIterator.index;
-        while (--baseGlyphIndex >= 0 && (this.glyphs[baseGlyphIndex].isMark || this.glyphs[baseGlyphIndex].ligatureComponent > 0))
-          ;
-        if (baseGlyphIndex < 0)
-          return false;
+        while (--baseGlyphIndex >= 0 && (this.glyphs[baseGlyphIndex].isMark || this.glyphs[baseGlyphIndex].ligatureComponent > 0)) ;
+        if (baseGlyphIndex < 0) return false;
         let baseIndex = this.coverageIndex(table.baseCoverage, this.glyphs[baseGlyphIndex].id);
-        if (baseIndex === -1)
-          return false;
+        if (baseIndex === -1) return false;
         let markRecord = table.markArray[markIndex];
         let baseAnchor = table.baseArray[baseIndex][markRecord.class];
         this.applyAnchor(markRecord, baseAnchor, baseGlyphIndex);
@@ -58623,16 +57778,12 @@ var $c96c93587d49c14d$export$2e2bcd8739ae039 = class extends (0, $a83b9c36aaa94f
       }
       case 5: {
         let markIndex = this.coverageIndex(table.markCoverage);
-        if (markIndex === -1)
-          return false;
+        if (markIndex === -1) return false;
         let baseGlyphIndex = this.glyphIterator.index;
-        while (--baseGlyphIndex >= 0 && this.glyphs[baseGlyphIndex].isMark)
-          ;
-        if (baseGlyphIndex < 0)
-          return false;
+        while (--baseGlyphIndex >= 0 && this.glyphs[baseGlyphIndex].isMark) ;
+        if (baseGlyphIndex < 0) return false;
         let ligIndex = this.coverageIndex(table.ligatureCoverage, this.glyphs[baseGlyphIndex].id);
-        if (ligIndex === -1)
-          return false;
+        if (ligIndex === -1) return false;
         let ligAttach = table.ligatureArray[ligIndex];
         let markGlyph = this.glyphIterator.cur;
         let ligGlyph = this.glyphs[baseGlyphIndex];
@@ -58644,26 +57795,19 @@ var $c96c93587d49c14d$export$2e2bcd8739ae039 = class extends (0, $a83b9c36aaa94f
       }
       case 6: {
         let mark1Index = this.coverageIndex(table.mark1Coverage);
-        if (mark1Index === -1)
-          return false;
+        if (mark1Index === -1) return false;
         let prevIndex = this.glyphIterator.peekIndex(-1);
         let prev = this.glyphs[prevIndex];
-        if (!prev || !prev.isMark)
-          return false;
+        if (!prev || !prev.isMark) return false;
         let cur = this.glyphIterator.cur;
         let good = false;
         if (cur.ligatureID === prev.ligatureID) {
-          if (!cur.ligatureID)
-            good = true;
-          else if (cur.ligatureComponent === prev.ligatureComponent)
-            good = true;
-        } else if (cur.ligatureID && !cur.ligatureComponent || prev.ligatureID && !prev.ligatureComponent)
-          good = true;
-        if (!good)
-          return false;
+          if (!cur.ligatureID) good = true;
+          else if (cur.ligatureComponent === prev.ligatureComponent) good = true;
+        } else if (cur.ligatureID && !cur.ligatureComponent || prev.ligatureID && !prev.ligatureComponent) good = true;
+        if (!good) return false;
         let mark2Index = this.coverageIndex(table.mark2Coverage, prev.id);
-        if (mark2Index === -1)
-          return false;
+        if (mark2Index === -1) return false;
         let markRecord = table.mark1Array[mark1Index];
         let baseAnchor = table.mark2Array[mark2Index][markRecord.class];
         this.applyAnchor(markRecord, baseAnchor, prevIndex);
@@ -58694,10 +57838,8 @@ var $c96c93587d49c14d$export$2e2bcd8739ae039 = class extends (0, $a83b9c36aaa94f
     let variationProcessor = this.font._variationProcessor;
     let variationStore = this.font.GDEF && this.font.GDEF.itemVariationStore;
     if (variationProcessor && variationStore) {
-      if (anchor.xDeviceTable)
-        x2 += variationProcessor.getDelta(variationStore, anchor.xDeviceTable.a, anchor.xDeviceTable.b);
-      if (anchor.yDeviceTable)
-        y2 += variationProcessor.getDelta(variationStore, anchor.yDeviceTable.a, anchor.yDeviceTable.b);
+      if (anchor.xDeviceTable) x2 += variationProcessor.getDelta(variationStore, anchor.xDeviceTable.a, anchor.xDeviceTable.b);
+      if (anchor.yDeviceTable) y2 += variationProcessor.getDelta(variationStore, anchor.yDeviceTable.a, anchor.yDeviceTable.b);
     }
     return {
       x: x2,
@@ -58706,8 +57848,7 @@ var $c96c93587d49c14d$export$2e2bcd8739ae039 = class extends (0, $a83b9c36aaa94f
   }
   applyFeatures(userFeatures, glyphs, advances) {
     super.applyFeatures(userFeatures, glyphs, advances);
-    for (var i2 = 0; i2 < this.glyphs.length; i2++)
-      this.fixCursiveAttachment(i2);
+    for (var i2 = 0; i2 < this.glyphs.length; i2++) this.fixCursiveAttachment(i2);
     this.fixMarkAttachment();
   }
   fixCursiveAttachment(i2) {
@@ -58726,16 +57867,14 @@ var $c96c93587d49c14d$export$2e2bcd8739ae039 = class extends (0, $a83b9c36aaa94f
         let j = glyph.markAttachment;
         this.positions[i2].xOffset += this.positions[j].xOffset;
         this.positions[i2].yOffset += this.positions[j].yOffset;
-        if (this.direction === "ltr")
-          for (let k = j; k < i2; k++) {
-            this.positions[i2].xOffset -= this.positions[k].xAdvance;
-            this.positions[i2].yOffset -= this.positions[k].yAdvance;
-          }
-        else
-          for (let k1 = j + 1; k1 < i2 + 1; k1++) {
-            this.positions[i2].xOffset += this.positions[k1].xAdvance;
-            this.positions[i2].yOffset += this.positions[k1].yAdvance;
-          }
+        if (this.direction === "ltr") for (let k = j; k < i2; k++) {
+          this.positions[i2].xOffset -= this.positions[k].xAdvance;
+          this.positions[i2].yOffset -= this.positions[k].yAdvance;
+        }
+        else for (let k1 = j + 1; k1 < i2 + 1; k1++) {
+          this.positions[i2].xOffset += this.positions[k1].xAdvance;
+          this.positions[i2].yOffset += this.positions[k1].yAdvance;
+        }
       }
     }
   }
@@ -58746,15 +57885,12 @@ var $a62492810de27e3d$export$2e2bcd8739ae039 = class {
       ...glyph.codePoints
     ]));
     let script = null;
-    if (this.GPOSProcessor)
-      script = this.GPOSProcessor.selectScript(glyphRun.script, glyphRun.language, glyphRun.direction);
-    if (this.GSUBProcessor)
-      script = this.GSUBProcessor.selectScript(glyphRun.script, glyphRun.language, glyphRun.direction);
+    if (this.GPOSProcessor) script = this.GPOSProcessor.selectScript(glyphRun.script, glyphRun.language, glyphRun.direction);
+    if (this.GSUBProcessor) script = this.GSUBProcessor.selectScript(glyphRun.script, glyphRun.language, glyphRun.direction);
     this.shaper = $102b6fe50f1d50b4$export$7877a478dd30fd3d(script);
     this.plan = new (0, $94d7a73bd2edfc9a$export$2e2bcd8739ae039)(this.font, script, glyphRun.direction);
     this.shaper.plan(this.plan, this.glyphInfos, glyphRun.features);
-    for (let key in this.plan.allFeatures)
-      glyphRun.features[key] = true;
+    for (let key in this.plan.allFeatures) glyphRun.features[key] = true;
   }
   substitute(glyphRun) {
     if (this.GSUBProcessor) {
@@ -58763,12 +57899,9 @@ var $a62492810de27e3d$export$2e2bcd8739ae039 = class {
     }
   }
   position(glyphRun) {
-    if (this.shaper.zeroMarkWidths === "BEFORE_GPOS")
-      this.zeroMarkAdvances(glyphRun.positions);
-    if (this.GPOSProcessor)
-      this.plan.process(this.GPOSProcessor, this.glyphInfos, glyphRun.positions);
-    if (this.shaper.zeroMarkWidths === "AFTER_GPOS")
-      this.zeroMarkAdvances(glyphRun.positions);
+    if (this.shaper.zeroMarkWidths === "BEFORE_GPOS") this.zeroMarkAdvances(glyphRun.positions);
+    if (this.GPOSProcessor) this.plan.process(this.GPOSProcessor, this.glyphInfos, glyphRun.positions);
+    if (this.shaper.zeroMarkWidths === "AFTER_GPOS") this.zeroMarkAdvances(glyphRun.positions);
     if (glyphRun.direction === "rtl") {
       glyphRun.glyphs.reverse();
       glyphRun.positions.reverse();
@@ -58776,11 +57909,10 @@ var $a62492810de27e3d$export$2e2bcd8739ae039 = class {
     return this.GPOSProcessor && this.GPOSProcessor.features;
   }
   zeroMarkAdvances(positions) {
-    for (let i2 = 0; i2 < this.glyphInfos.length; i2++)
-      if (this.glyphInfos[i2].isMark) {
-        positions[i2].xAdvance = 0;
-        positions[i2].yAdvance = 0;
-      }
+    for (let i2 = 0; i2 < this.glyphInfos.length; i2++) if (this.glyphInfos[i2].isMark) {
+      positions[i2].xAdvance = 0;
+      positions[i2].yAdvance = 0;
+    }
   }
   cleanup() {
     this.glyphInfos = null;
@@ -58806,10 +57938,8 @@ var $a62492810de27e3d$export$2e2bcd8739ae039 = class {
     this.GSUBProcessor = null;
     this.GPOSProcessor = null;
     this.fallbackPosition = true;
-    if (font.GSUB)
-      this.GSUBProcessor = new (0, $0a876c45f1f7c41c$export$2e2bcd8739ae039)(font, font.GSUB);
-    if (font.GPOS)
-      this.GPOSProcessor = new (0, $c96c93587d49c14d$export$2e2bcd8739ae039)(font, font.GPOS);
+    if (font.GSUB) this.GSUBProcessor = new (0, $0a876c45f1f7c41c$export$2e2bcd8739ae039)(font, font.GSUB);
+    if (font.GPOS) this.GPOSProcessor = new (0, $c96c93587d49c14d$export$2e2bcd8739ae039)(font, font.GPOS);
   }
 };
 var $4c0a7fa5df7a9ab1$export$2e2bcd8739ae039 = class {
@@ -58821,14 +57951,12 @@ var $4c0a7fa5df7a9ab1$export$2e2bcd8739ae039 = class {
       features = [];
     }
     if (typeof string === "string") {
-      if (script == null)
-        script = $130d1a642ebcd2b7$export$e5cb25e204fb8450(string);
+      if (script == null) script = $130d1a642ebcd2b7$export$e5cb25e204fb8450(string);
       var glyphs = this.font.glyphsForString(string);
     } else {
       if (script == null) {
         let codePoints = [];
-        for (let glyph of string)
-          codePoints.push(...glyph.codePoints);
+        for (let glyph of string) codePoints.push(...glyph.codePoints);
         script = $130d1a642ebcd2b7$export$16fab0757cfc223d(codePoints);
       }
       var glyphs = string;
@@ -58838,44 +57966,37 @@ var $4c0a7fa5df7a9ab1$export$2e2bcd8739ae039 = class {
       glyphRun.positions = [];
       return glyphRun;
     }
-    if (this.engine && this.engine.setup)
-      this.engine.setup(glyphRun);
+    if (this.engine && this.engine.setup) this.engine.setup(glyphRun);
     this.substitute(glyphRun);
     this.position(glyphRun);
     this.hideDefaultIgnorables(glyphRun.glyphs, glyphRun.positions);
-    if (this.engine && this.engine.cleanup)
-      this.engine.cleanup();
+    if (this.engine && this.engine.cleanup) this.engine.cleanup();
     return glyphRun;
   }
   substitute(glyphRun) {
-    if (this.engine && this.engine.substitute)
-      this.engine.substitute(glyphRun);
+    if (this.engine && this.engine.substitute) this.engine.substitute(glyphRun);
   }
   position(glyphRun) {
     glyphRun.positions = glyphRun.glyphs.map((glyph) => new (0, $1ac75d9a55b67f01$export$2e2bcd8739ae039)(glyph.advanceWidth));
     let positioned = null;
-    if (this.engine && this.engine.position)
-      positioned = this.engine.position(glyphRun);
+    if (this.engine && this.engine.position) positioned = this.engine.position(glyphRun);
     if (!positioned && (!this.engine || this.engine.fallbackPosition)) {
-      if (!this.unicodeLayoutEngine)
-        this.unicodeLayoutEngine = new (0, $0a4bdfeb6dfd6f5e$export$2e2bcd8739ae039)(this.font);
+      if (!this.unicodeLayoutEngine) this.unicodeLayoutEngine = new (0, $0a4bdfeb6dfd6f5e$export$2e2bcd8739ae039)(this.font);
       this.unicodeLayoutEngine.positionGlyphs(glyphRun.glyphs, glyphRun.positions);
     }
     if ((!positioned || !positioned.kern) && glyphRun.features.kern !== false && this.font.kern) {
-      if (!this.kernProcessor)
-        this.kernProcessor = new (0, $0bba3a9db57637f3$export$2e2bcd8739ae039)(this.font);
+      if (!this.kernProcessor) this.kernProcessor = new (0, $0bba3a9db57637f3$export$2e2bcd8739ae039)(this.font);
       this.kernProcessor.process(glyphRun.glyphs, glyphRun.positions);
       glyphRun.features.kern = true;
     }
   }
   hideDefaultIgnorables(glyphs, positions) {
     let space = this.font.glyphForCodePoint(32);
-    for (let i2 = 0; i2 < glyphs.length; i2++)
-      if (this.isDefaultIgnorable(glyphs[i2].codePoints[0])) {
-        glyphs[i2] = space;
-        positions[i2].xAdvance = 0;
-        positions[i2].yAdvance = 0;
-      }
+    for (let i2 = 0; i2 < glyphs.length; i2++) if (this.isDefaultIgnorable(glyphs[i2].codePoints[0])) {
+      glyphs[i2] = space;
+      positions[i2].xAdvance = 0;
+      positions[i2].yAdvance = 0;
+    }
   }
   isDefaultIgnorable(ch) {
     let plane = ch >> 16;
@@ -58912,30 +58033,23 @@ var $4c0a7fa5df7a9ab1$export$2e2bcd8739ae039 = class {
   }
   getAvailableFeatures(script, language) {
     let features = [];
-    if (this.engine)
-      features.push(...this.engine.getAvailableFeatures(script, language));
-    if (this.font.kern && features.indexOf("kern") === -1)
-      features.push("kern");
+    if (this.engine) features.push(...this.engine.getAvailableFeatures(script, language));
+    if (this.font.kern && features.indexOf("kern") === -1) features.push("kern");
     return features;
   }
   stringsForGlyph(gid) {
     let result = /* @__PURE__ */ new Set();
     let codePoints = this.font._cmapProcessor.codePointsForGlyph(gid);
-    for (let codePoint of codePoints)
-      result.add(String.fromCodePoint(codePoint));
-    if (this.engine && this.engine.stringsForGlyph)
-      for (let string of this.engine.stringsForGlyph(gid))
-        result.add(string);
+    for (let codePoint of codePoints) result.add(String.fromCodePoint(codePoint));
+    if (this.engine && this.engine.stringsForGlyph) for (let string of this.engine.stringsForGlyph(gid)) result.add(string);
     return Array.from(result);
   }
   constructor(font) {
     this.font = font;
     this.unicodeLayoutEngine = null;
     this.kernProcessor = null;
-    if (this.font.morx)
-      this.engine = new (0, $ba6dd74203be8728$export$2e2bcd8739ae039)(this.font);
-    else if (this.font.GSUB || this.font.GPOS)
-      this.engine = new (0, $a62492810de27e3d$export$2e2bcd8739ae039)(this.font);
+    if (this.font.morx) this.engine = new (0, $ba6dd74203be8728$export$2e2bcd8739ae039)(this.font);
+    else if (this.font.GSUB || this.font.GPOS) this.engine = new (0, $a62492810de27e3d$export$2e2bcd8739ae039)(this.font);
   }
 };
 var $f43aec954cdfdf21$var$SVG_COMMANDS = {
@@ -58979,9 +58093,7 @@ var $f43aec954cdfdf21$export$2e2bcd8739ae039 = class _$f43aec954cdfdf21$export$2
   get cbox() {
     if (!this._cbox) {
       let cbox = new (0, $f34600ab9d7f70d8$export$2e2bcd8739ae039)();
-      for (let command1 of this.commands)
-        for (let i2 = 0; i2 < command1.args.length; i2 += 2)
-          cbox.addPoint(command1.args[i2], command1.args[i2 + 1]);
+      for (let command1 of this.commands) for (let i2 = 0; i2 < command1.args.length; i2 += 2) cbox.addPoint(command1.args[i2], command1.args[i2 + 1]);
       this._cbox = Object.freeze(cbox);
     }
     return this._cbox;
@@ -58992,85 +58104,74 @@ var $f43aec954cdfdf21$export$2e2bcd8739ae039 = class _$f43aec954cdfdf21$export$2
   * @type {BBox}
   */
   get bbox() {
-    if (this._bbox)
-      return this._bbox;
+    if (this._bbox) return this._bbox;
     let bbox = new (0, $f34600ab9d7f70d8$export$2e2bcd8739ae039)();
     let cx = 0, cy = 0;
     let f = (t) => Math.pow(1 - t, 3) * p0[i2] + 3 * Math.pow(1 - t, 2) * t * p1[i2] + 3 * (1 - t) * Math.pow(t, 2) * p2[i2] + Math.pow(t, 3) * p3[i2];
-    for (let c of this.commands)
-      switch (c.command) {
-        case "moveTo":
-        case "lineTo":
-          let [x2, y2] = c.args;
-          bbox.addPoint(x2, y2);
-          cx = x2;
-          cy = y2;
-          break;
-        case "quadraticCurveTo":
-        case "bezierCurveTo":
-          if (c.command === "quadraticCurveTo") {
-            var [qp1x, qp1y, p3x, p3y] = c.args;
-            var cp1x = cx + 2 / 3 * (qp1x - cx);
-            var cp1y = cy + 2 / 3 * (qp1y - cy);
-            var cp2x = p3x + 2 / 3 * (qp1x - p3x);
-            var cp2y = p3y + 2 / 3 * (qp1y - p3y);
-          } else
-            var [cp1x, cp1y, cp2x, cp2y, p3x, p3y] = c.args;
-          bbox.addPoint(p3x, p3y);
-          var p0 = [
-            cx,
-            cy
-          ];
-          var p1 = [
-            cp1x,
-            cp1y
-          ];
-          var p2 = [
-            cp2x,
-            cp2y
-          ];
-          var p3 = [
-            p3x,
-            p3y
-          ];
-          for (var i2 = 0; i2 <= 1; i2++) {
-            let b10 = 6 * p0[i2] - 12 * p1[i2] + 6 * p2[i2];
-            let a = -3 * p0[i2] + 9 * p1[i2] - 9 * p2[i2] + 3 * p3[i2];
-            c = 3 * p1[i2] - 3 * p0[i2];
-            if (a === 0) {
-              if (b10 === 0)
-                continue;
-              let t = -c / b10;
-              if (0 < t && t < 1) {
-                if (i2 === 0)
-                  bbox.addPoint(f(t), bbox.maxY);
-                else if (i2 === 1)
-                  bbox.addPoint(bbox.maxX, f(t));
-              }
-              continue;
+    for (let c of this.commands) switch (c.command) {
+      case "moveTo":
+      case "lineTo":
+        let [x2, y2] = c.args;
+        bbox.addPoint(x2, y2);
+        cx = x2;
+        cy = y2;
+        break;
+      case "quadraticCurveTo":
+      case "bezierCurveTo":
+        if (c.command === "quadraticCurveTo") {
+          var [qp1x, qp1y, p3x, p3y] = c.args;
+          var cp1x = cx + 2 / 3 * (qp1x - cx);
+          var cp1y = cy + 2 / 3 * (qp1y - cy);
+          var cp2x = p3x + 2 / 3 * (qp1x - p3x);
+          var cp2y = p3y + 2 / 3 * (qp1y - p3y);
+        } else var [cp1x, cp1y, cp2x, cp2y, p3x, p3y] = c.args;
+        bbox.addPoint(p3x, p3y);
+        var p0 = [
+          cx,
+          cy
+        ];
+        var p1 = [
+          cp1x,
+          cp1y
+        ];
+        var p2 = [
+          cp2x,
+          cp2y
+        ];
+        var p3 = [
+          p3x,
+          p3y
+        ];
+        for (var i2 = 0; i2 <= 1; i2++) {
+          let b10 = 6 * p0[i2] - 12 * p1[i2] + 6 * p2[i2];
+          let a = -3 * p0[i2] + 9 * p1[i2] - 9 * p2[i2] + 3 * p3[i2];
+          c = 3 * p1[i2] - 3 * p0[i2];
+          if (a === 0) {
+            if (b10 === 0) continue;
+            let t = -c / b10;
+            if (0 < t && t < 1) {
+              if (i2 === 0) bbox.addPoint(f(t), bbox.maxY);
+              else if (i2 === 1) bbox.addPoint(bbox.maxX, f(t));
             }
-            let b2ac = Math.pow(b10, 2) - 4 * c * a;
-            if (b2ac < 0)
-              continue;
-            let t12 = (-b10 + Math.sqrt(b2ac)) / (2 * a);
-            if (0 < t12 && t12 < 1) {
-              if (i2 === 0)
-                bbox.addPoint(f(t12), bbox.maxY);
-              else if (i2 === 1)
-                bbox.addPoint(bbox.maxX, f(t12));
-            }
-            let t2 = (-b10 - Math.sqrt(b2ac)) / (2 * a);
-            if (0 < t2 && t2 < 1) {
-              if (i2 === 0)
-                bbox.addPoint(f(t2), bbox.maxY);
-              else if (i2 === 1)
-                bbox.addPoint(bbox.maxX, f(t2));
-            }
+            continue;
           }
-          cx = p3x;
-          cy = p3y;
-          break;
-      }
+          let b2ac = Math.pow(b10, 2) - 4 * c * a;
+          if (b2ac < 0) continue;
+          let t12 = (-b10 + Math.sqrt(b2ac)) / (2 * a);
+          if (0 < t12 && t12 < 1) {
+            if (i2 === 0) bbox.addPoint(f(t12), bbox.maxY);
+            else if (i2 === 1) bbox.addPoint(bbox.maxX, f(t12));
+          }
+          let t2 = (-b10 - Math.sqrt(b2ac)) / (2 * a);
+          if (0 < t2 && t2 < 1) {
+            if (i2 === 0) bbox.addPoint(f(t2), bbox.maxY);
+            else if (i2 === 1) bbox.addPoint(bbox.maxX, f(t2));
+          }
+        }
+        cx = p3x;
+        cy = p3y;
+        break;
+    }
     return this._bbox = Object.freeze(bbox);
   }
   /**
@@ -59135,15 +58236,14 @@ for (let command of [
   "quadraticCurveTo",
   "bezierCurveTo",
   "closePath"
-])
-  $f43aec954cdfdf21$export$2e2bcd8739ae039.prototype[command] = function(...args) {
-    this._bbox = this._cbox = null;
-    this.commands.push({
-      command,
-      args
-    });
-    return this;
-  };
+]) $f43aec954cdfdf21$export$2e2bcd8739ae039.prototype[command] = function(...args) {
+  this._bbox = this._cbox = null;
+  this.commands.push({
+    command,
+    args
+  });
+  return this;
+};
 var $7713b9b7b438dff8$export$2e2bcd8739ae039 = [
   ".notdef",
   ".null",
@@ -59415,8 +58515,7 @@ var $f92906be28e61769$export$2e2bcd8739ae039 = class {
     return this.path.bbox;
   }
   _getTableMetrics(table) {
-    if (this.id < table.metrics.length)
-      return table.metrics.get(this.id);
+    if (this.id < table.metrics.length) return table.metrics.get(this.id);
     let metric = table.metrics.get(table.metrics.length - 1);
     let res = {
       advance: metric ? metric.advance : 0,
@@ -59425,15 +58524,12 @@ var $f92906be28e61769$export$2e2bcd8739ae039 = class {
     return res;
   }
   _getMetrics(cbox) {
-    if (this._metrics)
-      return this._metrics;
+    if (this._metrics) return this._metrics;
     let { advance: advanceWidth, bearing: leftBearing } = this._getTableMetrics(this._font.hmtx);
-    if (this._font.vmtx)
-      var { advance: advanceHeight, bearing: topBearing } = this._getTableMetrics(this._font.vmtx);
+    if (this._font.vmtx) var { advance: advanceHeight, bearing: topBearing } = this._getTableMetrics(this._font.vmtx);
     else {
       let os2;
-      if (typeof cbox === "undefined" || cbox === null)
-        ({ cbox } = this);
+      if (typeof cbox === "undefined" || cbox === null) ({ cbox } = this);
       if ((os2 = this._font["OS/2"]) && os2.version > 0) {
         var advanceHeight = Math.abs(os2.typoAscender - os2.typoDescender);
         var topBearing = os2.typoAscender - cbox.maxY;
@@ -59443,8 +58539,7 @@ var $f92906be28e61769$export$2e2bcd8739ae039 = class {
         var topBearing = hhea.ascent - cbox.maxY;
       }
     }
-    if (this._font._variationProcessor && this._font.HVAR)
-      advanceWidth += this._font._variationProcessor.getAdvanceAdjustment(this.id, this._font.HVAR);
+    if (this._font._variationProcessor && this._font.HVAR) advanceWidth += this._font._variationProcessor.getAdvanceAdjustment(this.id, this._font.HVAR);
     return this._metrics = {
       advanceWidth,
       advanceHeight,
@@ -59508,15 +58603,13 @@ var $f92906be28e61769$export$2e2bcd8739ae039 = class {
   }
   _getName() {
     let { post } = this._font;
-    if (!post)
-      return null;
+    if (!post) return null;
     switch (post.version) {
       case 1:
         return (0, $7713b9b7b438dff8$export$2e2bcd8739ae039)[this.id];
       case 2:
         let id9 = post.glyphNameIndex[this.id];
-        if (id9 < (0, $7713b9b7b438dff8$export$2e2bcd8739ae039).length)
-          return (0, $7713b9b7b438dff8$export$2e2bcd8739ae039)[id9];
+        if (id9 < (0, $7713b9b7b438dff8$export$2e2bcd8739ae039).length) return (0, $7713b9b7b438dff8$export$2e2bcd8739ae039)[id9];
         return post.names[id9 - (0, $7713b9b7b438dff8$export$2e2bcd8739ae039).length];
       case 2.5:
         return (0, $7713b9b7b438dff8$export$2e2bcd8739ae039)[this.id + post.offsets[this.id]];
@@ -59614,8 +58707,7 @@ var $69aac16029968692$var$Component = class {
 var $69aac16029968692$export$2e2bcd8739ae039 = class extends (0, $f92906be28e61769$export$2e2bcd8739ae039) {
   // Parses just the glyph header and returns the bounding box
   _getCBox(internal) {
-    if (this._font._variationProcessor && !internal)
-      return this.path.cbox;
+    if (this._font._variationProcessor && !internal) return this.path.cbox;
     let stream = this._font._getTableStream("glyf");
     stream.pos += this._font.loca.offsets[this.id];
     let glyph = $69aac16029968692$var$GlyfHeader.decode(stream);
@@ -59626,13 +58718,10 @@ var $69aac16029968692$export$2e2bcd8739ae039 = class extends (0, $f92906be28e617
   _parseGlyphCoord(stream, prev, short, same) {
     if (short) {
       var val = stream.readUInt8();
-      if (!same)
-        val = -val;
+      if (!same) val = -val;
       val += prev;
-    } else if (same)
-      var val = prev;
-    else
-      var val = prev + stream.readInt16BE();
+    } else if (same) var val = prev;
+    else var val = prev + stream.readInt16BE();
     return val;
   }
   // Decodes the glyph data into points for simple glyphs,
@@ -59640,16 +58729,13 @@ var $69aac16029968692$export$2e2bcd8739ae039 = class extends (0, $f92906be28e617
   _decode() {
     let glyfPos = this._font.loca.offsets[this.id];
     let nextPos = this._font.loca.offsets[this.id + 1];
-    if (glyfPos === nextPos)
-      return null;
+    if (glyfPos === nextPos) return null;
     let stream = this._font._getTableStream("glyf");
     stream.pos += glyfPos;
     let startPos = stream.pos;
     let glyph = $69aac16029968692$var$GlyfHeader.decode(stream);
-    if (glyph.numberOfContours > 0)
-      this._decodeSimple(glyph, stream);
-    else if (glyph.numberOfContours < 0)
-      this._decodeComposite(glyph, stream, startPos);
+    if (glyph.numberOfContours > 0) this._decodeSimple(glyph, stream);
+    else if (glyph.numberOfContours < 0) this._decodeComposite(glyph, stream, startPos);
     return glyph;
   }
   _decodeSimple(glyph, stream) {
@@ -59663,8 +58749,7 @@ var $69aac16029968692$export$2e2bcd8739ae039 = class extends (0, $f92906be28e617
       flags.push(flag);
       if (flag & $69aac16029968692$var$REPEAT) {
         let count = stream.readUInt8();
-        for (let j = 0; j < count; j++)
-          flags.push(flag);
+        for (let j = 0; j < count; j++) flags.push(flag);
       }
     }
     for (var i2 = 0; i2 < flags.length; i2++) {
@@ -59698,8 +58783,7 @@ var $69aac16029968692$export$2e2bcd8739ae039 = class extends (0, $f92906be28e617
       flags = stream.readUInt16BE();
       let gPos = stream.pos - offset;
       let glyphID = stream.readUInt16BE();
-      if (!haveInstructions)
-        haveInstructions = (flags & $69aac16029968692$var$WE_HAVE_INSTRUCTIONS) !== 0;
+      if (!haveInstructions) haveInstructions = (flags & $69aac16029968692$var$WE_HAVE_INSTRUCTIONS) !== 0;
       if (flags & $69aac16029968692$var$ARG_1_AND_2_ARE_WORDS) {
         var dx = stream.readInt16BE();
         var dy = stream.readInt16BE();
@@ -59741,8 +58825,7 @@ var $69aac16029968692$export$2e2bcd8739ae039 = class extends (0, $f92906be28e617
   }
   _getPhantomPoints(glyph) {
     let cbox = this._getCBox(true);
-    if (this._metrics == null)
-      this._metrics = (0, $f92906be28e61769$export$2e2bcd8739ae039).prototype._getMetrics.call(this, cbox);
+    if (this._metrics == null) this._metrics = (0, $f92906be28e61769$export$2e2bcd8739ae039).prototype._getMetrics.call(this, cbox);
     let { advanceWidth, advanceHeight, leftBearing, topBearing } = this._metrics;
     return [
       new $69aac16029968692$export$baf26146a414f24a(false, true, glyph.xMin - leftBearing, 0),
@@ -59754,8 +58837,7 @@ var $69aac16029968692$export$2e2bcd8739ae039 = class extends (0, $f92906be28e617
   // Decodes font data, resolves composite glyphs, and returns an array of contours
   _getContours() {
     let glyph = this._decode();
-    if (!glyph)
-      return [];
+    if (!glyph) return [];
     let points = [];
     if (glyph.numberOfContours < 0)
       for (let component of glyph.components) {
@@ -59770,8 +58852,7 @@ var $69aac16029968692$export$2e2bcd8739ae039 = class extends (0, $f92906be28e617
           }
         }
       }
-    else
-      points = glyph.points || [];
+    else points = glyph.points || [];
     if (glyph.phantomPoints && !this._font.directory.tables.HVAR) {
       this._metrics.advanceWidth = glyph.phantomPoints[1].x - glyph.phantomPoints[0].x;
       this._metrics.advanceHeight = glyph.phantomPoints[3].y - glyph.phantomPoints[2].y;
@@ -59791,8 +58872,7 @@ var $69aac16029968692$export$2e2bcd8739ae039 = class extends (0, $f92906be28e617
     return contours;
   }
   _getMetrics() {
-    if (this._metrics)
-      return this._metrics;
+    if (this._metrics) return this._metrics;
     let cbox = this._getCBox(true);
     super._getMetrics(cbox);
     if (this._font._variationProcessor && !this._font.HVAR)
@@ -59822,10 +58902,8 @@ var $69aac16029968692$export$2e2bcd8739ae039 = class extends (0, $f92906be28e617
       for (let j = start; j < contour.length; j++) {
         let pt = contour[j];
         let prevPt = j === 0 ? firstPt : contour[j - 1];
-        if (prevPt.onCurve && pt.onCurve)
-          path4.lineTo(pt.x, pt.y);
-        else if (prevPt.onCurve && !pt.onCurve)
-          var curvePt = pt;
+        if (prevPt.onCurve && pt.onCurve) path4.lineTo(pt.x, pt.y);
+        else if (prevPt.onCurve && !pt.onCurve) var curvePt = pt;
         else if (!prevPt.onCurve && !pt.onCurve) {
           let midX = (prevPt.x + pt.x) / 2;
           let midY = (prevPt.y + pt.y) / 2;
@@ -59834,11 +58912,9 @@ var $69aac16029968692$export$2e2bcd8739ae039 = class extends (0, $f92906be28e617
         } else if (!prevPt.onCurve && pt.onCurve) {
           path4.quadraticCurveTo(curvePt.x, curvePt.y, pt.x, pt.y);
           var curvePt = null;
-        } else
-          throw new Error("Unknown TTF path state");
+        } else throw new Error("Unknown TTF path state");
       }
-      if (curvePt)
-        path4.quadraticCurveTo(curvePt.x, curvePt.y, firstPt.x, firstPt.y);
+      if (curvePt) path4.quadraticCurveTo(curvePt.x, curvePt.y, firstPt.x, firstPt.y);
       path4.closePath();
     }
     return path4;
@@ -59850,17 +58926,13 @@ var $69aac16029968692$export$2e2bcd8739ae039 = class extends (0, $f92906be28e617
 };
 var $62cc5109c6101893$export$2e2bcd8739ae039 = class extends (0, $f92906be28e61769$export$2e2bcd8739ae039) {
   _getName() {
-    if (this._font.CFF2)
-      return super._getName();
+    if (this._font.CFF2) return super._getName();
     return this._font["CFF "].getGlyphName(this.id);
   }
   bias(s) {
-    if (s.length < 1240)
-      return 107;
-    else if (s.length < 33900)
-      return 1131;
-    else
-      return 32768;
+    if (s.length < 1240) return 107;
+    else if (s.length < 33900) return 1131;
+    else return 32768;
   }
   _getPath() {
     let cff = this._font.CFF2 || this._font["CFF "];
@@ -59888,18 +58960,15 @@ var $62cc5109c6101893$export$2e2bcd8739ae039 = class extends (0, $f92906be28e617
     let vsindex = privateDict.vsindex;
     let variationProcessor = this._font._variationProcessor;
     function checkWidth() {
-      if (width2 == null)
-        width2 = stack.shift() + privateDict.nominalWidthX;
+      if (width2 == null) width2 = stack.shift() + privateDict.nominalWidthX;
     }
     function parseStems() {
-      if (stack.length % 2 !== 0)
-        checkWidth();
+      if (stack.length % 2 !== 0) checkWidth();
       nStems += stack.length >> 1;
       return stack.length = 0;
     }
     function moveTo2(x2, y2) {
-      if (open)
-        path4.closePath();
+      if (open) path4.closePath();
       path4.moveTo(x2, y2);
       open = true;
     }
@@ -59916,8 +58985,7 @@ var $62cc5109c6101893$export$2e2bcd8739ae039 = class extends (0, $f92906be28e617
               parseStems();
               break;
             case 4:
-              if (stack.length > 1)
-                checkWidth();
+              if (stack.length > 1) checkWidth();
               y1 += stack.shift();
               moveTo2(x1, y1);
               break;
@@ -59932,10 +59000,8 @@ var $62cc5109c6101893$export$2e2bcd8739ae039 = class extends (0, $f92906be28e617
             case 7:
               phase = op === 6;
               while (stack.length >= 1) {
-                if (phase)
-                  x1 += stack.shift();
-                else
-                  y1 += stack.shift();
+                if (phase) x1 += stack.shift();
+                else y1 += stack.shift();
                 path4.lineTo(x1, y1);
                 phase = !phase;
               }
@@ -59966,29 +59032,23 @@ var $62cc5109c6101893$export$2e2bcd8739ae039 = class extends (0, $f92906be28e617
               }
               break;
             case 11:
-              if (cff.version >= 2)
-                break;
+              if (cff.version >= 2) break;
               return;
             case 14:
-              if (cff.version >= 2)
-                break;
-              if (stack.length > 0)
-                checkWidth();
+              if (cff.version >= 2) break;
+              if (stack.length > 0) checkWidth();
               if (open) {
                 path4.closePath();
                 open = false;
               }
               break;
             case 15:
-              if (cff.version < 2)
-                throw new Error("vsindex operator not supported in CFF v1");
+              if (cff.version < 2) throw new Error("vsindex operator not supported in CFF v1");
               vsindex = stack.pop();
               break;
             case 16: {
-              if (cff.version < 2)
-                throw new Error("blend operator not supported in CFF v1");
-              if (!variationProcessor)
-                throw new Error("blend operator in non-variation font");
+              if (cff.version < 2) throw new Error("blend operator not supported in CFF v1");
+              if (!variationProcessor) throw new Error("blend operator in non-variation font");
               let blendVector = variationProcessor.getBlendVector(vstore, vsindex);
               let numBlends = stack.pop();
               let numOperands = numBlends * blendVector.length;
@@ -59996,12 +59056,10 @@ var $62cc5109c6101893$export$2e2bcd8739ae039 = class extends (0, $f92906be28e617
               let base = delta - numBlends;
               for (let i2 = 0; i2 < numBlends; i2++) {
                 let sum = stack[base + i2];
-                for (let j = 0; j < blendVector.length; j++)
-                  sum += blendVector[j] * stack[delta++];
+                for (let j = 0; j < blendVector.length; j++) sum += blendVector[j] * stack[delta++];
                 stack[base + i2] = sum;
               }
-              while (numOperands--)
-                stack.pop();
+              while (numOperands--) stack.pop();
               break;
             }
             case 19:
@@ -60010,15 +59068,13 @@ var $62cc5109c6101893$export$2e2bcd8739ae039 = class extends (0, $f92906be28e617
               stream.pos += nStems + 7 >> 3;
               break;
             case 21:
-              if (stack.length > 2)
-                checkWidth();
+              if (stack.length > 2) checkWidth();
               x1 += stack.shift();
               y1 += stack.shift();
               moveTo2(x1, y1);
               break;
             case 22:
-              if (stack.length > 1)
-                checkWidth();
+              if (stack.length > 1) checkWidth();
               x1 += stack.shift();
               moveTo2(x1, y1);
               break;
@@ -60051,8 +59107,7 @@ var $62cc5109c6101893$export$2e2bcd8739ae039 = class extends (0, $f92906be28e617
               path4.bezierCurveTo(c1x, c1y, c2x, c2y, x1, y1);
               break;
             case 26:
-              if (stack.length % 2)
-                x1 += stack.shift();
+              if (stack.length % 2) x1 += stack.shift();
               while (stack.length >= 4) {
                 c1x = x1;
                 c1y = y1 + stack.shift();
@@ -60064,8 +59119,7 @@ var $62cc5109c6101893$export$2e2bcd8739ae039 = class extends (0, $f92906be28e617
               }
               break;
             case 27:
-              if (stack.length % 2)
-                y1 += stack.shift();
+              if (stack.length % 2) y1 += stack.shift();
               while (stack.length >= 4) {
                 c1x = x1 + stack.shift();
                 c1y = y1;
@@ -60203,31 +59257,25 @@ var $62cc5109c6101893$export$2e2bcd8739ae039 = class extends (0, $f92906be28e617
                   break;
                 case 29:
                   idx = stack.pop();
-                  if (idx < 0)
-                    idx = 0;
-                  else if (idx > stack.length - 1)
-                    idx = stack.length - 1;
+                  if (idx < 0) idx = 0;
+                  else if (idx > stack.length - 1) idx = stack.length - 1;
                   stack.push(stack[idx]);
                   break;
                 case 30:
                   let n2 = stack.pop();
                   let j = stack.pop();
-                  if (j >= 0)
-                    while (j > 0) {
-                      var t = stack[n2 - 1];
-                      for (let i2 = n2 - 2; i2 >= 0; i2--)
-                        stack[i2 + 1] = stack[i2];
-                      stack[0] = t;
-                      j--;
-                    }
-                  else
-                    while (j < 0) {
-                      var t = stack[0];
-                      for (let i2 = 0; i2 <= n2; i2++)
-                        stack[i2] = stack[i2 + 1];
-                      stack[n2 - 1] = t;
-                      j++;
-                    }
+                  if (j >= 0) while (j > 0) {
+                    var t = stack[n2 - 1];
+                    for (let i2 = n2 - 2; i2 >= 0; i2--) stack[i2 + 1] = stack[i2];
+                    stack[0] = t;
+                    j--;
+                  }
+                  else while (j < 0) {
+                    var t = stack[0];
+                    for (let i2 = 0; i2 <= n2; i2++) stack[i2] = stack[i2 + 1];
+                    stack[n2 - 1] = t;
+                    j++;
+                  }
                   break;
                 case 34:
                   c1x = x1 + stack.shift();
@@ -60303,21 +59351,18 @@ var $62cc5109c6101893$export$2e2bcd8739ae039 = class extends (0, $f92906be28e617
             default:
               throw new Error(`Unknown op: ${op}`);
           }
-        } else if (op < 247)
-          stack.push(op - 139);
+        } else if (op < 247) stack.push(op - 139);
         else if (op < 251) {
           var b12 = stream.readUInt8();
           stack.push((op - 247) * 256 + b12 + 108);
         } else if (op < 255) {
           var b12 = stream.readUInt8();
           stack.push(-(op - 251) * 256 - b12 - 108);
-        } else
-          stack.push(stream.readInt32BE() / 65536);
+        } else stack.push(stream.readInt32BE() / 65536);
       }
     };
     parse9();
-    if (open)
-      path4.closePath();
+    if (open) path4.closePath();
     return path4;
   }
   constructor(...args) {
@@ -60343,14 +59388,12 @@ var $25d8f049c222084c$export$2e2bcd8739ae039 = class extends (0, $69aac160299686
   getImageForSize(size4) {
     for (let i2 = 0; i2 < this._font.sbix.imageTables.length; i2++) {
       var table = this._font.sbix.imageTables[i2];
-      if (table.ppem >= size4)
-        break;
+      if (table.ppem >= size4) break;
     }
     let offsets = table.imageOffsets;
     let start = offsets[this.id];
     let end = offsets[this.id + 1];
-    if (start === end)
-      return null;
+    if (start === end) return null;
     this._font.stream.pos = start;
     return $25d8f049c222084c$var$SBIXImage.decode(this._font.stream, {
       buflen: end - start
@@ -60366,8 +59409,7 @@ var $25d8f049c222084c$export$2e2bcd8739ae039 = class extends (0, $69aac160299686
         y: (this.bbox.minY - img.originY) * scale3
       });
     }
-    if (this._font.sbix.flags.renderOutlines)
-      super.render(ctx2, size4);
+    if (this._font.sbix.flags.renderOutlines) super.render(ctx2, size4);
   }
   constructor(...args) {
     super(...args);
@@ -60404,10 +59446,8 @@ var $0d411f0165859681$export$2e2bcd8739ae039 = class extends (0, $f92906be28e617
     while (low <= high) {
       let mid = low + high >> 1;
       var rec = colr.baseGlyphRecord[mid];
-      if (this.id < rec.gid)
-        high = mid - 1;
-      else if (this.id > rec.gid)
-        low = mid + 1;
+      if (this.id < rec.gid) high = mid - 1;
+      else if (this.id > rec.gid) low = mid + 1;
       else {
         var baseLayer = rec;
         break;
@@ -60466,38 +59506,31 @@ var $0bb840cac04e911b$export$2e2bcd8739ae039 = class {
     let normalized = [];
     for (var i2 = 0; i2 < this.font.fvar.axis.length; i2++) {
       let axis = this.font.fvar.axis[i2];
-      if (coords[i2] < axis.defaultValue)
-        normalized.push((coords[i2] - axis.defaultValue + Number.EPSILON) / (axis.defaultValue - axis.minValue + Number.EPSILON));
-      else
-        normalized.push((coords[i2] - axis.defaultValue + Number.EPSILON) / (axis.maxValue - axis.defaultValue + Number.EPSILON));
+      if (coords[i2] < axis.defaultValue) normalized.push((coords[i2] - axis.defaultValue + Number.EPSILON) / (axis.defaultValue - axis.minValue + Number.EPSILON));
+      else normalized.push((coords[i2] - axis.defaultValue + Number.EPSILON) / (axis.maxValue - axis.defaultValue + Number.EPSILON));
     }
-    if (this.font.avar)
-      for (var i2 = 0; i2 < this.font.avar.segment.length; i2++) {
-        let segment = this.font.avar.segment[i2];
-        for (let j = 0; j < segment.correspondence.length; j++) {
-          let pair = segment.correspondence[j];
-          if (j >= 1 && normalized[i2] < pair.fromCoord) {
-            let prev = segment.correspondence[j - 1];
-            normalized[i2] = ((normalized[i2] - prev.fromCoord) * (pair.toCoord - prev.toCoord) + Number.EPSILON) / (pair.fromCoord - prev.fromCoord + Number.EPSILON) + prev.toCoord;
-            break;
-          }
+    if (this.font.avar) for (var i2 = 0; i2 < this.font.avar.segment.length; i2++) {
+      let segment = this.font.avar.segment[i2];
+      for (let j = 0; j < segment.correspondence.length; j++) {
+        let pair = segment.correspondence[j];
+        if (j >= 1 && normalized[i2] < pair.fromCoord) {
+          let prev = segment.correspondence[j - 1];
+          normalized[i2] = ((normalized[i2] - prev.fromCoord) * (pair.toCoord - prev.toCoord) + Number.EPSILON) / (pair.fromCoord - prev.fromCoord + Number.EPSILON) + prev.toCoord;
+          break;
         }
       }
+    }
     return normalized;
   }
   transformPoints(gid, glyphPoints) {
-    if (!this.font.fvar || !this.font.gvar)
-      return;
+    if (!this.font.fvar || !this.font.gvar) return;
     let { gvar } = this.font;
-    if (gid >= gvar.glyphCount)
-      return;
+    if (gid >= gvar.glyphCount) return;
     let offset = gvar.offsets[gid];
-    if (offset === gvar.offsets[gid + 1])
-      return;
+    if (offset === gvar.offsets[gid + 1]) return;
     let { stream } = this.font;
     stream.pos = offset;
-    if (stream.pos >= stream.length)
-      return;
+    if (stream.pos >= stream.length) return;
     let tupleCount = stream.readUInt16BE();
     let offsetToData = offset + stream.readUInt16BE();
     if (tupleCount & $0bb840cac04e911b$var$TUPLES_SHARE_POINT_NUMBERS) {
@@ -60514,20 +59547,16 @@ var $0bb840cac04e911b$export$2e2bcd8739ae039 = class {
       let tupleIndex = stream.readUInt16BE();
       if (tupleIndex & $0bb840cac04e911b$var$EMBEDDED_TUPLE_COORD) {
         var tupleCoords = [];
-        for (let a = 0; a < gvar.axisCount; a++)
-          tupleCoords.push(stream.readInt16BE() / 16384);
+        for (let a = 0; a < gvar.axisCount; a++) tupleCoords.push(stream.readInt16BE() / 16384);
       } else {
-        if ((tupleIndex & $0bb840cac04e911b$var$TUPLE_INDEX_MASK) >= gvar.globalCoordCount)
-          throw new Error("Invalid gvar table");
+        if ((tupleIndex & $0bb840cac04e911b$var$TUPLE_INDEX_MASK) >= gvar.globalCoordCount) throw new Error("Invalid gvar table");
         var tupleCoords = gvar.globalCoords[tupleIndex & $0bb840cac04e911b$var$TUPLE_INDEX_MASK];
       }
       if (tupleIndex & $0bb840cac04e911b$var$INTERMEDIATE_TUPLE) {
         var startCoords = [];
-        for (let a = 0; a < gvar.axisCount; a++)
-          startCoords.push(stream.readInt16BE() / 16384);
+        for (let a = 0; a < gvar.axisCount; a++) startCoords.push(stream.readInt16BE() / 16384);
         var endCoords = [];
-        for (let a1 = 0; a1 < gvar.axisCount; a1++)
-          endCoords.push(stream.readInt16BE() / 16384);
+        for (let a1 = 0; a1 < gvar.axisCount; a1++) endCoords.push(stream.readInt16BE() / 16384);
       }
       let factor = this.tupleFactor(tupleIndex, tupleCoords, startCoords, endCoords);
       if (factor === 0) {
@@ -60536,19 +59565,16 @@ var $0bb840cac04e911b$export$2e2bcd8739ae039 = class {
       }
       var here = stream.pos;
       stream.pos = offsetToData;
-      if (tupleIndex & $0bb840cac04e911b$var$PRIVATE_POINT_NUMBERS)
-        var points = this.decodePoints();
-      else
-        var points = sharedPoints;
+      if (tupleIndex & $0bb840cac04e911b$var$PRIVATE_POINT_NUMBERS) var points = this.decodePoints();
+      else var points = sharedPoints;
       let nPoints = points.length === 0 ? glyphPoints.length : points.length;
       let xDeltas = this.decodeDeltas(nPoints);
       let yDeltas = this.decodeDeltas(nPoints);
-      if (points.length === 0)
-        for (let i3 = 0; i3 < glyphPoints.length; i3++) {
-          var point2 = glyphPoints[i3];
-          point2.x += Math.round(xDeltas[i3] * factor);
-          point2.y += Math.round(yDeltas[i3] * factor);
-        }
+      if (points.length === 0) for (let i3 = 0; i3 < glyphPoints.length; i3++) {
+        var point2 = glyphPoints[i3];
+        point2.x += Math.round(xDeltas[i3] * factor);
+        point2.y += Math.round(yDeltas[i3] * factor);
+      }
       else {
         let outPoints = origPoints.map((pt) => pt.copy());
         let hasDelta = glyphPoints.map(() => false);
@@ -60576,8 +59602,7 @@ var $0bb840cac04e911b$export$2e2bcd8739ae039 = class {
   decodePoints() {
     let stream = this.font.stream;
     let count = stream.readUInt8();
-    if (count & $0bb840cac04e911b$var$POINTS_ARE_WORDS)
-      count = (count & $0bb840cac04e911b$var$POINT_RUN_COUNT_MASK) << 8 | stream.readUInt8();
+    if (count & $0bb840cac04e911b$var$POINTS_ARE_WORDS) count = (count & $0bb840cac04e911b$var$POINT_RUN_COUNT_MASK) << 8 | stream.readUInt8();
     let points = new Uint16Array(count);
     let i2 = 0;
     let point2 = 0;
@@ -60599,12 +59624,10 @@ var $0bb840cac04e911b$export$2e2bcd8739ae039 = class {
     while (i2 < count) {
       let run2 = stream.readUInt8();
       let runCount = (run2 & $0bb840cac04e911b$var$DELTA_RUN_COUNT_MASK) + 1;
-      if (run2 & $0bb840cac04e911b$var$DELTAS_ARE_ZERO)
-        i2 += runCount;
+      if (run2 & $0bb840cac04e911b$var$DELTAS_ARE_ZERO) i2 += runCount;
       else {
         let fn = run2 & $0bb840cac04e911b$var$DELTAS_ARE_WORDS ? stream.readInt16BE : stream.readInt8;
-        for (let j = 0; j < runCount && i2 < count; j++)
-          deltas[i2++] = fn.call(stream);
+        for (let j = 0; j < runCount && i2 < count; j++) deltas[i2++] = fn.call(stream);
       }
     }
     return deltas;
@@ -60614,21 +59637,15 @@ var $0bb840cac04e911b$export$2e2bcd8739ae039 = class {
     let { gvar } = this.font;
     let factor = 1;
     for (let i2 = 0; i2 < gvar.axisCount; i2++) {
-      if (tupleCoords[i2] === 0)
-        continue;
-      if (normalized[i2] === 0)
-        return 0;
+      if (tupleCoords[i2] === 0) continue;
+      if (normalized[i2] === 0) return 0;
       if ((tupleIndex & $0bb840cac04e911b$var$INTERMEDIATE_TUPLE) === 0) {
-        if (normalized[i2] < Math.min(0, tupleCoords[i2]) || normalized[i2] > Math.max(0, tupleCoords[i2]))
-          return 0;
+        if (normalized[i2] < Math.min(0, tupleCoords[i2]) || normalized[i2] > Math.max(0, tupleCoords[i2])) return 0;
         factor = (factor * normalized[i2] + Number.EPSILON) / (tupleCoords[i2] + Number.EPSILON);
       } else {
-        if (normalized[i2] < startCoords[i2] || normalized[i2] > endCoords[i2])
-          return 0;
-        else if (normalized[i2] < tupleCoords[i2])
-          factor = factor * (normalized[i2] - startCoords[i2] + Number.EPSILON) / (tupleCoords[i2] - startCoords[i2] + Number.EPSILON);
-        else
-          factor = factor * (endCoords[i2] - normalized[i2] + Number.EPSILON) / (endCoords[i2] - tupleCoords[i2] + Number.EPSILON);
+        if (normalized[i2] < startCoords[i2] || normalized[i2] > endCoords[i2]) return 0;
+        else if (normalized[i2] < tupleCoords[i2]) factor = factor * (normalized[i2] - startCoords[i2] + Number.EPSILON) / (tupleCoords[i2] - startCoords[i2] + Number.EPSILON);
+        else factor = factor * (endCoords[i2] - normalized[i2] + Number.EPSILON) / (endCoords[i2] - tupleCoords[i2] + Number.EPSILON);
       }
     }
     return factor;
@@ -60637,19 +59654,15 @@ var $0bb840cac04e911b$export$2e2bcd8739ae039 = class {
   // Needed for the Ø and Q glyphs in Skia.
   // Algorithm from Freetype.
   interpolateMissingDeltas(points, inPoints, hasDelta) {
-    if (points.length === 0)
-      return;
+    if (points.length === 0) return;
     let point2 = 0;
     while (point2 < points.length) {
       let firstPoint = point2;
       let endPoint = point2;
       let pt = points[endPoint];
-      while (!pt.endContour)
-        pt = points[++endPoint];
-      while (point2 <= endPoint && !hasDelta[point2])
-        point2++;
-      if (point2 > endPoint)
-        continue;
+      while (!pt.endContour) pt = points[++endPoint];
+      while (point2 <= endPoint && !hasDelta[point2]) point2++;
+      if (point2 > endPoint) continue;
       let firstDelta = point2;
       let curDelta = point2;
       point2++;
@@ -60660,19 +59673,16 @@ var $0bb840cac04e911b$export$2e2bcd8739ae039 = class {
         }
         point2++;
       }
-      if (curDelta === firstDelta)
-        this.deltaShift(firstPoint, endPoint, curDelta, inPoints, points);
+      if (curDelta === firstDelta) this.deltaShift(firstPoint, endPoint, curDelta, inPoints, points);
       else {
         this.deltaInterpolate(curDelta + 1, endPoint, curDelta, firstDelta, inPoints, points);
-        if (firstDelta > 0)
-          this.deltaInterpolate(firstPoint, firstDelta - 1, curDelta, firstDelta, inPoints, points);
+        if (firstDelta > 0) this.deltaInterpolate(firstPoint, firstDelta - 1, curDelta, firstDelta, inPoints, points);
       }
       point2 = endPoint + 1;
     }
   }
   deltaInterpolate(p1, p2, ref1, ref2, inPoints, outPoints) {
-    if (p1 > p2)
-      return;
+    if (p1 > p2) return;
     let iterable = [
       "x",
       "y"
@@ -60692,12 +59702,9 @@ var $0bb840cac04e911b$export$2e2bcd8739ae039 = class {
         let scale3 = in1 === in2 ? 0 : (out2 - out1) / (in2 - in1);
         for (let p3 = p1; p3 <= p2; p3++) {
           let out = inPoints[p3][k];
-          if (out <= in1)
-            out += out1 - in1;
-          else if (out >= in2)
-            out += out2 - in2;
-          else
-            out = out1 + (out - in1) * scale3;
+          if (out <= in1) out += out1 - in1;
+          else if (out >= in2) out += out2 - in2;
+          else out = out1 + (out - in1) * scale3;
           outPoints[p3][k] = out;
         }
       }
@@ -60706,20 +59713,17 @@ var $0bb840cac04e911b$export$2e2bcd8739ae039 = class {
   deltaShift(p1, p2, ref, inPoints, outPoints) {
     let deltaX = outPoints[ref].x - inPoints[ref].x;
     let deltaY = outPoints[ref].y - inPoints[ref].y;
-    if (deltaX === 0 && deltaY === 0)
-      return;
-    for (let p = p1; p <= p2; p++)
-      if (p !== ref) {
-        outPoints[p].x += deltaX;
-        outPoints[p].y += deltaY;
-      }
+    if (deltaX === 0 && deltaY === 0) return;
+    for (let p = p1; p <= p2; p++) if (p !== ref) {
+      outPoints[p].x += deltaX;
+      outPoints[p].y += deltaY;
+    }
   }
   getAdvanceAdjustment(gid, table) {
     let outerIndex, innerIndex;
     if (table.advanceWidthMapping) {
       let idx = gid;
-      if (idx >= table.advanceWidthMapping.mapCount)
-        idx = table.advanceWidthMapping.mapCount - 1;
+      if (idx >= table.advanceWidthMapping.mapCount) idx = table.advanceWidthMapping.mapCount - 1;
       let entryFormat = table.advanceWidthMapping.entryFormat;
       ({ outerIndex, innerIndex } = table.advanceWidthMapping.mapData[idx]);
     } else {
@@ -60731,22 +59735,18 @@ var $0bb840cac04e911b$export$2e2bcd8739ae039 = class {
   // See pseudo code from `Font Variations Overview'
   // in the OpenType specification.
   getDelta(itemStore, outerIndex, innerIndex) {
-    if (outerIndex >= itemStore.itemVariationData.length)
-      return 0;
+    if (outerIndex >= itemStore.itemVariationData.length) return 0;
     let varData = itemStore.itemVariationData[outerIndex];
-    if (innerIndex >= varData.deltaSets.length)
-      return 0;
+    if (innerIndex >= varData.deltaSets.length) return 0;
     let deltaSet = varData.deltaSets[innerIndex];
     let blendVector = this.getBlendVector(itemStore, outerIndex);
     let netAdjustment = 0;
-    for (let master = 0; master < varData.regionIndexCount; master++)
-      netAdjustment += deltaSet.deltas[master] * blendVector[master];
+    for (let master = 0; master < varData.regionIndexCount; master++) netAdjustment += deltaSet.deltas[master] * blendVector[master];
     return netAdjustment;
   }
   getBlendVector(itemStore, outerIndex) {
     let varData = itemStore.itemVariationData[outerIndex];
-    if (this.blendVectors.has(varData))
-      return this.blendVectors.get(varData);
+    if (this.blendVectors.has(varData)) return this.blendVectors.get(varData);
     let normalizedCoords = this.normalizedCoords;
     let blendVector = [];
     for (let master = 0; master < varData.regionIndexCount; master++) {
@@ -60756,21 +59756,14 @@ var $0bb840cac04e911b$export$2e2bcd8739ae039 = class {
       for (let j = 0; j < axes.length; j++) {
         let axis = axes[j];
         let axisScalar;
-        if (axis.startCoord > axis.peakCoord || axis.peakCoord > axis.endCoord)
-          axisScalar = 1;
-        else if (axis.startCoord < 0 && axis.endCoord > 0 && axis.peakCoord !== 0)
-          axisScalar = 1;
-        else if (axis.peakCoord === 0)
-          axisScalar = 1;
-        else if (normalizedCoords[j] < axis.startCoord || normalizedCoords[j] > axis.endCoord)
-          axisScalar = 0;
+        if (axis.startCoord > axis.peakCoord || axis.peakCoord > axis.endCoord) axisScalar = 1;
+        else if (axis.startCoord < 0 && axis.endCoord > 0 && axis.peakCoord !== 0) axisScalar = 1;
+        else if (axis.peakCoord === 0) axisScalar = 1;
+        else if (normalizedCoords[j] < axis.startCoord || normalizedCoords[j] > axis.endCoord) axisScalar = 0;
         else {
-          if (normalizedCoords[j] === axis.peakCoord)
-            axisScalar = 1;
-          else if (normalizedCoords[j] < axis.peakCoord)
-            axisScalar = (normalizedCoords[j] - axis.startCoord + Number.EPSILON) / (axis.peakCoord - axis.startCoord + Number.EPSILON);
-          else
-            axisScalar = (axis.endCoord - normalizedCoords[j] + Number.EPSILON) / (axis.endCoord - axis.peakCoord + Number.EPSILON);
+          if (normalizedCoords[j] === axis.peakCoord) axisScalar = 1;
+          else if (normalizedCoords[j] < axis.peakCoord) axisScalar = (normalizedCoords[j] - axis.startCoord + Number.EPSILON) / (axis.peakCoord - axis.startCoord + Number.EPSILON);
+          else axisScalar = (axis.endCoord - normalizedCoords[j] + Number.EPSILON) / (axis.endCoord - axis.peakCoord + Number.EPSILON);
         }
         scalar *= axisScalar;
       }
@@ -60788,8 +59781,7 @@ var $0bb840cac04e911b$export$2e2bcd8739ae039 = class {
 var $5cc7476da92df375$var$resolved = Promise.resolve();
 var $5cc7476da92df375$export$2e2bcd8739ae039 = class {
   includeGlyph(glyph) {
-    if (typeof glyph === "object")
-      glyph = glyph.id;
+    if (typeof glyph === "object") glyph = glyph.id;
     if (this.mapping[glyph] == null) {
       this.glyphs.push(glyph);
       this.mapping[glyph] = this.glyphs.length - 1;
@@ -60814,10 +59806,8 @@ var $807e58506be70005$var$Point = class {
     return val >= 0 && val <= 255 ? 1 : 2;
   }
   static encode(stream, value) {
-    if (value >= 0 && value <= 255)
-      stream.writeUInt8(value);
-    else
-      stream.writeInt16BE(value);
+    if (value >= 0 && value <= 255) stream.writeUInt8(value);
+    else stream.writeInt16BE(value);
   }
 };
 var $807e58506be70005$var$Glyf = new Struct({
@@ -60852,12 +59842,10 @@ var $807e58506be70005$export$2e2bcd8739ae039 = class {
           if (next && next.command === "quadraticCurveTo") {
             let midX = (lastX + next.args[0]) / 2;
             let midY = (lastY + next.args[1]) / 2;
-            if (x2 === midX && y2 === midY)
-              continue;
+            if (x2 === midX && y2 === midY) continue;
           }
         }
-        if (!(c.command === "quadraticCurveTo" && j === 0))
-          flag |= $807e58506be70005$var$ON_CURVE;
+        if (!(c.command === "quadraticCurveTo" && j === 0)) flag |= $807e58506be70005$var$ON_CURVE;
         flag = this._encodePoint(x2, lastX, xPoints, flag, $807e58506be70005$var$X_SHORT_VECTOR, $807e58506be70005$var$SAME_X);
         flag = this._encodePoint(y2, lastY, yPoints, flag, $807e58506be70005$var$Y_SHORT_VECTOR, $807e58506be70005$var$SAME_Y);
         if (flag === lastFlag && same < 255) {
@@ -60875,11 +59863,9 @@ var $807e58506be70005$export$2e2bcd8739ae039 = class {
         lastY = y2;
         pointCount++;
       }
-      if (c.command === "closePath")
-        endPtsOfContours.push(pointCount - 1);
+      if (c.command === "closePath") endPtsOfContours.push(pointCount - 1);
     }
-    if (path4.commands.length > 1 && path4.commands[path4.commands.length - 1].command !== "closePath")
-      endPtsOfContours.push(pointCount - 1);
+    if (path4.commands.length > 1 && path4.commands[path4.commands.length - 1].command !== "closePath") endPtsOfContours.push(pointCount - 1);
     let bbox = path4.bbox;
     let glyf = {
       numberOfContours: endPtsOfContours.length,
@@ -60897,21 +59883,17 @@ var $807e58506be70005$export$2e2bcd8739ae039 = class {
     let tail = 4 - size4 % 4;
     let stream = new EncodeStream(size4 + tail);
     $807e58506be70005$var$Glyf.encode(stream, glyf);
-    if (tail !== 0)
-      stream.fill(0, tail);
+    if (tail !== 0) stream.fill(0, tail);
     return stream.buffer;
   }
   _encodePoint(value, last4, points, flag, shortFlag, sameFlag) {
     let diff = value - last4;
-    if (value === last4)
-      flag |= sameFlag;
+    if (value === last4) flag |= sameFlag;
     else {
       if (-255 <= diff && diff <= 255) {
         flag |= shortFlag;
-        if (diff < 0)
-          diff = -diff;
-        else
-          flag |= sameFlag;
+        if (diff < 0) diff = -diff;
+        else flag |= sameFlag;
       }
       points.push(diff);
     }
@@ -60957,8 +59939,7 @@ var $4abbb6a5dbdc441a$export$2e2bcd8739ae039 = class extends (0, $5cc7476da92df3
       bearings: []
     };
     let i2 = 0;
-    while (i2 < this.glyphs.length)
-      this._addGlyph(this.glyphs[i2++]);
+    while (i2 < this.glyphs.length) this._addGlyph(this.glyphs[i2++]);
     let maxp = (0, import_clone2.default)(this.font.maxp);
     maxp.numGlyphs = this.glyf.length;
     this.loca.offsets.push(this.offset);
@@ -60993,8 +59974,7 @@ var $001d739428a71d5a$export$2e2bcd8739ae039 = class extends (0, $5cc7476da92df3
       this.charstrings.push(this.cff.getCharString(gid));
       let glyph = this.font.getGlyph(gid);
       let path4 = glyph.path;
-      for (let subr in glyph._usedGsubrs)
-        gsubrs[subr] = true;
+      for (let subr in glyph._usedGsubrs) gsubrs[subr] = true;
     }
     this.gsubrs = this.subsetSubrs(this.cff.globalSubrIndex, gsubrs);
   }
@@ -61005,10 +59985,9 @@ var $001d739428a71d5a$export$2e2bcd8739ae039 = class extends (0, $5cc7476da92df3
       if (used[i2]) {
         this.cff.stream.pos = subr.offset;
         res.push(this.cff.stream.readBuffer(subr.length));
-      } else
-        res.push(new Uint8Array([
-          11
-        ]));
+      } else res.push(new Uint8Array([
+        11
+      ]));
     }
     return res;
   }
@@ -61023,8 +60002,7 @@ var $001d739428a71d5a$export$2e2bcd8739ae039 = class extends (0, $5cc7476da92df3
     let fd_select = {};
     for (let gid of this.glyphs) {
       let fd = this.cff.fdForGlyph(gid);
-      if (fd == null)
-        continue;
+      if (fd == null) continue;
       if (!used_fds[fd]) {
         topDict.FDArray.push(Object.assign({}, this.cff.topDict.FDArray[fd]));
         used_subrs.push({});
@@ -61034,8 +60012,7 @@ var $001d739428a71d5a$export$2e2bcd8739ae039 = class extends (0, $5cc7476da92df3
       topDict.FDSelect.fds.push(fd_select[fd]);
       let glyph = this.font.getGlyph(gid);
       let path4 = glyph.path;
-      for (let subr in glyph._usedSubrs)
-        used_subrs[fd_select[fd]][subr] = true;
+      for (let subr in glyph._usedSubrs) used_subrs[fd_select[fd]][subr] = true;
     }
     for (let i2 = 0; i2 < topDict.FDArray.length; i2++) {
       let dict = topDict.FDArray[i2];
@@ -61052,12 +60029,10 @@ var $001d739428a71d5a$export$2e2bcd8739ae039 = class extends (0, $5cc7476da92df3
     for (let gid of this.glyphs) {
       let glyph = this.font.getGlyph(gid);
       let path4 = glyph.path;
-      for (let subr in glyph._usedSubrs)
-        used_subrs[subr] = true;
+      for (let subr in glyph._usedSubrs) used_subrs[subr] = true;
     }
     let privateDict = Object.assign({}, this.cff.topDict.Private);
-    if (this.cff.topDict.Private && this.cff.topDict.Private.Subrs)
-      privateDict.Subrs = this.subsetSubrs(this.cff.topDict.Private.Subrs, used_subrs);
+    if (this.cff.topDict.Private && this.cff.topDict.Private.Subrs) privateDict.Subrs = this.subsetSubrs(this.cff.topDict.Private.Subrs, used_subrs);
     topDict.FDArray = [
       {
         Private: privateDict
@@ -61076,10 +60051,8 @@ var $001d739428a71d5a$export$2e2bcd8739ae039 = class extends (0, $5cc7476da92df3
     };
   }
   addString(string) {
-    if (!string)
-      return null;
-    if (!this.strings)
-      this.strings = [];
+    if (!string) return null;
+    if (!this.strings) this.strings = [];
     this.strings.push(string);
     return (0, $229224aec43783c5$export$2e2bcd8739ae039).length + this.strings.length - 1;
   }
@@ -61109,18 +60082,15 @@ var $001d739428a71d5a$export$2e2bcd8739ae039 = class extends (0, $5cc7476da92df3
       "PostScript",
       "BaseFontName",
       "FontName"
-    ])
-      topDict[key] = this.addString(this.cff.string(topDict[key]));
+    ]) topDict[key] = this.addString(this.cff.string(topDict[key]));
     topDict.ROS = [
       this.addString("Adobe"),
       this.addString("Identity"),
       0
     ];
     topDict.CIDCount = this.charstrings.length;
-    if (this.cff.isCIDFont)
-      this.subsetFontdict(topDict);
-    else
-      this.createCIDFontdict(topDict);
+    if (this.cff.isCIDFont) this.subsetFontdict(topDict);
+    else this.createCIDFontdict(topDict);
     let top = {
       version: 1,
       hdrSize: this.cff.hdrSize,
@@ -61140,8 +60110,7 @@ var $001d739428a71d5a$export$2e2bcd8739ae039 = class extends (0, $5cc7476da92df3
   constructor(font) {
     super(font);
     this.cff = this.font["CFF "];
-    if (!this.cff)
-      throw new Error("Not a CFF Font");
+    if (!this.cff) throw new Error("Not a CFF Font");
   }
 };
 var $4c1709dee528ea76$export$2e2bcd8739ae039 = class _$4c1709dee528ea76$export$2e2bcd8739ae039 {
@@ -61153,15 +60122,14 @@ var $4c1709dee528ea76$export$2e2bcd8739ae039 = class _$4c1709dee528ea76$export$2
     this.defaultLanguage = lang;
   }
   _getTable(table) {
-    if (!(table.tag in this._tables))
-      try {
-        this._tables[table.tag] = this._decodeTable(table);
-      } catch (e) {
-        if ($d636bc798e7178db$export$bd5c5d8b8dcafd78) {
-          console.error(`Error decoding table ${table.tag}`);
-          console.error(e.stack);
-        }
+    if (!(table.tag in this._tables)) try {
+      this._tables[table.tag] = this._decodeTable(table);
+    } catch (e) {
+      if ($d636bc798e7178db$export$bd5c5d8b8dcafd78) {
+        console.error(`Error decoding table ${table.tag}`);
+        console.error(e.stack);
       }
+    }
     return this._tables[table.tag];
   }
   _getTableStream(tag2) {
@@ -61377,8 +60345,7 @@ var $4c1709dee528ea76$export$2e2bcd8739ae039 = class _$4c1709dee528ea76$export$2
           }
         }
         nextState = 65024 <= code && code <= 65039 || 917760 <= code && code <= 917999 ? 1 : 0;
-      } else
-        idx++;
+      } else idx++;
       if (state === 0 && nextState === 1)
         glyphs.push(this.getGlyph(this._cmapProcessor.lookup(last4, code), [
           last4,
@@ -61430,10 +60397,8 @@ var $4c1709dee528ea76$export$2e2bcd8739ae039 = class _$4c1709dee528ea76$export$2
   }
   _getBaseGlyph(glyph, characters = []) {
     if (!this._glyphs[glyph]) {
-      if (this.directory.tables.glyf)
-        this._glyphs[glyph] = new (0, $69aac16029968692$export$2e2bcd8739ae039)(glyph, characters, this);
-      else if (this.directory.tables["CFF "] || this.directory.tables.CFF2)
-        this._glyphs[glyph] = new (0, $62cc5109c6101893$export$2e2bcd8739ae039)(glyph, characters, this);
+      if (this.directory.tables.glyf) this._glyphs[glyph] = new (0, $69aac16029968692$export$2e2bcd8739ae039)(glyph, characters, this);
+      else if (this.directory.tables["CFF "] || this.directory.tables.CFF2) this._glyphs[glyph] = new (0, $62cc5109c6101893$export$2e2bcd8739ae039)(glyph, characters, this);
     }
     return this._glyphs[glyph] || null;
   }
@@ -61448,12 +60413,9 @@ var $4c1709dee528ea76$export$2e2bcd8739ae039 = class _$4c1709dee528ea76$export$2
   */
   getGlyph(glyph, characters = []) {
     if (!this._glyphs[glyph]) {
-      if (this.directory.tables.sbix)
-        this._glyphs[glyph] = new (0, $25d8f049c222084c$export$2e2bcd8739ae039)(glyph, characters, this);
-      else if (this.directory.tables.COLR && this.directory.tables.CPAL)
-        this._glyphs[glyph] = new (0, $0d411f0165859681$export$2e2bcd8739ae039)(glyph, characters, this);
-      else
-        this._getBaseGlyph(glyph, characters);
+      if (this.directory.tables.sbix) this._glyphs[glyph] = new (0, $25d8f049c222084c$export$2e2bcd8739ae039)(glyph, characters, this);
+      else if (this.directory.tables.COLR && this.directory.tables.CPAL) this._glyphs[glyph] = new (0, $0d411f0165859681$export$2e2bcd8739ae039)(glyph, characters, this);
+      else this._getBaseGlyph(glyph, characters);
     }
     return this._glyphs[glyph] || null;
   }
@@ -61462,8 +60424,7 @@ var $4c1709dee528ea76$export$2e2bcd8739ae039 = class _$4c1709dee528ea76$export$2
   * @return {Subset}
   */
   createSubset() {
-    if (this.directory.tables["CFF "])
-      return new (0, $001d739428a71d5a$export$2e2bcd8739ae039)(this);
+    if (this.directory.tables["CFF "]) return new (0, $001d739428a71d5a$export$2e2bcd8739ae039)(this);
     return new (0, $4abbb6a5dbdc441a$export$2e2bcd8739ae039)(this);
   }
   /**
@@ -61475,15 +60436,13 @@ var $4c1709dee528ea76$export$2e2bcd8739ae039 = class _$4c1709dee528ea76$export$2
   */
   get variationAxes() {
     let res = {};
-    if (!this.fvar)
-      return res;
-    for (let axis of this.fvar.axis)
-      res[axis.axisTag.trim()] = {
-        name: axis.name.en,
-        min: axis.minValue,
-        default: axis.defaultValue,
-        max: axis.maxValue
-      };
+    if (!this.fvar) return res;
+    for (let axis of this.fvar.axis) res[axis.axisTag.trim()] = {
+      name: axis.name.en,
+      min: axis.minValue,
+      default: axis.defaultValue,
+      max: axis.maxValue
+    };
     return res;
   }
   /**
@@ -61495,8 +60454,7 @@ var $4c1709dee528ea76$export$2e2bcd8739ae039 = class _$4c1709dee528ea76$export$2
   */
   get namedVariations() {
     let res = {};
-    if (!this.fvar)
-      return res;
+    if (!this.fvar) return res;
     for (let instance of this.fvar.instance) {
       let settings = {};
       for (let i2 = 0; i2 < this.fvar.axis.length; i2++) {
@@ -61516,18 +60474,13 @@ var $4c1709dee528ea76$export$2e2bcd8739ae039 = class _$4c1709dee528ea76$export$2
   * @return {TTFFont}
   */
   getVariation(settings) {
-    if (!(this.directory.tables.fvar && (this.directory.tables.gvar && this.directory.tables.glyf || this.directory.tables.CFF2)))
-      throw new Error("Variations require a font with the fvar, gvar and glyf, or CFF2 tables.");
-    if (typeof settings === "string")
-      settings = this.namedVariations[settings];
-    if (typeof settings !== "object")
-      throw new Error("Variation settings must be either a variation name or settings object.");
+    if (!(this.directory.tables.fvar && (this.directory.tables.gvar && this.directory.tables.glyf || this.directory.tables.CFF2))) throw new Error("Variations require a font with the fvar, gvar and glyf, or CFF2 tables.");
+    if (typeof settings === "string") settings = this.namedVariations[settings];
+    if (typeof settings !== "object") throw new Error("Variation settings must be either a variation name or settings object.");
     let coords = this.fvar.axis.map((axis, i2) => {
       let axisTag = axis.axisTag.trim();
-      if (axisTag in settings)
-        return Math.max(axis.minValue, Math.min(axis.maxValue, settings[axisTag]));
-      else
-        return axis.defaultValue;
+      if (axisTag in settings) return Math.max(axis.minValue, Math.min(axis.maxValue, settings[axisTag]));
+      else return axis.defaultValue;
     });
     let stream = new DecodeStream(this.stream.buffer);
     stream.pos = this._directoryPos;
@@ -61536,13 +60489,10 @@ var $4c1709dee528ea76$export$2e2bcd8739ae039 = class _$4c1709dee528ea76$export$2
     return font;
   }
   get _variationProcessor() {
-    if (!this.fvar)
-      return null;
+    if (!this.fvar) return null;
     let variationCoords = this.variationCoords;
-    if (!variationCoords && !this.CFF2)
-      return null;
-    if (!variationCoords)
-      variationCoords = this.fvar.axis.map((axis) => axis.defaultValue);
+    if (!variationCoords && !this.CFF2) return null;
+    if (!variationCoords) variationCoords = this.fvar.axis.map((axis) => axis.defaultValue);
     return new (0, $0bb840cac04e911b$export$2e2bcd8739ae039)(this, variationCoords);
   }
   // Standardized format plugin API
@@ -61560,10 +60510,9 @@ var $4c1709dee528ea76$export$2e2bcd8739ae039 = class _$4c1709dee528ea76$export$2
     this._decodeDirectory();
     for (let tag2 in this.directory.tables) {
       let table = this.directory.tables[tag2];
-      if ((0, $c3395722bea751e2$export$2e2bcd8739ae039)[tag2] && table.length > 0)
-        Object.defineProperty(this, tag2, {
-          get: this._getTable.bind(this, table)
-        });
+      if ((0, $c3395722bea751e2$export$2e2bcd8739ae039)[tag2] && table.length > 0) Object.defineProperty(this, tag2, {
+        get: this._getTable.bind(this, table)
+      });
     }
   }
 };
@@ -61615,8 +60564,7 @@ var $c1726355ecc5b889$var$WOFFDirectory = new Struct({
 });
 $c1726355ecc5b889$var$WOFFDirectory.process = function() {
   let tables1 = {};
-  for (let table of this.tables)
-    tables1[table.tag] = table;
+  for (let table of this.tables) tables1[table.tag] = table;
   this.tables = tables1;
 };
 var $c1726355ecc5b889$export$2e2bcd8739ae039 = $c1726355ecc5b889$var$WOFFDirectory;
@@ -61638,8 +60586,7 @@ var $760785214b9fc52c$export$2e2bcd8739ae039 = class extends (0, $4c1709dee528ea
         let outBuffer = new Uint8Array(table.length);
         let buf = (0, import_tiny_inflate.default)(this.stream.readBuffer(table.compLength - 2), outBuffer);
         return new DecodeStream(buf);
-      } else
-        return this.stream;
+      } else return this.stream;
     }
     return null;
   }
@@ -61673,11 +60620,9 @@ var $c28ec7bbb3b8de3a$var$Base128 = {
     for (let j = 0; j < iterable.length; j++) {
       let i2 = iterable[j];
       let code = stream.readUInt8();
-      if (result & 3758096384)
-        throw new Error("Overflow");
+      if (result & 3758096384) throw new Error("Overflow");
       result = result << 7 | code & 127;
-      if ((code & 128) === 0)
-        return result;
+      if ((code & 128) === 0) return result;
     }
     throw new Error("Bad base 128 number");
   }
@@ -61801,8 +60746,7 @@ var $21ee218f84ac7f32$export$2e2bcd8739ae039 = class extends (0, $4c1709dee528ea
         decompressedSize += entry.transformLength != null ? entry.transformLength : entry.length;
       }
       let decompressed = (0, import_decompress.default)(buffer, decompressedSize);
-      if (!decompressed)
-        throw new Error("Error decoding compressed data in WOFF2");
+      if (!decompressed) throw new Error("Error decoding compressed data in WOFF2");
       this.stream = new DecodeStream(decompressed);
       this._decompressed = true;
     }
@@ -61816,11 +60760,9 @@ var $21ee218f84ac7f32$export$2e2bcd8739ae039 = class extends (0, $4c1709dee528ea
   _getBaseGlyph(glyph, characters = []) {
     if (!this._glyphs[glyph]) {
       if (this.directory.tables.glyf && this.directory.tables.glyf.transformed) {
-        if (!this._transformedGlyphs)
-          this._transformGlyfTable();
+        if (!this._transformedGlyphs) this._transformGlyfTable();
         return this._glyphs[glyph] = new (0, $8046190c9f1ad19e$export$2e2bcd8739ae039)(glyph, characters, this);
-      } else
-        return super._getBaseGlyph(glyph, characters);
+      } else return super._getBaseGlyph(glyph, characters);
     }
   }
   _transformGlyfTable() {
@@ -61841,15 +60783,13 @@ var $21ee218f84ac7f32$export$2e2bcd8739ae039 = class extends (0, $4c1709dee528ea
           nPoints.push(totalPoints);
         }
         glyph.points = $21ee218f84ac7f32$var$decodeTriplet(table.flags, table.glyphs, totalPoints);
-        for (let i1 = 0; i1 < nContours; i1++)
-          glyph.points[nPoints[i1] - 1].endContour = true;
+        for (let i1 = 0; i1 < nContours; i1++) glyph.points[nPoints[i1] - 1].endContour = true;
         var instructionSize = $21ee218f84ac7f32$var$read255UInt16(table.glyphs);
       } else if (nContours < 0) {
         let haveInstructions = (0, $69aac16029968692$export$2e2bcd8739ae039).prototype._decodeComposite.call({
           _font: this
         }, glyph, table.composites);
-        if (haveInstructions)
-          var instructionSize = $21ee218f84ac7f32$var$read255UInt16(table.glyphs);
+        if (haveInstructions) var instructionSize = $21ee218f84ac7f32$var$read255UInt16(table.glyphs);
       }
       glyphs.push(glyph);
     }
@@ -61894,12 +60834,9 @@ var $21ee218f84ac7f32$var$ONE_MORE_BYTE_CODE1 = 255;
 var $21ee218f84ac7f32$var$LOWEST_U_CODE = 253;
 function $21ee218f84ac7f32$var$read255UInt16(stream) {
   let code = stream.readUInt8();
-  if (code === $21ee218f84ac7f32$var$WORD_CODE)
-    return stream.readUInt16BE();
-  if (code === $21ee218f84ac7f32$var$ONE_MORE_BYTE_CODE1)
-    return stream.readUInt8() + $21ee218f84ac7f32$var$LOWEST_U_CODE;
-  if (code === $21ee218f84ac7f32$var$ONE_MORE_BYTE_CODE2)
-    return stream.readUInt8() + $21ee218f84ac7f32$var$LOWEST_U_CODE * 2;
+  if (code === $21ee218f84ac7f32$var$WORD_CODE) return stream.readUInt16BE();
+  if (code === $21ee218f84ac7f32$var$ONE_MORE_BYTE_CODE1) return stream.readUInt8() + $21ee218f84ac7f32$var$LOWEST_U_CODE;
+  if (code === $21ee218f84ac7f32$var$ONE_MORE_BYTE_CODE2) return stream.readUInt8() + $21ee218f84ac7f32$var$LOWEST_U_CODE * 2;
   return code;
 }
 function $21ee218f84ac7f32$var$withSign(flag, baseval) {
@@ -61966,8 +60903,7 @@ var $cd5853a56c68fec7$export$2e2bcd8739ae039 = class {
       let stream = new DecodeStream(this.stream.buffer);
       stream.pos = offset;
       let font = new (0, $4c1709dee528ea76$export$2e2bcd8739ae039)(stream);
-      if (font.postscriptName === name || font.postscriptName instanceof Uint8Array && name instanceof Uint8Array && font.postscriptName.every((v, i2) => name[i2] === v))
-        return font;
+      if (font.postscriptName === name || font.postscriptName instanceof Uint8Array && name instanceof Uint8Array && font.postscriptName.every((v, i2) => name[i2] === v)) return font;
     }
     return null;
   }
@@ -61983,8 +60919,7 @@ var $cd5853a56c68fec7$export$2e2bcd8739ae039 = class {
   constructor(stream) {
     (0, _define_property)(this, "type", "TTC");
     this.stream = stream;
-    if (stream.readString(4) !== "ttcf")
-      throw new Error("Not a TrueType collection");
+    if (stream.readString(4) !== "ttcf") throw new Error("Not a TrueType collection");
     this.header = $cd5853a56c68fec7$var$TTCHeader.decode(stream);
   }
 };
@@ -62031,20 +60966,17 @@ var $05f49f930186144e$export$2e2bcd8739ae039 = class {
       return false;
     }
     for (let type of header.map.typeList.types) {
-      if (type.name === "sfnt")
-        return true;
+      if (type.name === "sfnt") return true;
     }
     return false;
   }
   getFont(name) {
-    if (!this.sfnt)
-      return null;
+    if (!this.sfnt) return null;
     for (let ref of this.sfnt.refList) {
       let pos = this.header.dataOffset + ref.dataOffset + 4;
       let stream = new DecodeStream(this.stream.buffer.slice(pos));
       let font = new (0, $4c1709dee528ea76$export$2e2bcd8739ae039)(stream);
-      if (font.postscriptName === name || font.postscriptName instanceof Uint8Array && name instanceof Uint8Array && font.postscriptName.every((v, i2) => name[i2] === v))
-        return font;
+      if (font.postscriptName === name || font.postscriptName instanceof Uint8Array && name instanceof Uint8Array && font.postscriptName.every((v, i2) => name[i2] === v)) return font;
     }
     return null;
   }
@@ -62062,14 +60994,11 @@ var $05f49f930186144e$export$2e2bcd8739ae039 = class {
     this.stream = stream;
     this.header = $05f49f930186144e$var$DFontHeader.decode(this.stream);
     for (let type of this.header.map.typeList.types) {
-      for (let ref of type.refList)
-        if (ref.nameOffset >= 0) {
-          this.stream.pos = ref.nameOffset + this.header.map.nameListOffset;
-          ref.name = $05f49f930186144e$var$DFontName.decode(this.stream);
-        } else
-          ref.name = null;
-      if (type.name === "sfnt")
-        this.sfnt = type;
+      for (let ref of type.refList) if (ref.nameOffset >= 0) {
+        this.stream.pos = ref.nameOffset + this.header.map.nameListOffset;
+        ref.name = $05f49f930186144e$var$DFontName.decode(this.stream);
+      } else ref.name = null;
+      if (type.name === "sfnt") this.sfnt = type;
     }
   }
 };
@@ -62088,8 +61017,7 @@ var getFonts = () => fonts;
 
 // ../../node_modules/.pnpm/svgdom@0.1.19/node_modules/svgdom/src/utils/textUtils.js
 var textBBox = function(text, x2, y2, details) {
-  if (!text)
-    return new NoBox();
+  if (!text) return new NoBox();
   const config2 = getConfig();
   const preloaded = getFonts();
   const families = (details.fontFamily || fontFamily).split(/\s*,\s*/);
@@ -62158,8 +61086,7 @@ var getSegments2 = (node2, applyTransformations, rbox = false) => {
   return applyTransformation(segments, node2, applyTransformations);
 };
 var getPathSegments2 = (node2, rbox) => {
-  if (node2.nodeType !== 1)
-    return new PathSegmentArray();
+  if (node2.nodeType !== 1) return new PathSegmentArray();
   switch (node2.nodeName) {
     case "rect":
     case "image":
@@ -62177,8 +61104,7 @@ var getPathSegments2 = (node2, rbox) => {
     case "a":
     case "marker":
       return node2.childNodes.reduce((segments, child) => {
-        if (!child.matrixify)
-          return segments;
+        if (!child.matrixify) return segments;
         return segments.merge(getSegments2(child, true).transform(child.generateViewBoxMatrix()));
       }, new PathSegmentArray());
     case "circle":
@@ -62229,8 +61155,7 @@ var findTextRoot = (node2) => {
 };
 var getTextBBoxes = function(target, textRoot = target, pos = { x: 0, y: 0 }, dx = [0], dy = [0], boxes = []) {
   const iter = new NodeIterator(textRoot, NodeFilter.SHOW_ELEMENT | NodeFilter.SHOW_TEXT, (node2) => {
-    if (node2.nodeName === "title")
-      return NodeFilter.FILTER_IGNORE;
+    if (node2.nodeName === "title") return NodeFilter.FILTER_IGNORE;
     return NodeFilter.FILTER_ACCEPT;
   });
   for (const node2 of iter) {
@@ -62262,8 +61187,7 @@ var getPositionDetailsFor = (node2, pos, dx, dy, boxes) => {
         boxes.push(textBBox(data.substr(j, 1), pos.x, pos.y, details));
         pos.x += dx.shift() || 0;
         pos.y += dy.shift() || 0;
-        if (!dy.length && !dx.length)
-          break;
+        if (!dy.length && !dx.length) break;
       }
     }
     boxes.push(textBBox(data.substr(j), pos.x, pos.y, details));
@@ -62271,8 +61195,7 @@ var getPositionDetailsFor = (node2, pos, dx, dy, boxes) => {
   }
 };
 var getFontDetails = (node2) => {
-  if (node2.nodeType === node2.TEXT_NODE)
-    node2 = node2.parentNode;
+  if (node2.nodeType === node2.TEXT_NODE) node2 = node2.parentNode;
   let fontSize2 = null;
   let fontFamily2 = null;
   let textAnchor = null;
@@ -62349,11 +61272,9 @@ var SVGGraphicsElement = class _SVGGraphicsElement extends SVGElement {
     let m = this.matrixify();
     let node2 = this;
     while (node2 = node2.parentNode) {
-      if (["svg", "symbol", "image", "pattern", "marker"].indexOf(node2.nodeName) > -1)
-        break;
+      if (["svg", "symbol", "image", "pattern", "marker"].indexOf(node2.nodeName) > -1) break;
       m = m.multiply(node2.matrixify());
-      if (node2.nodeName === "#document")
-        return this.getScreenCTM();
+      if (node2.nodeName === "#document") return this.getScreenCTM();
     }
     return node2.generateViewBoxMatrix().multiply(m);
   }
@@ -62378,8 +61299,7 @@ var SVGGraphicsElement = class _SVGGraphicsElement extends SVGElement {
         return parseFloat(str4.trim());
       })];
     }).reduce(function(matrix2, transform7) {
-      if (transform7[0] === "matrix")
-        return matrix2.multiply(arrayToMatrix(transform7[1]));
+      if (transform7[0] === "matrix") return matrix2.multiply(arrayToMatrix(transform7[1]));
       return matrix2[transform7[0]].apply(matrix2, transform7[1]);
     }, new SVGMatrix());
     return matrix;
@@ -62772,10 +61692,8 @@ var Window = class extends EventTarget {
     this.Image = class {
       constructor(width2, height) {
         const img = doc.createElement("img");
-        if (width2 != null)
-          img.setAttribute("width", width2);
-        if (height != null)
-          img.setAttribute("height", height);
+        if (width2 != null) img.setAttribute("width", width2);
+        if (height != null) img.setAttribute("height", height);
         return img;
       }
     };

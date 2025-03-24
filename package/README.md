@@ -15,7 +15,7 @@ Typst package for drawing the following from markup:
 
 
 ````typ
-#import "@preview/pintorita:0.1.3"
+#import "@preview/pintorita:0.1.4"
 
 #set page(height: auto, width: auto, fill: black, margin: 2em)
 #set text(fill: white)
@@ -94,3 +94,4 @@ The svg image
 * 0.1.1 - Updated to Jogs 0.2.3 and pintora 0.7.3
 * 0.1.2 - Fixed strange offset of text rows in class diagram, added `render-svg` function and more customization options
 * 0.1.3 - Bug Fixes for argument handling. 
+* 0.1.4 - Updated to Jogs 0.2.4 and pintora 0.7.5.  

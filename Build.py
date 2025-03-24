@@ -1,3 +1,8 @@
+# /// script
+# requires-python = "==3.9"
+# dependencies = ["quickjs","jsmin"]
+# ///
+
 import  quickjs
 from jsmin import jsmin
 from pathlib import Path
@@ -117,6 +122,9 @@ class ConsoleStub {
 
 var console = new ConsoleStub();
 
+
+
+
     ''')
 
 import re
@@ -146,18 +154,13 @@ qjeval("""
     csrc.dataset['renderer']
 
 
-    function PintoraRender(InputString) {
-
-        console = new ConsoleStub()
-        csrc.innerText=InputString
-        pintoraStandalone.renderContentOf(csrc,{resultContainer:rslt})
-
-        if (rslt.innerHTML===""){
-        errorString = '\\n ' + String(console.warnHistory.slice(-1))
-        throw new Error(errorString);
-        }
-        rslt.firstChild.setAttribute("xmlns","http://www.w3.org/2000/svg")
-        return rslt.innerHTML;
+    function PintoraRender(e, t = "default", A = "Source Code Pro, sans-serif") {
+      csrc.dataset.theme = t;
+      var n = config;
+      if (n.core.defaultFontFamily = A, configApi.setConfig(n), runtime_default.setConfig(n), console = new ConsoleStub, csrc.innerText = e, pintoraStandalone.renderContentOf(csrc, {
+          resultContainer: rslt
+        }), "" === rslt.innerHTML) throw errorString = "\\n " + String(console.warnHistory.slice(-1)), new Error(errorString);
+      return rslt.firstChild.setAttribute("xmlns", "http://www.w3.org/2000/svg"), rslt.innerHTML
     }
 
     """)

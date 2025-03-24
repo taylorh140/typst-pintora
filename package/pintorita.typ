@@ -1,4 +1,4 @@
-#import "@preview/jogs:0.2.3": compile-js, call-js-function
+#import "@preview/jogs:0.2.4": compile-js, call-js-function
 
 #let pintora-src = read("./pintora.js")
 #let pintora-bytecode = compile-js(pintora-src)
@@ -36,8 +36,8 @@
 
   let newWidth = getNewWidth(svg-output, factor, width)
 
-  image.decode(
-    svg-output,
+  image(
+    bytes(svg-output),
     width: newWidth,
     ..args,
   )
